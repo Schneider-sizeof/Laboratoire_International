@@ -1,0 +1,139 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Contact - Laboratoire International Tanger{% endblock %}
+
+{% block content %}
+<!-- Page Hero -->
+<section class="page-hero">
+    <div class="container">
+        <div class="page-hero-content">
+            <div class="breadcrumb">
+                <a href="{% url 'core:home' %}">Accueil</a>
+                <span class="separator">/</span>
+                <span class="current">Contact</span>
+            </div>
+            <h1>Contactez-Nous</h1>
+            <p>Notre équipe est à votre écoute 24h/24 et 7j/7</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-grid">
+            <!-- Info Column -->
+            <div class="fade-in-left">
+                <div class="section-badge" style="margin-bottom: 16px;">
+                    <i class="fas fa-map-marker-alt"></i> Nos Coordonnées
+                </div>
+                <h2 style="font-size:1.75rem; margin-bottom:24px;">
+                    Rendez-nous visite ou<br>appelez-nous directement
+                </h2>
+
+                <div class="contact-info-cards">
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Adresse</h4>
+                            <p>Av. Moulay Rachid, Tanger<br>Maroc</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <p>+212 5 39 31 39 47<br>+212 6 00 00 00 00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>contact@labinternational.ma<br>resultats@labinternational.ma</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Horaires</h4>
+                            <p>Ouvert 24h/24 - 7j/7<br>Prélèvements à jeun: 7h - 11h</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map -->
+                <div class="contact-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.923!2d-5.8508857!3d35.7526966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0b87bb4130edf5%3A0xb2bc80cfeb3a4755!2sLaboratoire%20International!5e0!3m2!1sfr!2sma!4v1" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        title="Localisation Laboratoire International Tanger">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Form Column -->
+            <div class="contact-form-card fade-in-right">
+                <h2><i class="fas fa-paper-plane" style="color:var(--primary-500);margin-right:10px;font-size:1.2rem;"></i>Envoyez-nous un Message</h2>
+                <p class="form-subtitle">Remplissez le formulaire ci-dessous et nous vous répondrons rapidement.</p>
+                
+                <form id="contactForm">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Nom Complet</label>
+                            <input type="text" id="name" class="form-control" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="votre@email.com" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="+212 6XX XX XX XX">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <select id="subject" class="form-control">
+                                <option value="">Choisir un sujet</option>
+                                <option value="rdv">Prise de rendez-vous</option>
+                                <option value="results">Question sur résultats</option>
+                                <option value="domicile">Prélèvement à domicile</option>
+                                <option value="info">Demande d'information</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" placeholder="Votre message..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Envoyer le Message
+                    </button>
+                    
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Nos Analyses - Laboratoire International Tanger{% endblock %}
+
+{% block content %}
+<!-- Page Hero -->
+<section class="page-hero">
+    <div class="container">
+        <div class="page-hero-content">
+            <div class="breadcrumb">
+                <a href="{% url 'core:home' %}">Accueil</a>
+                <span class="separator">/</span>
+                <span class="current">Nos Analyses</span>
+            </div>
+            <h1>Catalogue des Analyses</h1>
+            <p>Découvrez l'ensemble de nos analyses médicales disponibles</p>
+        </div>
+    </div>
+</section>
+
+<!-- Services Detail -->
+<section class="services-page-section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-badge"><i class="fas fa-list-alt"></i> Analyses Disponibles</span>
+            <h2 class="section-title">Nos Domaines d'Expertise</h2>
+            <p class="section-subtitle">
+                Cliquez sur chaque catégorie pour découvrir les analyses disponibles.
+            </p>
+        </div>
+
+        {% for category in categories %}
+        <div class="service-category fade-in" style="transition-delay: {{ forloop.counter0 }}50ms">
+            <div class="category-header">
+                <div class="category-icon" style="background: {{ category.color }};">
+                    <i class="{{ category.icon }}"></i>
+                </div>
+                <h3>{{ category.title }}</h3>
+                <div class="category-toggle">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="category-body">
+                <div class="tests-grid">
+                    {% for test in category.tests %}
+                    <div class="test-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>{{ test }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-card fade-in">
+            <div class="cta-content">
+                <h2>Vous ne trouvez pas votre analyse?</h2>
+                <p>
+                    Notre catalogue est bien plus vaste. Contactez-nous pour 
+                    toute analyse spécifique non listée ici.
+                </p>
+            </div>
+            <div class="cta-actions">
+                <a href="{% url 'core:contact' %}" class="btn btn-white">
+                    <i class="fas fa-envelope"></i> Nous Contacter
+                </a>
+                <a href="tel:+212539313947" class="btn btn-outline">
+                    <i class="fas fa-phone-alt"></i> +212 5 39 31 39 47
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}À Propos - Laboratoire International Tanger{% endblock %}
+
+{% block content %}
+<!-- Page Hero -->
+<section class="page-hero">
+    <div class="container">
+        <div class="page-hero-content">
+            <div class="breadcrumb">
+                <a href="{% url 'core:home' %}">Accueil</a>
+                <span class="separator">/</span>
+                <span class="current">À Propos</span>
+            </div>
+            <h1>Qui Sommes-Nous</h1>
+            <p>Plus de 25 ans d'engagement pour votre santé à Tanger</p>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-image fade-in-left">
+                <img src="{% static 'core/images/about.png' %}" alt="Notre Laboratoire">
+                <div class="about-image-badge">
+                    <i class="fas fa-award"></i>
+                    <div class="badge-text">
+                        <h4>25+ Ans</h4>
+                        <p>d'Excellence Médicale</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-text fade-in-right">
+                <span class="section-badge"><i class="fas fa-info-circle"></i> Notre Histoire</span>
+                <h2>Un Laboratoire de Référence à Tanger</h2>
+                <p>
+                    Fondé il y a plus de 25 ans, le <strong>Laboratoire International d'Analyses Médicales</strong> 
+                    s'est imposé comme une référence incontournable dans le domaine du diagnostic biologique 
+                    à Tanger et dans toute la région du Nord du Maroc.
+                </p>
+                <p>
+                    Notre engagement envers l'excellence nous a conduits à investir continuellement dans 
+                    les technologies les plus avancées et à recruter une équipe de biologistes et techniciens 
+                    hautement qualifiés. Nous sommes fiers d'être certifiés <strong>ISO 15189</strong> et 
+                    conventionnés avec la <strong>CNSS</strong> et la <strong>CNOPS</strong>.
+                </p>
+                <p>
+                    Disponibles 24h/24 et 7j/7, nous offrons également un service de prélèvement à domicile 
+                    pour le confort de nos patients. Notre priorité est de fournir des résultats fiables, 
+                    rapides et accessibles.
+                </p>
+                <a href="{% url 'core:services' %}" class="btn btn-primary" style="margin-top: 16px;">
+                    <i class="fas fa-flask"></i> Découvrir nos analyses
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Values Section -->
+<section class="values-section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-badge"><i class="fas fa-heart"></i> Nos Valeurs</span>
+            <h2 class="section-title">Ce Qui Nous Guide</h2>
+            <p class="section-subtitle">
+                Des valeurs fortes qui orientent chacune de nos actions au quotidien.
+            </p>
+        </div>
+
+        <div class="values-grid">
+            {% for value in values %}
+            <div class="value-card fade-in" style="transition-delay: {{ forloop.counter0 }}00ms">
+                <div class="value-icon">
+                    <i class="{{ value.icon }}"></i>
+                </div>
+                <h3>{{ value.title }}</h3>
+                <p>{{ value.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="team-section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-badge"><i class="fas fa-users"></i> Notre Équipe</span>
+            <h2 class="section-title">Des Experts à Votre Service</h2>
+            <p class="section-subtitle">
+                Une équipe de professionnels passionnés, dédiés à votre santé.
+            </p>
+        </div>
+
+        <div class="team-grid">
+            {% for member in team %}
+            <div class="team-card fade-in" style="transition-delay: {{ forloop.counter0 }}00ms">
+                <div class="team-avatar">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <h3>{{ member.name }}</h3>
+                <p class="team-role">{{ member.role }}</p>
+                <p class="team-bio">{{ member.bio }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

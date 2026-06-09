@@ -1,0 +1,232 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Laboratoire International d'Analyses Médicales à Tanger - Analyses biochimiques, hématologiques, sérologiques et PCR. Service 24/7.">
+    <title>{% block title %}Laboratoire International - Tanger{% endblock %}</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="has-demo-bar">
+    <!-- Demo Protection: Disable right-click & dev tools -->
+    <script>
+    (function(){
+        // Block right-click context menu
+        document.addEventListener('contextmenu',function(e){e.preventDefault();return false;});
+        // Block F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+Shift+C
+        document.addEventListener('keydown',function(e){
+            if(e.key==='F12')                                          {e.preventDefault();return false;}
+            if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'))      {e.preventDefault();return false;}
+            if(e.ctrlKey&&e.shiftKey&&(e.key==='J'||e.key==='j'))      {e.preventDefault();return false;}
+            if(e.ctrlKey&&e.shiftKey&&(e.key==='C'||e.key==='c'))      {e.preventDefault();return false;}
+            if(e.ctrlKey&&(e.key==='U'||e.key==='u'))                  {e.preventDefault();return false;}
+            if(e.ctrlKey&&(e.key==='S'||e.key==='s'))                  {e.preventDefault();return false;}
+        });
+        // Disable drag on images
+        document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG'){e.preventDefault();}});
+    })();
+    </script>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="{% url 'core:home' %}" class="nav-brand">
+                <div class="brand-icon">
+                    <i class="fas fa-flask"></i>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-name">Laboratoire International</span>
+                    <span class="brand-sub">Analyses Médicales · Tanger</span>
+                </div>
+            </a>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="{% url 'core:home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">Accueil</a></li>
+                <li><a href="{% url 'core:about' %}" class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}">À Propos</a></li>
+                <li><a href="{% url 'core:services' %}" class="nav-link {% if request.resolver_match.url_name == 'services' %}active{% endif %}">Nos Analyses</a></li>
+                <li><a href="{% url 'core:results' %}" class="nav-link {% if request.resolver_match.url_name == 'results' %}active{% endif %}">Résultats</a></li>
+                <li><a href="{% url 'core:contact' %}" class="nav-link nav-cta {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
+                    <i class="fas fa-phone-alt"></i> Contact
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z" fill="currentColor"/>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <div class="footer-brand">
+                        <div class="brand-icon"><i class="fas fa-flask"></i></div>
+                        <h3>Laboratoire International</h3>
+                    </div>
+                    <p>Votre partenaire de confiance pour des analyses médicales fiables et précises à Tanger depuis plus de 25 ans.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Liens Rapides</h4>
+                    <ul>
+                        <li><a href="{% url 'core:home' %}">Accueil</a></li>
+                        <li><a href="{% url 'core:about' %}">À Propos</a></li>
+                        <li><a href="{% url 'core:services' %}">Nos Analyses</a></li>
+                        <li><a href="{% url 'core:results' %}">Résultats en Ligne</a></li>
+                        <li><a href="{% url 'core:contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Nos Analyses</h4>
+                    <ul>
+                        <li><a href="{% url 'core:services' %}">Biochimie</a></li>
+                        <li><a href="{% url 'core:services' %}">Hématologie</a></li>
+                        <li><a href="{% url 'core:services' %}">Sérologie</a></li>
+                        <li><a href="{% url 'core:services' %}">PCR & Virologie</a></li>
+                        <li><a href="{% url 'core:services' %}">Microbiologie</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Av. Moulay Rachid, Tanger, Maroc</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+212 5 39 31 39 47</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>contact@labinternational.ma</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>24h/24 - 7j/7</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Laboratoire International - Tanger. Tous droits réservés.</p>
+                <div class="footer-badges">
+                    <span class="badge"><i class="fas fa-certificate"></i> ISO 15189</span>
+                    <span class="badge"><i class="fas fa-check-circle"></i> Agréé MS</span>
+                    <span class="badge"><i class="fas fa-shield-alt"></i> CNSS / CNOPS</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Demo Bar -->
+    <div class="demo-bar" id="demoBar">
+        <div class="demo-bar-pulse"></div>
+        <div class="demo-bar-text">
+            <i class="fas fa-laptop-code"></i>
+            <span>VERSION DÉMO</span>
+        </div>
+        <div class="demo-bar-separator"></div>
+        <span class="demo-bar-company">Laboratoire International — Présentation Commerciale</span>
+    </div>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="backToTop" aria-label="Retour en haut">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="{% static 'core/js/main.js' %}"></script>
+
+    <!-- Demo Bar Controller -->
+    <script>
+    (function(){
+        var bar = document.getElementById('demoBar');
+        if (!bar) return;
+
+        function hideBar() {
+            bar.classList.add('hiding');
+            document.body.classList.remove('has-demo-bar');
+            document.body.classList.add('demo-hidden');
+            setTimeout(function(){ bar.classList.add('hidden'); }, 600);
+        }
+
+        // === KEYBOARD: type "2020" anywhere to dismiss (works on ALL devices) ===
+        var seq = '';
+        var code = '2020';
+        document.addEventListener('keydown', function(e) {
+            if (bar.classList.contains('hidden')) return;
+            // Only track digit keys
+            if (e.key >= '0' && e.key <= '9') {
+                seq += e.key;
+                if (seq.length > code.length) {
+                    seq = seq.slice(-code.length);
+                }
+                if (seq === code) {
+                    hideBar();
+                    seq = '';
+                }
+            } else if (!e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey) {
+                seq = '';
+            }
+        });
+
+        // === TOUCH: tap 5 times on the bar to dismiss (works on ALL devices) ===
+        var tapCount = 0;
+        var tapTimer = null;
+
+        function handleTap(e) {
+            if (bar.classList.contains('hidden')) return;
+            e.preventDefault();
+            e.stopPropagation();
+            tapCount++;
+            clearTimeout(tapTimer);
+            tapTimer = setTimeout(function() { tapCount = 0; }, 3000);
+            if (tapCount >= 5) {
+                hideBar();
+                tapCount = 0;
+                clearTimeout(tapTimer);
+            }
+        }
+
+        bar.addEventListener('touchstart', handleTap, { passive: false });
+        bar.addEventListener('click', handleTap);
+    })();
+    </script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
