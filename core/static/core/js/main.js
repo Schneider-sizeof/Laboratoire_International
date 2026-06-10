@@ -33,19 +33,46 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Mobile Nav Toggle ---
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
+    const navOverlay = document.getElementById('navOverlay');
+
+    function openNav() {
+        navToggle.classList.add('active');
+        navMenu.classList.add('active');
+        if (navOverlay) navOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeNav() {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        if (navOverlay) navOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
     
     if (navToggle) {
         navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
+            if (navMenu.classList.contains('active')) {
+                closeNav();
+            } else {
+                openNav();
+            }
         });
 
+        // Close on overlay click
+        if (navOverlay) {
+            navOverlay.addEventListener('click', closeNav);
+        }
+
         // Close on link click
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
+        document.querySelectorAll('.nav-menu .nav-link').forEach(link => {
+            link.addEventListener('click', closeNav);
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                closeNav();
+            }
         });
     }
 
