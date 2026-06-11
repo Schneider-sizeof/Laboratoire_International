@@ -1,0 +1,146 @@
+{% extends "core/base.html" %}
+{% load static spa_tags %}
+
+{% block title %}Nos Services - The White Spa Tanger{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="container">
+    <span class="section-label">✦ Nos Prestations ✦</span>
+    <h1>Services & Soins</h1>
+    <p>Des soins d'exception pour votre bien-être</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    {% if services_by_category %}
+      {% for category_name, services_list in services_by_category.items %}
+      <div style="margin-bottom: 80px;" class="fade-in">
+        <div class="section-header" style="margin-bottom: 40px;">
+          <h2 class="section-title">{{ category_name }}</h2>
+          <div class="section-divider"></div>
+        </div>
+        <div class="services-grid">
+          {% for service in services_list %}
+          <div class="service-card">
+            <div class="service-card-img">
+              {% service_image service as svc_img %}
+              <img src="{% static svc_img %}" alt="{{ service.name }}" loading="lazy">
+              {% if service.is_featured %}
+              <div class="service-card-badge">Populaire</div>
+              {% endif %}
+            </div>
+            <div class="service-card-body">
+              <div class="service-card-category">{{ service.get_category_display }}</div>
+              <h3>{{ service.name_fr|default:service.name }}</h3>
+              <p>{{ service.description_fr|default:service.description }}</p>
+              <div class="service-card-meta">
+                <div class="service-price">{{ service.price|floatformat:0 }} <small>MAD</small></div>
+                <div class="service-duration">⏱ {{ service.duration_minutes }} min</div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <!-- Fallback: show default services -->
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <div class="service-card-img">
+            <img src="{% static 'core/images/hammam.png' %}" alt="Hammam" loading="lazy">
+            <div class="service-card-badge">Populaire</div>
+          </div>
+          <div class="service-card-body">
+            <div class="service-card-category">Hammam</div>
+            <h3>Hammam Traditionnel</h3>
+            <p>Rituel de purification ancestral avec gommage au savon noir et au gant de kessa, suivi d'un enveloppement au ghassoul.</p>
+            <div class="service-card-meta">
+              <div class="service-price">200 <small>MAD</small></div>
+              <div class="service-duration">⏱ 60 min</div>
+            </div>
+          </div>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-card-img">
+            <img src="{% static 'core/images/hammam.png' %}" alt="Hammam Royal" loading="lazy">
+          </div>
+          <div class="service-card-body">
+            <div class="service-card-category">Hammam</div>
+            <h3>Hammam Royal</h3>
+            <p>Notre hammam premium avec gommage, enveloppement au ghassoul, masque à l'argile et massage relaxant.</p>
+            <div class="service-card-meta">
+              <div class="service-price">400 <small>MAD</small></div>
+              <div class="service-duration">⏱ 90 min</div>
+            </div>
+          </div>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-card-img">
+            <img src="{% static 'core/images/massage.png' %}" alt="Massage" loading="lazy">
+          </div>
+          <div class="service-card-body">
+            <div class="service-card-category">Massage</div>
+            <h3>Massage Relaxant</h3>
+            <p>Un massage aux huiles essentielles pour une détente profonde du corps et de l'esprit.</p>
+            <div class="service-card-meta">
+              <div class="service-price">300 <small>MAD</small></div>
+              <div class="service-duration">⏱ 60 min</div>
+            </div>
+          </div>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-card-img">
+            <img src="{% static 'core/images/massage.png' %}" alt="Massage Pierres Chaudes" loading="lazy">
+          </div>
+          <div class="service-card-body">
+            <div class="service-card-category">Massage</div>
+            <h3>Massage aux Pierres Chaudes</h3>
+            <p>Des pierres volcaniques chaudes posées sur les points d'énergie pour une relaxation en profondeur.</p>
+            <div class="service-card-meta">
+              <div class="service-price">450 <small>MAD</small></div>
+              <div class="service-duration">⏱ 75 min</div>
+            </div>
+          </div>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-card-img">
+            <img src="{% static 'core/images/facial.png' %}" alt="Soin Visage" loading="lazy">
+          </div>
+          <div class="service-card-body">
+            <div class="service-card-category">Soin du Visage</div>
+            <h3>Soin Éclat du Visage</h3>
+            <p>Un soin complet pour retrouver une peau lumineuse, nettoyage, gommage, masque et hydratation.</p>
+            <div class="service-card-meta">
+              <div class="service-price">250 <small>MAD</small></div>
+              <div class="service-duration">⏱ 45 min</div>
+            </div>
+          </div>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-card-img">
+            <img src="{% static 'core/images/hero.png' %}" alt="Pack VIP" loading="lazy">
+            <div class="service-card-badge">VIP</div>
+          </div>
+          <div class="service-card-body">
+            <div class="service-card-category">Pack</div>
+            <h3>Pack VIP</h3>
+            <p>L'expérience ultime : Hammam Royal + Massage Relaxant + Soin Visage + Thé marocain.</p>
+            <div class="service-card-meta">
+              <div class="service-price">800 <small>MAD</small></div>
+              <div class="service-duration">⏱ 180 min</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    <div style="text-align: center; margin-top: 60px;" class="fade-in">
+      <a href="{% url 'booking' %}" class="btn btn-primary">Réserver un Soin</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

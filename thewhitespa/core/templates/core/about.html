@@ -1,0 +1,129 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}À Propos - The White Spa Tanger{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="container">
+    <span class="section-label">✦ Notre Histoire ✦</span>
+    <h1>À Propos de Nous</h1>
+    <p>Découvrez l'univers The White Spa</p>
+  </div>
+</div>
+
+<!-- Story Section -->
+<section class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image fade-in">
+        <img src="{% static 'core/images/hero.png' %}" alt="The White Spa Tanger">
+      </div>
+      <div class="about-text fade-in">
+        <span class="section-label">Depuis Tanger</span>
+        <h2>L'Excellence du Bien-Être</h2>
+        <p>
+          The White Spa est né d'une vision simple : créer un lieu où le temps s'arrête,
+          où chaque visiteur peut se reconnecter avec soi-même dans un cadre d'exception.
+        </p>
+        <p>
+          Situé au cœur de Tanger, notre spa combine harmonieusement les rituels de beauté
+          ancestraux du Maroc avec les techniques modernes de bien-être. Notre engagement
+          envers l'excellence se reflète dans chaque détail, de la sélection de nos produits
+          naturels à la formation continue de notre équipe.
+        </p>
+        <ul class="features-list">
+          <li>Produits cosmétiques 100% naturels et biologiques</li>
+          <li>Professionnels certifiés et passionnés</li>
+          <li>Ambiance luxueuse et intimiste</li>
+          <li>Normes d'hygiène les plus strictes</li>
+          <li>Accueil personnalisé et chaleureux</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Values Section -->
+<section class="section" style="background: var(--color-bg-alt);">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">Nos Valeurs</span>
+      <h2 class="section-title">Ce Qui Nous Distingue</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card fade-in" style="border: none; background: var(--color-bg-glass);">
+        <div class="service-card-body" style="text-align: center; padding: 48px 32px;">
+          <div style="font-size: 3rem; margin-bottom: 20px;">🌿</div>
+          <h3>Naturalité</h3>
+          <p style="margin-bottom: 0;">Nous utilisons exclusivement des produits naturels et bio, respectueux de votre peau et de l'environnement.</p>
+        </div>
+      </div>
+      <div class="service-card fade-in" style="border: none; background: var(--color-bg-glass);">
+        <div class="service-card-body" style="text-align: center; padding: 48px 32px;">
+          <div style="font-size: 3rem; margin-bottom: 20px;">✨</div>
+          <h3>Excellence</h3>
+          <p style="margin-bottom: 0;">Chaque soin est réalisé avec la plus grande attention aux détails pour une expérience inoubliable.</p>
+        </div>
+      </div>
+      <div class="service-card fade-in" style="border: none; background: var(--color-bg-glass);">
+        <div class="service-card-body" style="text-align: center; padding: 48px 32px;">
+          <div style="font-size: 3rem; margin-bottom: 20px;">🤝</div>
+          <h3>Hospitalité</h3>
+          <p style="margin-bottom: 0;">L'accueil marocain dans toute sa splendeur. Vous êtes chez vous à The White Spa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section class="section">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">L'Équipe</span>
+      <h2 class="section-title">Des Experts à Votre Service</h2>
+      <p class="section-desc">Une équipe passionnée et qualifiée pour vous offrir le meilleur</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="team-grid">
+      {% for member in team_members %}
+      <div class="team-card fade-in">
+        <div class="team-avatar">{{ member.name|first }}</div>
+        <h3>{{ member.name }}</h3>
+        <div class="role">{{ member.role }}</div>
+        <p class="bio">{{ member.bio }}</p>
+      </div>
+      {% empty %}
+      <div class="team-card fade-in">
+        <div class="team-avatar">A</div>
+        <h3>Amina Chaoui</h3>
+        <div class="role">Directrice & Fondatrice</div>
+        <p class="bio">Passionnée par le bien-être et l'art de vivre marocain, Amina a fondé The White Spa pour partager sa vision.</p>
+      </div>
+      <div class="team-card fade-in">
+        <div class="team-avatar">F</div>
+        <h3>Fatima Zahra</h3>
+        <div class="role">Spa Manager</div>
+        <p class="bio">Experte en soins spa avec plus de 8 ans d'expérience dans les plus grands établissements.</p>
+      </div>
+      <div class="team-card fade-in">
+        <div class="team-avatar">Y</div>
+        <h3>Yasmine El Idrissi</h3>
+        <div class="role">Thérapeute Senior</div>
+        <p class="bio">Spécialisée en massage thérapeutique et aromathérapie, Yasmine apporte sérénité et expertise.</p>
+      </div>
+      <div class="team-card fade-in">
+        <div class="team-avatar">N</div>
+        <h3>Nadia Benali</h3>
+        <div class="role">Esthéticienne</div>
+        <p class="bio">Passionnée par les soins du visage et les techniques de beauté modernes.</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,125 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}Réserver - The White Spa Tanger{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <div class="container">
+    <span class="section-label">✦ Réservation ✦</span>
+    <h1>Réservez Votre Soin</h1>
+    <p>Prenez rendez-vous en quelques clics</p>
+  </div>
+</div>
+
+<section class="section booking-section">
+  <div class="container">
+    <div class="booking-grid">
+      <div class="booking-info fade-in">
+        <h2>Offrez-vous un Moment d'Exception</h2>
+        <p>
+          Remplissez le formulaire ci-contre pour réserver votre soin.
+          Notre équipe vous confirmera votre rendez-vous dans les plus brefs délais.
+        </p>
+
+        <ul class="booking-details">
+          <li>
+            <div class="detail-icon">📍</div>
+            <div>
+              <strong>Adresse</strong><br>
+              <span style="color: var(--color-text-muted);">Rue Tantan (à côté de Sky17), Tanger</span>
+            </div>
+          </li>
+          <li>
+            <div class="detail-icon">📞</div>
+            <div>
+              <strong>Téléphone</strong><br>
+              <a href="tel:+212678046529" style="color: var(--color-text-muted);">+212 678-046529</a>
+            </div>
+          </li>
+          <li>
+            <div class="detail-icon">🕐</div>
+            <div>
+              <strong>Horaires</strong><br>
+              <span style="color: var(--color-text-muted);">Tous les jours : 10h00 - 00h00</span>
+            </div>
+          </li>
+          <li>
+            <div class="detail-icon">💬</div>
+            <div>
+              <strong>WhatsApp</strong><br>
+              <a href="https://wa.me/212678046529" target="_blank" style="color: var(--color-text-muted);">Envoyez-nous un message</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="booking-form-card fade-in">
+        <h3>Formulaire de Réservation</h3>
+
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+
+        <form method="post" action="{% url 'booking' %}">
+          {% csrf_token %}
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="{{ form.first_name.id_for_label }}">Prénom</label>
+              {{ form.first_name }}
+              {% if form.first_name.errors %}<small style="color: var(--color-error);">{{ form.first_name.errors.0 }}</small>{% endif %}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.last_name.id_for_label }}">Nom</label>
+              {{ form.last_name }}
+              {% if form.last_name.errors %}<small style="color: var(--color-error);">{{ form.last_name.errors.0 }}</small>{% endif %}
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="{{ form.email.id_for_label }}">Email</label>
+              {{ form.email }}
+              {% if form.email.errors %}<small style="color: var(--color-error);">{{ form.email.errors.0 }}</small>{% endif %}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.phone.id_for_label }}">Téléphone</label>
+              {{ form.phone }}
+              {% if form.phone.errors %}<small style="color: var(--color-error);">{{ form.phone.errors.0 }}</small>{% endif %}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="{{ form.service.id_for_label }}">Service</label>
+            {{ form.service }}
+            {% if form.service.errors %}<small style="color: var(--color-error);">{{ form.service.errors.0 }}</small>{% endif %}
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="{{ form.preferred_date.id_for_label }}">Date Souhaitée</label>
+              {{ form.preferred_date }}
+              {% if form.preferred_date.errors %}<small style="color: var(--color-error);">{{ form.preferred_date.errors.0 }}</small>{% endif %}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.preferred_time.id_for_label }}">Heure Souhaitée</label>
+              {{ form.preferred_time }}
+              {% if form.preferred_time.errors %}<small style="color: var(--color-error);">{{ form.preferred_time.errors.0 }}</small>{% endif %}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="{{ form.message.id_for_label }}">Message (optionnel)</label>
+            {{ form.message }}
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Confirmer la Réservation</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

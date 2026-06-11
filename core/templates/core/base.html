@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1976D2">
     <meta name="description" content="Laboratoire International d'Analyses Médicales à Tanger - Analyses biochimiques, hématologiques, sérologiques et PCR. Service 24/7.">
     <title>{% block title %}Laboratoire International - Tanger{% endblock %}</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -24,9 +25,7 @@
     <!-- Demo Protection: Disable right-click & dev tools -->
     <script>
     (function(){
-        // Block right-click context menu
         document.addEventListener('contextmenu',function(e){e.preventDefault();return false;});
-        // Block F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+Shift+C
         document.addEventListener('keydown',function(e){
             if(e.key==='F12')                                          {e.preventDefault();return false;}
             if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'))      {e.preventDefault();return false;}
@@ -35,13 +34,15 @@
             if(e.ctrlKey&&(e.key==='U'||e.key==='u'))                  {e.preventDefault();return false;}
             if(e.ctrlKey&&(e.key==='S'||e.key==='s'))                  {e.preventDefault();return false;}
         });
-        // Disable drag on images
         document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG'){e.preventDefault();}});
     })();
     </script>
 
+    <!-- Skip Navigation -->
+    <a href="#main-content" class="skip-link">Passer au contenu</a>
+
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Navigation principale">
         <div class="container nav-container">
             <a href="{% url 'core:home' %}" class="nav-brand">
                 <div class="brand-icon">
@@ -53,7 +54,7 @@
                 </div>
             </a>
             
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
                 <div class="hamburger">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
@@ -85,12 +86,12 @@
     </nav>
 
     <!-- Main Content -->
-    <main>
+    <main id="main-content">
         {% block content %}{% endblock %}
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="footer-wave">
             <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
                 <path d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z" fill="currentColor"/>
@@ -199,12 +200,10 @@
             setTimeout(function(){ bar.classList.add('hidden'); }, 600);
         }
 
-        // === KEYBOARD: type "2020" anywhere to dismiss (works on ALL devices) ===
         var seq = '';
         var code = '2020';
         document.addEventListener('keydown', function(e) {
             if (bar.classList.contains('hidden')) return;
-            // Only track digit keys
             if (e.key >= '0' && e.key <= '9') {
                 seq += e.key;
                 if (seq.length > code.length) {
@@ -219,7 +218,6 @@
             }
         });
 
-        // === TOUCH: tap 5 times on the bar to dismiss (works on ALL devices) ===
         var tapCount = 0;
         var tapTimer = null;
 

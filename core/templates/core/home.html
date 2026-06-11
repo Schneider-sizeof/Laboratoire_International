@@ -7,7 +7,7 @@
 <!-- Hero Section -->
 <section class="hero" id="hero">
     <div class="hero-bg">
-        <img src="{% static 'core/images/hero.png' %}" alt="Laboratoire International Tanger">
+        <img src="{% static 'core/images/hero.png' %}" alt="Laboratoire International Tanger" loading="eager">
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-particles"></div>
@@ -16,8 +16,8 @@
         <div class="hero-grid">
             <div class="hero-text">
                 <h1>
-                    Votre Santé Mérite<br>
-                    l'<span class="highlight">Excellence</span>
+                    Votre Santé Mérite
+                    <span class="d-block">l'<span class="highlight">Excellence</span></span>
                 </h1>
                 <p>
                     Laboratoire International d'Analyses Médicales à Tanger. 
@@ -136,7 +136,7 @@
 
         <div class="services-grid">
             {% for service in services %}
-            <div class="service-card fade-in" style="transition-delay: {{ forloop.counter0 }}00ms">
+            <div class="service-card fade-in">
                 <div class="service-icon">
                     <i class="{{ service.icon }}"></i>
                 </div>

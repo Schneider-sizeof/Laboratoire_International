@@ -13,8 +13,8 @@
                 <span class="separator">/</span>
                 <span class="current">À Propos</span>
             </div>
-            <h1>Qui Sommes-Nous</h1>
-            <p>Plus de 25 ans d'engagement pour votre santé à Tanger</p>
+            <h1>À Propos de Notre Laboratoire</h1>
+            <p>Plus de 25 ans d'excellence en analyses médicales</p>
         </div>
     </div>
 </section>
@@ -24,36 +24,34 @@
     <div class="container">
         <div class="about-grid">
             <div class="about-image fade-in-left">
-                <img src="{% static 'core/images/about.png' %}" alt="Notre Laboratoire">
-                <div class="about-image-badge">
-                    <i class="fas fa-award"></i>
-                    <div class="badge-text">
-                        <h4>25+ Ans</h4>
-                        <p>d'Excellence Médicale</p>
-                    </div>
+                <img src="{% static 'core/images/about.png' %}" alt="Laboratoire International - Équipe et équipements modernes" loading="lazy">
+                <div class="about-badge">
+                    <span class="badge-number">25+</span>
+                    <span class="badge-text">Ans d'Expérience</span>
                 </div>
             </div>
             <div class="about-text fade-in-right">
-                <span class="section-badge"><i class="fas fa-info-circle"></i> Notre Histoire</span>
-                <h2>Un Laboratoire de Référence à Tanger</h2>
+                <span class="section-badge"><i class="fas fa-flask"></i> Notre Histoire</span>
+                <h2 class="section-title">Un Engagement envers l'Excellence</h2>
                 <p>
-                    Fondé il y a plus de 25 ans, le <strong>Laboratoire International d'Analyses Médicales</strong> 
-                    s'est imposé comme une référence incontournable dans le domaine du diagnostic biologique 
-                    à Tanger et dans toute la région du Nord du Maroc.
+                    Depuis plus de 25 ans, le <strong>Laboratoire International</strong> 
+                    est un acteur majeur des analyses médicales à Tanger. Notre engagement 
+                    envers la qualité et l'innovation nous a permis de gagner la confiance 
+                    de milliers de patients et de professionnels de santé.
                 </p>
                 <p>
-                    Notre engagement envers l'excellence nous a conduits à investir continuellement dans 
-                    les technologies les plus avancées et à recruter une équipe de biologistes et techniciens 
-                    hautement qualifiés. Nous sommes fiers d'être certifiés <strong>ISO 15189</strong> et 
-                    conventionnés avec la <strong>CNSS</strong> et la <strong>CNOPS</strong>.
+                    Équipé des technologies les plus avancées et dirigé par une équipe 
+                    de biologistes hautement qualifiés, notre laboratoire offre une gamme 
+                    complète d'analyses couvrant la biochimie, l'hématologie, la sérologie, 
+                    la microbiologie et la biologie moléculaire.
                 </p>
                 <p>
-                    Disponibles 24h/24 et 7j/7, nous offrons également un service de prélèvement à domicile 
-                    pour le confort de nos patients. Notre priorité est de fournir des résultats fiables, 
-                    rapides et accessibles.
+                    Certifié <strong>ISO 15189</strong> et conventionné par la <strong>CNSS</strong> 
+                    et la <strong>CNOPS</strong>, nous garantissons des résultats fiables dans les 
+                    plus brefs délais, disponibles en ligne pour votre confort.
                 </p>
-                <a href="{% url 'core:services' %}" class="btn btn-primary" style="margin-top: 16px;">
-                    <i class="fas fa-flask"></i> Découvrir nos analyses
+                <a href="{% url 'core:services' %}" class="btn btn-primary">
+                    <i class="fas fa-flask"></i> Découvrir nos Analyses
                 </a>
             </div>
         </div>
@@ -65,15 +63,11 @@
     <div class="container">
         <div class="section-header fade-in">
             <span class="section-badge"><i class="fas fa-heart"></i> Nos Valeurs</span>
-            <h2 class="section-title">Ce Qui Nous Guide</h2>
-            <p class="section-subtitle">
-                Des valeurs fortes qui orientent chacune de nos actions au quotidien.
-            </p>
+            <h2 class="section-title">Ce Qui Nous Distingue</h2>
         </div>
-
         <div class="values-grid">
             {% for value in values %}
-            <div class="value-card fade-in" style="transition-delay: {{ forloop.counter0 }}00ms">
+            <div class="value-card fade-in">
                 <div class="value-icon">
                     <i class="{{ value.icon }}"></i>
                 </div>
@@ -92,19 +86,19 @@
             <span class="section-badge"><i class="fas fa-users"></i> Notre Équipe</span>
             <h2 class="section-title">Des Experts à Votre Service</h2>
             <p class="section-subtitle">
-                Une équipe de professionnels passionnés, dédiés à votre santé.
+                Une équipe pluridisciplinaire de biologistes et techniciens 
+                qualifiés, dédiés à votre santé.
             </p>
         </div>
-
         <div class="team-grid">
             {% for member in team %}
-            <div class="team-card fade-in" style="transition-delay: {{ forloop.counter0 }}00ms">
+            <div class="team-card fade-in">
                 <div class="team-avatar">
                     <i class="fas fa-user-md"></i>
                 </div>
                 <h3>{{ member.name }}</h3>
-                <p class="team-role">{{ member.role }}</p>
-                <p class="team-bio">{{ member.bio }}</p>
+                <span class="team-role">{{ member.role }}</span>
+                <p>{{ member.bio }}</p>
             </div>
             {% endfor %}
         </div>

@@ -23,28 +23,33 @@
 <section class="results-section">
     <div class="container">
         <div class="results-card fade-in">
-            <div style="text-align:center; margin-bottom: 24px;">
-                <div style="width:72px;height:72px;margin:0 auto 16px;background:linear-gradient(135deg,var(--primary-50),var(--primary-100));border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;font-size:1.75rem;color:var(--primary-600);">
+            <div class="results-icon-wrapper">
+                <div class="results-icon-circle">
                     <i class="fas fa-file-medical-alt"></i>
                 </div>
             </div>
             <h2>Accéder à Mes Résultats</h2>
             <p class="results-subtitle">Entrez vos identifiants pour consulter vos résultats d'analyses</p>
             
-            <form id="resultsForm">
+            <form id="resultsForm" novalidate>
                 <div class="form-group">
                     <label for="patientId">
-                        <i class="fas fa-id-card" style="color:var(--primary-500);margin-right:6px;"></i>
+                        <i class="fas fa-id-card"></i>
                         Numéro de Dossier
                     </label>
-                    <input type="text" id="patientId" class="form-control" placeholder="Ex: LAB-2026-00847" required>
+                    <input type="text" id="patientId" class="form-control" placeholder="Ex: LAB-2026-00847" required aria-describedby="patientIdHelp">
                 </div>
                 <div class="form-group">
                     <label for="patientCode">
-                        <i class="fas fa-key" style="color:var(--primary-500);margin-right:6px;"></i>
+                        <i class="fas fa-key"></i>
                         Code d'Accès
                     </label>
-                    <input type="password" id="patientCode" class="form-control" placeholder="Votre code confidentiel" required>
+                    <div class="input-group">
+                        <input type="password" id="patientCode" class="form-control" placeholder="Votre code confidentiel" required aria-describedby="patientCodeHelp">
+                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Afficher le mot de passe">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">
                     <i class="fas fa-search"></i> Consulter mes Résultats
@@ -65,19 +70,20 @@
             <!-- Demo Results -->
             <div class="demo-results" id="demoResults">
                 <div class="demo-results-header">
-                    <h3><i class="fas fa-clipboard-list" style="color:var(--primary-500);margin-right:8px;"></i> Bilan Biochimique</h3>
+                    <h3><i class="fas fa-clipboard-list"></i> Bilan Biochimique</h3>
                     <span class="result-status">
                         <i class="fas fa-check-circle"></i> Validé
                     </span>
                 </div>
                 
-                <div style="margin-bottom:16px; padding:12px 16px; background:var(--gray-50); border-radius:var(--radius-md); font-size:0.85rem; color:var(--gray-600);">
+                <div class="results-patient-info">
                     <strong>Patient:</strong> Exemple Demo &nbsp;|&nbsp; 
                     <strong>Date:</strong> 10/06/2026 &nbsp;|&nbsp; 
                     <strong>Biologiste:</strong> Dr. El Mansouri
                 </div>
 
                 <table class="result-table">
+                    <caption class="sr-only">Résultats d'analyses biochimiques</caption>
                     <thead>
                         <tr>
                             <th>Analyse</th>
@@ -88,58 +94,58 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Glycémie à jeun</td>
-                            <td class="result-normal">0.92</td>
-                            <td>g/L</td>
-                            <td>0.70 - 1.10</td>
+                            <td data-label="Analyse">Glycémie à jeun</td>
+                            <td data-label="Résultat" class="result-normal">0.92 <span class="result-badge result-badge-normal">Normal</span></td>
+                            <td data-label="Unité">g/L</td>
+                            <td data-label="Normes">0.70 - 1.10</td>
                         </tr>
                         <tr>
-                            <td>Cholestérol Total</td>
-                            <td class="result-normal">1.85</td>
-                            <td>g/L</td>
-                            <td>< 2.00</td>
+                            <td data-label="Analyse">Cholestérol Total</td>
+                            <td data-label="Résultat" class="result-normal">1.85 <span class="result-badge result-badge-normal">Normal</span></td>
+                            <td data-label="Unité">g/L</td>
+                            <td data-label="Normes">< 2.00</td>
                         </tr>
                         <tr>
-                            <td>HDL Cholestérol</td>
-                            <td class="result-normal">0.55</td>
-                            <td>g/L</td>
-                            <td>> 0.40</td>
+                            <td data-label="Analyse">HDL Cholestérol</td>
+                            <td data-label="Résultat" class="result-normal">0.55 <span class="result-badge result-badge-normal">Normal</span></td>
+                            <td data-label="Unité">g/L</td>
+                            <td data-label="Normes">> 0.40</td>
                         </tr>
                         <tr>
-                            <td>LDL Cholestérol</td>
-                            <td class="result-normal">1.12</td>
-                            <td>g/L</td>
-                            <td>< 1.60</td>
+                            <td data-label="Analyse">LDL Cholestérol</td>
+                            <td data-label="Résultat" class="result-normal">1.12 <span class="result-badge result-badge-normal">Normal</span></td>
+                            <td data-label="Unité">g/L</td>
+                            <td data-label="Normes">< 1.60</td>
                         </tr>
                         <tr>
-                            <td>Triglycérides</td>
-                            <td class="result-high">1.82</td>
-                            <td>g/L</td>
-                            <td>< 1.50</td>
+                            <td data-label="Analyse">Triglycérides</td>
+                            <td data-label="Résultat" class="result-high">1.82 <span class="result-badge result-badge-high">↑ Élevé</span></td>
+                            <td data-label="Unité">g/L</td>
+                            <td data-label="Normes">< 1.50</td>
                         </tr>
                         <tr>
-                            <td>Créatinine</td>
-                            <td class="result-normal">9.2</td>
-                            <td>mg/L</td>
-                            <td>7.0 - 13.0</td>
+                            <td data-label="Analyse">Créatinine</td>
+                            <td data-label="Résultat" class="result-normal">9.2 <span class="result-badge result-badge-normal">Normal</span></td>
+                            <td data-label="Unité">mg/L</td>
+                            <td data-label="Normes">7.0 - 13.0</td>
                         </tr>
                         <tr>
-                            <td>Acide Urique</td>
-                            <td class="result-normal">52</td>
-                            <td>mg/L</td>
-                            <td>25 - 70</td>
+                            <td data-label="Analyse">Acide Urique</td>
+                            <td data-label="Résultat" class="result-normal">52 <span class="result-badge result-badge-normal">Normal</span></td>
+                            <td data-label="Unité">mg/L</td>
+                            <td data-label="Normes">25 - 70</td>
                         </tr>
                         <tr>
-                            <td>ASAT (TGO)</td>
-                            <td class="result-normal">24</td>
-                            <td>UI/L</td>
-                            <td>< 40</td>
+                            <td data-label="Analyse">ASAT (TGO)</td>
+                            <td data-label="Résultat" class="result-normal">24 <span class="result-badge result-badge-normal">Normal</span></td>
+                            <td data-label="Unité">UI/L</td>
+                            <td data-label="Normes">< 40</td>
                         </tr>
                     </tbody>
                 </table>
                 
-                <div style="margin-top:20px; padding:16px; background:#fef3c7; border:1px solid #fde68a; border-radius:var(--radius-md); font-size:0.85rem; color:#92400e;">
-                    <i class="fas fa-exclamation-triangle" style="margin-right:8px;"></i>
+                <div class="results-demo-warning">
+                    <i class="fas fa-exclamation-triangle"></i>
                     <strong>Note:</strong> Ceci est une démonstration. Les résultats affichés sont fictifs.
                 </div>
             </div>
