@@ -40,5 +40,4 @@ desktop.ini
 
 # Test & scratch
 test_all_pages.py
-compile_messages.py
 test_pages.py
