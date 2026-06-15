@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'core.middleware.LicenseVerificationMiddleware',   # Anti-piracy Gist check
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',       # i18n language detection
@@ -168,3 +169,10 @@ VISIONLIS_URL = os.environ.get(
     'VISIONLIS_URL', 'http://liamt.ddns.net:12543/visionlis/#/loginpatient'
 )
 GA4_MEASUREMENT_ID = os.environ.get('GA4_MEASUREMENT_ID', '')
+
+# ============================================================
+# Licensing Configuration
+# ============================================================
+LICENSE_GIST_URL = os.environ.get('LICENSE_GIST_URL')
+LICENSE_KEY = os.environ.get('LICENSE_KEY', 'CM2026X')
+

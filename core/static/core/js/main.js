@@ -155,5 +155,51 @@
       }
     });
   });
+  // ============================================
+  // Website Protection (Anti-Inspect & Anti-Copy)
+  // ============================================
+  // Disable Right Click
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  });
+
+  // Disable Copy/Cut/Drag
+  document.addEventListener('copy', function (e) { e.preventDefault(); });
+  document.addEventListener('cut', function (e) { e.preventDefault(); });
+  document.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+  // Disable Inspect element shortcuts & View Source
+  document.addEventListener('keydown', function (e) {
+    // Disable F12
+    if (e.keyCode === 123) {
+      e.preventDefault();
+      return false;
+    }
+    // Disable Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, Ctrl+Shift+K
+    if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67 || e.keyCode === 75)) {
+      e.preventDefault();
+      return false;
+    }
+    // Disable Ctrl+U (View Source)
+    if (e.ctrlKey && e.keyCode === 85) {
+      e.preventDefault();
+      return false;
+    }
+    // Disable Ctrl+S (Save Page)
+    if (e.ctrlKey && e.keyCode === 83) {
+      e.preventDefault();
+      return false;
+    }
+    // Disable Ctrl+A (Select All)
+    if (e.ctrlKey && e.keyCode === 65) {
+      e.preventDefault();
+      return false;
+    }
+    // Disable Ctrl+C (Copy)
+    if (e.ctrlKey && e.keyCode === 67) {
+      e.preventDefault();
+      return false;
+    }
+  });
 
 })();
