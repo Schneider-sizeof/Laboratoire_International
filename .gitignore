@@ -1,24 +1,27 @@
 # Python
-*.py[cod]
-*$py.class
+*.pyc
 __pycache__/
-*.so
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
 
 # Django
 db.sqlite3
-db.sqlite3-journal
-*.log
-
-# Static files (collected)
 staticfiles/
-static_root/
+media/
+*.mo
 
 # Environment
 .env
-*.env
 venv/
 env/
 .venv/
+
+# Node
+node_modules/
+package-lock.json
 
 # IDE
 .vscode/
@@ -32,9 +35,10 @@ env/
 Thumbs.db
 desktop.ini
 
-# Media uploads
-media/
+# Tailwind output (regenerated from input)
+# core/static/core/css/style.css
 
-# Secrets
-*.pem
-*.key
+# Test & scratch
+test_all_pages.py
+compile_messages.py
+test_pages.py

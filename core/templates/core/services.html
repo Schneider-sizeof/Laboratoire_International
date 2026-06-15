@@ -1,64 +1,54 @@
 {% extends 'core/base.html' %}
-{% load static %}
-
-{% block title %}Nos Analyses - Laboratoire International Tanger{% endblock %}
+{% load static i18n %}
 
 {% block content %}
 <!-- Page Hero -->
 <section class="page-hero">
-    <div class="container">
-        <div class="page-hero-content">
-            <div class="breadcrumb">
-                <a href="{% url 'core:home' %}">Accueil</a>
-                <span class="separator">/</span>
-                <span class="current">Nos Analyses</span>
-            </div>
-            <h1>Nos Analyses Médicales</h1>
-            <p>Plus de 300 analyses disponibles dans toutes les spécialités</p>
-        </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center">
+        <nav class="text-sm text-white/60 mb-4 flex items-center justify-center" aria-label="Breadcrumb">
+            <a href="{% url 'core:home' %}" class="hover:text-white">{% trans "Accueil" %}</a>
+            <i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mx-2"></i>
+            <span class="text-white">{% trans "Services" %}</span>
+        </nav>
+        <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">{% trans "Nos Services" %}</h1>
+        <p class="text-lg text-white/70 max-w-2xl mx-auto">{% trans "Un large éventail d'analyses médicales réalisées avec des équipements de dernière génération." %}</p>
     </div>
 </section>
 
-<!-- Services Page Section -->
-<section class="services-page-section">
-    <div class="container">
-        <div class="section-header fade-in">
-            <span class="section-badge"><i class="fas fa-flask"></i> Catalogue</span>
-            <h2 class="section-title">Explorez nos Catégories d'Analyses</h2>
-            <p class="section-subtitle">
-                Cliquez sur une catégorie pour découvrir les analyses disponibles.
-            </p>
-        </div>
-
-        <div class="services-list">
+<!-- Services List -->
+<section class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="space-y-6">
             {% for category in categories %}
-            <div class="service-category fade-in">
-                <button class="category-header" 
-                        aria-expanded="false" 
-                        aria-controls="category-body-{{ forloop.counter }}"
-                        tabindex="0">
-                    <div class="category-info">
-                        <div class="category-icon" style="background-color: {{ category.color }};">
+            <div class="card overflow-hidden fade-in" style="transition-delay: {{ forloop.counter0 }}50ms" id="category-{{ forloop.counter }}">
+                <button type="button"
+                        class="category-header w-full"
+                        aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+                        aria-controls="cat-body-{{ forloop.counter }}"
+                        data-accordion="category">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-lg
+                            {% if category.color == 'primary' %}bg-primary-50 text-primary-500
+                            {% elif category.color == 'danger' %}bg-danger-50 text-danger-500
+                            {% elif category.color == 'accent' %}bg-accent-50 text-accent-600
+                            {% elif category.color == 'warning' %}bg-warning-50 text-warning-500
+                            {% elif category.color == 'success' %}bg-success-50 text-success-500
+                            {% else %}bg-primary-50 text-primary-500{% endif %}">
                             <i class="{{ category.icon }}"></i>
                         </div>
-                        <div>
-                            <h3>{{ category.title }}</h3>
-                            <span class="category-count">{{ category.tests|length }} analyses</span>
+                        <div class="text-{% if IS_RTL %}right{% else %}left{% endif %}">
+                            <h2 class="text-lg font-bold text-dark-900">{{ category.title }}</h2>
+                            <p class="text-xs text-dark-400">{{ category.tests|length }} {% trans "analyses disponibles" %}</p>
                         </div>
                     </div>
-                    <span class="category-toggle">
-                        <i class="fas fa-chevron-down"></i>
-                    </span>
+                    <i class="fas fa-chevron-down text-dark-400 transition-transform duration-300 accordion-icon"></i>
                 </button>
-                <div class="category-body" 
-                     id="category-body-{{ forloop.counter }}" 
-                     role="region" 
-                     aria-label="{{ category.title }}">
-                    <div class="tests-grid">
+                <div class="category-body {% if not forloop.first %}hidden{% endif %}" id="cat-body-{{ forloop.counter }}">
+                    <div class="grid sm:grid-cols-2 gap-3 pt-2">
                         {% for test in category.tests %}
                         <div class="test-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>{{ test }}</span>
+                            <i class="fas fa-check-circle text-xs text-primary-400 mr-2"></i>
+                            {{ test }}
                         </div>
                         {% endfor %}
                     </div>
@@ -66,22 +56,48 @@
             </div>
             {% endfor %}
         </div>
+    </div>
+</section>
 
-        <!-- CTA -->
-        <div class="cta-card fade-in" style="margin-top: 48px;">
-            <div class="cta-content">
-                <h2>Vous ne trouvez pas votre analyse?</h2>
-                <p>
-                    Contactez-nous directement. Nous réalisons plus de 300 types 
-                    d'analyses et pouvons vous orienter vers le test adapté.
-                </p>
-            </div>
-            <div class="cta-actions">
-                <a href="{% url 'core:contact' %}" class="btn btn-white">
-                    <i class="fas fa-phone-alt"></i> Nous Contacter
-                </a>
-            </div>
+<!-- CTA -->
+<section class="py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto bg-cta-gradient rounded-3xl p-10 sm:p-16 text-center text-white fade-in">
+        <h2 class="text-3xl font-extrabold mb-4">{% trans "Besoin d'une analyse spécifique ?" %}</h2>
+        <p class="text-lg text-white/80 mb-8">{% trans "Contactez-nous pour en savoir plus sur nos services ou pour prendre rendez-vous." %}</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{% url 'core:contact' %}" class="btn btn-white btn-lg">
+                <i class="fas fa-calendar-check"></i> {% trans "Prendre Rendez-vous" %}
+            </a>
+            <a href="tel:{{ SITE_PHONE }}" class="btn border-2 border-white/30 text-white hover:bg-white/10 btn-lg">
+                <i class="fas fa-phone"></i> {{ SITE_PHONE }}
+            </a>
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.querySelectorAll('[data-accordion="category"]').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const body = document.getElementById(this.getAttribute('aria-controls'));
+        const isOpen = this.getAttribute('aria-expanded') === 'true';
+        // Close all
+        document.querySelectorAll('[data-accordion="category"]').forEach(b => {
+            b.setAttribute('aria-expanded', 'false');
+            b.querySelector('.accordion-icon').style.transform = 'rotate(0deg)';
+            document.getElementById(b.getAttribute('aria-controls')).classList.add('hidden');
+        });
+        // Toggle current
+        if (!isOpen) {
+            this.setAttribute('aria-expanded', 'true');
+            this.querySelector('.accordion-icon').style.transform = 'rotate(180deg)';
+            body.classList.remove('hidden');
+        }
+    });
+});
+// Initialize first item
+const first = document.querySelector('[data-accordion="category"]');
+if (first) first.querySelector('.accordion-icon').style.transform = 'rotate(180deg)';
+</script>
 {% endblock %}

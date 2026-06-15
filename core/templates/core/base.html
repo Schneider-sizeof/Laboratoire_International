@@ -1,245 +1,351 @@
-{% load static %}
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as languages %}
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="{{ CURRENT_LANG }}" {% if IS_RTL %}dir="rtl"{% endif %}>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#1976D2">
-    <meta name="description" content="Laboratoire International d'Analyses Médicales à Tanger - Analyses biochimiques, hématologiques, sérologiques et PCR. Service 24/7.">
-    <title>{% block title %}Laboratoire International - Tanger{% endblock %}</title>
-    
-    <!-- Google Fonts -->
+    <meta name="description" content="{% block meta_description %}{{ meta_description|default:'' }}{% endblock %}">
+    <meta name="author" content="{{ SITE_NAME }}">
+    <meta name="robots" content="index, follow">
+    <title>{% block title %}{{ page_title|default:'Accueil' }}{% endblock %} | {{ SITE_NAME }} — {{ SITE_SLOGAN }}</title>
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href="https://{{ SITE_DOMAIN }}{{ request.path }}">
+    {% for lang_code, lang_name in LANGUAGES %}
+    <link rel="alternate" hreflang="{{ lang_code }}" href="https://{{ SITE_DOMAIN }}/{{ lang_code }}{{ request.path|cut:CURRENT_LANG }}">
+    {% endfor %}
+    <link rel="alternate" hreflang="x-default" href="https://{{ SITE_DOMAIN }}/fr{{ request.path }}">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
-    
-    {% block extra_css %}{% endblock %}
-</head>
-<body class="has-demo-bar">
-    <!-- Demo Protection: Disable right-click & dev tools -->
-    <script>
-    (function(){
-        document.addEventListener('contextmenu',function(e){e.preventDefault();return false;});
-        document.addEventListener('keydown',function(e){
-            if(e.key==='F12')                                          {e.preventDefault();return false;}
-            if(e.ctrlKey&&e.shiftKey&&(e.key==='I'||e.key==='i'))      {e.preventDefault();return false;}
-            if(e.ctrlKey&&e.shiftKey&&(e.key==='J'||e.key==='j'))      {e.preventDefault();return false;}
-            if(e.ctrlKey&&e.shiftKey&&(e.key==='C'||e.key==='c'))      {e.preventDefault();return false;}
-            if(e.ctrlKey&&(e.key==='U'||e.key==='u'))                  {e.preventDefault();return false;}
-            if(e.ctrlKey&&(e.key==='S'||e.key==='s'))                  {e.preventDefault();return false;}
-        });
-        document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG'){e.preventDefault();}});
-    })();
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+
+    <!-- Tailwind CSS (compiled) -->
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}?v=1.2">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ page_title|default:'Accueil' }} | {{ SITE_NAME }}">
+    <meta property="og:description" content="{{ meta_description|default:'' }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://{{ SITE_DOMAIN }}{{ request.path }}">
+    <meta property="og:site_name" content="{{ SITE_NAME }}">
+    <meta property="og:locale" content="{{ CURRENT_LANG }}">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MedicalBusiness",
+        "name": "{{ SITE_NAME }}",
+        "alternateName": "Laboratoire International d'Analyses Médicales",
+        "url": "https://{{ SITE_DOMAIN }}",
+        "telephone": "{{ SITE_PHONE }}",
+        "email": "{{ SITE_EMAIL }}",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Avenue Moulay Rachid",
+            "addressLocality": "Tanger",
+            "postalCode": "90000",
+            "addressCountry": "MA"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 35.7526966,
+            "longitude": -5.8508857
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+                "opens": "07:00",
+                "closes": "19:00"
+            }
+        ],
+        "priceRange": "$$",
+        "sameAs": []
+    }
     </script>
 
-    <!-- Skip Navigation -->
-    <a href="#main-content" class="skip-link">Passer au contenu</a>
+    {% if GA4_MEASUREMENT_ID %}
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ GA4_MEASUREMENT_ID }}"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ GA4_MEASUREMENT_ID }}');</script>
+    {% endif %}
 
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Navigation principale">
-        <div class="container nav-container">
-            <a href="{% url 'core:home' %}" class="nav-brand">
-                <div class="brand-icon">
-                    <i class="fas fa-flask"></i>
-                </div>
-                <div class="brand-text">
-                    <span class="brand-name">Laboratoire International</span>
-                    <span class="brand-sub">Analyses Médicales · Tanger</span>
-                </div>
-            </a>
-            
-            <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">
-                <div class="hamburger">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </div>
-            </button>
-            
-            <!-- Mobile overlay -->
-            <div class="nav-overlay" id="navOverlay"></div>
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="{% if IS_RTL %}font-arabic{% else %}font-sans{% endif %} bg-dark-50 text-dark-900 antialiased">
 
-            <ul class="nav-menu" id="navMenu">
-                <!-- Mobile brand header -->
-                <li class="nav-brand-mobile" style="list-style:none;">
-                    <div class="brand-icon"><i class="fas fa-flask"></i></div>
-                    <div class="brand-text">
-                        <span class="brand-name">Laboratoire International</span>
-                        <span class="brand-sub">Analyses Médicales · Tanger</span>
+    <!-- ========== NAVBAR ========== -->
+    <nav id="navbar" class="navbar bg-transparent" role="navigation" aria-label="{% trans 'Navigation principale' %}">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 py-2">
+                <!-- Brand -->
+                <a href="{% url 'core:home' %}" class="flex items-center gap-3 group" aria-label="{{ SITE_NAME }}">
+                    <img src="{% static 'core/images/logo.png' %}" alt="LIAM" class="w-16 h-16 object-contain transition-transform duration-300 group-hover:scale-105">
+                    <div class="hidden sm:block">
+                        <div class="text-lg font-extrabold leading-tight nav-brand-text text-white transition-colors duration-300">{{ SITE_NAME }}</div>
+                        <div class="text-[0.65rem] font-medium nav-brand-sub text-white/70 transition-colors duration-300">{% trans "Analyses Médicales" %}</div>
                     </div>
-                </li>
-                <li><a href="{% url 'core:home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}"><i class="fas fa-home"></i> Accueil</a></li>
-                <li><a href="{% url 'core:about' %}" class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}"><i class="fas fa-info-circle"></i> À Propos</a></li>
-                <li><a href="{% url 'core:services' %}" class="nav-link {% if request.resolver_match.url_name == 'services' %}active{% endif %}"><i class="fas fa-flask"></i> Nos Analyses</a></li>
-                <li><a href="{% url 'core:results' %}" class="nav-link {% if request.resolver_match.url_name == 'results' %}active{% endif %}"><i class="fas fa-file-medical"></i> Résultats</a></li>
-                <li><a href="{% url 'core:contact' %}" class="nav-link nav-cta {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
-                    <i class="fas fa-phone-alt"></i> Contact
-                </a></li>
-            </ul>
+                </a>
+
+                <!-- Desktop Nav -->
+                <div class="hidden lg:flex items-center gap-1">
+                    {% with active_page=request.resolver_match.url_name %}
+                    <a href="{% url 'core:home' %}" class="nav-link {% if active_page == 'home' %}active{% endif %}">{% trans "Accueil" %}</a>
+                    <a href="{% url 'core:about' %}" class="nav-link {% if active_page == 'about' %}active{% endif %}">{% trans "À propos" %}</a>
+                    <a href="{% url 'core:services' %}" class="nav-link {% if active_page == 'services' %}active{% endif %}">{% trans "Services" %}</a>
+                    <a href="{% url 'core:results' %}" class="nav-link {% if active_page == 'results' %}active{% endif %}">{% trans "Résultats" %}</a>
+                    <a href="{% url 'core:blog_list' %}" class="nav-link {% if active_page == 'blog_list' or active_page == 'blog_detail' %}active{% endif %}">{% trans "Blog" %}</a>
+                    <a href="{% url 'core:contact' %}" class="nav-link {% if active_page == 'contact' %}active{% endif %}">{% trans "Contact" %}</a>
+                    {% endwith %}
+                </div>
+
+                <!-- Right Actions -->
+                <div class="flex items-center gap-3">
+                    <!-- Language Switcher -->
+                    <div class="lang-switcher" id="langSwitcher">
+                        <button type="button" class="flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium" id="langToggle" aria-expanded="false" aria-haspopup="true">
+                            <img src="https://flagcdn.com/16x12/{{ CURRENT_FLAG_CODE }}.png" width="16" height="12" alt="{{ CURRENT_LANG|upper }}" class="rounded-sm flex-shrink-0">
+                            <span class="uppercase text-xs font-bold">{{ CURRENT_LANG }}</span>
+                            <i class="fas fa-chevron-down text-[0.6rem] transition-transform duration-200"></i>
+                        </button>
+                        <div class="lang-dropdown" role="menu">
+                            {% for lang_code, lang_name in LANGUAGES %}
+                            <form method="post" action="{% url 'set_language' %}" class="m-0">
+                                {% csrf_token %}
+                                <input type="hidden" name="language" value="{{ lang_code }}">
+                                <input type="hidden" name="next" value="{{ request.path }}">
+                                <button type="submit" class="lang-option w-full text-left {% if lang_code == CURRENT_LANG %}active{% endif %} flex items-center gap-2.5" role="menuitem">
+                                    <img src="https://flagcdn.com/16x12/{% if lang_code == 'fr' %}fr{% elif lang_code == 'en' %}gb{% elif lang_code == 'ar' %}ma{% elif lang_code == 'nl' %}nl{% elif lang_code == 'de' %}de{% elif lang_code == 'es' %}es{% endif %}.png" width="16" height="12" alt="{{ lang_code|upper }}" class="rounded-sm flex-shrink-0">
+                                    <span>{{ lang_name }}</span>
+                                </button>
+                            </form>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <!-- CTA (desktop) -->
+                    <a href="{% url 'core:results' %}" class="hidden lg:inline-flex btn btn-primary btn-sm">
+                        <i class="fas fa-file-medical"></i>
+                        {% trans "Mes Résultats" %}
+                    </a>
+
+                    <!-- Hamburger (mobile) -->
+                    <button type="button" class="hamburger" id="navToggle" aria-label="{% trans 'Ouvrir le menu' %}" aria-expanded="false">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
+    <!-- Mobile Nav Overlay -->
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+    <!-- Mobile Nav Drawer -->
+    <aside class="mobile-nav" id="mobileNav" aria-label="{% trans 'Menu mobile' %}" role="dialog">
+        <div class="mobile-nav-header">
+            <div class="flex items-center gap-3">
+                <img src="{% static 'core/images/logo.png' %}" alt="LIAM" class="w-14 h-14 object-contain brightness-0 invert">
+                <div>
+                    <div class="text-base font-bold text-white">{{ SITE_NAME }}</div>
+                    <div class="text-xs text-white/60">{% trans "Analyses Médicales" %}</div>
+                </div>
+            </div>
+            <button type="button" class="absolute top-4 {% if IS_RTL %}left-4{% else %}right-4{% endif %} w-8 h-8 flex items-center justify-center text-white/70 hover:text-white rounded-lg" id="navClose" aria-label="{% trans 'Fermer le menu' %}">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="py-2">
+            {% with active_page=request.resolver_match.url_name %}
+            <a href="{% url 'core:home' %}" class="mobile-nav-link {% if active_page == 'home' %}active{% endif %}">
+                <i class="fas fa-home w-5 text-center"></i> {% trans "Accueil" %}
+            </a>
+            <a href="{% url 'core:about' %}" class="mobile-nav-link {% if active_page == 'about' %}active{% endif %}">
+                <i class="fas fa-info-circle w-5 text-center"></i> {% trans "À propos" %}
+            </a>
+            <a href="{% url 'core:services' %}" class="mobile-nav-link {% if active_page == 'services' %}active{% endif %}">
+                <i class="fas fa-vials w-5 text-center"></i> {% trans "Services" %}
+            </a>
+            <a href="{% url 'core:results' %}" class="mobile-nav-link {% if active_page == 'results' %}active{% endif %}">
+                <i class="fas fa-file-medical w-5 text-center"></i> {% trans "Résultats" %}
+            </a>
+            <a href="{% url 'core:blog_list' %}" class="mobile-nav-link {% if active_page == 'blog_list' or active_page == 'blog_detail' %}active{% endif %}">
+                <i class="fas fa-newspaper w-5 text-center"></i> {% trans "Blog" %}
+            </a>
+            <a href="{% url 'core:contact' %}" class="mobile-nav-link {% if active_page == 'contact' %}active{% endif %}">
+                <i class="fas fa-envelope w-5 text-center"></i> {% trans "Contact" %}
+            </a>
+            {% endwith %}
+        </div>
+        <div class="px-6 py-4">
+            <a href="{% url 'core:results' %}" class="btn btn-primary w-full justify-center">
+                <i class="fas fa-file-medical"></i> {% trans "Mes Résultats" %}
+            </a>
+        </div>
+        <div class="px-6 py-4 border-t border-dark-100">
+            <p class="text-xs text-dark-400 mb-2 font-semibold uppercase tracking-wider">{% trans "Langue" %}</p>
+            <div class="grid grid-cols-3 gap-2">
+                {% for lang_code, lang_name in LANGUAGES %}
+                <form method="post" action="{% url 'set_language' %}" class="m-0">
+                    {% csrf_token %}
+                    <input type="hidden" name="language" value="{{ lang_code }}">
+                    <input type="hidden" name="next" value="{{ request.path }}">
+                    <button type="submit" class="w-full px-2 py-2 text-xs rounded-lg text-center transition-colors flex items-center justify-center gap-1.5 {% if lang_code == CURRENT_LANG %}bg-primary-50 text-primary-600 font-bold{% else %}text-dark-500 hover:bg-dark-50{% endif %}">
+                        <img src="https://flagcdn.com/16x12/{% if lang_code == 'fr' %}fr{% elif lang_code == 'en' %}gb{% elif lang_code == 'ar' %}ma{% elif lang_code == 'nl' %}nl{% elif lang_code == 'de' %}de{% elif lang_code == 'es' %}es{% endif %}.png" width="16" height="12" alt="{{ lang_code|upper }}" class="rounded-sm flex-shrink-0">
+                        <span>{{ lang_code|upper }}</span>
+                    </button>
+                </form>
+                {% endfor %}
+            </div>
+        </div>
+    </aside>
+
+    <!-- ========== MAIN CONTENT ========== -->
     <main id="main-content">
         {% block content %}{% endblock %}
     </main>
 
-    <!-- Footer -->
+    <!-- ========== FOOTER ========== -->
     <footer class="footer" role="contentinfo">
-        <div class="footer-wave">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-                <path d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z" fill="currentColor"/>
+        <!-- Wave Separator -->
+        <div class="relative -mt-1">
+            <svg class="w-full h-12 text-dark-900" viewBox="0 0 1440 48" fill="currentColor" preserveAspectRatio="none">
+                <path d="M0,48 L0,16 Q360,0 720,16 Q1080,32 1440,16 L1440,48 Z"></path>
             </svg>
         </div>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col footer-about">
-                    <div class="footer-brand">
-                        <div class="brand-icon"><i class="fas fa-flask"></i></div>
-                        <h3>Laboratoire International</h3>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="{% static 'core/images/logo.png' %}" alt="LIAM" class="w-14 h-14 object-contain">
+                        <div>
+                            <div class="text-white font-bold">{{ SITE_NAME }}</div>
+                            <div class="text-xs text-dark-400">{% trans "Analyses Médicales" %}</div>
+                        </div>
                     </div>
-                    <p>Votre partenaire de confiance pour des analyses médicales fiables et précises à Tanger depuis plus de 25 ans.</p>
-                    <div class="footer-social">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <p class="text-sm text-dark-400 mb-6 leading-relaxed">{{ SITE_SLOGAN }}</p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 bg-dark-800 hover:bg-primary-500 rounded-lg flex items-center justify-center text-dark-400 hover:text-white transition-all duration-200" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 bg-dark-800 hover:bg-primary-500 rounded-lg flex items-center justify-center text-dark-400 hover:text-white transition-all duration-200" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/212539313947" class="w-10 h-10 bg-dark-800 hover:bg-green-500 rounded-lg flex items-center justify-center text-dark-400 hover:text-white transition-all duration-200" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-                
-                <div class="footer-col">
-                    <h4>Liens Rapides</h4>
-                    <ul>
-                        <li><a href="{% url 'core:home' %}">Accueil</a></li>
-                        <li><a href="{% url 'core:about' %}">À Propos</a></li>
-                        <li><a href="{% url 'core:services' %}">Nos Analyses</a></li>
-                        <li><a href="{% url 'core:results' %}">Résultats en Ligne</a></li>
-                        <li><a href="{% url 'core:contact' %}">Contact</a></li>
+
+                <!-- Navigation -->
+                <div>
+                    <h4>{% trans "Navigation" %}</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="{% url 'core:home' %}"><i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mr-2 text-primary-500"></i>{% trans "Accueil" %}</a></li>
+                        <li><a href="{% url 'core:about' %}"><i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mr-2 text-primary-500"></i>{% trans "À propos" %}</a></li>
+                        <li><a href="{% url 'core:services' %}"><i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mr-2 text-primary-500"></i>{% trans "Services" %}</a></li>
+                        <li><a href="{% url 'core:results' %}"><i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mr-2 text-primary-500"></i>{% trans "Résultats" %}</a></li>
+                        <li><a href="{% url 'core:blog_list' %}"><i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mr-2 text-primary-500"></i>{% trans "Blog" %}</a></li>
+                        <li><a href="{% url 'core:contact' %}"><i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mr-2 text-primary-500"></i>{% trans "Contact" %}</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-col">
-                    <h4>Nos Analyses</h4>
-                    <ul>
-                        <li><a href="{% url 'core:services' %}">Biochimie</a></li>
-                        <li><a href="{% url 'core:services' %}">Hématologie</a></li>
-                        <li><a href="{% url 'core:services' %}">Sérologie</a></li>
-                        <li><a href="{% url 'core:services' %}">PCR & Virologie</a></li>
-                        <li><a href="{% url 'core:services' %}">Microbiologie</a></li>
+
+                <!-- Services -->
+                <div>
+                    <h4>{% trans "Services" %}</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="{% url 'core:services' %}"><i class="fas fa-flask text-xs mr-2 text-primary-500"></i>{% trans "Biochimie" %}</a></li>
+                        <li><a href="{% url 'core:services' %}"><i class="fas fa-microscope text-xs mr-2 text-primary-500"></i>{% trans "Hématologie" %}</a></li>
+                        <li><a href="{% url 'core:services' %}"><i class="fas fa-shield-alt text-xs mr-2 text-primary-500"></i>{% trans "Sérologie & Immunologie" %}</a></li>
+                        <li><a href="{% url 'core:services' %}"><i class="fas fa-dna text-xs mr-2 text-primary-500"></i>{% trans "PCR & Virologie" %}</a></li>
+                        <li><a href="{% url 'core:services' %}"><i class="fas fa-virus text-xs mr-2 text-primary-500"></i>{% trans "Microbiologie" %}</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <ul class="footer-contact">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Av. Moulay Rachid, Tanger, Maroc</span>
+
+                <!-- Contact -->
+                <div>
+                    <h4>{% trans "Contact" %}</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-primary-400 mt-1"></i>
+                            <span class="text-dark-400">{{ SITE_ADDRESS }}</span>
                         </li>
-                        <li>
-                            <i class="fas fa-phone-alt"></i>
-                            <span>+212 5 39 31 39 47</span>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-phone text-primary-400"></i>
+                            <a href="tel:{{ SITE_PHONE }}" class="text-dark-400 hover:text-white">{{ SITE_PHONE }}</a>
                         </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>contact@labinternational.ma</span>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-primary-400"></i>
+                            <a href="mailto:{{ SITE_EMAIL }}" class="text-dark-400 hover:text-white">{{ SITE_EMAIL }}</a>
                         </li>
-                        <li>
-                            <i class="fas fa-clock"></i>
-                            <span>24h/24 - 7j/7</span>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-clock text-primary-400"></i>
+                            <span class="text-dark-400">07:00–19:00</span>
                         </li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 Laboratoire International - Tanger. Tous droits réservés.</p>
-                <div class="footer-badges">
-                    <span class="badge"><i class="fas fa-certificate"></i> ISO 15189</span>
-                    <span class="badge"><i class="fas fa-check-circle"></i> Agréé MS</span>
-                    <span class="badge"><i class="fas fa-shield-alt"></i> CNSS / CNOPS</span>
+
+            <!-- Partnership Badges -->
+            <div class="flex flex-wrap items-center justify-center gap-4 mb-8 pt-8 border-t border-dark-800">
+                <div class="flex items-center gap-2 px-4 py-2 border border-dark-700 rounded-full text-xs text-dark-400">
+                    <i class="fas fa-handshake text-primary-400"></i>
+                    {% trans "Partenaire Cerba Lab" %}
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2 border border-dark-700 rounded-full text-xs text-dark-400">
+                    <i class="fas fa-award text-primary-400"></i>
+                    {% trans "Lab National Mohammed VI" %}
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2 border border-dark-700 rounded-full text-xs text-dark-400">
+                    <i class="fas fa-certificate text-primary-400"></i>
+                    ISO 15189
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-6 border-t border-dark-800 text-xs text-dark-500">
+                <p>&copy; {% now "Y" %} {{ SITE_NAME }}. {% trans "Tous droits réservés." %}</p>
+                <div class="flex items-center gap-4">
+                    <a href="{% url 'core:legal_privacy' %}" class="hover:text-white">{% trans "Confidentialité" %}</a>
+                    <span class="text-dark-700">|</span>
+                    <a href="{% url 'core:legal_terms' %}" class="hover:text-white">{% trans "CGU" %}</a>
+                    <span class="text-dark-700">|</span>
+                    <a href="{% url 'core:legal_cookies' %}" class="hover:text-white">{% trans "Cookies" %}</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Demo Bar -->
-    <div class="demo-bar" id="demoBar">
-        <div class="demo-bar-pulse"></div>
-        <div class="demo-bar-text">
-            <i class="fas fa-laptop-code"></i>
-            <span>VERSION DÉMO</span>
-        </div>
-        <div class="demo-bar-separator"></div>
-        <span class="demo-bar-company">Laboratoire International — Présentation Commerciale</span>
-    </div>
-
-    <!-- Back to top button -->
-    <button class="back-to-top" id="backToTop" aria-label="Retour en haut">
-        <i class="fas fa-chevron-up"></i>
+    <!-- ========== BACK TO TOP ========== -->
+    <button type="button" id="backToTop" class="back-to-top" aria-label="{% trans 'Retour en haut' %}">
+        <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- ========== COOKIE CONSENT ========== -->
+    <div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="{% trans 'Consentement aux cookies' %}">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center gap-4">
+            <div class="flex-1">
+                <p class="text-sm text-dark-300">
+                    <i class="fas fa-cookie-bite text-primary-400 mr-2"></i>
+                    {% trans "Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez notre" %}
+                    <a href="{% url 'core:legal_cookies' %}" class="text-primary-400 underline hover:text-primary-300">{% trans "politique de cookies" %}</a>.
+                </p>
+            </div>
+            <div class="flex gap-3 flex-shrink-0">
+                <button type="button" id="cookieAccept" class="btn btn-primary btn-sm">{% trans "Accepter" %}</button>
+                <button type="button" id="cookieDecline" class="btn btn-ghost btn-sm text-dark-400">{% trans "Refuser" %}</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
     <script src="{% static 'core/js/main.js' %}"></script>
-
-    <!-- Demo Bar Controller -->
-    <script>
-    (function(){
-        var bar = document.getElementById('demoBar');
-        if (!bar) return;
-
-        function hideBar() {
-            bar.classList.add('hiding');
-            document.body.classList.remove('has-demo-bar');
-            document.body.classList.add('demo-hidden');
-            setTimeout(function(){ bar.classList.add('hidden'); }, 600);
-        }
-
-        var seq = '';
-        var code = '2020';
-        document.addEventListener('keydown', function(e) {
-            if (bar.classList.contains('hidden')) return;
-            if (e.key >= '0' && e.key <= '9') {
-                seq += e.key;
-                if (seq.length > code.length) {
-                    seq = seq.slice(-code.length);
-                }
-                if (seq === code) {
-                    hideBar();
-                    seq = '';
-                }
-            } else if (!e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey) {
-                seq = '';
-            }
-        });
-
-        var tapCount = 0;
-        var tapTimer = null;
-
-        function handleTap(e) {
-            if (bar.classList.contains('hidden')) return;
-            e.preventDefault();
-            e.stopPropagation();
-            tapCount++;
-            clearTimeout(tapTimer);
-            tapTimer = setTimeout(function() { tapCount = 0; }, 3000);
-            if (tapCount >= 5) {
-                hideBar();
-                tapCount = 0;
-                clearTimeout(tapTimer);
-            }
-        }
-
-        bar.addEventListener('touchstart', handleTap, { passive: false });
-        bar.addEventListener('click', handleTap);
-    })();
-    </script>
-
     {% block extra_js %}{% endblock %}
 </body>
 </html>

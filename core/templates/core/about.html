@@ -1,104 +1,107 @@
 {% extends 'core/base.html' %}
-{% load static %}
-
-{% block title %}À Propos - Laboratoire International Tanger{% endblock %}
+{% load static i18n %}
 
 {% block content %}
 <!-- Page Hero -->
 <section class="page-hero">
-    <div class="container">
-        <div class="page-hero-content">
-            <div class="breadcrumb">
-                <a href="{% url 'core:home' %}">Accueil</a>
-                <span class="separator">/</span>
-                <span class="current">À Propos</span>
-            </div>
-            <h1>À Propos de Notre Laboratoire</h1>
-            <p>Plus de 25 ans d'excellence en analyses médicales</p>
-        </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center">
+        <nav class="text-sm text-white/60 mb-4 flex items-center justify-center" aria-label="Breadcrumb">
+            <a href="{% url 'core:home' %}" class="hover:text-white">{% trans "Accueil" %}</a>
+            <i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mx-2"></i>
+            <span class="text-white">{% trans "À propos" %}</span>
+        </nav>
+        <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">{% trans "À propos de nous" %}</h1>
+        <p class="text-lg text-white/70 max-w-2xl mx-auto">{% trans "Plus de 25 ans d'excellence en analyses médicales au service de votre santé." %}</p>
     </div>
 </section>
 
-<!-- About Section -->
-<section class="about-section">
-    <div class="container">
-        <div class="about-grid">
-            <div class="about-image fade-in-left">
-                <img src="{% static 'core/images/about.png' %}" alt="Laboratoire International - Équipe et équipements modernes" loading="lazy">
-                <div class="about-badge">
-                    <span class="badge-number">25+</span>
-                    <span class="badge-text">Ans d'Expérience</span>
+<!-- About Story -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="fade-in-left">
+                <div class="section-badge mb-4"><i class="fas fa-landmark"></i> {% trans "Notre Histoire" %}</div>
+                <h2 class="text-3xl font-extrabold text-dark-900 mb-6">{% trans "Un laboratoire de référence à Tanger" %}</h2>
+                <div class="space-y-4 text-dark-600 leading-relaxed">
+                    <p>{% trans "Fondé il y a plus de 25 ans, Laboratoire International s'est imposé comme un acteur majeur du diagnostic médical à Tanger et dans la région du Nord du Maroc." %}</p>
+                    <p>{% trans "Notre engagement envers l'excellence nous a conduits à établir des partenariats stratégiques avec Cerba Lab, réseau européen de référence, et le Laboratoire National Mohammed VI d'Analyses Médicales." %}</p>
+                    <p>{% trans "Équipé des technologies les plus avancées et doté d'une équipe de biologistes hautement qualifiés, nous garantissons des résultats fiables en moins de 24 heures." %}</p>
                 </div>
             </div>
-            <div class="about-text fade-in-right">
-                <span class="section-badge"><i class="fas fa-flask"></i> Notre Histoire</span>
-                <h2 class="section-title">Un Engagement envers l'Excellence</h2>
-                <p>
-                    Depuis plus de 25 ans, le <strong>Laboratoire International</strong> 
-                    est un acteur majeur des analyses médicales à Tanger. Notre engagement 
-                    envers la qualité et l'innovation nous a permis de gagner la confiance 
-                    de milliers de patients et de professionnels de santé.
-                </p>
-                <p>
-                    Équipé des technologies les plus avancées et dirigé par une équipe 
-                    de biologistes hautement qualifiés, notre laboratoire offre une gamme 
-                    complète d'analyses couvrant la biochimie, l'hématologie, la sérologie, 
-                    la microbiologie et la biologie moléculaire.
-                </p>
-                <p>
-                    Certifié <strong>ISO 15189</strong> et conventionné par la <strong>CNSS</strong> 
-                    et la <strong>CNOPS</strong>, nous garantissons des résultats fiables dans les 
-                    plus brefs délais, disponibles en ligne pour votre confort.
-                </p>
-                <a href="{% url 'core:services' %}" class="btn btn-primary">
-                    <i class="fas fa-flask"></i> Découvrir nos Analyses
-                </a>
+            <div class="fade-in-right">
+                <div class="relative">
+                    <div class="rounded-3xl overflow-hidden shadow-2xl border border-dark-200 h-80">
+                        <img src="{% static 'core/images/about.png' %}" alt="{% trans 'Notre Histoire' %}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-dark-900/20 via-transparent to-transparent"></div>
+                    </div>
+                    <div class="absolute -bottom-6 {% if IS_RTL %}-left-6{% else %}-right-6{% endif %} bg-white rounded-2xl shadow-xl p-6 border border-dark-200 z-10">
+                        <div class="text-3xl font-extrabold text-primary-500">25+</div>
+                        <div class="text-sm text-dark-500">{% trans "Années d'expérience" %}</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Values Section -->
-<section class="values-section">
-    <div class="container">
-        <div class="section-header fade-in">
-            <span class="section-badge"><i class="fas fa-heart"></i> Nos Valeurs</span>
-            <h2 class="section-title">Ce Qui Nous Distingue</h2>
+<!-- Values -->
+<section class="py-20 bg-dark-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14 fade-in">
+            <div class="section-badge mb-4"><i class="fas fa-heart"></i> {% trans "Nos Valeurs" %}</div>
+            <h2 class="text-3xl font-extrabold text-dark-900 mb-4">{% trans "Ce qui nous guide" %}</h2>
         </div>
-        <div class="values-grid">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {% for value in values %}
-            <div class="value-card fade-in">
-                <div class="value-icon">
+            <div class="value-card fade-in" style="transition-delay: {{ forloop.counter0 }}00ms">
+                <div class="w-14 h-14 bg-primary-50 text-primary-500 rounded-xl flex items-center justify-center mx-auto mb-5 text-xl">
                     <i class="{{ value.icon }}"></i>
                 </div>
-                <h3>{{ value.title }}</h3>
-                <p>{{ value.description }}</p>
+                <h3 class="text-lg font-bold text-dark-900 mb-3">{{ value.title }}</h3>
+                <p class="text-sm text-dark-500 leading-relaxed">{{ value.description }}</p>
             </div>
             {% endfor %}
         </div>
     </div>
 </section>
 
-<!-- Team Section -->
-<section class="team-section">
-    <div class="container">
-        <div class="section-header fade-in">
-            <span class="section-badge"><i class="fas fa-users"></i> Notre Équipe</span>
-            <h2 class="section-title">Des Experts à Votre Service</h2>
-            <p class="section-subtitle">
-                Une équipe pluridisciplinaire de biologistes et techniciens 
-                qualifiés, dédiés à votre santé.
-            </p>
+<!-- Team -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14 fade-in">
+            <div class="section-badge mb-4"><i class="fas fa-user-md"></i> {% trans "Notre Équipe" %}</div>
+            <h2 class="text-3xl font-extrabold text-dark-900 mb-4">{% trans "Des experts à votre service" %}</h2>
         </div>
-        <div class="team-grid">
+        <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {% for member in team %}
-            <div class="team-card fade-in">
-                <div class="team-avatar">
-                    <i class="fas fa-user-md"></i>
+            <div class="team-card fade-in" style="transition-delay: {{ forloop.counter0 }}00ms">
+                <div class="team-avatar">{{ member.initials }}</div>
+                <h3 class="text-lg font-bold text-dark-900 mb-1">{{ member.name }}</h3>
+                <p class="text-sm text-primary-500 font-semibold mb-3">{{ member.role }}</p>
+                <p class="text-sm text-dark-500 leading-relaxed">{{ member.bio }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Certifications -->
+<section class="py-20 bg-dark-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14 fade-in">
+            <div class="section-badge mb-4"><i class="fas fa-certificate"></i> {% trans "Certifications" %}</div>
+            <h2 class="text-3xl font-extrabold text-dark-900 mb-4">{% trans "Qualité certifiée" %}</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            {% for cert in certifications %}
+            <div class="card fade-in text-center" style="transition-delay: {{ forloop.counter0 }}00ms">
+                <div class="card-body">
+                    <div class="w-16 h-16 bg-success-50 text-success-500 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark-900 mb-2">{{ cert.name }}</h3>
+                    <p class="text-sm text-dark-500">{{ cert.description }}</p>
                 </div>
-                <h3>{{ member.name }}</h3>
-                <span class="team-role">{{ member.role }}</span>
-                <p>{{ member.bio }}</p>
             </div>
             {% endfor %}
         </div>

@@ -1,0 +1,126 @@
+{% extends 'core/base.html' %}
+{% load static i18n %}
+
+{% block extra_head %}
+<!-- BlogPosting Schema -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ post.get_title }}",
+    "description": "{{ post.get_meta_description }}",
+    "author": {"@type": "Organization", "name": "{{ SITE_NAME }}"},
+    "publisher": {"@type": "Organization", "name": "{{ SITE_NAME }}"},
+    "datePublished": "{{ post.published_at|date:'c' }}",
+    "dateModified": "{{ post.updated_at|date:'c' }}",
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://{{ SITE_DOMAIN }}{{ request.path }}"}
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<!-- Page Hero -->
+<section class="page-hero">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center">
+        <nav class="text-sm text-white/60 mb-4 flex items-center justify-center" aria-label="Breadcrumb">
+            <a href="{% url 'core:home' %}" class="hover:text-white">{% trans "Accueil" %}</a>
+            <i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mx-2"></i>
+            <a href="{% url 'core:blog_list' %}" class="hover:text-white">{% trans "Blog" %}</a>
+            <i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mx-2"></i>
+            <span class="text-white truncate max-w-xs inline-block">{{ post.get_title }}</span>
+        </nav>
+        <h1 class="text-3xl sm:text-4xl font-extrabold mb-4">{{ post.get_title }}</h1>
+        <div class="flex flex-wrap items-center justify-center gap-4 text-sm text-white/60">
+            <span><i class="far fa-calendar mr-1"></i>{{ post.published_at|date:"d M Y" }}</span>
+            <span><i class="far fa-user mr-1"></i>{{ post.author }}</span>
+            <span><i class="far fa-eye mr-1"></i>{{ post.views_count }} {% trans "vues" %}</span>
+            {% if post.category %}
+            <span class="bg-white/10 px-3 py-1 rounded-full">{{ post.category.get_name }}</span>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Article Content -->
+<section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-4 gap-10">
+            <!-- Main Content -->
+            <article class="lg:col-span-3 fade-in">
+                {% if post.featured_image %}
+                <img src="{{ post.featured_image.url }}" alt="{{ post.get_title }}"
+                     class="w-full rounded-2xl mb-8 shadow-md" loading="lazy">
+                {% endif %}
+
+                <div class="prose prose-lg max-w-none text-dark-700 leading-relaxed
+                            prose-headings:text-dark-900 prose-headings:font-bold
+                            prose-a:text-primary-500 prose-a:no-underline hover:prose-a:underline
+                            prose-strong:text-dark-900
+                            prose-img:rounded-xl prose-img:shadow-md">
+                    {{ post.get_content|safe }}
+                </div>
+
+                <!-- Tags -->
+                {% if post.get_tags_list %}
+                <div class="mt-10 pt-6 border-t border-dark-200">
+                    <div class="flex flex-wrap gap-2">
+                        {% for tag in post.get_tags_list %}
+                        <span class="px-3 py-1 bg-dark-100 text-dark-600 rounded-full text-xs font-medium">
+                            <i class="fas fa-tag text-dark-400 mr-1"></i>{{ tag }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Share -->
+                <div class="mt-8 pt-6 border-t border-dark-200">
+                    <p class="text-sm font-semibold text-dark-700 mb-3">{% trans "Partager cet article" %}</p>
+                    <div class="flex gap-3">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://{{ SITE_DOMAIN }}{{ request.path }}" target="_blank" rel="noopener"
+                           class="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-200 transition-colors" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com/intent/tweet?url=https://{{ SITE_DOMAIN }}{{ request.path }}&text={{ post.get_title }}" target="_blank" rel="noopener"
+                           class="w-10 h-10 bg-sky-100 text-sky-600 rounded-lg flex items-center justify-center hover:bg-sky-200 transition-colors" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://wa.me/?text={{ post.get_title }}%20https://{{ SITE_DOMAIN }}{{ request.path }}" target="_blank" rel="noopener"
+                           class="w-10 h-10 bg-green-100 text-green-600 rounded-lg flex items-center justify-center hover:bg-green-200 transition-colors" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Sidebar -->
+            <aside class="lg:col-span-1 space-y-6 fade-in-right">
+                {% if related_posts %}
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="font-bold text-dark-900 mb-4 text-sm uppercase tracking-wider">{% trans "Articles similaires" %}</h3>
+                        <div class="space-y-4">
+                            {% for rp in related_posts %}
+                            <a href="{% url 'core:blog_detail' slug=rp.slug %}" class="block group">
+                                <h4 class="text-sm font-semibold text-dark-800 group-hover:text-primary-500 transition-colors line-clamp-2 mb-1">{{ rp.get_title }}</h4>
+                                <span class="text-xs text-dark-400">{{ rp.published_at|date:"d M Y" }}</span>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- CTA Sidebar -->
+                <div class="bg-cta-gradient rounded-2xl p-6 text-center text-white">
+                    <i class="fas fa-flask text-2xl mb-3 text-white/60"></i>
+                    <h3 class="font-bold mb-2 text-sm">{% trans "Besoin d'analyses ?" %}</h3>
+                    <a href="{% url 'core:contact' %}" class="btn btn-white btn-sm w-full justify-center mt-3 text-xs">
+                        {% trans "Contactez-nous" %}
+                    </a>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
+{% endblock %}

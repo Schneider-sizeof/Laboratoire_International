@@ -1,155 +1,119 @@
 {% extends 'core/base.html' %}
-{% load static %}
-
-{% block title %}Résultats en Ligne - Laboratoire International Tanger{% endblock %}
+{% load static i18n %}
 
 {% block content %}
 <!-- Page Hero -->
 <section class="page-hero">
-    <div class="container">
-        <div class="page-hero-content">
-            <div class="breadcrumb">
-                <a href="{% url 'core:home' %}">Accueil</a>
-                <span class="separator">/</span>
-                <span class="current">Résultats</span>
-            </div>
-            <h1>Résultats en Ligne</h1>
-            <p>Consultez vos résultats d'analyses en toute sécurité</p>
-        </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center">
+        <nav class="text-sm text-white/60 mb-4 flex items-center justify-center" aria-label="Breadcrumb">
+            <a href="{% url 'core:home' %}" class="hover:text-white">{% trans "Accueil" %}</a>
+            <i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mx-2"></i>
+            <span class="text-white">{% trans "Résultats" %}</span>
+        </nav>
+        <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">{% trans "Mes Résultats" %}</h1>
+        <p class="text-lg text-white/70 max-w-2xl mx-auto">{% trans "Accédez à vos résultats d'analyses médicales en ligne via notre portail sécurisé." %}</p>
     </div>
 </section>
 
-<!-- Results Section -->
-<section class="results-section">
-    <div class="container">
-        <div class="results-card fade-in">
-            <div class="results-icon-wrapper">
-                <div class="results-icon-circle">
-                    <i class="fas fa-file-medical-alt"></i>
+<!-- Results Access -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-xl mx-auto text-center fade-in">
+            <!-- Main Card -->
+            <div class="results-card mb-10">
+                <div class="w-20 h-20 bg-primary-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-file-medical-alt text-3xl text-primary-500"></i>
                 </div>
-            </div>
-            <h2>Accéder à Mes Résultats</h2>
-            <p class="results-subtitle">Entrez vos identifiants pour consulter vos résultats d'analyses</p>
-            
-            <form id="resultsForm" novalidate>
-                <div class="form-group">
-                    <label for="patientId">
-                        <i class="fas fa-id-card"></i>
-                        Numéro de Dossier
-                    </label>
-                    <input type="text" id="patientId" class="form-control" placeholder="Ex: LAB-2026-00847" required aria-describedby="patientIdHelp">
-                </div>
-                <div class="form-group">
-                    <label for="patientCode">
-                        <i class="fas fa-key"></i>
-                        Code d'Accès
-                    </label>
-                    <div class="input-group">
-                        <input type="password" id="patientCode" class="form-control" placeholder="Votre code confidentiel" required aria-describedby="patientCodeHelp">
-                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Afficher le mot de passe">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-search"></i> Consulter mes Résultats
-                </button>
-            </form>
+                <h2 class="text-2xl font-extrabold text-dark-900 mb-3">{% trans "Consulter vos résultats" %}</h2>
+                <p class="text-dark-500 mb-8 leading-relaxed">{% trans "Cliquez sur le bouton ci-dessous pour accéder à notre portail sécurisé VisionLIS. Utilisez les identifiants qui vous ont été remis au laboratoire." %}</p>
 
-            <div class="results-info">
-                <p>
-                    <i class="fas fa-info-circle"></i>
-                    <span>
-                        Votre numéro de dossier et code d'accès se trouvent sur le reçu 
-                        remis lors de votre prélèvement. Pour toute question, 
-                        appelez le <strong>+212 5 39 31 39 47</strong>.
-                    </span>
+                <a href="{{ VISIONLIS_URL }}" target="_blank" rel="noopener noreferrer" id="visionlis-btn"
+                   class="btn btn-primary btn-lg w-full justify-center mb-4 text-base">
+                    <i class="fas fa-external-link-alt"></i>
+                    {% trans "Accéder à mes résultats" %}
+                </a>
+
+                <p class="text-xs text-dark-400">
+                    <i class="fas fa-lock text-primary-400 mr-1"></i>
+                    {% trans "Connexion sécurisée — Vos données sont protégées" %}
                 </p>
             </div>
 
-            <!-- Demo Results -->
-            <div class="demo-results" id="demoResults">
-                <div class="demo-results-header">
-                    <h3><i class="fas fa-clipboard-list"></i> Bilan Biochimique</h3>
-                    <span class="result-status">
-                        <i class="fas fa-check-circle"></i> Validé
-                    </span>
+            <!-- Steps -->
+            <div class="grid sm:grid-cols-3 gap-6 mb-16">
+                <div class="text-center fade-in" style="transition-delay: 100ms">
+                    <div class="w-12 h-12 bg-primary-500 text-white rounded-full flex items-center justify-center mx-auto mb-3 text-lg font-bold">1</div>
+                    <h3 class="font-bold text-dark-900 mb-1 text-sm">{% trans "Cliquez" %}</h3>
+                    <p class="text-xs text-dark-500">{% trans "Sur le bouton 'Accéder à mes résultats'" %}</p>
                 </div>
-                
-                <div class="results-patient-info">
-                    <strong>Patient:</strong> Exemple Demo &nbsp;|&nbsp; 
-                    <strong>Date:</strong> 10/06/2026 &nbsp;|&nbsp; 
-                    <strong>Biologiste:</strong> Dr. El Mansouri
+                <div class="text-center fade-in" style="transition-delay: 200ms">
+                    <div class="w-12 h-12 bg-primary-500 text-white rounded-full flex items-center justify-center mx-auto mb-3 text-lg font-bold">2</div>
+                    <h3 class="font-bold text-dark-900 mb-1 text-sm">{% trans "Connectez-vous" %}</h3>
+                    <p class="text-xs text-dark-500">{% trans "Avec vos identifiants du laboratoire" %}</p>
                 </div>
+                <div class="text-center fade-in" style="transition-delay: 300ms">
+                    <div class="w-12 h-12 bg-primary-500 text-white rounded-full flex items-center justify-center mx-auto mb-3 text-lg font-bold">3</div>
+                    <h3 class="font-bold text-dark-900 mb-1 text-sm">{% trans "Téléchargez" %}</h3>
+                    <p class="text-xs text-dark-500">{% trans "Vos résultats au format PDF" %}</p>
+                </div>
+            </div>
+        </div>
 
-                <table class="result-table">
-                    <caption class="sr-only">Résultats d'analyses biochimiques</caption>
-                    <thead>
-                        <tr>
-                            <th>Analyse</th>
-                            <th>Résultat</th>
-                            <th>Unité</th>
-                            <th>Normes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="Analyse">Glycémie à jeun</td>
-                            <td data-label="Résultat" class="result-normal">0.92 <span class="result-badge result-badge-normal">Normal</span></td>
-                            <td data-label="Unité">g/L</td>
-                            <td data-label="Normes">0.70 - 1.10</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Analyse">Cholestérol Total</td>
-                            <td data-label="Résultat" class="result-normal">1.85 <span class="result-badge result-badge-normal">Normal</span></td>
-                            <td data-label="Unité">g/L</td>
-                            <td data-label="Normes">< 2.00</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Analyse">HDL Cholestérol</td>
-                            <td data-label="Résultat" class="result-normal">0.55 <span class="result-badge result-badge-normal">Normal</span></td>
-                            <td data-label="Unité">g/L</td>
-                            <td data-label="Normes">> 0.40</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Analyse">LDL Cholestérol</td>
-                            <td data-label="Résultat" class="result-normal">1.12 <span class="result-badge result-badge-normal">Normal</span></td>
-                            <td data-label="Unité">g/L</td>
-                            <td data-label="Normes">< 1.60</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Analyse">Triglycérides</td>
-                            <td data-label="Résultat" class="result-high">1.82 <span class="result-badge result-badge-high">↑ Élevé</span></td>
-                            <td data-label="Unité">g/L</td>
-                            <td data-label="Normes">< 1.50</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Analyse">Créatinine</td>
-                            <td data-label="Résultat" class="result-normal">9.2 <span class="result-badge result-badge-normal">Normal</span></td>
-                            <td data-label="Unité">mg/L</td>
-                            <td data-label="Normes">7.0 - 13.0</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Analyse">Acide Urique</td>
-                            <td data-label="Résultat" class="result-normal">52 <span class="result-badge result-badge-normal">Normal</span></td>
-                            <td data-label="Unité">mg/L</td>
-                            <td data-label="Normes">25 - 70</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Analyse">ASAT (TGO)</td>
-                            <td data-label="Résultat" class="result-normal">24 <span class="result-badge result-badge-normal">Normal</span></td>
-                            <td data-label="Unité">UI/L</td>
-                            <td data-label="Normes">< 40</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="results-demo-warning">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <strong>Note:</strong> Ceci est une démonstration. Les résultats affichés sont fictifs.
+        <!-- FAQ -->
+        <div class="max-w-2xl mx-auto">
+            <div class="text-center mb-10 fade-in">
+                <div class="section-badge mb-4"><i class="fas fa-question-circle"></i> FAQ</div>
+                <h2 class="text-2xl font-extrabold text-dark-900">{% trans "Questions fréquentes" %}</h2>
+            </div>
+            <div class="space-y-4">
+                {% for item in faq_items %}
+                <div class="card overflow-hidden fade-in" style="transition-delay: {{ forloop.counter0 }}50ms">
+                    <button type="button" class="category-header w-full" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="faq-{{ forloop.counter }}" data-accordion="faq">
+                        <span class="text-{% if IS_RTL %}right{% else %}left{% endif %} font-semibold text-dark-900 text-sm">{{ item.question }}</span>
+                        <i class="fas fa-chevron-down text-dark-400 transition-transform duration-300 accordion-icon text-xs flex-shrink-0"></i>
+                    </button>
+                    <div class="px-6 pb-6 {% if not forloop.first %}hidden{% endif %}" id="faq-{{ forloop.counter }}">
+                        <p class="text-sm text-dark-500 leading-relaxed">{{ item.answer }}</p>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
 </section>
+
+<!-- Help CTA -->
+<section class="py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto bg-dark-900 rounded-3xl p-10 text-center text-white fade-in">
+        <i class="fas fa-headset text-3xl text-primary-400 mb-4"></i>
+        <h2 class="text-2xl font-extrabold mb-3">{% trans "Besoin d'aide ?" %}</h2>
+        <p class="text-dark-400 mb-6">{% trans "Notre équipe est disponible 24h/24 pour vous assister." %}</p>
+        <a href="tel:{{ SITE_PHONE }}" class="btn btn-primary btn-lg">
+            <i class="fas fa-phone"></i> {{ SITE_PHONE }}
+        </a>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.querySelectorAll('[data-accordion="faq"]').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const body = document.getElementById(this.getAttribute('aria-controls'));
+        const isOpen = this.getAttribute('aria-expanded') === 'true';
+        document.querySelectorAll('[data-accordion="faq"]').forEach(b => {
+            b.setAttribute('aria-expanded', 'false');
+            b.querySelector('.accordion-icon').style.transform = 'rotate(0deg)';
+            document.getElementById(b.getAttribute('aria-controls')).classList.add('hidden');
+        });
+        if (!isOpen) {
+            this.setAttribute('aria-expanded', 'true');
+            this.querySelector('.accordion-icon').style.transform = 'rotate(180deg)';
+            body.classList.remove('hidden');
+        }
+    });
+});
+const faqFirst = document.querySelector('[data-accordion="faq"]');
+if (faqFirst) faqFirst.querySelector('.accordion-icon').style.transform = 'rotate(180deg)';
+</script>
 {% endblock %}

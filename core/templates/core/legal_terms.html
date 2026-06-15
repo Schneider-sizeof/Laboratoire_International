@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+{% load static i18n %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center">
+        <nav class="text-sm text-white/60 mb-4 flex items-center justify-center" aria-label="Breadcrumb">
+            <a href="{% url 'core:home' %}" class="hover:text-white">{% trans "Accueil" %}</a>
+            <i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mx-2"></i>
+            <span class="text-white">{% trans "Conditions d'Utilisation" %}</span>
+        </nav>
+        <h1 class="text-4xl font-extrabold">{% trans "Conditions d'Utilisation" %}</h1>
+    </div>
+</section>
+<section class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-lg text-dark-700 leading-relaxed prose-headings:text-dark-900 prose-headings:font-bold">
+        <p class="text-sm text-dark-400">{% trans "Dernière mise à jour" %}: {% now "d/m/Y" %}</p>
+        <h2>{% trans "1. Objet" %}</h2>
+        <p>{% trans "Les présentes conditions générales d'utilisation régissent l'accès et l'utilisation du site web de Laboratoire International d'Analyses Médicales." %}</p>
+        <h2>{% trans "2. Accès au site" %}</h2>
+        <p>{% trans "Le site est accessible gratuitement à tout utilisateur disposant d'un accès internet. Laboratoire International se réserve le droit de modifier, suspendre ou interrompre l'accès au site à tout moment." %}</p>
+        <h2>{% trans "3. Propriété intellectuelle" %}</h2>
+        <p>{% trans "L'ensemble du contenu du site (textes, images, logos, graphismes) est protégé par le droit de la propriété intellectuelle. Toute reproduction sans autorisation est interdite." %}</p>
+        <h2>{% trans "4. Résultats d'analyses" %}</h2>
+        <p>{% trans "L'accès aux résultats d'analyses s'effectue via un portail externe sécurisé (VisionLIS). Les identifiants sont personnels et confidentiels. Laboratoire International décline toute responsabilité en cas d'utilisation frauduleuse des identifiants." %}</p>
+        <h2>{% trans "5. Responsabilité" %}</h2>
+        <p>{% trans "Les informations médicales fournies sur ce site sont à titre informatif uniquement et ne remplacent en aucun cas un avis médical professionnel. Consultez votre médecin pour toute question relative à votre santé." %}</p>
+        <h2>{% trans "6. Loi applicable" %}</h2>
+        <p>{% trans "Les présentes conditions sont régies par le droit marocain. Tout litige sera soumis à la compétence des tribunaux de Tanger." %}</p>
+    </div>
+</section>
+{% endblock %}

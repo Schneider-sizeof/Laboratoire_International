@@ -1,139 +1,217 @@
 {% extends 'core/base.html' %}
-{% load static %}
-
-{% block title %}Contact - Laboratoire International Tanger{% endblock %}
+{% load static i18n %}
 
 {% block content %}
 <!-- Page Hero -->
 <section class="page-hero">
-    <div class="container">
-        <div class="page-hero-content">
-            <div class="breadcrumb">
-                <a href="{% url 'core:home' %}">Accueil</a>
-                <span class="separator">/</span>
-                <span class="current">Contact</span>
-            </div>
-            <h1>Contactez-Nous</h1>
-            <p>Notre équipe est à votre écoute 24h/24 et 7j/7</p>
-        </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center">
+        <nav class="text-sm text-white/60 mb-4 flex items-center justify-center" aria-label="Breadcrumb">
+            <a href="{% url 'core:home' %}" class="hover:text-white">{% trans "Accueil" %}</a>
+            <i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mx-2"></i>
+            <span class="text-white">{% trans "Contact" %}</span>
+        </nav>
+        <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">{% trans "Contactez-nous" %}</h1>
+        <p class="text-lg text-white/70 max-w-2xl mx-auto">{% trans "Nous sommes à votre disposition 24h/24, 7j/7." %}</p>
     </div>
 </section>
 
 <!-- Contact Section -->
-<section class="contact-section">
-    <div class="container">
-        <div class="contact-grid">
-            <!-- Info Column -->
-            <div class="fade-in-left">
-                <div class="section-badge">
-                    <i class="fas fa-map-marker-alt"></i> Nos Coordonnées
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-5 gap-10">
+            <!-- Info Cards + Map (2 cols) -->
+            <div class="lg:col-span-2 space-y-6">
+                <div class="contact-info-card fade-in">
+                    <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <h3 class="font-bold text-dark-900 text-sm mb-1">{% trans "Adresse" %}</h3>
+                        <p class="text-sm text-dark-500">{{ SITE_ADDRESS }}</p>
+                    </div>
                 </div>
-                <h2 class="contact-heading">
-                    Rendez-nous visite ou<br>appelez-nous directement
-                </h2>
-
-                <div class="contact-info-cards">
-                    <div class="contact-info-card">
-                        <div class="contact-info-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h4>Adresse</h4>
-                            <p>Av. Moulay Rachid, Tanger<br>Maroc</p>
-                        </div>
+                <div class="contact-info-card fade-in" style="transition-delay: 100ms">
+                    <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <h3 class="font-bold text-dark-900 text-sm mb-1">{% trans "Téléphone" %}</h3>
+                        <a href="tel:{{ SITE_PHONE }}" class="text-sm text-primary-500 hover:text-primary-600">{{ SITE_PHONE }}</a>
                     </div>
-                    
-                    <div class="contact-info-card">
-                        <div class="contact-info-icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div>
-                            <h4>Téléphone</h4>
-                            <p>+212 5 39 31 39 47<br>+212 6 00 00 00 00</p>
-                        </div>
+                </div>
+                <div class="contact-info-card fade-in" style="transition-delay: 200ms">
+                    <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <h3 class="font-bold text-dark-900 text-sm mb-1">{% trans "Email" %}</h3>
+                        <a href="mailto:{{ SITE_EMAIL }}" class="text-sm text-primary-500 hover:text-primary-600">{{ SITE_EMAIL }}</a>
                     </div>
-                    
-                    <div class="contact-info-card">
-                        <div class="contact-info-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h4>Email</h4>
-                            <p>contact@labinternational.ma<br>resultats@labinternational.ma</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-info-card">
-                        <div class="contact-info-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div>
-                            <h4>Horaires</h4>
-                            <p>Ouvert 24h/24 - 7j/7<br>Prélèvements à jeun: 7h - 11h</p>
+                </div>
+                <div class="contact-info-card fade-in" style="transition-delay: 300ms">
+                    <div class="contact-info-icon"><i class="fas fa-clock"></i></div>
+                    <div class="flex-1">
+                        <h3 class="font-bold text-dark-900 text-sm mb-2">{% trans "Horaires" %}</h3>
+                        <div class="space-y-1 text-xs">
+                            <div class="flex justify-between gap-4">
+                                <span class="text-dark-500">{% trans "Lundi" %}</span>
+                                <span class="text-dark-700 font-medium">07:00–19:00 <span class="text-primary-500">*</span></span>
+                            </div>
+                            <div class="flex justify-between gap-4">
+                                <span class="text-dark-500">{% trans "Mardi" %}</span>
+                                <span class="text-dark-700 font-medium">07:00–19:00 <span class="text-primary-500">*</span></span>
+                            </div>
+                            <div class="flex justify-between gap-4">
+                                <span class="text-dark-500">{% trans "Mercredi" %}</span>
+                                <span class="text-dark-700 font-medium">07:00–19:00</span>
+                            </div>
+                            <div class="flex justify-between gap-4">
+                                <span class="text-dark-500">{% trans "Jeudi" %}</span>
+                                <span class="text-dark-700 font-medium">07:00–19:00</span>
+                            </div>
+                            <div class="flex justify-between gap-4">
+                                <span class="text-dark-500">{% trans "Vendredi" %}</span>
+                                <span class="text-dark-700 font-medium">07:00–19:00</span>
+                            </div>
+                            <div class="flex justify-between gap-4">
+                                <span class="text-dark-500">{% trans "Samedi" %}</span>
+                                <span class="text-dark-700 font-medium">07:00–19:00</span>
+                            </div>
+                            <div class="flex justify-between gap-4">
+                                <span class="text-dark-500">{% trans "Dimanche" %}</span>
+                                <span class="text-dark-700 font-medium">{% trans "Fermé" %}</span>
+                            </div>
+                            <p class="text-[0.65rem] text-primary-500 mt-2 leading-tight">
+                                <span class="text-primary-500">*</span> {% trans "Les horaires peuvent être différents lors des fêtes religieuses" %}
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Map -->
-                <div class="contact-map">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.923!2d-5.8508857!3d35.7526966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0b87bb4130edf5%3A0xb2bc80cfeb3a4755!2sLaboratoire%20International!5e0!3m2!1sfr!2sma!4v1" 
-                        allowfullscreen="" 
-                        loading="lazy"
-                        title="Localisation Laboratoire International Tanger">
+                <div class="rounded-2xl overflow-hidden border border-dark-200 fade-in" style="transition-delay: 400ms">
+                    <iframe
+                        src="{{ SITE_MAPS_EMBED }}"
+                        width="100%" height="260" style="border:0;"
+                        allowfullscreen loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="{% trans 'Localisation du laboratoire' %}">
                     </iframe>
                 </div>
+                <a href="{{ SITE_MAPS_URL }}" target="_blank" rel="noopener noreferrer"
+                   class="btn btn-outline w-full justify-center">
+                    <i class="fas fa-directions"></i> {% trans "Obtenir l'itinéraire" %}
+                </a>
             </div>
 
-            <!-- Form Column -->
-            <div class="contact-form-card fade-in-right">
-                <h2 class="contact-form-title"><i class="fas fa-paper-plane"></i> Envoyez-nous un Message</h2>
-                <p class="form-subtitle">Remplissez le formulaire ci-dessous et nous vous répondrons rapidement.</p>
-                
-                <form id="contactForm" novalidate>
-                    {% csrf_token %}
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Nom Complet</label>
-                            <input type="text" id="name" class="form-control" placeholder="Votre nom" required autocomplete="name">
+            <!-- Contact Form (3 cols) -->
+            <div class="lg:col-span-3 fade-in-right">
+                <div class="bg-white rounded-3xl shadow-lg border border-dark-200 p-8 sm:p-10">
+                    <h2 class="text-2xl font-extrabold text-dark-900 mb-2">{% trans "Envoyez-nous un message" %}</h2>
+                    <p class="text-sm text-dark-500 mb-8">{% trans "Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais." %}</p>
+
+                    <!-- Status message -->
+                    <div id="formMessage" class="hidden mb-6 p-4 rounded-xl text-sm font-medium"></div>
+
+                    <form id="contactForm" novalidate>
+                        {% csrf_token %}
+                        <div class="grid sm:grid-cols-2 gap-5 mb-5">
+                            <div>
+                                <label for="contact-name" class="form-label">{% trans "Nom complet" %} *</label>
+                                <input type="text" id="contact-name" name="name" class="form-control" required
+                                       placeholder="{% trans 'Votre nom' %}">
+                            </div>
+                            <div>
+                                <label for="contact-email" class="form-label">{% trans "Email" %} *</label>
+                                <input type="email" id="contact-email" name="email" class="form-control" required
+                                       placeholder="{% trans 'votre@email.com' %}">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" class="form-control" placeholder="votre@email.com" required autocomplete="email">
+                        <div class="grid sm:grid-cols-2 gap-5 mb-5">
+                            <div>
+                                <label for="contact-phone" class="form-label">{% trans "Téléphone" %}</label>
+                                <input type="tel" id="contact-phone" name="phone" class="form-control"
+                                       placeholder="+212 6XX XX XX XX">
+                            </div>
+                            <div>
+                                <label for="contact-service" class="form-label">{% trans "Objet" %}</label>
+                                <select id="contact-service" name="service_type" class="form-control">
+                                    <option value="general">{% trans "Renseignements généraux" %}</option>
+                                    <option value="results">{% trans "Résultats d'analyses" %}</option>
+                                    <option value="appointment">{% trans "Prise de rendez-vous" %}</option>
+                                    <option value="partnership">{% trans "Partenariat" %}</option>
+                                    <option value="complaint">{% trans "Réclamation" %}</option>
+                                    <option value="other">{% trans "Autre" %}</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="phone">Téléphone</label>
-                            <input type="tel" id="phone" class="form-control" placeholder="+212 6XX XX XX XX" autocomplete="tel">
+                        <div class="mb-6">
+                            <label for="contact-message" class="form-label">{% trans "Message" %} *</label>
+                            <textarea id="contact-message" name="message" rows="5" class="form-control resize-y" required
+                                      placeholder="{% trans 'Décrivez votre demande...' %}"></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="subject">Sujet</label>
-                            <select id="subject" class="form-control">
-                                <option value="">Choisir un sujet</option>
-                                <option value="rdv">Prise de rendez-vous</option>
-                                <option value="results">Question sur résultats</option>
-                                <option value="domicile">Prélèvement à domicile</option>
-                                <option value="info">Demande d'information</option>
-                                <option value="other">Autre</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" class="form-control" placeholder="Votre message..." required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> Envoyer le Message
-                    </button>
-                    
-                    <div class="form-message" id="formMessage"></div>
-                </form>
+                        <button type="submit" id="contactSubmit" class="btn btn-primary btn-lg w-full justify-center">
+                            <i class="fas fa-paper-plane"></i>
+                            {% trans "Envoyer le message" %}
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+const contactForm = document.getElementById('contactForm');
+const formMessage = document.getElementById('formMessage');
+const submitBtn = document.getElementById('contactSubmit');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const name = document.getElementById('contact-name').value.trim();
+        const email = document.getElementById('contact-email').value.trim();
+        const message = document.getElementById('contact-message').value.trim();
+
+        if (!name || !email || !message) {
+            showMessage('{% trans "Veuillez remplir tous les champs obligatoires." %}', 'error');
+            return;
+        }
+
+        submitBtn.classList.add('btn-loading');
+        submitBtn.disabled = true;
+
+        try {
+            const data = {
+                name: name,
+                email: email,
+                phone: document.getElementById('contact-phone').value.trim(),
+                service_type: document.getElementById('contact-service').value,
+                message: message,
+            };
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            const response = await fetch('{% url "core:contact_submit" %}', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json', 'X-CSRFToken': csrfToken},
+                body: JSON.stringify(data),
+            });
+            const result = await response.json();
+            if (result.success) {
+                showMessage(result.message, 'success');
+                contactForm.reset();
+            } else {
+                showMessage(result.message, 'error');
+            }
+        } catch (err) {
+            showMessage('{% trans "Erreur de connexion. Veuillez réessayer." %}', 'error');
+        } finally {
+            submitBtn.classList.remove('btn-loading');
+            submitBtn.disabled = false;
+        }
+    });
+}
+
+function showMessage(text, type) {
+    formMessage.textContent = text;
+    formMessage.className = 'mb-6 p-4 rounded-xl text-sm font-medium ' +
+        (type === 'success' ? 'bg-success-50 text-success-700 border border-success-100' : 'bg-danger-50 text-danger-600 border border-danger-100');
+    formMessage.scrollIntoView({behavior: 'smooth', block: 'center'});
+}
+</script>
 {% endblock %}

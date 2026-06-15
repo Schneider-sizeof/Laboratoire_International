@@ -1,0 +1,902 @@
+# Spanish translations for Laboratoire International
+# Copyright (C) 2024 Laboratoire International
+# This file is distributed under the same license as the labinternational package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Laboratoire International 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-01 00:00+0000\n"
+"PO-Revision-Date: 2024-01-01 00:00+0000\n"
+"Last-Translator: Laboratoire International\n"
+"Language-Team: Spanish\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# Navigation
+msgid "Accueil"
+msgstr "Inicio"
+
+msgid "À propos"
+msgstr "Acerca de"
+
+msgid "Services"
+msgstr "Servicios"
+
+msgid "Résultats"
+msgstr "Resultados"
+
+msgid "Blog"
+msgstr "Blog"
+
+msgid "Contact"
+msgstr "Contacto"
+
+msgid "Analyses Médicales"
+msgstr "Laboratorio de Análisis Médicos"
+
+msgid "Mes Résultats"
+msgstr "Mis Resultados"
+
+msgid "Navigation principale"
+msgstr "Navegación principal"
+
+msgid "Ouvrir le menu"
+msgstr "Abrir menú"
+
+msgid "Fermer le menu"
+msgstr "Cerrar menú"
+
+msgid "Menu mobile"
+msgstr "Menú móvil"
+
+msgid "Langue"
+msgstr "Idioma"
+
+# Home Page
+msgid "Votre santé est"
+msgstr "Su salud es"
+
+msgid "Notre propriété"
+msgstr "Nuestra prioridad"
+
+msgid "Résultats en moins de 24 heures. Analyses médicales de précision à Tanger."
+msgstr "Resultados en menos de 24 horas. Análisis médicos de precisión en Tánger."
+
+msgid "Nos Services"
+msgstr "Nuestros Servicios"
+
+msgid "Nous Contacter"
+msgstr "Contáctenos"
+
+msgid "Analyses/An"
+msgstr "Análisis/Año"
+
+msgid "Précision"
+msgstr "Precisión"
+
+msgid "Ans d'expertise"
+msgstr "Años de experiencia"
+
+msgid "Expertise Médicale"
+msgstr "Experiencia Médica"
+
+msgid "Un large éventail d'analyses médicales réalisées avec des équipements de dernière génération."
+msgstr "Una amplia gama de análisis médicos realizados con equipos de última generación."
+
+msgid "En savoir plus"
+msgstr "Más información"
+
+# Stats
+msgid "Années d'Expérience"
+msgstr "Años de Experiencia"
+
+msgid "Analyses par An"
+msgstr "Análisis por Año"
+
+msgid "Taux de Précision"
+msgstr "Tasa de Precisión"
+
+msgid "Service Continu"
+msgstr "Servicio Continuo"
+
+# Services
+msgid "Biochimie"
+msgstr "Bioquímica"
+
+msgid "Analyses biochimiques complètes incluant glycémie, cholestérol, bilan hépatique et rénal."
+msgstr "Análisis bioquímicos completos que incluyen glucemia, colesterol, perfil hepático y renal."
+
+msgid "Hématologie"
+msgstr "Hematología"
+
+msgid "Numération formule sanguine, vitesse de sédimentation, bilan de coagulation."
+msgstr "Hemograma completo, velocidad de sedimentación, perfil de coagulación."
+
+msgid "Microbiologie"
+msgstr "Microbiología"
+
+msgid "Culture bactérienne, antibiogramme, examen cytobactériologique des urines."
+msgstr "Cultivo bacteriano, antibiograma, examen citobacteriológico de orina."
+
+msgid "Sérologie &amp; Immunologie"
+msgstr "Serología &amp; Inmunología"
+
+msgid "Dépistage des maladies infectieuses, bilan immunitaire, tests sérologiques."
+msgstr "Detección de enfermedades infecciosas, evaluación inmunológica, pruebas serológicas."
+
+msgid "Fertilité &amp; Gynécologie"
+msgstr "Fertilidad &amp; Ginecología"
+
+msgid "Bilan hormonal, spermogramme, suivi de grossesse, dépistage prénatal."
+msgstr "Perfil hormonal, espermograma, seguimiento del embarazo, cribado prenatal."
+
+msgid "PCR &amp; Virologie"
+msgstr "PCR &amp; Virología"
+
+msgid "Tests PCR, charge virale, dépistage COVID-19, hépatites et autres virus."
+msgstr "Pruebas PCR, carga viral, detección de COVID-19, hepatitis y otros virus."
+
+# Partnerships
+msgid "Partenariats"
+msgstr "Alianzas"
+
+msgid "Nos Partenaires de Confiance"
+msgstr "Nuestros Socios de Confianza"
+
+msgid "Nous collaborons avec les plus grands réseaux de diagnostic pour vous garantir des résultats de référence."
+msgstr "Colaboramos con las principales redes de diagnóstico para garantizarle resultados de referencia."
+
+msgid "Réseau européen de diagnostic de référence. Leader en biologie spécialisée avec plus de 50 ans d'expertise."
+msgstr "Red europea de diagnóstico de referencia. Líder en biología especializada con más de 50 años de experiencia."
+
+msgid "Lab National Mohammed VI"
+msgstr "Lab Nacional Mohammed VI"
+
+msgid "Laboratoire national de référence du Maroc. Partenaire pour les analyses spécialisées et le contrôle qualité."
+msgstr "Laboratorio nacional de referencia de Marruecos. Socio para análisis especializados y control de calidad."
+
+# Testimonials
+msgid "Témoignages"
+msgstr "Testimonios"
+
+msgid "Ce que disent nos patients"
+msgstr "Lo que dicen nuestros pacientes"
+
+msgid "Service excellent et rapide. Les résultats sont disponibles en quelques heures. Je recommande vivement!"
+msgstr "Servicio excelente y rápido. Los resultados están disponibles en pocas horas. ¡Lo recomiendo encarecidamente!"
+
+msgid "Équipe très professionnelle et accueillante. Les analyses sont toujours précises."
+msgstr "Equipo muy profesional y acogedor. Los análisis son siempre precisos."
+
+msgid "Le meilleur laboratoire de Tanger. Résultats rapides et personnel très compétent."
+msgstr "El mejor laboratorio de Tánger. Resultados rápidos y personal muy competente."
+
+# CTA
+msgid "Besoin d'une analyse ?"
+msgstr "¿Necesita un análisis?"
+
+msgid "Rendez-vous disponible immédiatement. Résultats en moins de 24 heures."
+msgstr "Citas disponibles de inmediato. Resultados en menos de 24 horas."
+
+msgid "Prendre Rendez-vous"
+msgstr "Pedir Cita"
+
+msgid "Appeler maintenant"
+msgstr "Llamar ahora"
+
+# Blog
+msgid "Actualités"
+msgstr "Noticias"
+
+msgid "Derniers Articles"
+msgstr "Últimos Artículos"
+
+msgid "Lire la suite"
+msgstr "Leer más"
+
+msgid "Blog &amp; Actualités"
+msgstr "Blog &amp; Noticias"
+
+msgid "Articles et conseils santé par nos experts."
+msgstr "Artículos y consejos de salud de nuestros expertos."
+
+msgid "Tous"
+msgstr "Todos"
+
+msgid "Rechercher..."
+msgstr "Buscar..."
+
+msgid "Aucun article trouvé"
+msgstr "No se encontraron artículos"
+
+msgid "Revenez bientôt pour découvrir nos prochains articles."
+msgstr "Vuelva pronto para descubrir nuestros próximos artículos."
+
+msgid "Voir tous les articles"
+msgstr "Ver todos los artículos"
+
+msgid "Lire"
+msgstr "Leer"
+
+msgid "Pagination"
+msgstr "Paginación"
+
+msgid "vues"
+msgstr "vistas"
+
+msgid "Articles similaires"
+msgstr "Artículos relacionados"
+
+msgid "Besoin d'analyses ?"
+msgstr "¿Necesita análisis?"
+
+msgid "Contactez-nous"
+msgstr "Contáctenos"
+
+msgid "Partager cet article"
+msgstr "Compartir este artículo"
+
+# About Page
+msgid "À propos de nous"
+msgstr "Sobre Nosotros"
+
+msgid "Plus de 25 ans d'excellence en analyses médicales au service de votre santé."
+msgstr "Más de 25 años de excelencia en análisis médicos al servicio de su salud."
+
+msgid "Notre Histoire"
+msgstr "Nuestra Historia"
+
+msgid "Un laboratoire de référence à Tanger"
+msgstr "Un laboratorio de referencia en Tánger"
+
+msgid "Fondé il y a plus de 25 ans, Laboratoire International s'est imposé comme un acteur majeur du diagnostic médical à Tanger et dans la région du Nord du Maroc."
+msgstr "Fundado hace más de 25 años, Laboratoire International se ha consolidado como un actor principal del diagnóstico médico en Tánger y en la región del norte de Marruecos."
+
+msgid "Notre engagement envers l'excellence nous a conduits à établir des partenariats stratégiques avec Cerba Lab, réseau européen de référence, et le Laboratoire National Mohammed VI d'Analyses Médicales."
+msgstr "Nuestro compromiso con la excelencia nos ha llevado a establecer alianzas estratégicas con Cerba Lab, red europea de referencia, y el Laboratoire National Mohammed VI de Análisis Médicos."
+
+msgid "Équipé des technologies les plus avancées et doté d'une équipe de biologistes hautement qualifiés, nous garantissons des résultats fiables en moins de 24 heures."
+msgstr "Equipado con las tecnologías más avanzadas y un equipo de biólogos altamente cualificados, garantizamos resultados fiables en menos de 24 horas."
+
+msgid "Années d'expérience"
+msgstr "Años de experiencia"
+
+msgid "Nos Valeurs"
+msgstr "Nuestros Valores"
+
+msgid "Ce qui nous guide"
+msgstr "Lo que nos guía"
+
+msgid "Notre Équipe"
+msgstr "Nuestro Equipo"
+
+msgid "Des experts à votre service"
+msgstr "Expertos a su servicio"
+
+msgid "Certifications"
+msgstr "Certificaciones"
+
+msgid "Qualité certifiée"
+msgstr "Calidad certificada"
+
+# Team
+msgid "Directeur Général &amp; Biologiste"
+msgstr "Director General &amp; Biólogo"
+
+msgid "Plus de 20 ans d'expérience en biologie médicale. Diplômé de la Faculté de Médecine et Pharmacie de Rabat."
+msgstr "Más de 20 años de experiencia en biología médica. Graduado de la Facultad de Medicina y Farmacia de Rabat."
+
+msgid "Biologiste Spécialiste"
+msgstr "Biólogo Especialista"
+
+msgid "Spécialiste en hématologie et immunologie. Formation complémentaire à l'Institut Pasteur de Paris."
+msgstr "Especialista en hematología e inmunología. Formación complementaria en el Institut Pasteur de París."
+
+msgid "Responsable Qualité"
+msgstr "Responsable de Calidad"
+
+msgid "Expert en assurance qualité des laboratoires. Certifié ISO 15189 et accrédité COFRAC."
+msgstr "Experto en aseguramiento de calidad de laboratorios. Certificado ISO 15189 y acreditado COFRAC."
+
+# Values
+msgid "Excellence"
+msgstr "Excelencia"
+
+msgid "Nous visons l'excellence dans chaque analyse, avec des équipements de dernière génération."
+msgstr "Buscamos la excelencia en cada análisis, con equipos de última generación."
+
+msgid "Humanité"
+msgstr "Humanidad"
+
+msgid "Chaque patient est accueilli avec bienveillance, respect et professionnalisme."
+msgstr "Cada paciente es recibido con amabilidad, respeto y profesionalismo."
+
+msgid "Fiabilité"
+msgstr "Fiabilidad"
+
+msgid "Des résultats fiables et reproductibles, conformes aux standards internationaux."
+msgstr "Resultados fiables y reproducibles, conforme a los estándares internacionales."
+
+msgid "Innovation"
+msgstr "Innovación"
+
+msgid "Investissement continu dans les technologies les plus avancées du diagnostic médical."
+msgstr "Inversión continua en las tecnologías más avanzadas del diagnóstico médico."
+
+# Certifications
+msgid "Accréditation des laboratoires de biologie médicale"
+msgstr "Acreditación de laboratorios de biología médica"
+
+msgid "Système de management de la qualité"
+msgstr "Sistema de gestión de la calidad"
+
+msgid "Comité Français d'Accréditation"
+msgstr "Comité Francés de Acreditación"
+
+# Services Page - Test names
+msgid "analyses disponibles"
+msgstr "análisis disponibles"
+
+msgid "Glycémie à jeun &amp; postprandiale"
+msgstr "Glucemia en ayunas &amp; postprandial"
+
+msgid "Bilan lipidique complet (Cholestérol, Triglycérides, HDL, LDL)"
+msgstr "Perfil lipídico completo (Colesterol, Triglicéridos, HDL, LDL)"
+
+msgid "Bilan hépatique (ASAT, ALAT, GGT, Bilirubine)"
+msgstr "Perfil hepático (AST, ALT, GGT, Bilirrubina)"
+
+msgid "Bilan rénal (Urée, Créatinine, Acide urique)"
+msgstr "Perfil renal (Urea, Creatinina, Ácido úrico)"
+
+msgid "Bilan pancréatique (Amylase, Lipase)"
+msgstr "Perfil pancreático (Amilasa, Lipasa)"
+
+msgid "Ionogramme sanguin (Na, K, Cl, Ca, Mg)"
+msgstr "Ionograma sanguíneo (Na, K, Cl, Ca, Mg)"
+
+msgid "Protéines totales &amp; Electrophorèse"
+msgstr "Proteínas totales &amp; Electroforesis"
+
+msgid "Marqueurs cardiaques (Troponine, BNP)"
+msgstr "Marcadores cardíacos (Troponina, BNP)"
+
+msgid "NFS - Numération Formule Sanguine"
+msgstr "HC - Hemograma Completo"
+
+msgid "Vitesse de Sédimentation (VS)"
+msgstr "Velocidad de Sedimentación Globular (VSG)"
+
+msgid "Bilan de coagulation (TP, TCA, INR)"
+msgstr "Perfil de coagulación (TP, TTPA, INR)"
+
+msgid "Groupe sanguin &amp; Rhésus"
+msgstr "Grupo sanguíneo &amp; Rh"
+
+msgid "Test de Coombs direct &amp; indirect"
+msgstr "Prueba de Coombs directa &amp; indirecta"
+
+msgid "Frottis sanguin"
+msgstr "Frotis sanguíneo"
+
+msgid "Réticulocytes"
+msgstr "Reticulocitos"
+
+msgid "D-Dimères"
+msgstr "Dímero D"
+
+msgid "Sérologie HIV 1 &amp; 2"
+msgstr "Serología VIH 1 &amp; 2"
+
+msgid "Sérologie Hépatite B (AgHBs, AntiHBs, AntiHBc)"
+msgstr "Serología Hepatitis B (AgHBs, AntiHBs, AntiHBc)"
+
+msgid "Sérologie Hépatite C"
+msgstr "Serología Hepatitis C"
+
+msgid "Sérologie Syphilis (TPHA, VDRL)"
+msgstr "Serología Sífilis (TPHA, VDRL)"
+
+msgid "Sérologie Toxoplasmose"
+msgstr "Serología Toxoplasmosis"
+
+msgid "Sérologie Rubéole"
+msgstr "Serología Rubéola"
+
+msgid "CRP &amp; Facteur Rhumatoïde"
+msgstr "PCR &amp; Factor Reumatoide"
+
+msgid "Anticorps anti-nucléaires (ANA)"
+msgstr "Anticuerpos antinucleares (ANA)"
+
+msgid "Hormonologie &amp; Fertilité"
+msgstr "Endocrinología &amp; Fertilidad"
+
+msgid "Bilan thyroïdien (TSH, T3, T4)"
+msgstr "Perfil tiroideo (TSH, T3, T4)"
+
+msgid "Bilan hormonal féminin (FSH, LH, Estradiol, Progestérone)"
+msgstr "Perfil hormonal femenino (FSH, LH, Estradiol, Progesterona)"
+
+msgid "Bilan hormonal masculin (Testostérone, PSA)"
+msgstr "Perfil hormonal masculino (Testosterona, PSA)"
+
+msgid "Beta-HCG quantitatif"
+msgstr "Beta-HCG cuantitativa"
+
+msgid "Prolactine"
+msgstr "Prolactina"
+
+msgid "Cortisol &amp; ACTH"
+msgstr "Cortisol &amp; ACTH"
+
+msgid "Spermogramme"
+msgstr "Espermograma"
+
+msgid "AMH (Hormone Anti-Müllérienne)"
+msgstr "AMH (Hormona Antimülleriana)"
+
+msgid "ECBU - Examen Cytobactériologique des Urines"
+msgstr "Urocultivo - Examen citobacteriológico de orina"
+
+msgid "Coproculture"
+msgstr "Coprocultivo"
+
+msgid "Prélèvement vaginal &amp; urétral"
+msgstr "Muestra vaginal &amp; uretral"
+
+msgid "Hémoculture"
+msgstr "Hemocultivo"
+
+msgid "Antibiogramme"
+msgstr "Antibiograma"
+
+msgid "Examen parasitologique des selles"
+msgstr "Examen parasitológico de heces"
+
+msgid "Prélèvement de gorge"
+msgstr "Muestra faríngea"
+
+msgid "Mycologie (champignons)"
+msgstr "Micología (hongos)"
+
+msgid "PCR &amp; Biologie Moléculaire"
+msgstr "PCR &amp; Biología Molecular"
+
+msgid "PCR COVID-19 (RT-PCR)"
+msgstr "PCR COVID-19 (RT-PCR)"
+
+msgid "PCR Hépatite B &amp; C quantitative"
+msgstr "PCR cuantitativa Hepatitis B &amp; C"
+
+msgid "PCR HIV - Charge virale"
+msgstr "PCR VIH - Carga viral"
+
+msgid "PCR Tuberculose (GenXpert)"
+msgstr "PCR Tuberculosis (GeneXpert)"
+
+msgid "PCR HPV &amp; Génotypage"
+msgstr "PCR VPH &amp; Genotipado"
+
+msgid "PCR Chlamydia &amp; Mycoplasme"
+msgstr "PCR Chlamydia &amp; Mycoplasma"
+
+msgid "Tests de paternité"
+msgstr "Pruebas de paternidad"
+
+msgid "Pharmacogénétique"
+msgstr "Farmacogenética"
+
+msgid "Besoin d'une analyse spécifique ?"
+msgstr "¿Necesita un análisis específico?"
+
+msgid "Contactez-nous pour en savoir plus sur nos services ou pour prendre rendez-vous."
+msgstr "Contáctenos para obtener más información sobre nuestros servicios o para pedir una cita."
+
+# Results Page
+msgid "Accédez à vos résultats d'analyses médicales en ligne via notre portail sécurisé."
+msgstr "Acceda a sus resultados de análisis médicos en línea a través de nuestro portal seguro."
+
+msgid "Consulter vos résultats"
+msgstr "Consultar sus resultados"
+
+msgid "Cliquez sur le bouton ci-dessous pour accéder à notre portail sécurisé VisionLIS. Utilisez les identifiants qui vous ont été remis au laboratoire."
+msgstr "Haga clic en el botón de abajo para acceder a nuestro portal seguro VisionLIS. Utilice las credenciales que le fueron proporcionadas en el laboratorio."
+
+msgid "Accéder à mes résultats"
+msgstr "Acceder a mis resultados"
+
+msgid "Connexion sécurisée — Vos données sont protégées"
+msgstr "Conexión segura — Sus datos están protegidos"
+
+msgid "Cliquez"
+msgstr "Haga clic"
+
+msgid "Sur le bouton 'Accéder à mes résultats'"
+msgstr "En el botón 'Acceder a mis resultados'"
+
+msgid "Connectez-vous"
+msgstr "Inicie sesión"
+
+msgid "Avec vos identifiants du laboratoire"
+msgstr "Con sus credenciales del laboratorio"
+
+msgid "Téléchargez"
+msgstr "Descargue"
+
+msgid "Vos résultats au format PDF"
+msgstr "Sus resultados en formato PDF"
+
+msgid "Questions fréquentes"
+msgstr "Preguntas frecuentes"
+
+msgid "Comment accéder à mes résultats ?"
+msgstr "¿Cómo acceder a mis resultados?"
+
+msgid "Cliquez sur le bouton \"Accéder à mes résultats\" ci-dessus. Vous serez redirigé vers notre portail sécurisé VisionLIS où vous pourrez vous connecter avec vos identifiants."
+msgstr "Haga clic en el botón \"Acceder a mis resultados\" de arriba. Será redirigido a nuestro portal seguro VisionLIS donde podrá iniciar sesión con sus credenciales."
+
+msgid "Quels identifiants utiliser ?"
+msgstr "¿Qué credenciales debo usar?"
+
+msgid "Utilisez le nom d'utilisateur et le mot de passe qui vous ont été remis lors de votre visite au laboratoire."
+msgstr "Utilice el nombre de usuario y la contraseña que le fueron proporcionados durante su visita al laboratorio."
+
+msgid "Quand mes résultats seront-ils disponibles ?"
+msgstr "¿Cuándo estarán disponibles mis resultados?"
+
+msgid "La plupart des résultats sont disponibles en moins de 24 heures. Certaines analyses spécialisées peuvent nécessiter un délai supplémentaire."
+msgstr "La mayoría de los resultados están disponibles en menos de 24 horas. Algunos análisis especializados pueden requerir un plazo adicional."
+
+msgid "J'ai oublié mes identifiants, que faire ?"
+msgstr "¿Olvidé mis credenciales, qué debo hacer?"
+
+msgid "Contactez-nous au +212 5 39 31 39 47 ou rendez-vous directement au laboratoire avec une pièce d'identité pour récupérer vos identifiants."
+msgstr "Contáctenos al +212 5 39 31 39 47 o acuda directamente al laboratorio con un documento de identidad para recuperar sus credenciales."
+
+msgid "Besoin d'aide ?"
+msgstr "¿Necesita ayuda?"
+
+msgid "Notre équipe est disponible 24h/24 pour vous assister."
+msgstr "Nuestro equipo está disponible las 24 horas para asistirle."
+
+# Contact Page
+msgid "Nous sommes à votre disposition 24h/24, 7j/7."
+msgstr "Estamos a su disposición las 24 horas, los 7 días de la semana."
+
+msgid "Adresse"
+msgstr "Dirección"
+
+msgid "Téléphone"
+msgstr "Teléfono"
+
+msgid "Email"
+msgstr "Correo electrónico"
+
+msgid "Horaires"
+msgstr "Horarios"
+
+msgid "Localisation du laboratoire"
+msgstr "Ubicación del laboratorio"
+
+msgid "Obtenir l'itinéraire"
+msgstr "Obtener indicaciones"
+
+msgid "Envoyez-nous un message"
+msgstr "Envíenos un mensaje"
+
+msgid "Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais."
+msgstr "Complete el formulario a continuación y le responderemos a la mayor brevedad posible."
+
+msgid "Nom complet"
+msgstr "Nombre completo"
+
+msgid "Votre nom"
+msgstr "Su nombre"
+
+msgid "votre@email.com"
+msgstr "su@email.com"
+
+msgid "Objet"
+msgstr "Asunto"
+
+msgid "Renseignements généraux"
+msgstr "Información general"
+
+msgid "Résultats d'analyses"
+msgstr "Resultados de análisis"
+
+msgid "Prise de rendez-vous"
+msgstr "Reserva de cita"
+
+msgid "Partenariat"
+msgstr "Colaboración"
+
+msgid "Réclamation"
+msgstr "Reclamación"
+
+msgid "Autre"
+msgstr "Otro"
+
+msgid "Message"
+msgstr "Mensaje"
+
+msgid "Décrivez votre demande..."
+msgstr "Describa su solicitud..."
+
+msgid "Envoyer le message"
+msgstr "Enviar mensaje"
+
+msgid "Veuillez remplir tous les champs obligatoires."
+msgstr "Por favor, complete todos los campos obligatorios."
+
+msgid "Erreur de connexion. Veuillez réessayer."
+msgstr "Error de conexión. Por favor, inténtelo de nuevo."
+
+msgid "Votre message a été envoyé avec succès! Nous vous contacterons bientôt."
+msgstr "¡Su mensaje ha sido enviado con éxito! Nos pondremos en contacto con usted pronto."
+
+msgid "Une erreur est survenue. Veuillez réessayer."
+msgstr "Ha ocurrido un error. Por favor, inténtelo de nuevo."
+
+# Footer
+msgid "Navigation"
+msgstr "Navegación"
+
+msgid "Partenaire Cerba Lab"
+msgstr "Socio Cerba Lab"
+
+msgid "Tous droits réservés."
+msgstr "Todos los derechos reservados."
+
+msgid "Confidentialité"
+msgstr "Privacidad"
+
+msgid "CGU"
+msgstr "Términos"
+
+msgid "Cookies"
+msgstr "Cookies"
+
+# Cookie Banner
+msgid "Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez notre"
+msgstr "Utilizamos cookies para mejorar su experiencia. Al continuar, usted acepta nuestra"
+
+msgid "politique de cookies"
+msgstr "política de cookies"
+
+msgid "Accepter"
+msgstr "Aceptar"
+
+msgid "Refuser"
+msgstr "Rechazar"
+
+msgid "Retour en haut"
+msgstr "Volver arriba"
+
+msgid "Consentement aux cookies"
+msgstr "Consentimiento de cookies"
+
+# Legal Pages
+msgid "Politique de Confidentialité"
+msgstr "Política de Privacidad"
+
+msgid "Conditions d'Utilisation"
+msgstr "Condiciones de Uso"
+
+msgid "Politique de Cookies"
+msgstr "Política de Cookies"
+
+msgid "Dernière mise à jour"
+msgstr "Última actualización"
+
+msgid "1. Collecte des données"
+msgstr "1. Recopilación de datos"
+
+msgid "Laboratoire International collecte des données personnelles lorsque vous utilisez notre site web, notamment via le formulaire de contact (nom, email, téléphone, message) et lors de l'accès à vos résultats d'analyses via notre portail externe VisionLIS."
+msgstr "Laboratoire International recopila datos personales cuando usted utiliza nuestro sitio web, incluyendo a través del formulario de contacto (nombre, correo electrónico, teléfono, mensaje) y al acceder a sus resultados de análisis a través de nuestro portal externo VisionLIS."
+
+msgid "2. Utilisation des données"
+msgstr "2. Uso de los datos"
+
+msgid "Vos données sont utilisées pour répondre à vos demandes, améliorer nos services, et vous contacter concernant vos analyses. Nous ne vendons jamais vos données à des tiers."
+msgstr "Sus datos se utilizan para responder a sus solicitudes, mejorar nuestros servicios y contactarle respecto a sus análisis. Nunca vendemos sus datos a terceros."
+
+msgid "3. Protection des données"
+msgstr "3. Protección de datos"
+
+msgid "Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles pour protéger vos données personnelles contre tout accès non autorisé, modification, divulgation ou destruction."
+msgstr "Implementamos medidas de seguridad técnicas y organizativas para proteger sus datos personales contra cualquier acceso no autorizado, modificación, divulgación o destrucción."
+
+msgid "4. Cookies"
+msgstr "4. Cookies"
+
+msgid "Notre site utilise des cookies essentiels pour son fonctionnement et des cookies analytiques pour améliorer votre expérience. Consultez notre politique de cookies pour plus de détails."
+msgstr "Nuestro sitio utiliza cookies esenciales para su funcionamiento y cookies analíticas para mejorar su experiencia. Consulte nuestra política de cookies para más detalles."
+
+msgid "5. Vos droits"
+msgstr "5. Sus derechos"
+
+msgid "Conformément à la loi 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel, vous disposez d'un droit d'accès, de rectification et de suppression de vos données."
+msgstr "De conformidad con la ley 09-08 relativa a la protección de las personas físicas respecto al tratamiento de datos de carácter personal, usted tiene derecho de acceso, rectificación y supresión de sus datos."
+
+msgid "6. Contact"
+msgstr "6. Contacto"
+
+# Meta descriptions
+msgid "Laboratoire International d'Analyses Médicales à Tanger. Résultats en moins de 24h. Partenaire de Cerba Lab et du Laboratoire National Mohammed VI."
+msgstr "Laboratoire International de Análisis Médicos en Tánger. Resultados en menos de 24h. Socio de Cerba Lab y del Laboratoire National Mohammed VI."
+
+msgid "Découvrez Laboratoire International, plus de 25 ans d'expertise en analyses médicales à Tanger. Certifié ISO 15189."
+msgstr "Descubra Laboratoire International, más de 25 años de experiencia en análisis médicos en Tánger. Certificado ISO 15189."
+
+msgid "Découvrez nos services d'analyses médicales : biochimie, hématologie, sérologie, PCR, microbiologie et plus. Résultats en moins de 24h."
+msgstr "Descubra nuestros servicios de análisis médicos: bioquímica, hematología, serología, PCR, microbiología y más. Resultados en menos de 24h."
+
+msgid "Accédez à vos résultats d'analyses médicales en ligne. Connectez-vous à notre portail sécurisé VisionLIS."
+msgstr "Acceda a sus resultados de análisis médicos en línea. Inicie sesión en nuestro portal seguro VisionLIS."
+
+msgid "Articles et actualités sur les analyses médicales, la santé et le bien-être par Laboratoire International."
+msgstr "Artículos y noticias sobre análisis médicos, salud y bienestar de Laboratoire International."
+
+msgid "Contactez Laboratoire International à Tanger. Appelez-nous au +212 5 39 31 39 47 ou envoyez-nous un message."
+msgstr "Contacte con Laboratoire International en Tánger. Llámenos al +212 5 39 31 39 47 o envíenos un mensaje."
+
+msgid "Politique de confidentialité de Laboratoire International. Comment nous protégeons vos données personnelles."
+msgstr "Política de privacidad de Laboratoire International. Cómo protegemos sus datos personales."
+
+msgid "Conditions générales d'utilisation du site web de Laboratoire International."
+msgstr "Condiciones generales de uso del sitio web de Laboratoire International."
+
+msgid "Comment Laboratoire International utilise les cookies sur son site web."
+msgstr "Cómo Laboratoire International utiliza las cookies en su sitio web."
+
+# Terms Page
+msgid "1. Objet"
+msgstr "1. Objeto"
+
+msgid "Les présentes conditions générales d'utilisation régissent l'accès et l'utilisation du site web de Laboratoire International d'Analyses Médicales."
+msgstr "Las presentes condiciones generales de uso regulan el acceso y la utilización del sitio web de Laboratoire International de Análisis Médicos."
+
+msgid "2. Accès au site"
+msgstr "2. Acceso al sitio"
+
+msgid "Le site est accessible gratuitement à tout utilisateur disposant d'un accès internet. Laboratoire International se réserve le droit de modifier, suspendre ou interrompre l'accès au site à tout moment."
+msgstr "El sitio es accesible de forma gratuita para cualquier usuario con acceso a internet. Laboratoire International se reserva el derecho de modificar, suspender o interrumpir el acceso al sitio en cualquier momento."
+
+msgid "3. Propriété intellectuelle"
+msgstr "3. Propiedad intelectual"
+
+msgid "L'ensemble du contenu du site (textes, images, logos, graphismes) est protégé par le droit de la propriété intellectuelle. Toute reproduction sans autorisation est interdite."
+msgstr "Todo el contenido del sitio (textos, imágenes, logotipos, gráficos) está protegido por la ley de propiedad intelectual. Cualquier reproducción sin autorización está prohibida."
+
+msgid "4. Résultats d'analyses"
+msgstr "4. Resultados de análisis"
+
+msgid "L'accès aux résultats d'analyses s'effectue via un portail externe sécurisé (VisionLIS). Les identifiants sont personnels et confidentiels. Laboratoire International décline toute responsabilité en cas d'utilisation frauduleuse des identifiants."
+msgstr "El acceso a los resultados de análisis se realiza a través de un portal externo seguro (VisionLIS). Las credenciales son personales y confidenciales. Laboratoire International declina toda responsabilidad en caso de uso fraudulento de las credenciales."
+
+msgid "5. Responsabilité"
+msgstr "5. Responsabilidad"
+
+msgid "Les informations médicales fournies sur ce site sont à titre informatif uniquement et ne remplacent en aucun cas un avis médical professionnel. Consultez votre médecin pour toute question relative à votre santé."
+msgstr "La información médica proporcionada en este sitio es únicamente con fines informativos y no sustituye en ningún caso el consejo médico profesional. Consulte a su médico ante cualquier pregunta relacionada con su salud."
+
+msgid "6. Loi applicable"
+msgstr "6. Ley aplicable"
+
+msgid "Les présentes conditions sont régies par le droit marocain. Tout litige sera soumis à la compétence des tribunaux de Tanger."
+msgstr "Las presentes condiciones se rigen por el derecho marroquí. Cualquier litigio será sometido a la competencia de los tribunales de Tánger."
+
+# Cookies Page
+msgid "Qu'est-ce qu'un cookie ?"
+msgstr "¿Qué es una cookie?"
+
+msgid "Un cookie est un petit fichier texte stocké sur votre appareil lorsque vous visitez notre site. Les cookies permettent au site de fonctionner correctement et d'améliorer votre expérience."
+msgstr "Una cookie es un pequeño archivo de texto almacenado en su dispositivo cuando visita nuestro sitio. Las cookies permiten que el sitio funcione correctamente y mejoran su experiencia."
+
+msgid "Cookies essentiels"
+msgstr "Cookies esenciales"
+
+msgid "Ces cookies sont nécessaires au fonctionnement du site. Ils incluent les cookies de session, le token CSRF pour la sécurité des formulaires, et le cookie de préférence de langue."
+msgstr "Estas cookies son necesarias para el funcionamiento del sitio. Incluyen las cookies de sesión, el token CSRF para la seguridad de los formularios y la cookie de preferencia de idioma."
+
+msgid "Objectif"
+msgstr "Objetivo"
+
+msgid "Durée"
+msgstr "Duración"
+
+msgid "Protection CSRF"
+msgstr "Protección CSRF"
+
+msgid "an"
+msgstr "año"
+
+msgid "Session utilisateur"
+msgstr "Sesión de usuario"
+
+msgid "Session"
+msgstr "Sesión"
+
+msgid "Préférence de langue"
+msgstr "Preferencia de idioma"
+
+msgid "Consentement cookies"
+msgstr "Consentimiento de cookies"
+
+msgid "Cookies analytiques"
+msgstr "Cookies analíticas"
+
+msgid "Si activés, ces cookies (Google Analytics 4) nous aident à comprendre comment les visiteurs interagissent avec notre site. Ces données sont anonymisées."
+msgstr "Si están activadas, estas cookies (Google Analytics 4) nos ayudan a comprender cómo los visitantes interactúan con nuestro sitio. Estos datos son anonimizados."
+
+msgid "Gérer vos préférences"
+msgstr "Gestionar sus preferencias"
+
+msgid "Vous pouvez modifier vos préférences de cookies à tout moment via les paramètres de votre navigateur. La désactivation de certains cookies peut affecter le fonctionnement du site."
+msgstr "Puede modificar sus preferencias de cookies en cualquier momento a través de la configuración de su navegador. La desactivación de ciertas cookies puede afectar el funcionamiento del sitio."
+
+# Working Hours
+msgid "Lundi"
+msgstr "Lunes"
+
+msgid "Mardi"
+msgstr "Martes"
+
+msgid "Mercredi"
+msgstr "Miércoles"
+
+msgid "Jeudi"
+msgstr "Jueves"
+
+msgid "Vendredi"
+msgstr "Viernes"
+
+msgid "Samedi"
+msgstr "Sábado"
+
+msgid "Dimanche"
+msgstr "Domingo"
+
+msgid "Fermé"
+msgstr "Cerrado"
+
+msgid "Les horaires peuvent être différents lors des fêtes religieuses"
+msgstr "Los horarios pueden variar durante las festividades religiosas"
+
+msgid "Laboratoire International"
+msgstr "Laboratorio Internacional"
+
+# URL Paths
+msgid "about/"
+msgstr "sobre-nosotros/"
+
+msgid "services/"
+msgstr "servicios/"
+
+msgid "results/"
+msgstr "resultados/"
+
+msgid "blog/"
+msgstr "blog/"
+
+msgid "contact/"
+msgstr "contacto/"
+
+msgid "legal/privacy/"
+msgstr "legal/privacidad/"
+
+msgid "legal/terms/"
+msgstr "legal/terminos/"
+
+msgid "legal/cookies/"
+msgstr "legal/cookies/"
+
+# Slogan
+msgid "Analyses Médicales"
+msgstr "Laboratorio de Análisis Médicos"
