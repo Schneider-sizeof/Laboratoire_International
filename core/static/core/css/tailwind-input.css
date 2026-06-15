@@ -22,6 +22,12 @@
     -webkit-text-size-adjust: 100%;
   }
 
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
   body {
     @apply font-sans text-dark-900 bg-dark-50 antialiased;
     text-rendering: optimizeLegibility;
