@@ -10,8 +10,11 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.conf import settings
 import json
+import logging
 
-from .models import BlogPost, BlogCategory, ContactSubmission
+from .models import BlogPost, BlogCategory, ContactSubmission, SiteSettings, TeamMember, Partner
+
+logger = logging.getLogger(__name__)
 
 
 # ============================================================
@@ -22,10 +25,121 @@ def _lang():
 
 
 # ============================================================
+# Email helper
+# ============================================================
+def _send_contact_emails(submission, lang='fr'):
+    """Send notification to admin and confirmation to visitor."""
+    try:
+        site = SiteSettings.load()
+    except Exception:
+        return
+
+    if not site.notification_email or not site.smtp_user or not site.smtp_password:
+        return
+
+    import smtplib
+    from email.mime.text import MIMEText
+    from email.mime.multipart import MIMEMultipart
+
+    try:
+        # --- 1. Admin notification ---
+        admin_html = f"""
+        <html>
+        <body style="font-family:Arial,sans-serif;background:#f8fafc;padding:20px;">
+        <div style="max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+            <div style="background:linear-gradient(135deg,#0f172a,#1e3a5f);padding:24px;color:#fff;">
+                <h1 style="margin:0;font-size:20px;">📩 Nouveau message — {site.site_name}</h1>
+            </div>
+            <div style="padding:24px;">
+                <table style="width:100%;border-collapse:collapse;">
+                    <tr><td style="padding:8px 0;font-weight:bold;color:#475569;">Nom:</td><td style="padding:8px 0;">{submission.name}</td></tr>
+                    <tr><td style="padding:8px 0;font-weight:bold;color:#475569;">Email:</td><td style="padding:8px 0;"><a href="mailto:{submission.email}">{submission.email}</a></td></tr>
+                    <tr><td style="padding:8px 0;font-weight:bold;color:#475569;">Téléphone:</td><td style="padding:8px 0;">{submission.phone or 'Non renseigné'}</td></tr>
+                    <tr><td style="padding:8px 0;font-weight:bold;color:#475569;">Service:</td><td style="padding:8px 0;">{submission.get_service_type_display()}</td></tr>
+                    <tr><td style="padding:8px 0;font-weight:bold;color:#475569;">Date:</td><td style="padding:8px 0;">{submission.created_at.strftime('%d/%m/%Y %H:%M')}</td></tr>
+                </table>
+                <div style="margin-top:16px;padding:16px;background:#f1f5f9;border-radius:8px;">
+                    <p style="margin:0;font-weight:bold;color:#475569;margin-bottom:8px;">Message:</p>
+                    <p style="margin:0;white-space:pre-wrap;">{submission.message}</p>
+                </div>
+            </div>
+        </div>
+        </body>
+        </html>
+        """
+
+        admin_msg = MIMEMultipart('alternative')
+        admin_msg['Subject'] = f'[{site.site_name}] Nouveau message de {submission.name}'
+        admin_msg['From'] = site.smtp_user
+        admin_msg['To'] = site.notification_email
+        admin_msg.attach(MIMEText(f"Nouveau message de {submission.name} ({submission.email}): {submission.message}", 'plain'))
+        admin_msg.attach(MIMEText(admin_html, 'html'))
+
+        # --- 2. Visitor confirmation ---
+        thank_you_messages = {
+            'fr': ('Merci pour votre message', 'Nous avons bien reçu votre message et nous vous répondrons dans les plus brefs délais.'),
+            'en': ('Thank you for your message', 'We have received your message and will get back to you as soon as possible.'),
+            'ar': ('شكراً لرسالتكم', 'لقد تلقينا رسالتكم وسنرد عليكم في أقرب وقت ممكن.'),
+            'es': ('Gracias por su mensaje', 'Hemos recibido su mensaje y le responderemos lo antes posible.'),
+            'de': ('Vielen Dank für Ihre Nachricht', 'Wir haben Ihre Nachricht erhalten und werden Ihnen so schnell wie möglich antworten.'),
+            'nl': ('Bedankt voor uw bericht', 'We hebben uw bericht ontvangen en zullen zo snel mogelijk reageren.'),
+            'it': ('Grazie per il vostro messaggio', 'Abbiamo ricevuto il vostro messaggio e vi risponderemo il prima possibile.'),
+        }
+        title, body = thank_you_messages.get(lang, thank_you_messages['fr'])
+
+        visitor_html = f"""
+        <html>
+        <body style="font-family:Arial,sans-serif;background:#f8fafc;padding:20px;">
+        <div style="max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+            <div style="background:linear-gradient(135deg,#0f172a,#1e3a5f);padding:24px;color:#fff;text-align:center;">
+                <h1 style="margin:0;font-size:22px;">{title}</h1>
+            </div>
+            <div style="padding:24px;text-align:center;">
+                <p style="font-size:48px;margin:0 0 16px;">✅</p>
+                <p style="font-size:16px;color:#475569;line-height:1.6;">{body}</p>
+                <hr style="border:none;border-top:1px solid #e2e8f0;margin:24px 0;">
+                <p style="font-size:14px;color:#94a3b8;">
+                    {site.site_name}<br>
+                    📞 {site.phone}<br>
+                    📍 {site.address}
+                </p>
+            </div>
+        </div>
+        </body>
+        </html>
+        """
+
+        visitor_msg = MIMEMultipart('alternative')
+        visitor_msg['Subject'] = f'{title} — {site.site_name}'
+        visitor_msg['From'] = site.smtp_user
+        visitor_msg['To'] = submission.email
+        visitor_msg.attach(MIMEText(f"{title}\n\n{body}\n\n{site.site_name}\n{site.phone}", 'plain'))
+        visitor_msg.attach(MIMEText(visitor_html, 'html'))
+
+        # Send both emails
+        if site.smtp_use_tls:
+            server = smtplib.SMTP(site.smtp_host, site.smtp_port)
+            server.starttls()
+        else:
+            server = smtplib.SMTP_SSL(site.smtp_host, site.smtp_port)
+
+        server.login(site.smtp_user, site.smtp_password)
+        server.sendmail(site.smtp_user, site.notification_email, admin_msg.as_string())
+        server.sendmail(site.smtp_user, submission.email, visitor_msg.as_string())
+        server.quit()
+
+        logger.info(f"Contact emails sent for submission from {submission.name}")
+
+    except Exception as e:
+        logger.error(f"Failed to send contact emails: {e}")
+
+
+# ============================================================
 # Page 1: Home
 # ============================================================
 def home(request):
     """Landing page with hero, services overview, stats, and partnerships."""
+    lang = _lang()
     services_list = [
         {
             'icon': 'fas fa-flask',
@@ -81,6 +195,10 @@ def home(request):
             'rating': 5,
         },
     ]
+
+    # Partners from DB
+    partners = Partner.objects.filter(is_active=True)
+
     # Latest blog posts for homepage
     latest_posts = BlogPost.objects.filter(status='published').order_by('-published_at')[:3]
 
@@ -88,7 +206,9 @@ def home(request):
         'services': services_list,
         'stats': stats,
         'testimonials': testimonials,
+        'partners': partners,
         'latest_posts': latest_posts,
+        'lang': lang,
         'page_title': _('Accueil'),
         'meta_description': _(
             'Laboratoire International d\'Analyses Médicales à Tanger. '
@@ -104,26 +224,11 @@ def home(request):
 # ============================================================
 def about(request):
     """About page with company history, values, team, and certifications."""
-    team = [
-        {
-            'name': 'Dr. Youssef El Mansouri',
-            'role': _('Directeur Général & Biologiste'),
-            'bio': _('Plus de 20 ans d\'expérience en biologie médicale. Diplômé de la Faculté de Médecine et Pharmacie de Rabat.'),
-            'initials': 'YM',
-        },
-        {
-            'name': 'Dr. Fatima Zahra Benali',
-            'role': _('Biologiste Spécialiste'),
-            'bio': _('Spécialiste en hématologie et immunologie. Formation complémentaire à l\'Institut Pasteur de Paris.'),
-            'initials': 'FB',
-        },
-        {
-            'name': 'Dr. Karim Tazi',
-            'role': _('Responsable Qualité'),
-            'bio': _('Expert en assurance qualité des laboratoires. Certifié ISO 15189 et accrédité COFRAC.'),
-            'initials': 'KT',
-        },
-    ]
+    lang = _lang()
+
+    # Team from DB
+    team = TeamMember.objects.filter(is_active=True)
+
     values = [
         {
             'icon': 'fas fa-award',
@@ -155,6 +260,7 @@ def about(request):
         'team': team,
         'values': values,
         'certifications': certifications,
+        'lang': lang,
         'page_title': _('À propos'),
         'meta_description': _(
             'Découvrez Laboratoire International, plus de 25 ans d\'expertise '
@@ -292,7 +398,7 @@ def results(request):
         },
         {
             'question': _('J\'ai oublié mes identifiants, que faire ?'),
-            'answer': _('Contactez-nous au +212 5 39 31 39 47 ou rendez-vous directement au laboratoire avec une pièce d\'identité pour récupérer vos identifiants.'),
+            'answer': _('Contactez-nous par téléphone ou rendez-vous directement au laboratoire avec une pièce d\'identité pour récupérer vos identifiants.'),
         },
     ]
     context = {
@@ -384,7 +490,7 @@ def contact(request):
         'page_title': _('Contact'),
         'meta_description': _(
             'Contactez Laboratoire International à Tanger. '
-            'Appelez-nous au +212 5 39 31 39 47 ou envoyez-nous un message.'
+            'Appelez-nous ou envoyez-nous un message via notre formulaire de contact.'
         ),
     }
     return render(request, 'core/contact.html', context)
@@ -392,7 +498,8 @@ def contact(request):
 
 @require_POST
 def contact_submit(request):
-    """Handle contact form submission — save to DB and return JSON."""
+    """Handle contact form submission — save to DB, send emails, return JSON."""
+    lang = _lang()
     try:
         data = json.loads(request.body)
         submission = ContactSubmission.objects.create(
@@ -402,11 +509,19 @@ def contact_submit(request):
             service_type=data.get('service_type', 'general'),
             message=data.get('message', '').strip(),
         )
+
+        # Send email notifications (async-safe: won't block response on failure)
+        try:
+            _send_contact_emails(submission, lang)
+        except Exception as e:
+            logger.error(f"Email sending failed: {e}")
+
         return JsonResponse({
             'success': True,
             'message': str(_('Votre message a été envoyé avec succès! Nous vous contacterons bientôt.')),
         })
     except Exception as e:
+        logger.error(f"Contact submission error: {e}")
         return JsonResponse({
             'success': False,
             'message': str(_('Une erreur est survenue. Veuillez réessayer.')),
@@ -431,10 +546,10 @@ def legal_privacy(request):
 def legal_terms(request):
     """Terms of Service page."""
     context = {
-        'page_title': _('Conditions d\'Utilisation'),
+        'page_title': _("Conditions d'Utilisation"),
         'meta_description': _(
-            'Conditions générales d\'utilisation du site web '
-            'de Laboratoire International.'
+            "Conditions générales d'utilisation du site web "
+            "de Laboratoire International."
         ),
     }
     return render(request, 'core/legal_terms.html', context)
@@ -457,10 +572,16 @@ def legal_cookies(request):
 # ============================================================
 def robots_txt(request):
     """Serve robots.txt."""
+    try:
+        site = SiteSettings.load()
+        domain = site.site_domain
+    except Exception:
+        domain = getattr(settings, 'SITE_DOMAIN', 'laboratoireinternational.com')
+
     lines = [
         "User-agent: *",
         "Allow: /",
         "",
-        f"Sitemap: https://{settings.SITE_DOMAIN}/sitemap.xml",
+        f"Sitemap: https://{domain}/sitemap.xml",
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")

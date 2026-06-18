@@ -1,119 +1,120 @@
-"""Compile .po files to .mo files using Python's msgfmt module."""
-import os
-import sys
-
-# Python ships with Tools/i18n/msgfmt.py or we can use the msgfmt module
-try:
-    from Tools.i18n import msgfmt as _msgfmt
-except ImportError:
-    pass
-
+"""Compile all .po files to .mo files using pure Python — with proper headers and escaping."""
 import struct
+import os
+import re
 import codecs
 
-def unescape(val):
-    return codecs.escape_decode(val.encode('utf-8'))[0].decode('utf-8')
-
-def compile_po(po_path, mo_path):
-    """Minimal .po to .mo compiler."""
+def compile_po(po_path):
+    mo_path = po_path.replace('.po', '.mo')
     messages = {}
-    msgid = None
-    msgstr_lines = []
-    in_msgstr = False
     
     with open(po_path, 'r', encoding='utf-8') as f:
-        for line in f:
-            line = line.strip()
-            if not line or line.startswith('#'):
-                continue
-            
-            if line.startswith('msgid '):
-                if msgid is not None and in_msgstr:
-                    clean_id = unescape(msgid)
-                    clean_str = unescape(''.join(msgstr_lines))
-                    messages[clean_id] = clean_str
-                msgid_text = line[6:].strip('"')
-                msgid = msgid_text
-                msgstr_lines = []
-                in_msgstr = False
-            elif line.startswith('msgstr '):
-                msgstr_text = line[7:].strip('"')
-                msgstr_lines = [msgstr_text]
-                in_msgstr = True
-            elif line.startswith('"') and in_msgstr:
-                msgstr_lines.append(line.strip('"'))
-            elif line.startswith('"') and not in_msgstr:
-                msgid = (msgid or '') + line.strip('"')
+        lines = f.readlines()
         
-        if msgid is not None and in_msgstr:
-            clean_id = unescape(msgid)
-            clean_str = unescape(''.join(msgstr_lines))
-            messages[clean_id] = clean_str
+    entry = {'msgid': None, 'msgstr': None}
+    current_key = None # 'msgid' or 'msgstr'
     
-    # We MUST keep the empty msgid (header) because it contains the charset info!
-    # Remove entries with empty translations (but keep the empty msgid header)
-    messages = {k: v for k, v in messages.items() if v or k == ''}
+    def unescape(s):
+        if s is None:
+            return ""
+        # codecs.escape_decode parses escape sequences like \n, \t, \", \\ etc.
+        try:
+            return codecs.escape_decode(s.encode('utf-8'))[0].decode('utf-8')
+        except Exception:
+            return s
+
+    def add_current_entry():
+        if entry['msgid'] is not None and entry['msgstr'] is not None:
+            msgid = unescape(entry['msgid'])
+            msgstr = unescape(entry['msgstr'])
+            messages[msgid] = msgstr
+            entry['msgid'] = None
+            entry['msgstr'] = None
+
+    for line in lines:
+        line = line.strip()
+        if not line or line.startswith('#'):
+            continue
+            
+        if line.startswith('msgid '):
+            add_current_entry()
+            m = re.match(r'^msgid\s+"(.*)"$', line)
+            if m:
+                entry['msgid'] = m.group(1)
+                current_key = 'msgid'
+        elif line.startswith('msgstr '):
+            m = re.match(r'^msgstr\s+"(.*)"$', line)
+            if m:
+                entry['msgstr'] = m.group(1)
+                current_key = 'msgstr'
+        elif line.startswith('"') and line.endswith('"'):
+            m = re.match(r'^"(.*)"$', line)
+            if m and current_key:
+                entry[current_key] += m.group(1)
+                
+    add_current_entry()
     
-    # Build .mo file
+    # Ensure there is a charset header
+    if '' not in messages or 'charset=' not in messages['']:
+        messages[''] = (
+            'Content-Type: text/plain; charset=UTF-8\n'
+            'Content-Transfer-Encoding: 8bit\n'
+        )
+    else:
+        # Force charset to UTF-8 just in case
+        header = messages['']
+        if 'charset=ascii' in header.lower():
+            header = re.sub(r'charset=\S+', 'charset=UTF-8', header, flags=re.IGNORECASE)
+            messages[''] = header
+
+    # Build MO file
     keys = sorted(messages.keys())
-    offsets = []
-    ids = b''
-    strs = b''
+    n = len(keys)
+    
+    keystart = 28
+    valuestart = keystart + n * 8
+    data_start = valuestart + n * 8
+    
+    ids_data = b''
+    strs_data = b''
+    key_offsets = []
+    val_offsets = []
     
     for key in keys:
         id_bytes = key.encode('utf-8')
         str_bytes = messages[key].encode('utf-8')
-        offsets.append((len(ids), len(id_bytes), len(strs), len(str_bytes)))
-        ids += id_bytes + b'\x00'
-        strs += str_bytes + b'\x00'
+        key_offsets.append((len(id_bytes), len(ids_data)))
+        val_offsets.append((len(str_bytes), len(strs_data)))
+        ids_data += id_bytes + b'\0'
+        strs_data += str_bytes + b'\0'
     
-    n = len(keys)
-    keystart = 28
-    valuestart = keystart + n * 8
-    koffsets = []
-    voffsets = []
+    ids_offset = data_start
+    strs_offset = data_start + len(ids_data)
     
-    ids_start = valuestart + n * 8
-    strs_start = ids_start + len(ids)
-    
-    for o in offsets:
-        koffsets.append((o[1], ids_start + o[0]))
-        voffsets.append((o[3], strs_start + o[2]))
-    
-    output = struct.pack('Iiiiiii',
-        0x950412de,  # Magic
-        0,           # Version
-        n,           # Number of strings
-        keystart,    # Offset of key table
-        valuestart,  # Offset of value table
-        0,           # Size of hashing table
-        0,           # Offset of hashing table
+    output = struct.pack(
+        'Iiiiiii',
+        0x950412de, 0, n, keystart, valuestart, 0, 0
     )
     
-    for length, offset in koffsets:
-        output += struct.pack('ii', length, offset)
-    for length, offset in voffsets:
-        output += struct.pack('ii', length, offset)
+    for length, offset in key_offsets:
+        output += struct.pack('ii', length, ids_offset + offset)
     
-    output += ids + strs
+    for length, offset in val_offsets:
+        output += struct.pack('ii', length, strs_offset + offset)
     
-    os.makedirs(os.path.dirname(mo_path), exist_ok=True)
+    output += ids_data + strs_data
+    
     with open(mo_path, 'wb') as f:
         f.write(output)
     
-    return n
+    print(f'  Compiled: {mo_path} ({n} entries)')
 
-# Find and compile all .po files
-base = os.path.dirname(os.path.abspath(__file__))
-locale_dir = os.path.join(base, 'locale')
-total = 0
+languages = ['ar', 'de', 'en', 'es', 'it', 'nl']
+for lang in languages:
+    po_file = os.path.join('locale', lang, 'LC_MESSAGES', 'django.po')
+    if os.path.exists(po_file):
+        compile_po(po_file)
+    else:
+        print(f'  Missing: {po_file}')
 
-for lang in os.listdir(locale_dir):
-    po_path = os.path.join(locale_dir, lang, 'LC_MESSAGES', 'django.po')
-    mo_path = os.path.join(locale_dir, lang, 'LC_MESSAGES', 'django.mo')
-    if os.path.exists(po_path):
-        n = compile_po(po_path, mo_path)
-        print(f'{lang}: compiled {n} messages -> {mo_path}')
-        total += n
-
-print(f'\nTotal: {total} messages compiled')
+print('All translations compiled!')

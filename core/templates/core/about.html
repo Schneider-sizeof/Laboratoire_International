@@ -75,10 +75,16 @@
         <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {% for member in team %}
             <div class="team-card fade-in" style="transition-delay: {{ forloop.counter0 }}00ms">
+                {% if member.photo %}
+                <div class="w-20 h-20 rounded-full overflow-hidden mx-auto mb-4 border-4 border-primary-100">
+                    <img src="{{ member.photo.url }}" alt="{{ member.name }}" class="w-full h-full object-cover" loading="lazy">
+                </div>
+                {% else %}
                 <div class="team-avatar">{{ member.initials }}</div>
+                {% endif %}
                 <h3 class="text-lg font-bold text-dark-900 mb-1">{{ member.name }}</h3>
-                <p class="text-sm text-primary-500 font-semibold mb-3">{{ member.role }}</p>
-                <p class="text-sm text-dark-500 leading-relaxed">{{ member.bio }}</p>
+                <p class="text-sm text-primary-500 font-semibold mb-3">{{ member.get_role }}</p>
+                <p class="text-sm text-dark-500 leading-relaxed">{{ member.get_bio }}</p>
             </div>
             {% endfor %}
         </div>

@@ -63,6 +63,9 @@ msgstr "Your health is"
 msgid "Notre propriété"
 msgstr "Our priority"
 
+msgid "Notre priorité"
+msgstr "Our priority"
+
 msgid "Résultats en moins de 24 heures. Analyses médicales de précision à Tanger."
 msgstr "Results in less than 24 hours. Precision medical analyses in Tangier."
 
@@ -900,3 +903,34 @@ msgstr "legal/cookies/"
 # Slogan
 msgid "Analyses Médicales"
 msgstr "Medical Laboratory"
+
+# New strings (v2.0)
+msgid "Notre priorité"
+msgstr "Our priority"
+
+msgid "Visiter"
+msgstr "Visit"
+
+msgid "Contactez-nous sur WhatsApp"
+msgstr "Contact us on WhatsApp"
+
+msgid "Page non trouvée"
+msgstr "Page not found"
+
+msgid "La page que vous recherchez n'existe pas ou a été déplacée."
+msgstr "The page you are looking for does not exist or has been moved."
+
+msgid "Retour à l'accueil"
+msgstr "Back to home"
+
+msgid "Erreur serveur"
+msgstr "Server error"
+
+msgid "Une erreur inattendue s'est produite. Notre équipe technique a été notifiée. Veuillez réessayer plus tard."
+msgstr "An unexpected error occurred. Our technical team has been notified. Please try again later."
+
+msgid "Contactez Laboratoire International à Tanger. Appelez-nous ou envoyez-nous un message via notre formulaire de contact."
+msgstr "Contact Laboratoire International in Tangier. Call us or send us a message via our contact form."
+
+msgid "Contactez-nous par téléphone ou rendez-vous directement au laboratoire avec une pièce d'identité pour récupérer vos identifiants."
+msgstr "Contact us by phone or visit the laboratory directly with a valid ID to retrieve your credentials."

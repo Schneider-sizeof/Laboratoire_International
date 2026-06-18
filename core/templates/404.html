@@ -1,0 +1,33 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — {% trans "Page non trouvée" %} | Laboratoire International</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; color: #fff; }
+        .container { text-align: center; padding: 2rem; max-width: 520px; }
+        .code { font-size: clamp(5rem, 15vw, 8rem); font-weight: 800; background: linear-gradient(135deg, #42A5F5, #26C6DA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+        .title { font-size: 1.5rem; font-weight: 700; margin: 1rem 0 0.5rem; }
+        .desc { color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 2rem; }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 2rem; background: #1976D2; color: #fff; text-decoration: none; border-radius: 9999px; font-weight: 600; font-size: 0.95rem; transition: all 0.3s; }
+        .btn:hover { background: #1565C0; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(25,118,210,0.3); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="code">404</div>
+        <h1 class="title">{% trans "Page non trouvée" %}</h1>
+        <p class="desc">{% trans "La page que vous recherchez n'existe pas ou a été déplacée." %}</p>
+        <a href="/" class="btn">
+            <i class="fas fa-home"></i>
+            {% trans "Retour à l'accueil" %}
+        </a>
+    </div>
+</body>
+</html>

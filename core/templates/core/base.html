@@ -9,14 +9,14 @@
     <meta name="description" content="{% block meta_description %}{{ meta_description|default:'' }}{% endblock %}">
     <meta name="author" content="{{ SITE_NAME }}">
     <meta name="robots" content="index, follow">
-    <title>{% block title %}{{ page_title|default:'Accueil' }}{% endblock %} | {{ SITE_NAME }} — {{ SITE_SLOGAN }}</title>
+    <title>{% block title %}{{ page_title|default:SITE_NAME }}{% endblock %} | {{ SITE_NAME }} — {{ SITE_SLOGAN }}</title>
 
     <!-- Canonical & hreflang -->
     <link rel="canonical" href="https://{{ SITE_DOMAIN }}{{ request.path }}">
     {% for lang_code, lang_name in LANGUAGES %}
-    <link rel="alternate" hreflang="{{ lang_code }}" href="https://{{ SITE_DOMAIN }}/{{ lang_code }}{{ request.path|cut:CURRENT_LANG }}">
+    <link rel="alternate" hreflang="{{ lang_code }}" href="https://{{ SITE_DOMAIN }}/{{ lang_code }}/">
     {% endfor %}
-    <link rel="alternate" hreflang="x-default" href="https://{{ SITE_DOMAIN }}/fr{{ request.path }}">
+    <link rel="alternate" hreflang="x-default" href="https://{{ SITE_DOMAIN }}/fr/">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,15 +27,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
 
     <!-- Tailwind CSS (compiled) -->
-    <link rel="stylesheet" href="{% static 'core/css/style.css' %}?v=1.2">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}?v=2.0">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="{{ page_title|default:'Accueil' }} | {{ SITE_NAME }}">
+    <meta property="og:title" content="{{ page_title|default:SITE_NAME }} | {{ SITE_NAME }}">
     <meta property="og:description" content="{{ meta_description|default:'' }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://{{ SITE_DOMAIN }}{{ request.path }}">
     <meta property="og:site_name" content="{{ SITE_NAME }}">
     <meta property="og:locale" content="{{ CURRENT_LANG }}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ page_title|default:SITE_NAME }} | {{ SITE_NAME }}">
+    <meta name="twitter:description" content="{{ meta_description|default:'' }}">
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -43,7 +48,7 @@
         "@context": "https://schema.org",
         "@type": "MedicalBusiness",
         "name": "{{ SITE_NAME }}",
-        "alternateName": "Laboratoire International d'Analyses Médicales",
+        "alternateName": "LIAM - Laboratoire International d'Analyses Médicales",
         "url": "https://{{ SITE_DOMAIN }}",
         "telephone": "{{ SITE_PHONE }}",
         "email": "{{ SITE_EMAIL }}",
@@ -68,7 +73,8 @@
             }
         ],
         "priceRange": "$$",
-        "sameAs": []
+        "image": "https://{{ SITE_DOMAIN }}/static/core/images/logo.png",
+        "sameAs": [{% for link in SOCIAL_LINKS %}{% if link.name != 'WhatsApp' %}"{{ link.url }}"{% if not forloop.last %},{% endif %}{% endif %}{% endfor %}]
     }
     </script>
 
@@ -101,7 +107,6 @@
                     <a href="{% url 'core:home' %}" class="nav-link {% if active_page == 'home' %}active{% endif %}">{% trans "Accueil" %}</a>
                     <a href="{% url 'core:about' %}" class="nav-link {% if active_page == 'about' %}active{% endif %}">{% trans "À propos" %}</a>
                     <a href="{% url 'core:services' %}" class="nav-link {% if active_page == 'services' %}active{% endif %}">{% trans "Services" %}</a>
-                    <a href="{% url 'core:results' %}" class="nav-link {% if active_page == 'results' %}active{% endif %}">{% trans "Résultats" %}</a>
                     <a href="{% url 'core:blog_list' %}" class="nav-link {% if active_page == 'blog_list' or active_page == 'blog_detail' %}active{% endif %}">{% trans "Blog" %}</a>
                     <a href="{% url 'core:contact' %}" class="nav-link {% if active_page == 'contact' %}active{% endif %}">{% trans "Contact" %}</a>
                     {% endwith %}
@@ -123,7 +128,7 @@
                                 <input type="hidden" name="language" value="{{ lang_code }}">
                                 <input type="hidden" name="next" value="{{ request.path }}">
                                 <button type="submit" class="lang-option w-full text-left {% if lang_code == CURRENT_LANG %}active{% endif %} flex items-center gap-2.5" role="menuitem">
-                                    <img src="https://flagcdn.com/16x12/{% if lang_code == 'fr' %}fr{% elif lang_code == 'en' %}gb{% elif lang_code == 'ar' %}ma{% elif lang_code == 'nl' %}nl{% elif lang_code == 'de' %}de{% elif lang_code == 'es' %}es{% endif %}.png" width="16" height="12" alt="{{ lang_code|upper }}" class="rounded-sm flex-shrink-0">
+                                    <img src="https://flagcdn.com/16x12/{% if lang_code == 'fr' %}fr{% elif lang_code == 'en' %}gb{% elif lang_code == 'ar' %}ma{% elif lang_code == 'nl' %}nl{% elif lang_code == 'de' %}de{% elif lang_code == 'es' %}es{% elif lang_code == 'it' %}it{% endif %}.png" width="16" height="12" alt="{{ lang_code|upper }}" class="rounded-sm flex-shrink-0">
                                     <span>{{ lang_name }}</span>
                                 </button>
                             </form>
@@ -176,9 +181,6 @@
             <a href="{% url 'core:services' %}" class="mobile-nav-link {% if active_page == 'services' %}active{% endif %}">
                 <i class="fas fa-vials w-5 text-center"></i> {% trans "Services" %}
             </a>
-            <a href="{% url 'core:results' %}" class="mobile-nav-link {% if active_page == 'results' %}active{% endif %}">
-                <i class="fas fa-file-medical w-5 text-center"></i> {% trans "Résultats" %}
-            </a>
             <a href="{% url 'core:blog_list' %}" class="mobile-nav-link {% if active_page == 'blog_list' or active_page == 'blog_detail' %}active{% endif %}">
                 <i class="fas fa-newspaper w-5 text-center"></i> {% trans "Blog" %}
             </a>
@@ -201,7 +203,7 @@
                     <input type="hidden" name="language" value="{{ lang_code }}">
                     <input type="hidden" name="next" value="{{ request.path }}">
                     <button type="submit" class="w-full px-2 py-2 text-xs rounded-lg text-center transition-colors flex items-center justify-center gap-1.5 {% if lang_code == CURRENT_LANG %}bg-primary-50 text-primary-600 font-bold{% else %}text-dark-500 hover:bg-dark-50{% endif %}">
-                        <img src="https://flagcdn.com/16x12/{% if lang_code == 'fr' %}fr{% elif lang_code == 'en' %}gb{% elif lang_code == 'ar' %}ma{% elif lang_code == 'nl' %}nl{% elif lang_code == 'de' %}de{% elif lang_code == 'es' %}es{% endif %}.png" width="16" height="12" alt="{{ lang_code|upper }}" class="rounded-sm flex-shrink-0">
+                        <img src="https://flagcdn.com/16x12/{% if lang_code == 'fr' %}fr{% elif lang_code == 'en' %}gb{% elif lang_code == 'ar' %}ma{% elif lang_code == 'nl' %}nl{% elif lang_code == 'de' %}de{% elif lang_code == 'es' %}es{% elif lang_code == 'it' %}it{% endif %}.png" width="16" height="12" alt="{{ lang_code|upper }}" class="rounded-sm flex-shrink-0">
                         <span>{{ lang_code|upper }}</span>
                     </button>
                 </form>
@@ -237,9 +239,17 @@
                     </div>
                     <p class="text-sm text-dark-400 mb-6 leading-relaxed">{{ SITE_SLOGAN }}</p>
                     <div class="flex gap-3">
-                        <a href="#" class="w-10 h-10 bg-dark-800 hover:bg-primary-500 rounded-lg flex items-center justify-center text-dark-400 hover:text-white transition-all duration-200" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="w-10 h-10 bg-dark-800 hover:bg-primary-500 rounded-lg flex items-center justify-center text-dark-400 hover:text-white transition-all duration-200" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/212539313947" class="w-10 h-10 bg-dark-800 hover:bg-green-500 rounded-lg flex items-center justify-center text-dark-400 hover:text-white transition-all duration-200" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        {% for link in SOCIAL_LINKS %}
+                        <a href="{{ link.url }}" {% if 'wa.me' in link.url %}target="_blank" rel="noopener"{% endif %} class="w-10 h-10 bg-dark-800 {{ link.color }} rounded-lg flex items-center justify-center text-dark-400 hover:text-white transition-all duration-200" aria-label="{{ link.name }}">
+                            <i class="{{ link.icon }}"></i>
+                        </a>
+                        {% empty %}
+                        {% if SITE_WHATSAPP %}
+                        <a href="https://wa.me/{{ SITE_WHATSAPP }}" target="_blank" rel="noopener" class="w-10 h-10 bg-dark-800 hover:bg-green-500 rounded-lg flex items-center justify-center text-dark-400 hover:text-white transition-all duration-200" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
 
@@ -286,7 +296,7 @@
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fas fa-clock text-primary-400"></i>
-                            <span class="text-dark-400">07:00–19:00</span>
+                            <span class="text-dark-400">{{ OPENING_DAYS }}: {{ OPENING_HOURS }}</span>
                         </li>
                     </ul>
                 </div>
@@ -321,6 +331,16 @@
             </div>
         </div>
     </footer>
+
+    <!-- ========== FLOATING WHATSAPP BUTTON ========== -->
+    {% if SITE_WHATSAPP %}
+    <a href="https://wa.me/{{ SITE_WHATSAPP }}" target="_blank" rel="noopener"
+       class="whatsapp-float"
+       aria-label="{% trans 'Contactez-nous sur WhatsApp' %}"
+       id="whatsappFloat">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+    {% endif %}
 
     <!-- ========== BACK TO TOP ========== -->
     <button type="button" id="backToTop" class="back-to-top" aria-label="{% trans 'Retour en haut' %}">

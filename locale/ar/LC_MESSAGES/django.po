@@ -1,10 +1,8 @@
 # Arabic translations for Laboratoire International
 # Copyright (C) 2024 Laboratoire International
-# This file is distributed under the same license as the labinternational package.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: Laboratoire International 1.0\n"
+"Project-Id-Version: Laboratoire International 2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-01 00:00+0000\n"
 "PO-Revision-Date: 2024-01-01 00:00+0000\n"
@@ -14,7 +12,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 
 # Navigation
 msgid "Accueil"
@@ -24,7 +22,7 @@ msgid "À propos"
 msgstr "من نحن"
 
 msgid "Services"
-msgstr "خدماتنا"
+msgstr "الخدمات"
 
 msgid "Résultats"
 msgstr "النتائج"
@@ -36,7 +34,7 @@ msgid "Contact"
 msgstr "اتصل بنا"
 
 msgid "Analyses Médicales"
-msgstr "التحاليل الطبية"
+msgstr "مختبر التحاليل الطبية"
 
 msgid "Mes Résultats"
 msgstr "نتائجي"
@@ -51,7 +49,7 @@ msgid "Fermer le menu"
 msgstr "إغلاق القائمة"
 
 msgid "Menu mobile"
-msgstr "القائمة المحمولة"
+msgstr "القائمة المتنقلة"
 
 msgid "Langue"
 msgstr "اللغة"
@@ -61,6 +59,9 @@ msgid "Votre santé est"
 msgstr "صحتكم هي"
 
 msgid "Notre propriété"
+msgstr "أولويتنا"
+
+msgid "Notre priorité"
 msgstr "أولويتنا"
 
 msgid "Résultats en moins de 24 heures. Analyses médicales de précision à Tanger."
@@ -85,30 +86,30 @@ msgid "Expertise Médicale"
 msgstr "الخبرة الطبية"
 
 msgid "Un large éventail d'analyses médicales réalisées avec des équipements de dernière génération."
-msgstr "مجموعة واسعة من التحاليل الطبية بأحدث المعدات."
+msgstr "مجموعة واسعة من التحاليل الطبية المنجزة بأحدث التجهيزات."
 
 msgid "En savoir plus"
-msgstr "اقرأ المزيد"
+msgstr "اعرف المزيد"
 
 # Stats
 msgid "Années d'Expérience"
 msgstr "سنوات الخبرة"
 
 msgid "Analyses par An"
-msgstr "تحليل سنوياً"
+msgstr "تحليل في السنة"
 
 msgid "Taux de Précision"
 msgstr "نسبة الدقة"
 
 msgid "Service Continu"
-msgstr "خدمة مستمرة"
+msgstr "خدمة متواصلة"
 
 # Services
 msgid "Biochimie"
 msgstr "الكيمياء الحيوية"
 
 msgid "Analyses biochimiques complètes incluant glycémie, cholestérol, bilan hépatique et rénal."
-msgstr "تحاليل كيميائية حيوية شاملة تشمل السكر والكولسترول وفحوصات الكبد والكلى."
+msgstr "تحاليل كيميائية حيوية شاملة تشمل السكر في الدم، الكوليسترول، فحص الكبد والكلى."
 
 msgid "Hématologie"
 msgstr "أمراض الدم"
@@ -117,32 +118,32 @@ msgid "Numération formule sanguine, vitesse de sédimentation, bilan de coagula
 msgstr "تعداد الدم الكامل، سرعة الترسيب، فحص التخثر."
 
 msgid "Microbiologie"
-msgstr "الأحياء الدقيقة"
+msgstr "علم الأحياء الدقيقة"
 
 msgid "Culture bactérienne, antibiogramme, examen cytobactériologique des urines."
-msgstr "زراعة بكتيرية، مضاد حيوي، فحص البول الجرثومي."
+msgstr "زراعة بكتيرية، مضاد حيوي، فحص البول الخلوي البكتيري."
 
-msgid "Sérologie &amp; Immunologie"
+msgid "Sérologie & Immunologie"
 msgstr "الأمصال والمناعة"
 
 msgid "Dépistage des maladies infectieuses, bilan immunitaire, tests sérologiques."
-msgstr "فحص الأمراض المعدية، تقييم المناعة، اختبارات مصلية."
+msgstr "الكشف عن الأمراض المعدية، فحص المناعة، اختبارات مصلية."
 
-msgid "Fertilité &amp; Gynécologie"
+msgid "Fertilité & Gynécologie"
 msgstr "الخصوبة وأمراض النساء"
 
 msgid "Bilan hormonal, spermogramme, suivi de grossesse, dépistage prénatal."
-msgstr "فحص هرموني، تحليل الحيوانات المنوية، متابعة الحمل، فحص ما قبل الولادة."
+msgstr "فحص هرموني، تحليل السائل المنوي، متابعة الحمل، فحص ما قبل الولادة."
 
-msgid "PCR &amp; Virologie"
-msgstr "تحاليل PCR والفيروسات"
+msgid "PCR & Virologie"
+msgstr "PCR والفيروسات"
 
 msgid "Tests PCR, charge virale, dépistage COVID-19, hépatites et autres virus."
-msgstr "اختبارات PCR، الحمل الفيروسي، فحص كوفيد-19، التهاب الكبد وفيروسات أخرى."
+msgstr "اختبارات PCR، الحمل الفيروسي، الكشف عن كوفيد-19، التهاب الكبد وفيروسات أخرى."
 
 # Partnerships
 msgid "Partenariats"
-msgstr "شراكاتنا"
+msgstr "الشراكات"
 
 msgid "Nos Partenaires de Confiance"
 msgstr "شركاؤنا الموثوقون"
@@ -151,17 +152,17 @@ msgid "Nous collaborons avec les plus grands réseaux de diagnostic pour vous ga
 msgstr "نتعاون مع أكبر شبكات التشخيص لضمان نتائج مرجعية."
 
 msgid "Réseau européen de diagnostic de référence. Leader en biologie spécialisée avec plus de 50 ans d'expertise."
-msgstr "شبكة تشخيص مرجعية أوروبية. رائدة في البيولوجيا المتخصصة مع أكثر من 50 سنة خبرة."
+msgstr "شبكة التشخيص المرجعية الأوروبية. رائدة في علم الأحياء المتخصص مع أكثر من 50 عامًا من الخبرة."
 
 msgid "Lab National Mohammed VI"
-msgstr "المختبر الوطني Mohammed VI"
+msgstr "المختبر الوطني محمد السادس"
 
 msgid "Laboratoire national de référence du Maroc. Partenaire pour les analyses spécialisées et le contrôle qualité."
-msgstr "المختبر الوطني المرجعي للمغرب. شريك في التحاليل المتخصصة ومراقبة الجودة."
+msgstr "المختبر الوطني المرجعي بالمغرب. شريك في التحاليل المتخصصة ومراقبة الجودة."
 
 # Testimonials
 msgid "Témoignages"
-msgstr "شهادات"
+msgstr "شهادات العملاء"
 
 msgid "Ce que disent nos patients"
 msgstr "ماذا يقول مرضانا"
@@ -170,17 +171,17 @@ msgid "Service excellent et rapide. Les résultats sont disponibles en quelques 
 msgstr "خدمة ممتازة وسريعة. النتائج متاحة في غضون ساعات. أنصح بشدة!"
 
 msgid "Équipe très professionnelle et accueillante. Les analyses sont toujours précises."
-msgstr "فريق محترف ومرحب للغاية. التحاليل دقيقة دائماً."
+msgstr "فريق محترف ومرحب للغاية. التحاليل دائمًا دقيقة."
 
 msgid "Le meilleur laboratoire de Tanger. Résultats rapides et personnel très compétent."
-msgstr "أفضل مختبر في طنجة. نتائج سريعة وطاقم كفء جداً."
+msgstr "أفضل مختبر في طنجة. نتائج سريعة وطاقم كفء جدًا."
 
 # CTA
 msgid "Besoin d'une analyse ?"
 msgstr "هل تحتاج إلى تحليل؟"
 
 msgid "Rendez-vous disponible immédiatement. Résultats en moins de 24 heures."
-msgstr "موعد متاح فوراً. نتائج في أقل من 24 ساعة."
+msgstr "مواعيد متاحة فورًا. نتائج في أقل من 24 ساعة."
 
 msgid "Prendre Rendez-vous"
 msgstr "حجز موعد"
@@ -190,15 +191,15 @@ msgstr "اتصل الآن"
 
 # Blog
 msgid "Actualités"
-msgstr "أخبار"
+msgstr "الأخبار"
 
 msgid "Derniers Articles"
-msgstr "أحدث المقالات"
+msgstr "آخر المقالات"
 
 msgid "Lire la suite"
 msgstr "اقرأ المزيد"
 
-msgid "Blog &amp; Actualités"
+msgid "Blog & Actualités"
 msgstr "المدونة والأخبار"
 
 msgid "Articles et conseils santé par nos experts."
@@ -214,7 +215,7 @@ msgid "Aucun article trouvé"
 msgstr "لم يتم العثور على مقالات"
 
 msgid "Revenez bientôt pour découvrir nos prochains articles."
-msgstr "عودوا قريباً لاكتشاف مقالاتنا القادمة."
+msgstr "عد قريبًا لاكتشاف مقالاتنا القادمة."
 
 msgid "Voir tous les articles"
 msgstr "عرض جميع المقالات"
@@ -238,29 +239,29 @@ msgid "Contactez-nous"
 msgstr "اتصل بنا"
 
 msgid "Partager cet article"
-msgstr "مشاركة هذا المقال"
+msgstr "شارك هذا المقال"
 
 # About Page
 msgid "À propos de nous"
 msgstr "من نحن"
 
 msgid "Plus de 25 ans d'excellence en analyses médicales au service de votre santé."
-msgstr "أكثر من 25 عاماً من التميز في التحاليل الطبية في خدمة صحتكم."
+msgstr "أكثر من 25 عامًا من التميز في التحاليل الطبية في خدمة صحتكم."
 
 msgid "Notre Histoire"
-msgstr "تاريخنا"
+msgstr "قصتنا"
 
 msgid "Un laboratoire de référence à Tanger"
 msgstr "مختبر مرجعي في طنجة"
 
 msgid "Fondé il y a plus de 25 ans, Laboratoire International s'est imposé comme un acteur majeur du diagnostic médical à Tanger et dans la région du Nord du Maroc."
-msgstr "تأسس منذ أكثر من 25 عاماً، وقد رسّخ Laboratoire International مكانته كفاعل رئيسي في التشخيص الطبي في طنجة ومنطقة شمال المغرب."
+msgstr "تأسس قبل أكثر من 25 عامًا، وأصبح المختبر الدولي فاعلاً رئيسيًا في التشخيص الطبي في طنجة ومنطقة شمال المغرب."
 
 msgid "Notre engagement envers l'excellence nous a conduits à établir des partenariats stratégiques avec Cerba Lab, réseau européen de référence, et le Laboratoire National Mohammed VI d'Analyses Médicales."
-msgstr "قادنا التزامنا بالتميز إلى إقامة شراكات استراتيجية مع Cerba Lab، الشبكة المرجعية الأوروبية، والمختبر الوطني Mohammed VI للتحاليل الطبية."
+msgstr "التزامنا بالتميز قادنا إلى إقامة شراكات استراتيجية مع Cerba Lab، الشبكة الأوروبية المرجعية، والمختبر الوطني محمد السادس للتحاليل الطبية."
 
 msgid "Équipé des technologies les plus avancées et doté d'une équipe de biologistes hautement qualifiés, nous garantissons des résultats fiables en moins de 24 heures."
-msgstr "مجهز بأحدث التقنيات ويضم فريقاً من أخصائيي البيولوجيا ذوي الكفاءة العالية، نضمن نتائج موثوقة في أقل من 24 ساعة."
+msgstr "مجهز بأحدث التقنيات ويضم فريقًا من علماء الأحياء المؤهلين تأهيلاً عاليًا، نضمن نتائج موثوقة في أقل من 24 ساعة."
 
 msgid "Années d'expérience"
 msgstr "سنوات الخبرة"
@@ -284,14 +285,14 @@ msgid "Qualité certifiée"
 msgstr "جودة معتمدة"
 
 # Team
-msgid "Directeur Général &amp; Biologiste"
-msgstr "المدير العام وأخصائي البيولوجيا"
+msgid "Directeur Général & Biologiste"
+msgstr "المدير العام وعالم الأحياء"
 
 msgid "Plus de 20 ans d'expérience en biologie médicale. Diplômé de la Faculté de Médecine et Pharmacie de Rabat."
-msgstr "أكثر من 20 عاماً من الخبرة في البيولوجيا الطبية. خريج كلية الطب والصيدلة بالرباط."
+msgstr "أكثر من 20 عامًا من الخبرة في البيولوجيا الطبية. خريج كلية الطب والصيدلة بالرباط."
 
 msgid "Biologiste Spécialiste"
-msgstr "أخصائي بيولوجيا"
+msgstr "أخصائي في علم الأحياء"
 
 msgid "Spécialiste en hématologie et immunologie. Formation complémentaire à l'Institut Pasteur de Paris."
 msgstr "متخصص في أمراض الدم والمناعة. تدريب إضافي في معهد باستور بباريس."
@@ -300,26 +301,26 @@ msgid "Responsable Qualité"
 msgstr "مسؤول الجودة"
 
 msgid "Expert en assurance qualité des laboratoires. Certifié ISO 15189 et accrédité COFRAC."
-msgstr "خبير في ضمان جودة المختبرات. حاصل على شهادة ISO 15189 ومعتمد من COFRAC."
+msgstr "خبير في ضمان جودة المختبرات. حاصل على شهادة ISO 15189 واعتماد COFRAC."
 
 # Values
 msgid "Excellence"
 msgstr "التميز"
 
 msgid "Nous visons l'excellence dans chaque analyse, avec des équipements de dernière génération."
-msgstr "نسعى إلى التميز في كل تحليل، بأحدث المعدات والتجهيزات."
+msgstr "نسعى للتميز في كل تحليل، بأحدث الأجهزة."
 
 msgid "Humanité"
 msgstr "الإنسانية"
 
 msgid "Chaque patient est accueilli avec bienveillance, respect et professionnalisme."
-msgstr "نستقبل كل مريض بعناية واحترام ومهنية."
+msgstr "يُستقبل كل مريض بعناية واحترام ومهنية."
 
 msgid "Fiabilité"
 msgstr "الموثوقية"
 
 msgid "Des résultats fiables et reproductibles, conformes aux standards internationaux."
-msgstr "نتائج موثوقة وقابلة للاستنساخ، مطابقة للمعايير الدولية."
+msgstr "نتائج موثوقة وقابلة للتكرار، تتوافق مع المعايير الدولية."
 
 msgid "Innovation"
 msgstr "الابتكار"
@@ -341,113 +342,113 @@ msgstr "لجنة الاعتماد الفرنسية"
 msgid "analyses disponibles"
 msgstr "تحاليل متاحة"
 
-msgid "Glycémie à jeun &amp; postprandiale"
-msgstr "سكر الدم صائم &amp; بعد الأكل"
+msgid "Glycémie à jeun & postprandiale"
+msgstr "سكر الدم صائم وبعد الأكل"
 
 msgid "Bilan lipidique complet (Cholestérol, Triglycérides, HDL, LDL)"
-msgstr "فحص الدهون الشامل (الكولسترول، الدهون الثلاثية، HDL، LDL)"
+msgstr "فحص الدهون الكامل (كوليسترول، دهون ثلاثية، HDL، LDL)"
 
 msgid "Bilan hépatique (ASAT, ALAT, GGT, Bilirubine)"
-msgstr "فحص الكبد (ASAT، ALAT، GGT، البيليروبين)"
+msgstr "فحص الكبد (ASAT, ALAT, GGT, البيليروبين)"
 
 msgid "Bilan rénal (Urée, Créatinine, Acide urique)"
-msgstr "فحص الكلى (اليوريا، الكرياتينين، حمض اليوريك)"
+msgstr "فحص الكلى (يوريا، كرياتينين، حمض اليوريك)"
 
 msgid "Bilan pancréatique (Amylase, Lipase)"
-msgstr "فحص البنكرياس (الأميلاز، الليباز)"
+msgstr "فحص البنكرياس (أميلاز، ليباز)"
 
 msgid "Ionogramme sanguin (Na, K, Cl, Ca, Mg)"
-msgstr "تحليل الشوارد في الدم (Na، K، Cl، Ca، Mg)"
+msgstr "الأملاح المعدنية في الدم (Na, K, Cl, Ca, Mg)"
 
-msgid "Protéines totales &amp; Electrophorèse"
-msgstr "البروتينات الكلية &amp; الرحلان الكهربائي"
+msgid "Protéines totales & Electrophorèse"
+msgstr "البروتينات الكلية والرحلان الكهربائي"
 
 msgid "Marqueurs cardiaques (Troponine, BNP)"
-msgstr "دلالات القلب (التروبونين، BNP)"
+msgstr "مؤشرات القلب (تروبونين، BNP)"
 
 msgid "NFS - Numération Formule Sanguine"
-msgstr "تعداد الدم الكامل (CBC)"
+msgstr "NFS - تعداد الدم الكامل"
 
 msgid "Vitesse de Sédimentation (VS)"
-msgstr "سرعة ترسب الكريات الحمراء (VS)"
+msgstr "سرعة الترسيب (VS)"
 
 msgid "Bilan de coagulation (TP, TCA, INR)"
-msgstr "فحص التخثر (TP، TCA، INR)"
+msgstr "فحص التخثر (TP, TCA, INR)"
 
-msgid "Groupe sanguin &amp; Rhésus"
-msgstr "فصيلة الدم &amp; عامل الريزوس"
+msgid "Groupe sanguin & Rhésus"
+msgstr "فصيلة الدم والعامل الريزوسي"
 
-msgid "Test de Coombs direct &amp; indirect"
-msgstr "اختبار كومبس المباشر &amp; غير المباشر"
+msgid "Test de Coombs direct & indirect"
+msgstr "اختبار كومبس المباشر وغير المباشر"
 
 msgid "Frottis sanguin"
-msgstr "لطاخة الدم"
+msgstr "مسحة الدم"
 
 msgid "Réticulocytes"
 msgstr "الخلايا الشبكية"
 
 msgid "D-Dimères"
-msgstr "دي-دايمر"
+msgstr "D-Dimères"
 
-msgid "Sérologie HIV 1 &amp; 2"
-msgstr "مصليات فيروس نقص المناعة 1 &amp; 2"
+msgid "Sérologie HIV 1 & 2"
+msgstr "مصل HIV 1 و 2"
 
 msgid "Sérologie Hépatite B (AgHBs, AntiHBs, AntiHBc)"
-msgstr "مصليات التهاب الكبد ب (AgHBs، AntiHBs، AntiHBc)"
+msgstr "مصل التهاب الكبد B (AgHBs, AntiHBs, AntiHBc)"
 
 msgid "Sérologie Hépatite C"
-msgstr "مصليات التهاب الكبد ج"
+msgstr "مصل التهاب الكبد C"
 
 msgid "Sérologie Syphilis (TPHA, VDRL)"
-msgstr "مصليات الزهري (TPHA، VDRL)"
+msgstr "مصل الزهري (TPHA, VDRL)"
 
 msgid "Sérologie Toxoplasmose"
-msgstr "مصليات داء المقوسات"
+msgstr "مصل داء المقوسات"
 
 msgid "Sérologie Rubéole"
-msgstr "مصليات الحصبة الألمانية"
+msgstr "مصل الحصبة الألمانية"
 
-msgid "CRP &amp; Facteur Rhumatoïde"
-msgstr "CRP &amp; عامل الروماتويد"
+msgid "CRP & Facteur Rhumatoïde"
+msgstr "CRP والعامل الروماتويدي"
 
 msgid "Anticorps anti-nucléaires (ANA)"
 msgstr "الأجسام المضادة للنواة (ANA)"
 
-msgid "Hormonologie &amp; Fertilité"
-msgstr "الهرمونات &amp; الخصوبة"
+msgid "Hormonologie & Fertilité"
+msgstr "الهرمونات والخصوبة"
 
 msgid "Bilan thyroïdien (TSH, T3, T4)"
-msgstr "فحص الغدة الدرقية (TSH، T3، T4)"
+msgstr "فحص الغدة الدرقية (TSH, T3, T4)"
 
 msgid "Bilan hormonal féminin (FSH, LH, Estradiol, Progestérone)"
-msgstr "الفحص الهرموني للمرأة (FSH، LH، الإستراديول، البروجسترون)"
+msgstr "فحص الهرمونات الأنثوية (FSH, LH, إستراديول, بروجسترون)"
 
 msgid "Bilan hormonal masculin (Testostérone, PSA)"
-msgstr "الفحص الهرموني للرجل (التستوستيرون، PSA)"
+msgstr "فحص الهرمونات الذكورية (تستوستيرون، PSA)"
 
 msgid "Beta-HCG quantitatif"
-msgstr "Beta-HCG كمي"
+msgstr "Beta-HCG الكمي"
 
 msgid "Prolactine"
 msgstr "البرولاكتين"
 
-msgid "Cortisol &amp; ACTH"
-msgstr "الكورتيزول &amp; ACTH"
+msgid "Cortisol & ACTH"
+msgstr "الكورتيزول و ACTH"
 
 msgid "Spermogramme"
-msgstr "تحليل الحيوانات المنوية"
+msgstr "تحليل السائل المنوي"
 
 msgid "AMH (Hormone Anti-Müllérienne)"
 msgstr "AMH (الهرمون المضاد لمولر)"
 
 msgid "ECBU - Examen Cytobactériologique des Urines"
-msgstr "فحص البول الجرثومي الخلوي (ECBU)"
+msgstr "ECBU - فحص البول الخلوي البكتيري"
 
 msgid "Coproculture"
 msgstr "زراعة البراز"
 
-msgid "Prélèvement vaginal &amp; urétral"
-msgstr "مسحة مهبلية &amp; إحليلية"
+msgid "Prélèvement vaginal & urétral"
+msgstr "مسحة مهبلية وإحليلية"
 
 msgid "Hémoculture"
 msgstr "زراعة الدم"
@@ -464,26 +465,26 @@ msgstr "مسحة الحلق"
 msgid "Mycologie (champignons)"
 msgstr "علم الفطريات"
 
-msgid "PCR &amp; Biologie Moléculaire"
-msgstr "PCR &amp; البيولوجيا الجزيئية"
+msgid "PCR & Biologie Moléculaire"
+msgstr "PCR والبيولوجيا الجزيئية"
 
 msgid "PCR COVID-19 (RT-PCR)"
-msgstr "فحص PCR لكوفيد-19 (RT-PCR)"
+msgstr "PCR كوفيد-19 (RT-PCR)"
 
-msgid "PCR Hépatite B &amp; C quantitative"
-msgstr "PCR كمي لالتهاب الكبد ب &amp; ج"
+msgid "PCR Hépatite B & C quantitative"
+msgstr "PCR التهاب الكبد B و C الكمي"
 
 msgid "PCR HIV - Charge virale"
-msgstr "PCR فيروس نقص المناعة - الحمل الفيروسي"
+msgstr "PCR HIV - الحمل الفيروسي"
 
 msgid "PCR Tuberculose (GenXpert)"
-msgstr "PCR السل (GeneXpert)"
+msgstr "PCR السل (GenXpert)"
 
-msgid "PCR HPV &amp; Génotypage"
-msgstr "PCR فيروس الورم الحليمي &amp; التنميط الجيني"
+msgid "PCR HPV & Génotypage"
+msgstr "PCR HPV والتنميط الجيني"
 
-msgid "PCR Chlamydia &amp; Mycoplasme"
-msgstr "PCR الكلاميديا &amp; الميكوبلازما"
+msgid "PCR Chlamydia & Mycoplasme"
+msgstr "PCR الكلاميديا والميكوبلازما"
 
 msgid "Tests de paternité"
 msgstr "اختبارات الأبوة"
@@ -499,10 +500,10 @@ msgstr "اتصل بنا لمعرفة المزيد عن خدماتنا أو لح�
 
 # Results Page
 msgid "Accédez à vos résultats d'analyses médicales en ligne via notre portail sécurisé."
-msgstr "اطلع على نتائج تحاليلك الطبية عبر الإنترنت من خلال بوابتنا الآمنة."
+msgstr "الوصول إلى نتائج تحاليلكم الطبية عبر الإنترنت من خلال بوابتنا الآمنة."
 
 msgid "Consulter vos résultats"
-msgstr "الاطلاع على نتائجك"
+msgstr "عرض نتائجكم"
 
 msgid "Cliquez sur le bouton ci-dessous pour accéder à notre portail sécurisé VisionLIS. Utilisez les identifiants qui vous ont été remis au laboratoire."
 msgstr "انقر على الزر أدناه للوصول إلى بوابتنا الآمنة VisionLIS. استخدم بيانات الدخول التي تم تسليمها لك في المختبر."
@@ -511,7 +512,7 @@ msgid "Accéder à mes résultats"
 msgstr "الوصول إلى نتائجي"
 
 msgid "Connexion sécurisée — Vos données sont protégées"
-msgstr "اتصال آمن — بياناتك محمية"
+msgstr "اتصال آمن — بياناتكم محمية"
 
 msgid "Cliquez"
 msgstr "انقر"
@@ -523,40 +524,43 @@ msgid "Connectez-vous"
 msgstr "سجّل الدخول"
 
 msgid "Avec vos identifiants du laboratoire"
-msgstr "باستخدام بيانات الدخول من المختبر"
+msgstr "باستخدام بيانات المختبر الخاصة بك"
 
 msgid "Téléchargez"
-msgstr "حمّل"
+msgstr "قم بالتحميل"
 
 msgid "Vos résultats au format PDF"
-msgstr "نتائجك بصيغة PDF"
+msgstr "نتائجكم بصيغة PDF"
 
 msgid "Questions fréquentes"
 msgstr "الأسئلة الشائعة"
 
 msgid "Comment accéder à mes résultats ?"
-msgstr "كيف أطلع على نتائجي؟"
+msgstr "كيف أصل إلى نتائجي؟"
 
 msgid "Cliquez sur le bouton \"Accéder à mes résultats\" ci-dessus. Vous serez redirigé vers notre portail sécurisé VisionLIS où vous pourrez vous connecter avec vos identifiants."
-msgstr "انقر على زر \"الوصول إلى نتائجي\" أعلاه. سيتم توجيهك إلى بوابتنا الآمنة VisionLIS حيث يمكنك تسجيل الدخول باستخدام بياناتك."
+msgstr "انقر على زر \"الوصول إلى نتائجي\" أعلاه. سيتم توجيهك إلى بوابتنا الآمنة VisionLIS حيث يمكنك تسجيل الدخول ببيانات الاعتماد الخاصة بك."
 
 msgid "Quels identifiants utiliser ?"
 msgstr "ما هي بيانات الدخول التي يجب استخدامها؟"
 
 msgid "Utilisez le nom d'utilisateur et le mot de passe qui vous ont été remis lors de votre visite au laboratoire."
-msgstr "استخدم اسم المستخدم وكلمة المرور اللذين تم تسليمهما لك أثناء زيارتك للمختبر."
+msgstr "استخدم اسم المستخدم وكلمة المرور التي تم تسليمها لك أثناء زيارتك للمختبر."
 
 msgid "Quand mes résultats seront-ils disponibles ?"
-msgstr "متى ستكون نتائجي جاهزة؟"
+msgstr "متى ستكون نتائجي متاحة؟"
 
 msgid "La plupart des résultats sont disponibles en moins de 24 heures. Certaines analyses spécialisées peuvent nécessiter un délai supplémentaire."
-msgstr "معظم النتائج تكون جاهزة في أقل من 24 ساعة. بعض التحاليل المتخصصة قد تحتاج إلى وقت إضافي."
+msgstr "معظم النتائج متاحة في أقل من 24 ساعة. بعض التحاليل المتخصصة قد تتطلب وقتًا إضافيًا."
 
 msgid "J'ai oublié mes identifiants, que faire ?"
 msgstr "نسيت بيانات الدخول، ماذا أفعل؟"
 
+msgid "Contactez-nous par téléphone ou rendez-vous directement au laboratoire avec une pièce d'identité pour récupérer vos identifiants."
+msgstr "اتصل بنا هاتفيًا أو توجه مباشرة إلى المختبر مع بطاقة هوية لاسترجاع بيانات الدخول الخاصة بك."
+
 msgid "Contactez-nous au +212 5 39 31 39 47 ou rendez-vous directement au laboratoire avec une pièce d'identité pour récupérer vos identifiants."
-msgstr "اتصل بنا على الرقم +212 5 39 31 39 47 أو توجه مباشرة إلى المختبر مع بطاقة هوية لاسترجاع بيانات الدخول الخاصة بك."
+msgstr "اتصل بنا على +212 5 39 31 39 47 أو توجه مباشرة إلى المختبر مع بطاقة هوية لاسترجاع بيانات الدخول الخاصة بك."
 
 msgid "Besoin d'aide ?"
 msgstr "هل تحتاج مساعدة؟"
@@ -578,7 +582,7 @@ msgid "Email"
 msgstr "البريد الإلكتروني"
 
 msgid "Horaires"
-msgstr "ساعات العمل"
+msgstr "مواعيد العمل"
 
 msgid "Localisation du laboratoire"
 msgstr "موقع المختبر"
@@ -590,7 +594,7 @@ msgid "Envoyez-nous un message"
 msgstr "أرسل لنا رسالة"
 
 msgid "Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais."
-msgstr "املأ النموذج أدناه وسنرد عليك في أقرب وقت ممكن."
+msgstr "املأ النموذج أدناه وسنرد عليكم في أقرب وقت ممكن."
 
 msgid "Nom complet"
 msgstr "الاسم الكامل"
@@ -638,7 +642,7 @@ msgid "Erreur de connexion. Veuillez réessayer."
 msgstr "خطأ في الاتصال. يرجى المحاولة مرة أخرى."
 
 msgid "Votre message a été envoyé avec succès! Nous vous contacterons bientôt."
-msgstr "تم إرسال رسالتك بنجاح! سنتواصل معك قريباً."
+msgstr "تم إرسال رسالتك بنجاح! سنتواصل معك قريبًا."
 
 msgid "Une erreur est survenue. Veuillez réessayer."
 msgstr "حدث خطأ. يرجى المحاولة مرة أخرى."
@@ -657,14 +661,14 @@ msgid "Confidentialité"
 msgstr "الخصوصية"
 
 msgid "CGU"
-msgstr "الشروط"
+msgstr "شروط الاستخدام"
 
 msgid "Cookies"
 msgstr "ملفات تعريف الارتباط"
 
 # Cookie Banner
 msgid "Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez notre"
-msgstr "نستخدم ملفات تعريف الارتباط لتحسين تجربتك. بالمتابعة، أنت توافق على"
+msgstr "نستخدم ملفات تعريف الارتباط لتحسين تجربتك. بالمتابعة، فإنك توافق على"
 
 msgid "politique de cookies"
 msgstr "سياسة ملفات تعريف الارتباط"
@@ -676,7 +680,7 @@ msgid "Refuser"
 msgstr "رفض"
 
 msgid "Retour en haut"
-msgstr "العودة للأعلى"
+msgstr "العودة إلى الأعلى"
 
 msgid "Consentement aux cookies"
 msgstr "الموافقة على ملفات تعريف الارتباط"
@@ -698,112 +702,115 @@ msgid "1. Collecte des données"
 msgstr "1. جمع البيانات"
 
 msgid "Laboratoire International collecte des données personnelles lorsque vous utilisez notre site web, notamment via le formulaire de contact (nom, email, téléphone, message) et lors de l'accès à vos résultats d'analyses via notre portail externe VisionLIS."
-msgstr "يقوم Laboratoire International بجمع البيانات الشخصية عند استخدامك لموقعنا الإلكتروني، لا سيما عبر نموذج الاتصال (الاسم، البريد الإلكتروني، الهاتف، الرسالة) وعند الوصول إلى نتائج تحاليلك عبر بوابتنا الخارجية VisionLIS."
+msgstr "يقوم المختبر الدولي بجمع البيانات الشخصية عند استخدام موقعنا الإلكتروني، خاصة عبر نموذج الاتصال (الاسم، البريد الإلكتروني، الهاتف، الرسالة) وعند الوصول إلى نتائج تحاليلكم عبر بوابتنا الخارجية VisionLIS."
 
 msgid "2. Utilisation des données"
 msgstr "2. استخدام البيانات"
 
 msgid "Vos données sont utilisées pour répondre à vos demandes, améliorer nos services, et vous contacter concernant vos analyses. Nous ne vendons jamais vos données à des tiers."
-msgstr "تُستخدم بياناتك للرد على طلباتك وتحسين خدماتنا والتواصل معك بشأن تحاليلك. نحن لا نبيع بياناتك لأطراف ثالثة أبداً."
+msgstr "تُستخدم بياناتكم للرد على طلباتكم وتحسين خدماتنا والتواصل معكم بشأن تحاليلكم. لا نبيع بياناتكم أبدًا لأطراف ثالثة."
 
 msgid "3. Protection des données"
 msgstr "3. حماية البيانات"
 
 msgid "Nous mettons en œuvre des mesures de sécurité techniques et organisationnelles pour protéger vos données personnelles contre tout accès non autorisé, modification, divulgation ou destruction."
-msgstr "نطبق إجراءات أمنية تقنية وتنظيمية لحماية بياناتك الشخصية من أي وصول غير مصرح به أو تعديل أو إفشاء أو إتلاف."
+msgstr "نطبق إجراءات أمنية تقنية وتنظيمية لحماية بياناتكم الشخصية من أي وصول غير مصرح به أو تعديل أو إفشاء أو تدمير."
 
 msgid "4. Cookies"
 msgstr "4. ملفات تعريف الارتباط"
 
 msgid "Notre site utilise des cookies essentiels pour son fonctionnement et des cookies analytiques pour améliorer votre expérience. Consultez notre politique de cookies pour plus de détails."
-msgstr "يستخدم موقعنا ملفات تعريف الارتباط الأساسية لعمله وملفات تعريف الارتباط التحليلية لتحسين تجربتك. راجع سياسة ملفات تعريف الارتباط لمزيد من التفاصيل."
+msgstr "يستخدم موقعنا ملفات تعريف الارتباط الأساسية لعمله وملفات تحليلية لتحسين تجربتكم. راجعوا سياسة ملفات تعريف الارتباط لمزيد من التفاصيل."
 
 msgid "5. Vos droits"
-msgstr "5. حقوقك"
+msgstr "5. حقوقكم"
 
 msgid "Conformément à la loi 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel, vous disposez d'un droit d'accès, de rectification et de suppression de vos données."
-msgstr "وفقاً للقانون 09-08 المتعلق بحماية الأشخاص الذاتيين تجاه معالجة البيانات ذات الطابع الشخصي، لديك الحق في الوصول إلى بياناتك وتصحيحها وحذفها."
+msgstr "وفقًا للقانون 09-08 المتعلق بحماية الأشخاص الطبيعيين فيما يخص معالجة البيانات الشخصية، لديكم حق الوصول والتصحيح وحذف بياناتكم."
 
 msgid "6. Contact"
 msgstr "6. الاتصال"
 
 # Meta descriptions
 msgid "Laboratoire International d'Analyses Médicales à Tanger. Résultats en moins de 24h. Partenaire de Cerba Lab et du Laboratoire National Mohammed VI."
-msgstr "المختبر الدولي للتحاليل الطبية في طنجة. نتائج في أقل من 24 ساعة. شريك Cerba Lab والمختبر الوطني Mohammed VI."
+msgstr "المختبر الدولي للتحاليل الطبية في طنجة. نتائج في أقل من 24 ساعة. شريك Cerba Lab والمختبر الوطني محمد السادس."
 
 msgid "Découvrez Laboratoire International, plus de 25 ans d'expertise en analyses médicales à Tanger. Certifié ISO 15189."
-msgstr "اكتشف Laboratoire International، أكثر من 25 عاماً من الخبرة في التحاليل الطبية في طنجة. معتمد ISO 15189."
+msgstr "اكتشفوا المختبر الدولي، أكثر من 25 عامًا من الخبرة في التحاليل الطبية في طنجة. معتمد ISO 15189."
 
 msgid "Découvrez nos services d'analyses médicales : biochimie, hématologie, sérologie, PCR, microbiologie et plus. Résultats en moins de 24h."
-msgstr "اكتشف خدماتنا في التحاليل الطبية: الكيمياء الحيوية، أمراض الدم، الأمصال، PCR، الأحياء الدقيقة والمزيد. نتائج في أقل من 24 ساعة."
+msgstr "اكتشفوا خدماتنا في التحاليل الطبية: كيمياء حيوية، أمراض الدم، أمصال، PCR، أحياء دقيقة والمزيد. نتائج في أقل من 24 ساعة."
 
 msgid "Accédez à vos résultats d'analyses médicales en ligne. Connectez-vous à notre portail sécurisé VisionLIS."
-msgstr "اطلع على نتائج تحاليلك الطبية عبر الإنترنت. سجّل الدخول إلى بوابتنا الآمنة VisionLIS."
+msgstr "الوصول إلى نتائج تحاليلكم الطبية عبر الإنترنت. سجلوا الدخول إلى بوابتنا الآمنة VisionLIS."
 
 msgid "Articles et actualités sur les analyses médicales, la santé et le bien-être par Laboratoire International."
-msgstr "مقالات وأخبار حول التحاليل الطبية والصحة والعافية من Laboratoire International."
+msgstr "مقالات وأخبار حول التحاليل الطبية والصحة والعافية من المختبر الدولي."
 
 msgid "Contactez Laboratoire International à Tanger. Appelez-nous au +212 5 39 31 39 47 ou envoyez-nous un message."
-msgstr "تواصل مع Laboratoire International في طنجة. اتصل بنا على +212 5 39 31 39 47 أو أرسل لنا رسالة."
+msgstr "اتصل بالمختبر الدولي في طنجة. اتصل بنا على +212 5 39 31 39 47 أو أرسل لنا رسالة."
+
+msgid "Contactez Laboratoire International à Tanger. Appelez-nous ou envoyez-nous un message via notre formulaire de contact."
+msgstr "اتصل بالمختبر الدولي في طنجة. اتصل بنا أو أرسل لنا رسالة عبر نموذج الاتصال."
 
 msgid "Politique de confidentialité de Laboratoire International. Comment nous protégeons vos données personnelles."
-msgstr "سياسة خصوصية Laboratoire International. كيف نحمي بياناتك الشخصية."
+msgstr "سياسة الخصوصية للمختبر الدولي. كيف نحمي بياناتكم الشخصية."
 
 msgid "Conditions générales d'utilisation du site web de Laboratoire International."
-msgstr "الشروط والأحكام العامة لاستخدام موقع Laboratoire International الإلكتروني."
+msgstr "الشروط العامة لاستخدام موقع المختبر الدولي."
 
 msgid "Comment Laboratoire International utilise les cookies sur son site web."
-msgstr "كيف يستخدم Laboratoire International ملفات تعريف الارتباط على موقعه الإلكتروني."
+msgstr "كيف يستخدم المختبر الدولي ملفات تعريف الارتباط على موقعه."
 
 # Terms Page
 msgid "1. Objet"
 msgstr "1. الغرض"
 
 msgid "Les présentes conditions générales d'utilisation régissent l'accès et l'utilisation du site web de Laboratoire International d'Analyses Médicales."
-msgstr "تنظم هذه الشروط والأحكام العامة الوصول إلى واستخدام الموقع الإلكتروني لـ Laboratoire International للتحاليل الطبية."
+msgstr "تنظم هذه الشروط العامة للاستخدام الوصول إلى واستخدام موقع المختبر الدولي للتحاليل الطبية."
 
 msgid "2. Accès au site"
 msgstr "2. الوصول إلى الموقع"
 
 msgid "Le site est accessible gratuitement à tout utilisateur disposant d'un accès internet. Laboratoire International se réserve le droit de modifier, suspendre ou interrompre l'accès au site à tout moment."
-msgstr "الموقع متاح مجاناً لأي مستخدم لديه اتصال بالإنترنت. يحتفظ Laboratoire International بالحق في تعديل أو تعليق أو إيقاف الوصول إلى الموقع في أي وقت."
+msgstr "الموقع متاح مجانًا لأي مستخدم لديه اتصال بالإنترنت. يحتفظ المختبر الدولي بحق تعديل أو تعليق أو إيقاف الوصول إلى الموقع في أي وقت."
 
 msgid "3. Propriété intellectuelle"
 msgstr "3. الملكية الفكرية"
 
 msgid "L'ensemble du contenu du site (textes, images, logos, graphismes) est protégé par le droit de la propriété intellectuelle. Toute reproduction sans autorisation est interdite."
-msgstr "جميع محتويات الموقع (النصوص، الصور، الشعارات، الرسومات) محمية بموجب قانون الملكية الفكرية. يُمنع أي نسخ بدون إذن."
+msgstr "جميع محتويات الموقع (نصوص، صور، شعارات، رسومات) محمية بقانون الملكية الفكرية. يُمنع أي نسخ بدون إذن."
 
 msgid "4. Résultats d'analyses"
 msgstr "4. نتائج التحاليل"
 
 msgid "L'accès aux résultats d'analyses s'effectue via un portail externe sécurisé (VisionLIS). Les identifiants sont personnels et confidentiels. Laboratoire International décline toute responsabilité en cas d'utilisation frauduleuse des identifiants."
-msgstr "يتم الوصول إلى نتائج التحاليل عبر بوابة خارجية آمنة (VisionLIS). بيانات الدخول شخصية وسرية. يخلي Laboratoire International مسؤوليته في حالة الاستخدام الاحتيالي لبيانات الدخول."
+msgstr "يتم الوصول إلى نتائج التحاليل عبر بوابة خارجية آمنة (VisionLIS). بيانات الدخول شخصية وسرية. يخلي المختبر الدولي مسؤوليته في حالة الاستخدام الاحتيالي لبيانات الدخول."
 
 msgid "5. Responsabilité"
 msgstr "5. المسؤولية"
 
 msgid "Les informations médicales fournies sur ce site sont à titre informatif uniquement et ne remplacent en aucun cas un avis médical professionnel. Consultez votre médecin pour toute question relative à votre santé."
-msgstr "المعلومات الطبية المقدمة على هذا الموقع هي لأغراض إعلامية فقط ولا تغني بأي حال عن استشارة طبية متخصصة. استشر طبيبك لأي سؤال يتعلق بصحتك."
+msgstr "المعلومات الطبية المقدمة على هذا الموقع هي للعلم فقط ولا تحل بأي حال من الأحوال محل الاستشارة الطبية المهنية. استشيروا طبيبكم لأي سؤال يتعلق بصحتكم."
 
 msgid "6. Loi applicable"
-msgstr "6. القانون المطبق"
+msgstr "6. القانون المعمول به"
 
 msgid "Les présentes conditions sont régies par le droit marocain. Tout litige sera soumis à la compétence des tribunaux de Tanger."
-msgstr "تخضع هذه الشروط للقانون المغربي. يُحال أي نزاع إلى اختصاص محاكم طنجة."
+msgstr "تخضع هذه الشروط للقانون المغربي. أي نزاع سيخضع لاختصاص محاكم طنجة."
 
 # Cookies Page
 msgid "Qu'est-ce qu'un cookie ?"
 msgstr "ما هو ملف تعريف الارتباط؟"
 
 msgid "Un cookie est un petit fichier texte stocké sur votre appareil lorsque vous visitez notre site. Les cookies permettent au site de fonctionner correctement et d'améliorer votre expérience."
-msgstr "ملف تعريف الارتباط هو ملف نصي صغير يُخزن على جهازك عند زيارة موقعنا. تتيح ملفات تعريف الارتباط للموقع العمل بشكل صحيح وتحسين تجربتك."
+msgstr "ملف تعريف الارتباط هو ملف نصي صغير يُخزّن على جهازك عند زيارة موقعنا. تتيح ملفات تعريف الارتباط للموقع العمل بشكل صحيح وتحسين تجربتك."
 
 msgid "Cookies essentiels"
 msgstr "ملفات تعريف الارتباط الأساسية"
 
 msgid "Ces cookies sont nécessaires au fonctionnement du site. Ils incluent les cookies de session, le token CSRF pour la sécurité des formulaires, et le cookie de préférence de langue."
-msgstr "هذه الملفات ضرورية لعمل الموقع. تشمل ملفات تعريف ارتباط الجلسة ورمز CSRF لأمان النماذج وملف تعريف ارتباط تفضيل اللغة."
+msgstr "هذه الملفات ضرورية لعمل الموقع. تشمل ملفات الجلسة، ورمز CSRF لأمان النماذج، وملف تفضيل اللغة."
 
 msgid "Objectif"
 msgstr "الهدف"
@@ -821,7 +828,7 @@ msgid "Session utilisateur"
 msgstr "جلسة المستخدم"
 
 msgid "Session"
-msgstr "الجلسة"
+msgstr "جلسة"
 
 msgid "Préférence de langue"
 msgstr "تفضيل اللغة"
@@ -833,13 +840,13 @@ msgid "Cookies analytiques"
 msgstr "ملفات تعريف الارتباط التحليلية"
 
 msgid "Si activés, ces cookies (Google Analytics 4) nous aident à comprendre comment les visiteurs interagissent avec notre site. Ces données sont anonymisées."
-msgstr "في حال تفعيلها، تساعدنا هذه الملفات (Google Analytics 4) على فهم كيفية تفاعل الزوار مع موقعنا. هذه البيانات مجهولة الهوية."
+msgstr "إذا تم تفعيلها، تساعدنا هذه الملفات (Google Analytics 4) على فهم كيفية تفاعل الزوار مع موقعنا. هذه البيانات مجهولة الهوية."
 
 msgid "Gérer vos préférences"
 msgstr "إدارة تفضيلاتك"
 
 msgid "Vous pouvez modifier vos préférences de cookies à tout moment via les paramètres de votre navigateur. La désactivation de certains cookies peut affecter le fonctionnement du site."
-msgstr "يمكنك تعديل تفضيلات ملفات تعريف الارتباط في أي وقت عبر إعدادات متصفحك. قد يؤثر تعطيل بعض ملفات تعريف الارتباط على عمل الموقع."
+msgstr "يمكنك تعديل تفضيلات ملفات تعريف الارتباط في أي وقت عبر إعدادات متصفحك. قد يؤثر تعطيل بعض الملفات على عمل الموقع."
 
 # Working Hours
 msgid "Lundi"
@@ -867,7 +874,7 @@ msgid "Fermé"
 msgstr "مغلق"
 
 msgid "Les horaires peuvent être différents lors des fêtes religieuses"
-msgstr "قد تختلف ساعات العمل خلال الأعياد الدينية"
+msgstr "قد تختلف المواعيد خلال الأعياد الدينية"
 
 msgid "Laboratoire International"
 msgstr "المختبر الدولي"
@@ -897,6 +904,24 @@ msgstr "legal/terms/"
 msgid "legal/cookies/"
 msgstr "legal/cookies/"
 
-# Slogan
-msgid "Analyses Médicales"
-msgstr "مختبر التحاليل الطبية"
+# New strings (v2.0)
+msgid "Visiter"
+msgstr "زيارة"
+
+msgid "Contactez-nous sur WhatsApp"
+msgstr "تواصل معنا عبر واتساب"
+
+msgid "Page non trouvée"
+msgstr "الصفحة غير موجودة"
+
+msgid "La page que vous recherchez n'existe pas ou a été déplacée."
+msgstr "الصفحة التي تبحث عنها غير موجودة أو تم نقلها."
+
+msgid "Retour à l'accueil"
+msgstr "العودة إلى الرئيسية"
+
+msgid "Erreur serveur"
+msgstr "خطأ في الخادم"
+
+msgid "Une erreur inattendue s'est produite. Notre équipe technique a été notifiée. Veuillez réessayer plus tard."
+msgstr "حدث خطأ غير متوقع. تم إخطار فريقنا التقني. يرجى المحاولة مرة أخرى لاحقًا."

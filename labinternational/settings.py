@@ -22,7 +22,7 @@ DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
 ALLOWED_HOSTS = os.environ.get(
     'ALLOWED_HOSTS',
-    'laboratoireinternational.pythonanywhere.com,schneider-sizeof.pythonanywhere.com,laboratoireinternational.com,localhost,127.0.0.1'
+    'laboratoireinternational.pythonanywhere.com,schneider-sizeof.pythonanywhere.com,laboratoireinternational.com,www.laboratoireinternational.com,localhost,127.0.0.1'
 ).split(',')
 
 
@@ -108,6 +108,7 @@ LANGUAGES = [
     ('nl', 'Nederlands'),
     ('de', 'Deutsch'),
     ('es', 'Español'),
+    ('it', 'Italiano'),
 ]
 
 TIME_ZONE = 'Africa/Casablanca'
@@ -142,23 +143,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # ============================================================
-# Email (for contact form)
+# Email (fallback — actual config in SiteSettings admin)
 # ============================================================
 EMAIL_BACKEND = os.environ.get(
     'EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend'
 )
-EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
-EMAIL_PORT = int(os.environ.get('EMAIL_PORT', '587'))
-EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True').lower() in ('true', '1')
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 
 
 # ============================================================
-# Site-specific settings
+# Site-specific settings (fallback for context_processors)
 # ============================================================
 SITE_NAME = "Laboratoire International"
-SITE_SLOGAN = "Votre santé est Notre propriété"
+SITE_SLOGAN = "Votre santé est Notre priorité"
 SITE_DOMAIN = "laboratoireinternational.com"
 SITE_PHONE = "+212 5 39 31 39 47"
 SITE_EMAIL = "contact@laboratoireinternational.com"
@@ -176,3 +172,54 @@ GA4_MEASUREMENT_ID = os.environ.get('GA4_MEASUREMENT_ID', '')
 LICENSE_GIST_URL = os.environ.get('LICENSE_GIST_URL')
 LICENSE_KEY = os.environ.get('LICENSE_KEY', 'CM2026X')
 
+
+# ============================================================
+# Production Security (applied when DEBUG=False)
+# ============================================================
+if not DEBUG:
+    # HTTPS
+    SECURE_SSL_REDIRECT = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+
+    # HSTS
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+
+    # Security headers
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_BROWSER_XSS_FILTER = True
+    X_FRAME_OPTIONS = 'DENY'
+
+    # CSRF
+    CSRF_TRUSTED_ORIGINS = [
+        'https://laboratoireinternational.com',
+        'https://www.laboratoireinternational.com',
+        'https://laboratoireinternational.pythonanywhere.com',
+    ]
+
+    # Logging
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'formatters': {
+            'verbose': {
+                'format': '{levelname} {asctime} {module} {message}',
+                'style': '{',
+            },
+        },
+        'handlers': {
+            'file': {
+                'level': 'ERROR',
+                'class': 'logging.FileHandler',
+                'filename': BASE_DIR / 'logs' / 'django_errors.log',
+                'formatter': 'verbose',
+            },
+        },
+        'root': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+        },
+    }

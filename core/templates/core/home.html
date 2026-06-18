@@ -23,7 +23,7 @@
 
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
                     {% trans "Votre santé est" %}
-                    <span class="text-accent-400">{% trans "Notre propriété" %}</span>
+                    <span class="text-accent-400">{% trans "Notre priorité" %}</span>
                 </h1>
 
                 <p class="text-lg sm:text-xl text-white/80 max-w-lg leading-relaxed">
@@ -141,6 +141,7 @@
     </div>
 </section>
 
+{% if partners %}
 <!-- ========== PARTNERSHIPS ========== -->
 <section class="py-20 bg-gradient-to-br from-primary-50/50 to-accent-50/30" id="partnerships">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -154,27 +155,32 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div class="card fade-in-left">
+            {% for partner in partners %}
+            <div class="card {% if forloop.counter|divisibleby:2 %}fade-in-right{% else %}fade-in-left{% endif %}">
                 <div class="card-body text-center">
+                    {% if partner.logo %}
+                    <div class="w-20 h-20 mx-auto mb-5 flex items-center justify-center">
+                        <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" class="max-w-full max-h-full object-contain" loading="lazy">
+                    </div>
+                    {% else %}
                     <div class="w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center mx-auto mb-5">
-                        <i class="fas fa-globe-europe text-3xl text-primary-500"></i>
+                        <i class="{{ partner.icon }} text-3xl text-primary-500"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-dark-900 mb-3">Cerba Lab</h3>
-                    <p class="text-sm text-dark-500 leading-relaxed">{% trans "Réseau européen de diagnostic de référence. Leader en biologie spécialisée avec plus de 50 ans d'expertise." %}</p>
+                    {% endif %}
+                    <h3 class="text-xl font-bold text-dark-900 mb-3">{{ partner.name }}</h3>
+                    <p class="text-sm text-dark-500 leading-relaxed">{{ partner.get_description }}</p>
+                    {% if partner.url %}
+                    <a href="{{ partner.url }}" target="_blank" rel="noopener" class="text-sm font-semibold text-primary-500 hover:text-primary-600 inline-flex items-center gap-1 mt-3 transition-colors">
+                        {% trans "Visiter" %} <i class="fas fa-external-link-alt text-xs"></i>
+                    </a>
+                    {% endif %}
                 </div>
             </div>
-            <div class="card fade-in-right">
-                <div class="card-body text-center">
-                    <div class="w-16 h-16 bg-accent-50 rounded-2xl flex items-center justify-center mx-auto mb-5">
-                        <i class="fas fa-landmark text-3xl text-accent-600"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-dark-900 mb-3">{% trans "Lab National Mohammed VI" %}</h3>
-                    <p class="text-sm text-dark-500 leading-relaxed">{% trans "Laboratoire national de référence du Maroc. Partenaire pour les analyses spécialisées et le contrôle qualité." %}</p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
+{% endif %}
 
 <!-- ========== TESTIMONIALS ========== -->
 <section class="py-20 bg-white" id="testimonials">
