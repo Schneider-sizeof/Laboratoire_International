@@ -396,7 +396,7 @@
 
   /* Back to Top */
   .back-to-top {
-    @apply fixed bottom-6 right-6 z-40 w-12 h-12
+    @apply fixed bottom-24 right-6 z-40 w-12 h-12
            flex items-center justify-center
            bg-primary-500 text-white rounded-full shadow-lg
            transition-all duration-300 ease-out
@@ -404,6 +404,12 @@
     opacity: 0;
     visibility: hidden;
     transform: translateY(1rem);
+  }
+
+  @media (max-width: 768px) {
+    .back-to-top {
+      @apply bottom-20 right-4;
+    }
   }
 
   .back-to-top.is-visible {
