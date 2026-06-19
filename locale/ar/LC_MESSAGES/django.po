@@ -928,3 +928,63 @@ msgstr "حدث خطأ غير متوقع. تم إخطار فريقنا التقن
 
 msgid "<span class=\"text-blue-500\">Laboratoire</span> <span class=\"text-red-500\">International</span>"
 msgstr "<span class=\"text-blue-500\">المختبر</span> <span class=\"text-red-500\">الدولي</span>"
+
+msgid "Hémoglobine glyquée (HbA1c)"
+msgstr "الهيموغلوبين السكري (HbA1c)"
+
+msgid "Bilan martial (Fer serique, Ferritine, Capacité de fixation)"
+msgstr "فحص الحديد (حديد المصل، الفيريتين، قدرة ربط الحديد الإجمالية)"
+
+msgid "Bilan phosphocalcique (Calcium, Phosphore, Magnésium)"
+msgstr "فحص الكالسيوم والفوسفور (الكالسيوم، الفوسفور، المغنيسيوم)"
+
+msgid "Protéinurie & Microalbuminurie des 24 heures"
+msgstr "البروتين في البول والبروتين الدقيق على مدار 24 ساعة"
+
+msgid "Hémostase complète (Fibrinogène, Facteurs de coagulation)"
+msgstr "فحص التخثر الكامل (الفيبرينوجين، عوامل التخثر)"
+
+msgid "Électrophorèse de l'hémoglobine (Dépistage thalassémie, drépanocytose)"
+msgstr "تخطيط الهيموغلوبين الكهربائي (فحص الثلاسيميا وفقر الدم المنجلي)"
+
+msgid "Myélogramme (Analyse frottis de moelle osseuse)"
+msgstr "فحص نخاع العظم (تحليل لطاخة نخاع العظم)"
+
+msgid "Sérologie Hépatite A (IgM, IgG)"
+msgstr "تحليل التهاب الكبد أ (IgM ، IgG)"
+
+msgid "Sérologie CMV (Cytomégalovirus IgG & IgM)"
+msgstr "تحليل الفيروس المضخم للخلايا CMV (IgG & IgM)"
+
+msgid "Sérologie Epstein-Barr Virus (EBV / Mononucléose)"
+msgstr "تحليل فيروس إبشتاين-بار (EBV / كثرة الوحيدات الخمجية)"
+
+msgid "Dépistage de la maladie cœliaque (Anticorps anti-transglutaminase)"
+msgstr "فحص الداء البطني / السيلياك (الأجسام المضادة لترانسغلوتاميناز)"
+
+msgid "Auto-immunité"
+msgstr "المناعة الذاتية"
+
+msgid "Anticorps anti-nucléaires (ANA) par immunofluorescence"
+msgstr "الأجسام المضادة للنواة (ANA) عن طريق التألق المناعي"
+
+msgid "Anticorps anti-ADN double brin (anti-ADN natif)"
+msgstr "الأجسام المضادة للحمض النووي مزدوج السلسلة (anti-dsDNA)"
+
+msgid "Anticorps anti-antigènes nucléaires solubles (Profil ENA)"
+msgstr "الأجسام المضادة للمستضدات النووية القابلة للذوبان (ENA Profile)"
+
+msgid "Anticorps anti-peptides cycliques citrullinés (anti-CCP)"
+msgstr "الأجسام المضادة للببتيدات السيترولينية الحلقية المضادة (anti-CCP)"
+
+msgid "Anticorps anti-cytoplasme des polynucléaires neutrophiles (ANCA)"
+msgstr "الأجسام المضادة للسيتوبلازم العدلات (ANCA)"
+
+msgid "Bilan du syndrome des antiphospholipides (Anti-cardiolipine, Anti-B2GP1)"
+msgstr "فحص متلازمة مضادات الفوسفوليبيد (مضاد الكارديوليبين، مضاد B2GP1)"
+
+msgid "Anticorps anti-thyropéroxidase (anti-TPO) & anti-thyroglobuline (anti-TG)"
+msgstr "الأجسام المضادة لبيروكسيداز الغدة الدرقية (anti-TPO) ومضادات الثيروغلوبولين (anti-TG)"
+
+msgid "Anticorps spécifiques des maladies auto-immunes du foie (Anti-LKM1, Anti-M2)"
+msgstr "الأجسام المضادة النوعية لأمراض الكبد المناعية الذاتية (Anti-LKM1 ، Anti-M2)"

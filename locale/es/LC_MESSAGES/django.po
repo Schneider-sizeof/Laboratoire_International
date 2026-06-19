@@ -898,3 +898,63 @@ msgstr "Se produjo un error inesperado. Nuestro equipo técnico ha sido notifica
 
 msgid "<span class=\"text-blue-500\">Laboratoire</span> <span class=\"text-red-500\">International</span>"
 msgstr "<span class=\"text-blue-500\">Laboratorio</span> <span class=\"text-red-500\">Internacional</span>"
+
+msgid "Hémoglobine glyquée (HbA1c)"
+msgstr "Hemoglobina glicosilada (HbA1c)"
+
+msgid "Bilan martial (Fer serique, Ferritine, Capacité de fixation)"
+msgstr "Perfil de hierro (Hierro sérico, Ferritina, Capacidad total de fijación)"
+
+msgid "Bilan phosphocalcique (Calcium, Phosphore, Magnésium)"
+msgstr "Perfil fosfocálcico (Calcio, Fósforo, Magnesio)"
+
+msgid "Protéinurie & Microalbuminurie des 24 heures"
+msgstr "Proteinuria y microalbuminuria de 24 horas"
+
+msgid "Hémostase complète (Fibrinogène, Facteurs de coagulation)"
+msgstr "Hemostasia completa (Fibrinógeno, Factores de coagulación)"
+
+msgid "Électrophorèse de l'hémoglobine (Dépistage thalassémie, drépanocytose)"
+msgstr "Electroforesis de hemoglobina (Cribado de talasemia, anemia falciforme)"
+
+msgid "Myélogramme (Analyse frottis de moelle osseuse)"
+msgstr "Mielograma (Análisis de frotis de médula ósea)"
+
+msgid "Sérologie Hépatite A (IgM, IgG)"
+msgstr "Serología de Hepatitis A (IgM, IgG)"
+
+msgid "Sérologie CMV (Cytomégalovirus IgG & IgM)"
+msgstr "Serología de CMV (Citomegalovirus IgG e IgM)"
+
+msgid "Sérologie Epstein-Barr Virus (EBV / Mononucléose)"
+msgstr "Serología de virus de Epstein-Barr (VEB / Mononucleosis)"
+
+msgid "Dépistage de la maladie cœliaque (Anticorps anti-transglutaminase)"
+msgstr "Cribado de enfermedad celíaca (Anticuerpos anti-transglutaminasa)"
+
+msgid "Auto-immunité"
+msgstr "Autoinmunidad"
+
+msgid "Anticorps anti-nucléaires (ANA) par immunofluorescence"
+msgstr "Anticuerpos antinucleares (ANA) por inmunofluorescencia"
+
+msgid "Anticorps anti-ADN double brin (anti-ADN natif)"
+msgstr "Anticuerpos anti-ADN de doble cadena (anti-ADN nativo)"
+
+msgid "Anticorps anti-antigènes nucléaires solubles (Profil ENA)"
+msgstr "Anticuerpos anti-antígenos nucleares solubles (Perfil ENA)"
+
+msgid "Anticorps anti-peptides cycliques citrullinés (anti-CCP)"
+msgstr "Anticuerpos anti-péptidos cíclicos citrulinados (anti-CCP)"
+
+msgid "Anticorps anti-cytoplasme des polynucléaires neutrophiles (ANCA)"
+msgstr "Anticuerpos anti-citoplasma de neutrófilos (ANCA)"
+
+msgid "Bilan du syndrome des antiphospholipides (Anti-cardiolipine, Anti-B2GP1)"
+msgstr "Perfil del síndrome antifosfolípido (Anti-cardiolipina, Anti-B2GP1)"
+
+msgid "Anticorps anti-thyropéroxidase (anti-TPO) & anti-thyroglobuline (anti-TG)"
+msgstr "Anticuerpos anti-tiroperoxidasa (anti-TPO) y anti-tiroglobulina (anti-TG)"
+
+msgid "Anticorps spécifiques des maladies auto-immunes du foie (Anti-LKM1, Anti-M2)"
+msgstr "Anticuerpos específicos para enfermedades hepáticas autoinmunes (Anti-LKM1, Anti-M2)"

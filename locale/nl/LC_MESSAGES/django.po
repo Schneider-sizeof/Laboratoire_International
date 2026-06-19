@@ -898,3 +898,63 @@ msgstr "Er is een onverwachte fout opgetreden. Ons technisch team is op de hoogt
 
 msgid "<span class=\"text-blue-500\">Laboratoire</span> <span class=\"text-red-500\">International</span>"
 msgstr "<span class=\"text-red-500\">Internationaal</span> <span class=\"text-blue-500\">Laboratorium</span>"
+
+msgid "Hémoglobine glyquée (HbA1c)"
+msgstr "Geglyceerd hemoglobin (HbA1c)"
+
+msgid "Bilan martial (Fer serique, Ferritine, Capacité de fixation)"
+msgstr "IJzerpanel (Serumijzer, Ferritine, Totale ijzerbindingscapaciteit)"
+
+msgid "Bilan phosphocalcique (Calcium, Phosphore, Magnésium)"
+msgstr "Fosfocalcisch panel (Calcium, Fosfor, Magnesium)"
+
+msgid "Protéinurie & Microalbuminurie des 24 heures"
+msgstr "24-uurs proteïnurie & microalbuminurie"
+
+msgid "Hémostase complète (Fibrinogène, Facteurs de coagulation)"
+msgstr "Volledige hemostase (Fibrinogeen, Coagulatiefactoren)"
+
+msgid "Électrophorèse de l'hémoglobine (Dépistage thalassémie, drépanocytose)"
+msgstr "Hemoglobine-elektroforese (Screening op thalassemie, sikkelcelziekte)"
+
+msgid "Myélogramme (Analyse frottis de moelle osseuse)"
+msgstr "Myelogram (Beenmerguitstrijk-analyse)"
+
+msgid "Sérologie Hépatite A (IgM, IgG)"
+msgstr "Hepatitis A-serologie (IgM, IgG)"
+
+msgid "Sérologie CMV (Cytomégalovirus IgG & IgM)"
+msgstr "CMV-serologie (Cytomegalovirus IgG & IgM)"
+
+msgid "Sérologie Epstein-Barr Virus (EBV / Mononucléose)"
+msgstr "Epstein-Barr-virusserologie (EBV / Mononucleosis)"
+
+msgid "Dépistage de la maladie cœliaque (Anticorps anti-transglutaminase)"
+msgstr "Coeliakie screening (Anti-transglutaminase antilichamen)"
+
+msgid "Auto-immunité"
+msgstr "Auto-immuniteit"
+
+msgid "Anticorps anti-nucléaires (ANA) par immunofluorescence"
+msgstr "Antinucleaire antilichamen (ANA) via immunofluorescentie"
+
+msgid "Anticorps anti-ADN double brin (anti-ADN natif)"
+msgstr "Anti-dubbelstrengs DNA-antilichamen (anti-dsDNA)"
+
+msgid "Anticorps anti-antigènes nucléaires solubles (Profil ENA)"
+msgstr "Antilichamen tegen oplosbare nucleaire antigenen (ENA-profiel)"
+
+msgid "Anticorps anti-peptides cycliques citrullinés (anti-CCP)"
+msgstr "Anti-cyclisch gecitrullineerd peptide antilichamen (anti-CCP)"
+
+msgid "Anticorps anti-cytoplasme des polynucléaires neutrophiles (ANCA)"
+msgstr "Anti-neutrofielen cytoplasmatische antilichamen (ANCA)"
+
+msgid "Bilan du syndrome des antiphospholipides (Anti-cardiolipine, Anti-B2GP1)"
+msgstr "Antifosfolipidensyndroom panel (Anti-cardiolipine, Anti-B2GP1)"
+
+msgid "Anticorps anti-thyropéroxidase (anti-TPO) & anti-thyroglobuline (anti-TG)"
+msgstr "Anti-thyreoïdperoxidase (anti-TPO) & anti-thyroglobuline (anti-TG) antilichamen"
+
+msgid "Anticorps spécifiques des maladies auto-immunes du foie (Anti-LKM1, Anti-M2)"
+msgstr "Specifieke antilichamen voor auto-immuun leverziekten (Anti-LKM1, Anti-M2)"
