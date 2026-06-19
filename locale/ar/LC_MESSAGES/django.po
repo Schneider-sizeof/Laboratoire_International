@@ -925,3 +925,6 @@ msgstr "خطأ في الخادم"
 
 msgid "Une erreur inattendue s'est produite. Notre équipe technique a été notifiée. Veuillez réessayer plus tard."
 msgstr "حدث خطأ غير متوقع. تم إخطار فريقنا التقني. يرجى المحاولة مرة أخرى لاحقًا."
+
+msgid "<span class=\"text-blue-500\">Laboratoire</span> <span class=\"text-red-500\">International</span>"
+msgstr "<span class=\"text-blue-500\">المختبر</span> <span class=\"text-red-500\">الدولي</span>"

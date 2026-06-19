@@ -651,10 +651,6 @@
   50% { transform: scale(1.15); opacity: 0; }
 }
 
-[dir="rtl"] .whatsapp-float {
-  right: auto;
-  left: 24px;
-}
 
 @media (max-width: 768px) {
   .whatsapp-float {
@@ -662,9 +658,5 @@
     right: 16px;
     width: 50px;
     height: 50px;
-  }
-  [dir="rtl"] .whatsapp-float {
-    right: auto;
-    left: 16px;
   }
 }

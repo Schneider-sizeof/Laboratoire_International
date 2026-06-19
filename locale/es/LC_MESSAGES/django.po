@@ -895,3 +895,6 @@ msgstr "Error del servidor"
 
 msgid "Une erreur inattendue s'est produite. Notre équipe technique a été notifiée. Veuillez réessayer plus tard."
 msgstr "Se produjo un error inesperado. Nuestro equipo técnico ha sido notificado. Por favor, inténtelo más tarde."
+
+msgid "<span class=\"text-blue-500\">Laboratoire</span> <span class=\"text-red-500\">International</span>"
+msgstr "<span class=\"text-blue-500\">Laboratorio</span> <span class=\"text-red-500\">Internacional</span>"

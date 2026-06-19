@@ -895,3 +895,6 @@ msgstr "Serverfehler"
 
 msgid "Une erreur inattendue s'est produite. Notre équipe technique a été notifiée. Veuillez réessayer plus tard."
 msgstr "Ein unerwarteter Fehler ist aufgetreten. Unser technisches Team wurde benachrichtigt. Bitte versuchen Sie es später erneut."
+
+msgid "<span class=\"text-blue-500\">Laboratoire</span> <span class=\"text-red-500\">International</span>"
+msgstr "<span class=\"text-red-500\">Internationales</span> <span class=\"text-blue-500\">Labor</span>"

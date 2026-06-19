@@ -100,7 +100,11 @@
                 <a href="{% url 'core:home' %}" class="flex items-center gap-3 group" aria-label="{{ SITE_NAME }}">
                     <img src="{% static 'core/images/logo.png' %}" alt="LIAM" class="w-16 h-16 object-contain transition-transform duration-300 group-hover:scale-105">
                     <div class="hidden sm:block">
-                        <div class="text-lg font-extrabold leading-tight nav-brand-text text-white transition-colors duration-300">{{ SITE_NAME }}</div>
+                        <div class="text-lg font-extrabold leading-tight nav-brand-text text-white transition-colors duration-300">
+                            {% blocktrans trimmed %}
+                            <span class="text-blue-500">Laboratoire</span> <span class="text-red-500">International</span>
+                            {% endblocktrans %}
+                        </div>
                         <div class="text-[0.65rem] font-medium nav-brand-sub text-white/70 transition-colors duration-300">{% trans "Analyses Médicales" %}</div>
                     </div>
                 </a>
@@ -166,7 +170,11 @@
             <div class="flex items-center gap-3">
                 <img src="{% static 'core/images/logo.png' %}" alt="LIAM" class="w-14 h-14 object-contain brightness-0 invert">
                 <div>
-                    <div class="text-base font-bold text-white">{{ SITE_NAME }}</div>
+                    <div class="text-base font-bold text-white">
+                        {% blocktrans trimmed %}
+                        <span class="text-blue-500">Laboratoire</span> <span class="text-red-500">International</span>
+                        {% endblocktrans %}
+                    </div>
                     <div class="text-xs text-white/60">{% trans "Analyses Médicales" %}</div>
                 </div>
             </div>
@@ -221,7 +229,11 @@
                     <div class="flex items-center gap-3 mb-4">
                         <img src="{% static 'core/images/logo.png' %}" alt="LIAM" class="w-14 h-14 object-contain">
                         <div>
-                            <div class="text-white font-bold">{{ SITE_NAME }}</div>
+                            <div class="text-white font-bold">
+                                {% blocktrans trimmed %}
+                                <span class="text-blue-500">Laboratoire</span> <span class="text-red-500">International</span>
+                                {% endblocktrans %}
+                            </div>
                             <div class="text-xs text-dark-400">{% trans "Analyses Médicales" %}</div>
                         </div>
                     </div>
