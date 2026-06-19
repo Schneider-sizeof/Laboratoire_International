@@ -958,3 +958,180 @@ msgstr "Anticuerpos anti-tiroperoxidasa (anti-TPO) y anti-tiroglobulina (anti-TG
 
 msgid "Anticorps spécifiques des maladies auto-immunes du foie (Anti-LKM1, Anti-M2)"
 msgstr "Anticuerpos específicos para enfermedades hepáticas autoinmunes (Anti-LKM1, Anti-M2)"
+
+msgid "Nos Bilans & Profils"
+msgstr "Nuestros Perfiles y Chequeos"
+
+msgid "Analyses par Spécialité"
+msgstr "Análisis por Especialidad"
+
+msgid "Analyses incluses :"
+msgstr "Análisis incluidos:"
+
+msgid "Voir les analyses"
+msgstr "Ver los análisis"
+
+msgid "Masquer les analyses"
+msgstr "Ocultar los análisis"
+
+msgid "Bilan Hépatique"
+msgstr "Perfil Hepático"
+
+msgid "Évaluation de la fonction et de la santé du foie (enzymes, pigments et protéines)."
+msgstr "Evaluación de la función y de la salud del hígado (enzimas, pigmentos y proteínas)."
+
+msgid "ASAT (SGOT)"
+msgstr "AST (SGOT)"
+
+msgid "ALAT (SGPT)"
+msgstr "ALT (SGPT)"
+
+msgid "Gamma-GT (GGT)"
+msgstr "Gamma-GT (GGT)"
+
+msgid "Phosphatases alcalines (PAL)"
+msgstr "Fosfatasas alcalinas (FA)"
+
+msgid "Bilirubine totale, directe & indirecte"
+msgstr "Bilirrubina total, directa e indirecta"
+
+msgid "Bilan Lipidique"
+msgstr "Perfil Lipídico"
+
+msgid "Dépistage cardiovasculaire et mesure des graisses et du cholestérol dans le sang."
+msgstr "Cribado cardiovascular y medición de grasas y colesterol en sangre."
+
+msgid "Cholestérol total"
+msgstr "Colesterol total"
+
+msgid "Triglycérides"
+msgstr "Triglicéridos"
+
+msgid "Cholestérol HDL (Bon cholestérol)"
+msgstr "Colesterol HDL (Colesterol bueno)"
+
+msgid "Cholestérol LDL (Mauvais cholestérol)"
+msgstr "Colesterol LDL (Colesterol malo)"
+
+msgid "Aspect du sérum"
+msgstr "Aspecto del suero"
+
+msgid "Bilan Cardiaque"
+msgstr "Perfil Cardíaco"
+
+msgid "Évaluation des risques cardiaques et diagnostic de la souffrance du muscle cardiaque."
+msgstr "Evaluación de riesgos cardíacos y diagnóstico del sufrimiento del músculo cardíaco."
+
+msgid "Troponine I ou T"
+msgstr "Troponina I o T"
+
+msgid "CK-MB"
+msgstr "CK-MB"
+
+msgid "BNP / NT-proBNP"
+msgstr "BNP / NT-proBNP"
+
+msgid "Transaminases (ASAT)"
+msgstr "Transaminasas (AST)"
+
+msgid "LDH (Lactate Déshydrogénase)"
+msgstr "LDH (Lactato deshidrogenasa)"
+
+msgid "Protéine C-réactive ultra-sensible (CRP-us)"
+msgstr "Proteína C reactiva ultrasensible (PCR-us)"
+
+msgid "Bilan Rénal"
+msgstr "Perfil Renal"
+
+msgid "Évaluation du fonctionnement des reins et de la filtration glomérulaire."
+msgstr "Evaluación del funcionamiento de los riñones y de la filtración de glomérulos."
+
+msgid "Urée sanguine"
+msgstr "Urea sanguínea"
+
+msgid "Créatinine sanguine & Clairance"
+msgstr "Creatinina sanguínea y aclaramiento"
+
+msgid "Débit de Filtration Glomérulaire (DFG)"
+msgstr "Tasa de Filtración Glomerular (TFG)"
+
+msgid "Acide urique"
+msgstr "Ácido úrico"
+
+msgid "Ionogramme sanguin (Sodium, Potassium, Chlore)"
+msgstr "Electrólitos en sangre (Sodio, Potasio, Cloro)"
+
+msgid "Protéinurie des 24 heures"
+msgstr "Proteinuria de 24 horas"
+
+msgid "Bilan Phosphocalcique"
+msgstr "Perfil Fosfocálcico"
+
+msgid "Mesure des minéraux impliqués dans le métabolisme osseux et rénal."
+msgstr "Medida de los minerales implicados en el metabolismo óseo y renal."
+
+msgid "Calcium serique"
+msgstr "Calcio sérico"
+
+msgid "Phosphore"
+msgstr "Fósforo"
+
+msgid "Magnésium"
+msgstr "Magnesio"
+
+msgid "Vitamine D (25-OH-Vitamine D)"
+msgstr "Vitamina D (25-OH-Vitamina D)"
+
+msgid "Parathormone (PTH)"
+msgstr "Paratohormona (PTH)"
+
+msgid "Bilan Thyroïdien"
+msgstr "Perfil Tiroideo"
+
+msgid "Contrôle du fonctionnement de la glande thyroïde et de la production d'hormones."
+msgstr "Control del funcionamiento de la glándula tiroides y de la producción de hormonas."
+
+msgid "TSH ultra-sensible"
+msgstr "TSH ultrasensible"
+
+msgid "T3 libre (FT3)"
+msgstr "T3 libre (FT3)"
+
+msgid "T4 libre (FT4)"
+msgstr "T4 libre (FT4)"
+
+msgid "Anticorps anti-thyropéroxidase (anti-TPO)"
+msgstr "Anticuerpos anti-tiroperoxidasa (anti-TPO)"
+
+msgid "Anticorps anti-thyroglobuline (anti-TG)"
+msgstr "Anticuerpos anti-tiroglobulina (anti-TG)"
+
+msgid "Bilan d'Anémie"
+msgstr "Perfil de Anemia"
+
+msgid "Recherche de carences ou de troubles à l'origine d'une baisse de l'hémoglobine."
+msgstr "Investigación de deficiencias o trastornos que causan una caída de la hemoglobina."
+
+msgid "Fer sérique"
+msgstr "Hierro sérico"
+
+msgid "Ferritine sérique"
+msgstr "Ferritina sérica"
+
+msgid "Vitamine B12"
+msgstr "Vitamina B12"
+
+msgid "Folates (Vitamine B9)"
+msgstr "Folato (Vitamina B9)"
+
+msgid "Bilan Martial"
+msgstr "Perfil de Hierro"
+
+msgid "Évaluation complète des réserves de fer dans l'organisme."
+msgstr "Evaluación completa de las reservas de hierro en el cuerpo."
+
+msgid "Capacité totale de fixation du fer (CTF)"
+msgstr "Capacidad total de fijación de hierro (CTFH)"
+
+msgid "Coefficient de saturation de la transferrine"
+msgstr "Coeficiente de saturación de la transferrina"

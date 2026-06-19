@@ -958,3 +958,180 @@ msgstr "Anti-thyreoïdperoxidase (anti-TPO) & anti-thyroglobuline (anti-TG) anti
 
 msgid "Anticorps spécifiques des maladies auto-immunes du foie (Anti-LKM1, Anti-M2)"
 msgstr "Specifieke antilichamen voor auto-immuun leverziekten (Anti-LKM1, Anti-M2)"
+
+msgid "Nos Bilans & Profils"
+msgstr "Onze Gezondheidsprofielen"
+
+msgid "Analyses par Spécialité"
+msgstr "Analyses per Specialisme"
+
+msgid "Analyses incluses :"
+msgstr "Inbegrepen analyses:"
+
+msgid "Voir les analyses"
+msgstr "Toon analyses"
+
+msgid "Masquer les analyses"
+msgstr "Verberg analyses"
+
+msgid "Bilan Hépatique"
+msgstr "Leverpanel"
+
+msgid "Évaluation de la fonction et de la santé du foie (enzymes, pigments et protéines)."
+msgstr "Uitgebreide evaluatie van de leverfunctie en levergezondheid (enzymen, pigmenten en eiwitten)."
+
+msgid "ASAT (SGOT)"
+msgstr "AST (SGOT)"
+
+msgid "ALAT (SGPT)"
+msgstr "ALT (SGPT)"
+
+msgid "Gamma-GT (GGT)"
+msgstr "Gamma-GT (GGT)"
+
+msgid "Phosphatases alcalines (PAL)"
+msgstr "Alkalische fosfatase (AF)"
+
+msgid "Bilirubine totale, directe & indirecte"
+msgstr "Totaal, direct & indirect bilirubine"
+
+msgid "Bilan Lipidique"
+msgstr "Lipidenpanel"
+
+msgid "Dépistage cardiovasculaire et mesure des graisses et du cholestérol dans le sang."
+msgstr "Cardiovasculaire screening en meting van vetten en cholesterol in het bloed."
+
+msgid "Cholestérol total"
+msgstr "Totaal cholesterol"
+
+msgid "Triglycérides"
+msgstr "Triglyceriden"
+
+msgid "Cholestérol HDL (Bon cholestérol)"
+msgstr "HDL-cholesterol (Goede cholesterol)"
+
+msgid "Cholestérol LDL (Mauvais cholestérol)"
+msgstr "LDL-cholesterol (Slechte cholesterol)"
+
+msgid "Aspect du sérum"
+msgstr "Uiterlijk van serum"
+
+msgid "Bilan Cardiaque"
+msgstr "Hartpanel"
+
+msgid "Évaluation des risques cardiaques et diagnostic de la souffrance du muscle cardiaque."
+msgstr "Evaluatie van cardiovasculaire risico's en diagnose van hartspierproblemen."
+
+msgid "Troponine I ou T"
+msgstr "Troponine I of T"
+
+msgid "CK-MB"
+msgstr "CK-MB"
+
+msgid "BNP / NT-proBNP"
+msgstr "BNP / NT-proBNP"
+
+msgid "Transaminases (ASAT)"
+msgstr "Transaminasen (AST)"
+
+msgid "LDH (Lactate Déshydrogénase)"
+msgstr "LDH (Lactaatdehydrogenase)"
+
+msgid "Protéine C-réactive ultra-sensible (CRP-us)"
+msgstr "Supergevoelig C-reactief proteïne (hs-CRP)"
+
+msgid "Bilan Rénal"
+msgstr "Nierpanel"
+
+msgid "Évaluation du fonctionnement des reins et de la filtration glomérulaire."
+msgstr "Beoordeling van de nierfunctie en de glomerulaire filtratie."
+
+msgid "Urée sanguine"
+msgstr "Bloedureum"
+
+msgid "Créatinine sanguine & Clairance"
+msgstr "Bloedcreatinine & klaring"
+
+msgid "Débit de Filtration Glomérulaire (DFG)"
+msgstr "Glomerulaire Filtratiesnelheid (GFR)"
+
+msgid "Acide urique"
+msgstr "Urinezuur"
+
+msgid "Ionogramme sanguin (Sodium, Potassium, Chlore)"
+msgstr "Bloedelektrolyten (Natrium, Kalium, Chloride)"
+
+msgid "Protéinurie des 24 heures"
+msgstr "24-uurs proteïnurie"
+
+msgid "Bilan Phosphocalcique"
+msgstr "Fosfocalcisch panel"
+
+msgid "Mesure des minéraux impliqués dans le métabolisme osseux et rénal."
+msgstr "Meting van mineralen die betrokken zijn bij het bot- en niermetabolisme."
+
+msgid "Calcium serique"
+msgstr "Serumcalcium"
+
+msgid "Phosphore"
+msgstr "Fosfor"
+
+msgid "Magnésium"
+msgstr "Magnesium"
+
+msgid "Vitamine D (25-OH-Vitamine D)"
+msgstr "Vitamine D (25-OH-Vitamine D)"
+
+msgid "Parathormone (PTH)"
+msgstr "Parathormoon (PTH)"
+
+msgid "Bilan Thyroïdien"
+msgstr "Schildklierpanel"
+
+msgid "Contrôle du fonctionnement de la glande thyroïde et de la production d'hormones."
+msgstr "Controle van de werking van de schildklier en de hormoonproductie."
+
+msgid "TSH ultra-sensible"
+msgstr "Ultrasensitief TSH"
+
+msgid "T3 libre (FT3)"
+msgstr "Vrij T3 (FT3)"
+
+msgid "T4 libre (FT4)"
+msgstr "Vrij T4 (FT4)"
+
+msgid "Anticorps anti-thyropéroxidase (anti-TPO)"
+msgstr "Anti-thyreoïdperoxidase antilichamen (anti-TPO)"
+
+msgid "Anticorps anti-thyroglobuline (anti-TG)"
+msgstr "Anti-thyroglobuline antilichamen (anti-TG)"
+
+msgid "Bilan d'Anémie"
+msgstr "Anemiepanel"
+
+msgid "Recherche de carences ou de troubles à l'origine d'une baisse de l'hémoglobine."
+msgstr "Screening op tekorten of aandoeningen die een daling van het hemoglobine veroorzaken."
+
+msgid "Fer sérique"
+msgstr "Serumijzer"
+
+msgid "Ferritine sérique"
+msgstr "Serumferritine"
+
+msgid "Vitamine B12"
+msgstr "Vitamine B12"
+
+msgid "Folates (Vitamine B9)"
+msgstr "Folaten (Vitamine B9)"
+
+msgid "Bilan Martial"
+msgstr "IJzerpanel"
+
+msgid "Évaluation complète des réserves de fer dans l'organisme."
+msgstr "Volledige evaluatie van de ijzervoorraden in het lichaam."
+
+msgid "Capacité totale de fixation du fer (CTF)"
+msgstr "Totale ijzerbindingscapaciteit (TIBC)"
+
+msgid "Coefficient de saturation de la transferrine"
+msgstr "Transferrinesaturatiecoëfficiënt"

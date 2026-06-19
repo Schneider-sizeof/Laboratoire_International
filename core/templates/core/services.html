@@ -15,47 +15,118 @@
     </div>
 </section>
 
-<!-- Services List -->
-<section class="py-20 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="space-y-6">
-            {% for category in categories %}
-            <div class="card overflow-hidden fade-in" style="transition-delay: {{ forloop.counter0 }}50ms" id="category-{{ forloop.counter }}">
-                <button type="button"
-                        class="category-header w-full"
-                        aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
-                        aria-controls="cat-body-{{ forloop.counter }}"
-                        data-accordion="category">
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-lg
-                            {% if category.color == 'primary' %}bg-primary-50 text-primary-500
-                            {% elif category.color == 'danger' %}bg-danger-50 text-danger-500
-                            {% elif category.color == 'accent' %}bg-accent-50 text-accent-600
-                            {% elif category.color == 'warning' %}bg-warning-50 text-warning-500
-                            {% elif category.color == 'success' %}bg-success-50 text-success-500
-                            {% else %}bg-primary-50 text-primary-500{% endif %}">
-                            <i class="{{ category.icon }}"></i>
+<!-- Services & Bilans Tabs -->
+<section class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Tabs Navigation -->
+        <div class="flex justify-center border-b border-dark-200 mb-12 gap-2 sm:gap-6">
+            <button type="button" 
+                    id="tab-btn-bilans"
+                    class="py-4 px-3 sm:px-6 text-sm sm:text-base font-bold border-b-2 border-primary-500 text-primary-500 focus:outline-none transition-colors"
+                    onclick="switchTab('bilans')">
+                <i class="fas fa-notes-medical {% if IS_RTL %}ml-2{% else %}mr-2{% endif %}"></i>
+                {% trans "Nos Bilans & Profils" %}
+            </button>
+            <button type="button" 
+                    id="tab-btn-specialties"
+                    class="py-4 px-3 sm:px-6 text-sm sm:text-base font-medium border-b-2 border-transparent text-dark-500 hover:text-dark-900 focus:outline-none transition-colors"
+                    onclick="switchTab('specialties')">
+                <i class="fas fa-stethoscope {% if IS_RTL %}ml-2{% else %}mr-2{% endif %}"></i>
+                {% trans "Analyses par Spécialité" %}
+            </button>
+        </div>
+
+        <!-- Tab Content: Bilans (Active by Default) -->
+        <div id="tab-content-bilans" class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+                {% for bilan in bilans %}
+                <div class="card border border-dark-150 hover:border-primary-200 transition-all shadow-sm hover:shadow-md rounded-2xl flex flex-col justify-between overflow-hidden" id="bilan-card-{{ forloop.counter }}">
+                    <div class="p-6">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-lg shrink-0
+                                {% if bilan.color == 'primary' %}bg-primary-50 text-primary-500
+                                {% elif bilan.color == 'danger' %}bg-danger-50 text-danger-500
+                                {% elif bilan.color == 'accent' %}bg-accent-50 text-accent-600
+                                {% elif bilan.color == 'success' %}bg-success-50 text-success-500
+                                {% elif bilan.color == 'warning' %}bg-warning-50 text-warning-500
+                                {% else %}bg-primary-50 text-primary-500{% endif %}">
+                                <i class="{{ bilan.icon }}"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-dark-900">{{ bilan.title }}</h3>
                         </div>
-                        <div class="text-{% if IS_RTL %}right{% else %}left{% endif %}">
-                            <h2 class="text-lg font-bold text-dark-900">{{ category.title }}</h2>
-                            <p class="text-xs text-dark-400">{{ category.tests|length }} {% trans "analyses disponibles" %}</p>
+                        <p class="text-sm text-dark-500 leading-relaxed">{{ bilan.description }}</p>
+                        
+                        <!-- List of tests (hidden by default) -->
+                        <div id="bilan-tests-{{ forloop.counter }}" class="hidden mt-6 pt-4 border-t border-dark-100">
+                            <h4 class="text-xs font-bold text-dark-400 uppercase tracking-wider mb-3">{% trans "Analyses incluses :" %}</h4>
+                            <div class="grid gap-2">
+                                {% for test in bilan.tests %}
+                                <div class="bg-dark-50/50 p-2.5 rounded-xl text-xs font-semibold text-dark-700 flex items-center gap-2">
+                                    <i class="fas fa-check text-[9px] text-primary-500"></i>
+                                    <span>{{ test }}</span>
+                                </div>
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
-                    <i class="fas fa-chevron-down text-dark-400 transition-transform duration-300 accordion-icon"></i>
-                </button>
-                <div class="category-body {% if not forloop.first %}hidden{% endif %}" id="cat-body-{{ forloop.counter }}">
-                    <div class="grid sm:grid-cols-2 gap-3 pt-2">
-                        {% for test in category.tests %}
-                        <div class="test-item">
-                            <i class="fas fa-check-circle text-xs text-primary-400 mr-2"></i>
-                            {{ test }}
-                        </div>
-                        {% endfor %}
+                    
+                    <!-- Toggle action button -->
+                    <div class="p-4 border-t border-dark-100 bg-dark-50/10">
+                        <button type="button" 
+                                class="w-full text-center py-2 text-xs font-bold text-primary-500 hover:text-primary-600 flex items-center justify-center gap-2"
+                                onclick="toggleBilanDetail('{{ forloop.counter }}')">
+                            <span id="bilan-btn-text-{{ forloop.counter }}">{% trans "Voir les analyses" %}</span>
+                            <i id="bilan-btn-icon-{{ forloop.counter }}" class="fas fa-chevron-down transition-transform duration-250"></i>
+                        </button>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
+
+        <!-- Tab Content: Specialties (Hidden by Default) -->
+        <div id="tab-content-specialties" class="hidden space-y-6">
+            <div class="space-y-6">
+                {% for category in categories %}
+                <div class="card overflow-hidden" id="category-{{ forloop.counter }}">
+                    <button type="button"
+                            class="category-header w-full"
+                            aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+                            aria-controls="cat-body-{{ forloop.counter }}"
+                            data-accordion="category">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl flex items-center justify-center text-lg
+                                {% if category.color == 'primary' %}bg-primary-50 text-primary-500
+                                {% elif category.color == 'danger' %}bg-danger-50 text-danger-500
+                                {% elif category.color == 'accent' %}bg-accent-50 text-accent-600
+                                {% elif category.color == 'warning' %}bg-warning-50 text-warning-500
+                                {% elif category.color == 'success' %}bg-success-50 text-success-500
+                                {% else %}bg-primary-50 text-primary-500{% endif %}">
+                                <i class="{{ category.icon }}"></i>
+                            </div>
+                            <div class="text-{% if IS_RTL %}right{% else %}left{% endif %}">
+                                <h2 class="text-lg font-bold text-dark-900">{{ category.title }}</h2>
+                                <p class="text-xs text-dark-400">{{ category.tests|length }} {% trans "analyses disponibles" %}</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down text-dark-400 transition-transform duration-300 accordion-icon"></i>
+                    </button>
+                    <div class="category-body {% if not forloop.first %}hidden{% endif %}" id="cat-body-{{ forloop.counter }}">
+                        <div class="grid sm:grid-cols-2 gap-3 pt-2">
+                            {% for test in category.tests %}
+                            <div class="test-item">
+                                <i class="fas fa-check-circle text-xs text-primary-400 {% if IS_RTL %}ml-2{% else %}mr-2{% endif %}"></i>
+                                {{ test }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
     </div>
 </section>
 
@@ -78,6 +149,7 @@
 
 {% block extra_js %}
 <script>
+// Accordion for specialty categories
 document.querySelectorAll('[data-accordion="category"]').forEach(btn => {
     btn.addEventListener('click', function() {
         const body = document.getElementById(this.getAttribute('aria-controls'));
@@ -96,8 +168,54 @@ document.querySelectorAll('[data-accordion="category"]').forEach(btn => {
         }
     });
 });
-// Initialize first item
+
+// Initialize first accordion item
 const first = document.querySelector('[data-accordion="category"]');
 if (first) first.querySelector('.accordion-icon').style.transform = 'rotate(180deg)';
+
+// Tab switching logic
+function switchTab(tab) {
+    const btnBilans = document.getElementById('tab-btn-bilans');
+    const btnSpecialties = document.getElementById('tab-btn-specialties');
+    const contentBilans = document.getElementById('tab-content-bilans');
+    const contentSpecialties = document.getElementById('tab-content-specialties');
+    
+    if (tab === 'bilans') {
+        btnBilans.classList.add('border-primary-500', 'text-primary-500');
+        btnBilans.classList.remove('border-transparent', 'text-dark-500', 'hover:text-dark-900');
+        
+        btnSpecialties.classList.remove('border-primary-500', 'text-primary-500');
+        btnSpecialties.classList.add('border-transparent', 'text-dark-500', 'hover:text-dark-900');
+        
+        contentBilans.classList.remove('hidden');
+        contentSpecialties.classList.add('hidden');
+    } else {
+        btnSpecialties.classList.add('border-primary-500', 'text-primary-500');
+        btnSpecialties.classList.remove('border-transparent', 'text-dark-500', 'hover:text-dark-900');
+        
+        btnBilans.classList.remove('border-primary-500', 'text-primary-500');
+        btnBilans.classList.add('border-transparent', 'text-dark-500', 'hover:text-dark-900');
+        
+        contentSpecialties.classList.remove('hidden');
+        contentBilans.classList.add('hidden');
+    }
+}
+
+// Bilan details toggle logic
+function toggleBilanDetail(index) {
+    const testsDiv = document.getElementById(`bilan-tests-${index}`);
+    const btnText = document.getElementById(`bilan-btn-text-${index}`);
+    const btnIcon = document.getElementById(`bilan-btn-icon-${index}`);
+    
+    if (testsDiv.classList.contains('hidden')) {
+        testsDiv.classList.remove('hidden');
+        btnText.innerText = "{% trans 'Masquer les analyses' %}";
+        btnIcon.style.transform = 'rotate(180deg)';
+    } else {
+        testsDiv.classList.add('hidden');
+        btnText.innerText = "{% trans 'Voir les analyses' %}";
+        btnIcon.style.transform = 'rotate(0deg)';
+    }
+}
 </script>
 {% endblock %}

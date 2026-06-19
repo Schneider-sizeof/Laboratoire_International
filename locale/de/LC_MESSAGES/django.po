@@ -958,3 +958,180 @@ msgstr "Anti-Thyreoperoxidase- (Anti-TPO) & Anti-Thyreoglobulin- (Anti-TG) Antik
 
 msgid "Anticorps spécifiques des maladies auto-immunes du foie (Anti-LKM1, Anti-M2)"
 msgstr "Spezifische Antikörper für autoimmune Lebererkrankungen (Anti-LKM1, Anti-M2)"
+
+msgid "Nos Bilans & Profils"
+msgstr "Unsere Gesundheitsprofile"
+
+msgid "Analyses par Spécialité"
+msgstr "Analysen nach Fachbereich"
+
+msgid "Analyses incluses :"
+msgstr "Enthaltene Analysen:"
+
+msgid "Voir les analyses"
+msgstr "Analysen anzeigen"
+
+msgid "Masquer les analyses"
+msgstr "Analysen ausblenden"
+
+msgid "Bilan Hépatique"
+msgstr "Leber-Panel"
+
+msgid "Évaluation de la fonction et de la santé du foie (enzymes, pigments et protéines)."
+msgstr "Umfassende Bewertung der Leberfunktion und des Leberzustands (Enzyme, Pigmente und Proteine)."
+
+msgid "ASAT (SGOT)"
+msgstr "AST (SGOT)"
+
+msgid "ALAT (SGPT)"
+msgstr "ALT (SGPT)"
+
+msgid "Gamma-GT (GGT)"
+msgstr "Gamma-GT (GGT)"
+
+msgid "Phosphatases alcalines (PAL)"
+msgstr "Alkalische Phosphatase (AP)"
+
+msgid "Bilirubine totale, directe & indirecte"
+msgstr "Gesamt-, direktes & indirektes Bilirubin"
+
+msgid "Bilan Lipidique"
+msgstr "Lipid-Panel"
+
+msgid "Dépistage cardiovasculaire et mesure des graisses et du cholestérol dans le sang."
+msgstr "Kardiovaskuläres Screening und Messung von Blutfetten und Cholesterin."
+
+msgid "Cholestérol total"
+msgstr "Gesamtcholesterin"
+
+msgid "Triglycérides"
+msgstr "Triglyceride"
+
+msgid "Cholestérol HDL (Bon cholestérol)"
+msgstr "HDL-Cholesterin (Gutes Cholesterin)"
+
+msgid "Cholestérol LDL (Mauvais cholestérol)"
+msgstr "LDL-Cholesterin (Schlechtes Cholesterin)"
+
+msgid "Aspect du sérum"
+msgstr "Serum-Aussehen"
+
+msgid "Bilan Cardiaque"
+msgstr "Herz-Panel"
+
+msgid "Évaluation des risques cardiaques et diagnostic de la souffrance du muscle cardiaque."
+msgstr "Bewertung von Herzrisiken und Diagnose von Herzmuskelbelastungen."
+
+msgid "Troponine I ou T"
+msgstr "Troponin I oder T"
+
+msgid "CK-MB"
+msgstr "CK-MB"
+
+msgid "BNP / NT-proBNP"
+msgstr "BNP / NT-proBNP"
+
+msgid "Transaminases (ASAT)"
+msgstr "Transaminasen (AST)"
+
+msgid "LDH (Lactate Déshydrogénase)"
+msgstr "LDH (Laktatdehydrogenase)"
+
+msgid "Protéine C-réactive ultra-sensible (CRP-us)"
+msgstr "Hochsensitives C-reaktives Protein (hs-CRP)"
+
+msgid "Bilan Rénal"
+msgstr "Nieren-Panel"
+
+msgid "Évaluation du fonctionnement des reins et de la filtration glomérulaire."
+msgstr "Beurteilung der Nierenfunktion und der glomerulären Filtration."
+
+msgid "Urée sanguine"
+msgstr "Blutharnstoff"
+
+msgid "Créatinine sanguine & Clairance"
+msgstr "Blutkreatinin & Clearance"
+
+msgid "Débit de Filtration Glomérulaire (DFG)"
+msgstr "Glomeruläre Filtrationsrate (GFR)"
+
+msgid "Acide urique"
+msgstr "Harnsäure"
+
+msgid "Ionogramme sanguin (Sodium, Potassium, Chlore)"
+msgstr "Blutelektrolyte (Natrium, Kalium, Chlorid)"
+
+msgid "Protéinurie des 24 heures"
+msgstr "24-Stunden-Proteinurie"
+
+msgid "Bilan Phosphocalcique"
+msgstr "Phosphat-Kalzium-Panel"
+
+msgid "Mesure des minéraux impliqués dans le métabolisme osseux et rénal."
+msgstr "Messung von Mineralien, die am Knochen- und Nierenstoffwechsel beteiligt sind."
+
+msgid "Calcium serique"
+msgstr "Serumkalzium"
+
+msgid "Phosphore"
+msgstr "Phosphor"
+
+msgid "Magnésium"
+msgstr "Magnesium"
+
+msgid "Vitamine D (25-OH-Vitamine D)"
+msgstr "Vitamin D (25-OH-Vitamin D)"
+
+msgid "Parathormone (PTH)"
+msgstr "Parathormon (PTH)"
+
+msgid "Bilan Thyroïdien"
+msgstr "Schilddrüsen-Panel"
+
+msgid "Contrôle du fonctionnement de la glande thyroïde et de la production d'hormones."
+msgstr "Überwachung der Schilddrüsenfunktion und der Hormonproduktion."
+
+msgid "TSH ultra-sensible"
+msgstr "Ultrasensitives TSH"
+
+msgid "T3 libre (FT3)"
+msgstr "Freies T3 (FT3)"
+
+msgid "T4 libre (FT4)"
+msgstr "Freies T4 (FT4)"
+
+msgid "Anticorps anti-thyropéroxidase (anti-TPO)"
+msgstr "Anti-Thyreoperoxidase-Antikörper (Anti-TPO)"
+
+msgid "Anticorps anti-thyroglobuline (anti-TG)"
+msgstr "Anti-Thyreoglobulin-Antikörper (Anti-TG)"
+
+msgid "Bilan d'Anémie"
+msgstr "Anämie-Panel"
+
+msgid "Recherche de carences ou de troubles à l'origine d'une baisse de l'hémoglobine."
+msgstr "Screening auf Mangelerscheinungen oder Störungen, die einen Hämoglobinabfall verursachen."
+
+msgid "Fer sérique"
+msgstr "Serumeisen"
+
+msgid "Ferritine sérique"
+msgstr "Serumferritin"
+
+msgid "Vitamine B12"
+msgstr "Vitamin B12"
+
+msgid "Folates (Vitamine B9)"
+msgstr "Folsäure (Vitamin B9)"
+
+msgid "Bilan Martial"
+msgstr "Eisen-Panel"
+
+msgid "Évaluation complète des réserves de fer dans l'organisme."
+msgstr "Vollständige Beurteilung der Eisenspeicher im Körper."
+
+msgid "Capacité totale de fixation du fer (CTF)"
+msgstr "Gesamteisenbindungskapazität (FEBK)"
+
+msgid "Coefficient de saturation de la transferrine"
+msgstr "Transferrinsättigungskoeffizient"

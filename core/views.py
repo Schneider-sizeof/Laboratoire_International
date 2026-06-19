@@ -393,8 +393,117 @@ def services(request):
             ],
         },
     ]
+    bilans = [
+        {
+            'title': _('Bilan Hépatique'),
+            'icon': 'fas fa-file-medical',
+            'color': 'primary',
+            'description': _('Évaluation de la fonction et de la santé du foie (enzymes, pigments et protéines).'),
+            'tests': [
+                _('ASAT (SGOT)'),
+                _('ALAT (SGPT)'),
+                _('Gamma-GT (GGT)'),
+                _('Phosphatases alcalines (PAL)'),
+                _('Bilirubine totale, directe & indirecte'),
+            ],
+        },
+        {
+            'title': _('Bilan Lipidique'),
+            'icon': 'fas fa-droplet',
+            'color': 'danger',
+            'description': _('Dépistage cardiovasculaire et mesure des graisses et du cholestérol dans le sang.'),
+            'tests': [
+                _('Cholestérol total'),
+                _('Triglycérides'),
+                _('Cholestérol HDL (Bon cholestérol)'),
+                _('Cholestérol LDL (Mauvais cholestérol)'),
+                _('Aspect du sérum'),
+            ],
+        },
+        {
+            'title': _('Bilan Cardiaque'),
+            'icon': 'fas fa-heart-pulse',
+            'color': 'accent',
+            'description': _('Évaluation des risques cardiaques et diagnostic de la souffrance du muscle cardiaque.'),
+            'tests': [
+                _('Troponine I ou T'),
+                _('CK-MB'),
+                _('BNP / NT-proBNP'),
+                _('Transaminases (ASAT)'),
+                _('LDH (Lactate Déshydrogénase)'),
+                _('Protéine C-réactive ultra-sensible (CRP-us)'),
+            ],
+        },
+        {
+            'title': _('Bilan Rénal'),
+            'icon': 'fas fa-shield-halved',
+            'color': 'success',
+            'description': _('Évaluation du fonctionnement des reins et de la filtration glomérulaire.'),
+            'tests': [
+                _('Urée sanguine'),
+                _('Créatinine sanguine & Clairance'),
+                _('Débit de Filtration Glomérulaire (DFG)'),
+                _('Acide urique'),
+                _('Ionogramme sanguin (Sodium, Potassium, Chlore)'),
+                _('Protéinurie des 24 heures'),
+            ],
+        },
+        {
+            'title': _('Bilan Phosphocalcique'),
+            'icon': 'fas fa-bone',
+            'color': 'warning',
+            'description': _('Mesure des minéraux impliqués dans le métabolisme osseux et rénal.'),
+            'tests': [
+                _('Calcium serique'),
+                _('Phosphore'),
+                _('Magnésium'),
+                _('Vitamine D (25-OH-Vitamine D)'),
+                _('Parathormone (PTH)'),
+            ],
+        },
+        {
+            'title': _('Bilan Thyroïdien'),
+            'icon': 'fas fa-stethoscope',
+            'color': 'primary',
+            'description': _('Contrôle du fonctionnement de la glande thyroïde et de la production d\'hormones.'),
+            'tests': [
+                _('TSH ultra-sensible'),
+                _('T3 libre (FT3)'),
+                _('T4 libre (FT4)'),
+                _('Anticorps anti-thyropéroxidase (anti-TPO)'),
+                _('Anticorps anti-thyroglobuline (anti-TG)'),
+            ],
+        },
+        {
+            'title': _('Bilan d\'Anémie'),
+            'icon': 'fas fa-vials',
+            'color': 'danger',
+            'description': _('Recherche de carences ou de troubles à l\'origine d\'une baisse de l\'hémoglobine.'),
+            'tests': [
+                _('NFS - Numération Formule Sanguine'),
+                _('Réticulocytes'),
+                _('Fer sérique'),
+                _('Ferritine sérique'),
+                _('Vitamine B12'),
+                _('Folates (Vitamine B9)'),
+            ],
+        },
+        {
+            'title': _('Bilan Martial'),
+            'icon': 'fas fa-gauge-high',
+            'color': 'accent',
+            'description': _('Évaluation complète des réserves de fer dans l\'organisme.'),
+            'tests': [
+                _('Fer sérique'),
+                _('Ferritine sérique'),
+                _('Capacité totale de fixation du fer (CTF)'),
+                _('Coefficient de saturation de la transferrine'),
+            ],
+        },
+    ]
     context = {
         'categories': categories,
+        'bilans': bilans,
         'page_title': _('Nos Services'),
         'meta_description': _(
             'Découvrez nos services d\'analyses médicales : biochimie, hématologie, '

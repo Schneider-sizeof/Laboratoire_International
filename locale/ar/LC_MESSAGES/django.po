@@ -988,3 +988,180 @@ msgstr "الأجسام المضادة لبيروكسيداز الغدة الدر
 
 msgid "Anticorps spécifiques des maladies auto-immunes du foie (Anti-LKM1, Anti-M2)"
 msgstr "الأجسام المضادة النوعية لأمراض الكبد المناعية الذاتية (Anti-LKM1 ، Anti-M2)"
+
+msgid "Nos Bilans & Profils"
+msgstr "فحوصاتنا الشاملة"
+
+msgid "Analyses par Spécialité"
+msgstr "التحاليل حسب التخصص"
+
+msgid "Analyses incluses :"
+msgstr "التحاليل المشمولة :"
+
+msgid "Voir les analyses"
+msgstr "عرض التحاليل"
+
+msgid "Masquer les analyses"
+msgstr "إخفاء التحاليل"
+
+msgid "Bilan Hépatique"
+msgstr "الفحص الكبدي"
+
+msgid "Évaluation de la fonction et de la santé du foie (enzymes, pigments et protéines)."
+msgstr "تقييم وظائف الكبد وحالته الصحية (الإنزيمات، الأصباغ والبروتينات)."
+
+msgid "ASAT (SGOT)"
+msgstr "ASAT (SGOT)"
+
+msgid "ALAT (SGPT)"
+msgstr "ALAT (SGPT)"
+
+msgid "Gamma-GT (GGT)"
+msgstr "Gamma-GT (GGT)"
+
+msgid "Phosphatases alcalines (PAL)"
+msgstr "الفوسفاتاز القلوية (PAL)"
+
+msgid "Bilirubine totale, directe & indirecte"
+msgstr "البيليروبين الكلي، المباشر وغير المباشر"
+
+msgid "Bilan Lipidique"
+msgstr "فحص الدهون"
+
+msgid "Dépistage cardiovasculaire et mesure des graisses et du cholestérol dans le sang."
+msgstr "فحص القلب والأوعية الدموية وقياس الدهون والكولسترول في الدم."
+
+msgid "Cholestérol total"
+msgstr "الكولسترول الكلي"
+
+msgid "Triglycérides"
+msgstr "الدهون الثلاثية"
+
+msgid "Cholestérol HDL (Bon cholestérol)"
+msgstr "كولسترول HDL (الكولسترول الجيد)"
+
+msgid "Cholestérol LDL (Mauvais cholestérol)"
+msgstr "كولسترول LDL (الكولسترول الضار)"
+
+msgid "Aspect du sérum"
+msgstr "مظهر المصل"
+
+msgid "Bilan Cardiaque"
+msgstr "الفحص القلبي"
+
+msgid "Évaluation des risques cardiaques et diagnostic de la souffrance du muscle cardiaque."
+msgstr "تقييم مخاطر القلب وتشخيص قصور عضلة القلب."
+
+msgid "Troponine I ou T"
+msgstr "تروبونين I أو T"
+
+msgid "CK-MB"
+msgstr "CK-MB"
+
+msgid "BNP / NT-proBNP"
+msgstr "BNP / NT-proBNP"
+
+msgid "Transaminases (ASAT)"
+msgstr "الترانسميناز (ASAT)"
+
+msgid "LDH (Lactate Déshydrogénase)"
+msgstr "LDH (نازعة هيدروجين اللاكتات)"
+
+msgid "Protéine C-réactive ultra-sensible (CRP-us)"
+msgstr "البروتين التفاعلي C عالي الحساسية (CRP-us)"
+
+msgid "Bilan Rénal"
+msgstr "الفحص الكلوي"
+
+msgid "Évaluation du fonctionnement des reins et de la filtration glomérulaire."
+msgstr "تقييم وظائف الكلى والترشيح الكبيبي."
+
+msgid "Urée sanguine"
+msgstr "اليوريا في الدم"
+
+msgid "Créatinine sanguine & Clairance"
+msgstr "الكرياتينين في الدم وتصفية الكرياتينين"
+
+msgid "Débit de Filtration Glomérulaire (DFG)"
+msgstr "معدل الترشيح الكبيبي (DFG)"
+
+msgid "Acide urique"
+msgstr "حمض اليوريك"
+
+msgid "Ionogramme sanguin (Sodium, Potassium, Chlore)"
+msgstr "إلكتروليتات الدم (الصوديوم، البوتاسيوم، الكلور)"
+
+msgid "Protéinurie des 24 heures"
+msgstr "البروتين في البول على مدار 24 ساعة"
+
+msgid "Bilan Phosphocalcique"
+msgstr "فحص الفوسفور والكالسيوم"
+
+msgid "Mesure des minéraux impliqués dans le métabolisme osseux et rénal."
+msgstr "قياس المعادن المشاركة في استقلاب العظام والكلى."
+
+msgid "Calcium serique"
+msgstr "كالسيوم المصل"
+
+msgid "Phosphore"
+msgstr "الفوسفور"
+
+msgid "Magnésium"
+msgstr "المغنيسيوم"
+
+msgid "Vitamine D (25-OH-Vitamine D)"
+msgstr "فيتامين د (25-OH-فيتامين د)"
+
+msgid "Parathormone (PTH)"
+msgstr "هرمون الغدة جار الدرقية (PTH)"
+
+msgid "Bilan Thyroïdien"
+msgstr "فحص الغدة الدرقية"
+
+msgid "Contrôle du fonctionnement de la glande thyroïde et de la production d'hormones."
+msgstr "مراقبة وظائف الغدة الدرقية وإنتاج الهرمونات."
+
+msgid "TSH ultra-sensible"
+msgstr "TSH شديد الحساسية"
+
+msgid "T3 libre (FT3)"
+msgstr "T3 الحر (FT3)"
+
+msgid "T4 libre (FT4)"
+msgstr "T4 الحر (FT4)"
+
+msgid "Anticorps anti-thyropéroxidase (anti-TPO)"
+msgstr "الأجسام المضادة لبيروكسيداز الغدة الدرقية (anti-TPO)"
+
+msgid "Anticorps anti-thyroglobuline (anti-TG)"
+msgstr "الأجسام المضادة للثيروغلوبولين (anti-TG)"
+
+msgid "Bilan d'Anémie"
+msgstr "فحص فقر الدم"
+
+msgid "Recherche de carences ou de troubles à l'origine d'une baisse de l'hémoglobine."
+msgstr "البحث عن أوجه القصور أو الاضطرابات المسببة لانخفاض الهيموغلوبين."
+
+msgid "Fer sérique"
+msgstr "حديد المصل"
+
+msgid "Ferritine sérique"
+msgstr "فيريتين المصل"
+
+msgid "Vitamine B12"
+msgstr "فيتامين ب12"
+
+msgid "Folates (Vitamine B9)"
+msgstr "حمض الفوليك (فيتامين ب9)"
+
+msgid "Bilan Martial"
+msgstr "فحص الحديد"
+
+msgid "Évaluation complète des réserves de fer dans l'organisme."
+msgstr "تقييم كامل لمخزون الحديد في الجسم."
+
+msgid "Capacité totale de fixation du fer (CTF)"
+msgstr "قدرة ربط الحديد الإجمالية (CTF)"
+
+msgid "Coefficient de saturation de la transferrine"
+msgstr "معامل تشبع الترانسفيرين"
