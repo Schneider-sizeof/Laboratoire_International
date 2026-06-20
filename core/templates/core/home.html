@@ -113,17 +113,152 @@
 </section>
 
 <!-- ========== ARABIC BRANDING BANNER ========== -->
-<section class="py-12 bg-dark-50/30 border-b border-dark-100 text-center relative overflow-hidden" id="arabic-branding-banner">
-    <div class="max-w-4xl mx-auto px-4 relative z-10">
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-wide select-none leading-normal sm:leading-relaxed" dir="rtl" style="font-family: 'Noto Sans Arabic', system-ui, sans-serif;">
-            <span class="text-[#42A5F5] drop-shadow-sm">المختبر</span> 
-            <span class="text-[#E53935] drop-shadow-sm">الدولي</span>
-            <span class="text-dark-500 text-2xl sm:text-3xl block mt-2 font-medium">للتحاليل الطبية</span>
-        </h2>
-    </div>
-    <!-- Decorative faint background element -->
-    <div class="absolute inset-0 flex items-center justify-center opacity-[0.02] pointer-events-none select-none">
-        <i class="fas fa-flask text-[20rem] text-dark-900"></i>
+<section class="py-16 bg-white text-center relative overflow-hidden" id="arabic-branding-banner">
+    <style>
+        @keyframes logo-breathe-float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                filter: drop-shadow(0 4px 10px rgba(25, 118, 210, 0.08))
+                        drop-shadow(0 0 0px rgba(38, 198, 218, 0));
+            }
+            50% {
+                transform: translateY(-8px) scale(1.015);
+                filter: drop-shadow(0 16px 32px rgba(25, 118, 210, 0.15))
+                        drop-shadow(0 0 15px rgba(38, 198, 218, 0.35));
+            }
+        }
+        @keyframes shimmer-liquid {
+            0% {
+                transform: translateX(-150%) skewX(-20deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.35;
+            }
+            30% {
+                transform: translateX(180%) skewX(-20deg);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(180%) skewX(-20deg);
+                opacity: 0;
+            }
+        }
+        @keyframes diagnostic-ping {
+            0% {
+                transform: translate(-50%, -50%) scale(0.5);
+                opacity: 0;
+                border-color: rgba(38, 198, 218, 0.8);
+            }
+            15% {
+                opacity: 0.6;
+            }
+            70% {
+                border-color: rgba(25, 118, 210, 0.3);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0;
+                border-color: rgba(25, 118, 210, 0);
+            }
+        }
+        @keyframes bubble-rise {
+            0% {
+                transform: translateY(120%) translateX(0) scale(0.5);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.5;
+            }
+            80% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-40px) translateX(var(--wobble)) scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        .animate-logo-breathe-float {
+            animation: logo-breathe-float 6s ease-in-out infinite;
+        }
+        .logo-overlays-container {
+            -webkit-mask-image: url('{% static "core/images/arabic_logo.png" %}');
+            mask-image: url('{% static "core/images/arabic_logo.png" %}');
+            -webkit-mask-size: contain;
+            mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-position: center;
+        }
+        .logo-liquid-shimmer {
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(38, 198, 218, 0.2) 25%,
+                rgba(255, 255, 255, 0.75) 50%,
+                rgba(38, 198, 218, 0.2) 75%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            mix-blend-mode: overlay;
+            transform: translateX(-150%) skewX(-20deg);
+            animation: shimmer-liquid 8s cubic-bezier(0.3, 0.8, 0.3, 0.9) infinite;
+        }
+        .diagnostic-ping-ring {
+            position: absolute;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            width: 260px;
+            height: 260px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 2;
+            animation: diagnostic-ping 6s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+        }
+        .bio-bubble {
+            position: absolute;
+            bottom: -5px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.9) 0%, var(--bubble-color) 70%);
+            box-shadow: 0 0 6px var(--bubble-glow);
+            animation: bubble-rise var(--duration) ease-in infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+    </style>
+    <div class="max-w-4xl mx-auto px-4 relative z-10 flex justify-center items-center py-8">
+        <div class="relative flex justify-center items-center">
+            <!-- Diagnostic/Heartbeat rings radiating from behind -->
+            <div class="diagnostic-ping-ring" style="animation-delay: 0s;"></div>
+            <div class="diagnostic-ping-ring" style="animation-delay: 3s;"></div>
+            
+            <!-- Laboratory rising bio-bubbles floating from behind -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none select-none" style="z-index: 1;">
+                <div class="bio-bubble" style="left: 12%; width: 8px; height: 8px; --wobble: 18px; --duration: 4.2s; animation-delay: 0s; --bubble-color: rgba(38, 198, 218, 0.4); --bubble-glow: rgba(38, 198, 218, 0.2);"></div>
+                <div class="bio-bubble" style="left: 28%; width: 11px; height: 11px; --wobble: -15px; --duration: 5.1s; animation-delay: 1.2s; --bubble-color: rgba(25, 118, 210, 0.3); --bubble-glow: rgba(25, 118, 210, 0.15);"></div>
+                <div class="bio-bubble" style="left: 48%; width: 7px; height: 7px; --wobble: 22px; --duration: 3.8s; animation-delay: 2.3s; --bubble-color: rgba(38, 198, 218, 0.4); --bubble-glow: rgba(38, 198, 218, 0.25);"></div>
+                <div class="bio-bubble" style="left: 65%; width: 9px; height: 9px; --wobble: -10px; --duration: 4.6s; animation-delay: 0.6s; --bubble-color: rgba(25, 118, 210, 0.35); --bubble-glow: rgba(25, 118, 210, 0.2);"></div>
+                <div class="bio-bubble" style="left: 82%; width: 13px; height: 13px; --wobble: -20px; --duration: 5.8s; animation-delay: 2.8s; --bubble-color: rgba(38, 198, 218, 0.3); --bubble-glow: rgba(38, 198, 218, 0.15);"></div>
+            </div>
+            
+            <!-- Floating container for the logo -->
+            <div class="relative inline-block animate-logo-breathe-float select-none z-10">
+                <!-- Logo Image -->
+                <img src="{% static 'core/images/arabic_logo.png' %}" 
+                     alt="Laboratoire International — المختبر الدولي" 
+                     class="w-full max-w-[280px] sm:max-w-[380px] md:max-w-[460px] h-auto object-contain relative z-10"
+                     loading="lazy">
+                
+                <!-- Masked Overlay Container (positioned exactly on top of the logo image) -->
+                <div class="absolute inset-0 z-20 pointer-events-none logo-overlays-container">
+                    <!-- Shimmer Liquid reflection -->
+                    <div class="absolute inset-0 logo-liquid-shimmer"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
