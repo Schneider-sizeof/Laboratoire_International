@@ -16,4 +16,8 @@ urlpatterns = [
     path(_('legal/privacy/'), views.legal_privacy, name='legal_privacy'),
     path(_('legal/terms/'), views.legal_terms, name='legal_terms'),
     path(_('legal/cookies/'), views.legal_cookies, name='legal_cookies'),
+    # Individual analysis pages (SEO)
+    path(_('analyse/') + '<slug:slug>/', views.analysis_detail, name='analysis_detail'),
+    # Neighborhood pages (local SEO)
+    path(_('quartier/') + '<slug:slug>/', views.neighborhood_detail, name='neighborhood_detail'),
 ]

@@ -9,19 +9,24 @@ from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib.sitemaps.views import sitemap
 
-from core.sitemaps import StaticSitemap, BlogSitemap
+from core.sitemaps import StaticSitemap, BlogSitemap, AnalysisSitemap, NeighborhoodSitemap
 from core.views import robots_txt
 
 sitemaps = {
     'static': StaticSitemap,
     'blog': BlogSitemap,
+    'analyses': AnalysisSitemap,
+    'neighborhoods': NeighborhoodSitemap,
 }
+
+from django.views.generic.base import RedirectView
 
 # Non-i18n URLs (no language prefix)
 urlpatterns = [
     path('robots.txt', robots_txt, name='robots_txt'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
     path('i18n/', include('django.conf.urls.i18n')),
+    path('home-one-page/', RedirectView.as_view(url='/fr/', permanent=True)),
 ]
 
 # i18n URLs (with language prefix: /fr/, /en/, /ar/, etc.)

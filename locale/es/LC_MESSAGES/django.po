@@ -1135,3 +1135,59 @@ msgstr "Capacidad total de fijación de hierro (CTFH)"
 
 msgid "Coefficient de saturation de la transferrine"
 msgstr "Coeficiente de saturación de la transferrina"
+
+# === SEO Audit translations ===
+
+msgid "Laboratoire d'analyses médicales à Tanger"
+msgstr "Laboratorio de análisis médicos en Tánger"
+
+msgid "Votre santé, notre priorité"
+msgstr "Su salud, nuestra prioridad"
+
+msgid "Analyses médicales et bilans de santé à Tanger"
+msgstr "Análisis médicos y chequeos de salud en Tánger"
+
+msgid "Qu'est-ce que cette analyse ?"
+msgstr "¿Qué es este análisis?"
+
+msgid "Pourquoi faire cette analyse ?"
+msgstr "¿Por qué hacer este análisis?"
+
+msgid "Délai de résultat"
+msgstr "Plazo de resultado"
+
+msgid "Prendre rendez-vous"
+msgstr "Pedir cita"
+
+msgid "Résultats disponibles en moins de 24h"
+msgstr "Resultados disponibles en menos de 24h"
+
+msgid "Catégorie d'analyses"
+msgstr "Categoría de análisis"
+
+msgid "Voir tous les services"
+msgstr "Ver todos los servicios"
+
+msgid "Localisation"
+msgstr "Ubicación"
+
+msgid "Analyses similaires"
+msgstr "Análisis similares"
+
+msgid "Besoin de cette analyse ?"
+msgstr "¿Necesita este análisis?"
+
+msgid "Contactez-nous pour prendre rendez-vous ou obtenir plus d'informations."
+msgstr "Contáctenos para pedir cita u obtener más información."
+
+msgid "Appelez-nous"
+msgstr "Llámenos"
+
+msgid "Nos services"
+msgstr "Nuestros servicios"
+
+msgid "Voir toutes les analyses"
+msgstr "Ver todos los análisis"
+
+msgid "Besoin d'une analyse médicale ?"
+msgstr "¿Necesita un análisis médico?"

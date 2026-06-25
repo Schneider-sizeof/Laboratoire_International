@@ -1,4 +1,4 @@
-{% load static i18n %}
+{% load static i18n i18n_extras %}
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as languages %}
 <!DOCTYPE html>
@@ -14,9 +14,11 @@
     <!-- Canonical & hreflang -->
     <link rel="canonical" href="https://{{ SITE_DOMAIN }}{{ request.path }}">
     {% for lang_code, lang_name in LANGUAGES %}
-    <link rel="alternate" hreflang="{{ lang_code }}" href="https://{{ SITE_DOMAIN }}/{{ lang_code }}/">
+    {% translate_url lang_code as alt_url %}
+    <link rel="alternate" hreflang="{{ lang_code }}" href="https://{{ SITE_DOMAIN }}{{ alt_url|default:request.path }}">
     {% endfor %}
-    <link rel="alternate" hreflang="x-default" href="https://{{ SITE_DOMAIN }}/fr/">
+    {% translate_url 'fr' as fr_url %}
+    <link rel="alternate" hreflang="x-default" href="https://{{ SITE_DOMAIN }}{{ fr_url|default:request.path }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,6 +35,47 @@
     <!-- Tailwind CSS (compiled) -->
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}?v=2.0">
 
+    <!-- Custom navbar overrides -->
+    <style>
+        /* Dark glass background when not scrolled */
+        #navbar:not(.scrolled) {
+            background: linear-gradient(135deg, rgba(15,23,42,0.93), rgba(30,58,95,0.9));
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            border-bottom: none;
+        }
+        /* Logo icon responsive sizing */
+        #navbar .nav-logo-icon {
+            width: 3rem; height: 3rem;
+            object-fit: contain; flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+        /* Brand name responsive sizing */
+        #navbar .nav-brand-name {
+            font-size: 0.8125rem; line-height: 1.15;
+            white-space: nowrap;
+        }
+        /* Subtitle hidden on mobile */
+        #navbar .nav-brand-subtitle { display: none; }
+        @media (min-width: 640px) {
+            #navbar .nav-logo-icon { width: 4rem; height: 4rem; }
+            #navbar .nav-brand-name { font-size: 1.125rem; }
+            #navbar .nav-brand-subtitle { display: block; font-size: 0.6875rem; }
+        }
+        @media (min-width: 768px) {
+            #navbar .nav-logo-icon { width: 5rem; height: 5rem; }
+            #navbar .nav-brand-name { font-size: 1.25rem; }
+            #hero { padding-top: 9.5rem !important; }
+        }
+        @media (min-width: 1024px) {
+            #navbar .nav-logo-icon { width: 7rem; height: 7rem; }
+            #navbar .nav-brand-name { font-size: 1.5rem; }
+            #navbar .nav-brand-subtitle { font-size: 0.8125rem; }
+            #hero { padding-top: 12rem !important; }
+            .page-hero { padding-top: 11rem !important; }
+        }
+    </style>
+
     <!-- Open Graph -->
     <meta property="og:title" content="{{ page_title|default:SITE_NAME }} | {{ SITE_NAME }}">
     <meta property="og:description" content="{{ meta_description|default:'' }}">
@@ -40,6 +83,7 @@
     <meta property="og:url" content="https://{{ SITE_DOMAIN }}{{ request.path }}">
     <meta property="og:site_name" content="{{ SITE_NAME }}">
     <meta property="og:locale" content="{{ CURRENT_LANG }}">
+    <meta property="og:image" content="https://{{ SITE_DOMAIN }}/static/core/images/logo.png">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary">
@@ -52,7 +96,7 @@
         "@context": "https://schema.org",
         "@type": "MedicalBusiness",
         "name": "{{ SITE_NAME }}",
-        "alternateName": "LIAM - Laboratoire International d'Analyses Médicales",
+        "alternateName": "Laboratoire International Tanger",
         "url": "https://{{ SITE_DOMAIN }}",
         "telephone": "{{ SITE_PHONE }}",
         "email": "{{ SITE_EMAIL }}",
@@ -71,14 +115,30 @@
         "openingHoursSpecification": [
             {
                 "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
                 "opens": "07:00",
                 "closes": "19:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "07:00",
+                "closes": "15:00"
             }
         ],
         "priceRange": "$$",
         "image": "https://{{ SITE_DOMAIN }}/static/core/images/logo.png",
-        "sameAs": [{% for link in SOCIAL_LINKS %}{% if link.name != 'WhatsApp' %}"{{ link.url }}"{% if not forloop.last %},{% endif %}{% endif %}{% endfor %}]
+        "sameAs": [{% for link in SOCIAL_LINKS %}{% if link.name != 'WhatsApp' %}"{{ link.url }}"{% if not forloop.last %},{% endif %}{% endif %}{% endfor %}],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "reviewCount": "3"
+        },
+        "review": [
+            {"@type": "Review", "author": {"@type": "Person", "name": "Amina B."}, "reviewRating": {"@type": "Rating", "ratingValue": "5"}, "reviewBody": "Service excellent et rapide. Les résultats sont disponibles en quelques heures. Je recommande vivement!"},
+            {"@type": "Review", "author": {"@type": "Person", "name": "Khalid M."}, "reviewRating": {"@type": "Rating", "ratingValue": "5"}, "reviewBody": "Équipe très professionnelle et accueillante. Les analyses sont toujours précises."},
+            {"@type": "Review", "author": {"@type": "Person", "name": "Sophie L."}, "reviewRating": {"@type": "Rating", "ratingValue": "5"}, "reviewBody": "Le meilleur laboratoire de Tanger. Résultats rapides et personnel très compétent."}
+        ]
     }
     </script>
 
@@ -93,19 +153,19 @@
 <body class="{% if IS_RTL %}font-arabic{% else %}font-sans{% endif %} bg-dark-50 text-dark-900 antialiased">
 
     <!-- ========== NAVBAR ========== -->
-    <nav id="navbar" class="navbar bg-transparent" role="navigation" aria-label="{% trans 'Navigation principale' %}">
+    <nav id="navbar" class="navbar" role="navigation" aria-label="{% trans 'Navigation principale' %}">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20 py-2">
+            <div class="flex items-center justify-between py-3 sm:py-4">
                 <!-- Brand -->
-                <a href="{% url 'core:home' %}" class="flex items-center gap-3 group" aria-label="{{ SITE_NAME }}">
-                    <img src="{% static 'core/images/logo.png' %}" alt="LIAM" class="w-16 h-16 object-contain transition-transform duration-300 group-hover:scale-105">
-                    <div class="hidden sm:block">
-                        <div class="text-lg font-extrabold leading-tight nav-brand-text text-white transition-colors duration-300">
+                <a href="{% url 'core:home' %}" class="flex items-center gap-2 xs:gap-3 sm:gap-4 group" aria-label="{{ SITE_NAME }}">
+                    <img src="{% static 'core/images/logo.png' %}" alt="" class="nav-logo-icon group-hover:scale-105">
+                    <div class="block">
+                        <div class="nav-brand-name font-extrabold leading-tight nav-brand-text text-white transition-colors duration-300">
                             {% blocktrans trimmed %}
                             <span class="text-blue-500">Laboratoire</span> <span class="text-red-500">International</span>
                             {% endblocktrans %}
                         </div>
-                        <div class="text-[0.65rem] font-medium nav-brand-sub text-white/70 transition-colors duration-300">{% trans "Analyses Médicales" %}</div>
+                        <div class="nav-brand-subtitle font-semibold nav-brand-sub text-white/70 transition-colors duration-300">{% trans "Analyses Médicales" %}</div>
                     </div>
                 </a>
 
@@ -168,14 +228,14 @@
     <aside class="mobile-nav" id="mobileNav" aria-label="{% trans 'Menu mobile' %}" role="dialog">
         <div class="mobile-nav-header">
             <div class="flex items-center gap-3">
-                <img src="{% static 'core/images/logo.png' %}" alt="LIAM" class="w-14 h-14 object-contain brightness-0 invert">
+                <img src="{% static 'core/images/logo.png' %}" alt="{{ SITE_NAME }}" class="w-16 h-16 sm:w-20 sm:h-20 object-contain brightness-0 invert">
                 <div>
-                    <div class="text-base font-bold text-white">
+                    <div class="text-lg sm:text-xl font-bold text-white">
                         {% blocktrans trimmed %}
                         <span class="text-blue-500">Laboratoire</span> <span class="text-red-500">International</span>
                         {% endblocktrans %}
                     </div>
-                    <div class="text-xs text-white/60">{% trans "Analyses Médicales" %}</div>
+                    <div class="text-xs sm:text-sm text-white/60">{% trans "Analyses Médicales" %}</div>
                 </div>
             </div>
             <button type="button" class="absolute top-4 {% if IS_RTL %}left-4{% else %}right-4{% endif %} w-8 h-8 flex items-center justify-center text-white/70 hover:text-white rounded-lg" id="navClose" aria-label="{% trans 'Fermer le menu' %}">
@@ -227,7 +287,7 @@
                 <!-- Brand -->
                 <div>
                     <div class="flex items-center gap-3 mb-4">
-                        <img src="{% static 'core/images/logo.png' %}" alt="LIAM" class="w-14 h-14 object-contain">
+                        <img src="{% static 'core/images/logo.png' %}" alt="{{ SITE_NAME }}" class="w-14 h-14 object-contain">
                         <div>
                             <div class="text-white font-bold">
                                 {% blocktrans trimmed %}
@@ -294,9 +354,9 @@
                             <i class="fas fa-envelope text-primary-400"></i>
                             <a href="mailto:{{ SITE_EMAIL }}" class="text-dark-400 hover:text-white">{{ SITE_EMAIL }}</a>
                         </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fas fa-clock text-primary-400"></i>
-                            <span class="text-dark-400">{{ OPENING_DAYS }}: {{ OPENING_HOURS }}</span>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-clock text-primary-400 mt-1"></i>
+                            <span class="text-dark-400">{{ OPENING_DAYS }}{% if OPENING_HOURS %}: {{ OPENING_HOURS }}{% endif %}</span>
                         </li>
                     </ul>
                 </div>

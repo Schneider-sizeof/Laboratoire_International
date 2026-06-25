@@ -1,9 +1,11 @@
 {% extends 'core/base.html' %}
 {% load static i18n %}
 
+
+
 {% block content %}
 <!-- ========== HERO ========== -->
-<section class="relative min-h-[90vh] flex items-start bg-hero-gradient overflow-hidden pt-20 lg:pt-24" id="hero">
+<section class="relative min-h-[90vh] flex items-start bg-hero-gradient overflow-hidden pt-24 lg:pt-28" id="hero">
     <!-- Decorative particles -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div class="absolute top-20 left-[10%] w-2 h-2 bg-primary-400/30 rounded-full animate-float"></div>
@@ -22,8 +24,8 @@
                 </div>
 
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
-                    {% trans "Votre santé est" %}
-                    <span class="text-accent-400">{% trans "Notre priorité" %}</span>
+                    {% trans "Laboratoire d'analyses médicales à Tanger" %}
+                    <span class="block text-accent-400 mt-2">{% trans "Votre santé, notre priorité" %}</span>
                 </h1>
 
                 <p class="text-lg sm:text-xl text-white/80 max-w-lg leading-relaxed">
@@ -45,7 +47,7 @@
                 <!-- Mobile Visual -->
                 <div class="block lg:hidden mt-8 relative">
                     <div class="rounded-2xl overflow-hidden border border-white/10 shadow-lg aspect-video max-w-sm mx-auto">
-                        <img src="{% static 'core/images/hero.png' %}" alt="{% trans 'Laboratoire International' %}" class="w-full h-full object-cover">
+                        <img src="{% static 'core/images/hero.png' %}" alt="{% trans 'Intérieur moderne et équipements de pointe du laboratoire de biologie médicale à Tanger' %}" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark-950/40 to-transparent"></div>
                     </div>
                 </div>
@@ -55,7 +57,7 @@
             <div class="hidden lg:block relative h-[500px]" aria-hidden="true">
                 <!-- Main Image -->
                 <div class="absolute inset-0 rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-                    <img src="{% static 'core/images/hero.png' %}" alt="{% trans 'Laboratoire International' %}" class="w-full h-full object-cover">
+                    <img src="{% static 'core/images/hero.png' %}" alt="{% trans 'Intérieur moderne et équipements de pointe du laboratoire de biologie médicale à Tanger' %}" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-tr from-dark-900/60 via-transparent to-transparent"></div>
                 </div>
 
@@ -85,11 +87,11 @@
                 <div class="absolute bottom-12 right-12 glass rounded-2xl p-5 animate-float shadow-xl z-10" style="animation-delay: 4s">
                     <div class="flex items-center gap-4">
                         <div class="w-12 h-12 bg-primary-400/20 rounded-xl flex items-center justify-center">
-                            <i class="fas fa-award text-xl text-primary-400"></i>
+                            <i class="fas fa-certificate text-xl text-primary-400"></i>
                         </div>
                         <div>
-                            <div class="text-xl font-extrabold text-white">25+</div>
-                            <div class="text-xs text-white/70">{% trans "Ans d'expertise" %}</div>
+                            <div class="text-xl font-extrabold text-white">ISO 15189</div>
+                            <div class="text-xs text-white/70">{% trans "Norme Qualité" %}</div>
                         </div>
                     </div>
                 </div>
@@ -248,7 +250,7 @@
             <div class="relative inline-block animate-logo-breathe-float select-none z-10">
                 <!-- Logo Image -->
                 <img src="{% static 'core/images/arabic_logo.png' %}" 
-                     alt="Laboratoire International — المختبر الدولي" 
+                     alt="{% trans 'Logo calligraphique de Laboratoire International Tanger — المختبر الدولي طنجة' %}" 
                      class="w-full max-w-[280px] sm:max-w-[380px] md:max-w-[460px] h-auto object-contain relative z-10"
                      loading="lazy">
                 

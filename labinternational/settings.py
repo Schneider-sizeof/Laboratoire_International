@@ -37,7 +37,7 @@ DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
 ALLOWED_HOSTS = os.environ.get(
     'ALLOWED_HOSTS',
-    'laboratoireinternational.pythonanywhere.com,schneider-sizeof.pythonanywhere.com,laboratoireinternational.com,www.laboratoireinternational.com,localhost,127.0.0.1'
+    'laboratoiretanger.com,www.laboratoiretanger.com,schneider-sizeof.pythonanywhere.com,localhost,127.0.0.1'
 ).split(',')
 
 
@@ -168,9 +168,9 @@ EMAIL_BACKEND = os.environ.get(
 # ============================================================
 # Site-specific settings (fallback for context_processors)
 # ============================================================
-SITE_NAME = "Laboratoire International"
+SITE_NAME = "Laboratoire International Tanger"
 SITE_SLOGAN = "Votre santé est Notre priorité"
-SITE_DOMAIN = "laboratoireinternational.com"
+SITE_DOMAIN = "laboratoiretanger.com"
 SITE_PHONE = "+212 5 39 31 39 47"
 SITE_EMAIL = "contact@laboratoireinternational.com"
 SITE_ADDRESS = "Avenue Moulay Rachid, Tanger 90000, Morocco"
@@ -210,9 +210,8 @@ if not DEBUG:
 
     # CSRF
     CSRF_TRUSTED_ORIGINS = [
-        'https://laboratoireinternational.com',
-        'https://www.laboratoireinternational.com',
-        'https://laboratoireinternational.pythonanywhere.com',
+        'https://laboratoiretanger.com',
+        'https://www.laboratoiretanger.com',
     ]
 
     # Logging

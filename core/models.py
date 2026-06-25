@@ -19,7 +19,7 @@ class SiteSettings(models.Model):
     """
     # General
     site_name = models.CharField(
-        max_length=200, default='Laboratoire International',
+        max_length=200, default='Laboratoire International Tanger',
         verbose_name="Nom du site"
     )
     site_slogan_fr = models.CharField(
@@ -51,7 +51,7 @@ class SiteSettings(models.Model):
         verbose_name="Slogan (IT)"
     )
     site_domain = models.CharField(
-        max_length=200, default='laboratoireinternational.com',
+        max_length=200, default='laboratoiretanger.com',
         verbose_name="Domaine"
     )
 
@@ -85,12 +85,12 @@ class SiteSettings(models.Model):
 
     # Opening Hours
     opening_hours = models.CharField(
-        max_length=50, default='07:00 - 19:00',
+        max_length=50, default='', blank=True,
         verbose_name="Horaires d'ouverture"
     )
-    opening_days_fr = models.CharField(max_length=100, default='Lundi - Samedi', verbose_name="Jours (FR)")
-    opening_days_en = models.CharField(max_length=100, blank=True, default='Monday - Saturday', verbose_name="Days (EN)")
-    opening_days_ar = models.CharField(max_length=100, blank=True, default='الإثنين - السبت', verbose_name="Days (AR)")
+    opening_days_fr = models.CharField(max_length=150, default='Lundi - Vendredi : 07:00 - 19:00 | Samedi : 07:00 - 15:00', verbose_name="Jours (FR)")
+    opening_days_en = models.CharField(max_length=150, blank=True, default='Monday - Friday: 7:00 AM - 7:00 PM | Saturday: 7:00 AM - 3:00 PM', verbose_name="Days (EN)")
+    opening_days_ar = models.CharField(max_length=150, blank=True, default='الإثنين - الجمعة: 07:00 - 19:00 | السبت: 07:00 - 15:00', verbose_name="Days (AR)")
     closed_day_fr = models.CharField(max_length=100, default='Dimanche: Fermé', verbose_name="Jour fermé (FR)")
     closed_day_en = models.CharField(max_length=100, blank=True, default='Sunday: Closed', verbose_name="Closed day (EN)")
     closed_day_ar = models.CharField(max_length=100, blank=True, default='الأحد: مغلق', verbose_name="Closed day (AR)")
@@ -337,7 +337,7 @@ class BlogPost(models.Model):
         null=True, blank=True, related_name='posts'
     )
     featured_image = models.ImageField(upload_to='blog/', blank=True, null=True)
-    author = models.CharField(max_length=200, default='Laboratoire International')
+    author = models.CharField(max_length=200, default='Laboratoire International Tanger')
     tags = models.CharField(max_length=500, blank=True, help_text="Comma-separated tags")
     views_count = models.PositiveIntegerField(default=0)
     is_featured = models.BooleanField(default=False)
@@ -478,3 +478,222 @@ class ContactSubmission(models.Model):
 
     def __str__(self):
         return f"{self.name} — {self.get_service_type_display()} ({self.created_at.strftime('%d/%m/%Y')})"
+
+
+# ============================================================
+# Analysis Category
+# ============================================================
+class AnalysisCategory(models.Model):
+    """Categories for medical analyses (e.g., Biochimie, Hématologie)."""
+    slug = models.SlugField(max_length=100, unique=True)
+    name_fr = models.CharField(max_length=200, verbose_name="Nom (FR)")
+    name_en = models.CharField(max_length=200, blank=True, verbose_name="Name (EN)")
+    name_ar = models.CharField(max_length=200, blank=True, verbose_name="الاسم (AR)")
+    name_nl = models.CharField(max_length=200, blank=True, verbose_name="Naam (NL)")
+    name_de = models.CharField(max_length=200, blank=True, verbose_name="Name (DE)")
+    name_es = models.CharField(max_length=200, blank=True, verbose_name="Nombre (ES)")
+    name_it = models.CharField(max_length=200, blank=True, verbose_name="Nome (IT)")
+    icon = models.CharField(max_length=50, default='fas fa-flask', help_text="FontAwesome icon class")
+    color = models.CharField(max_length=20, default='primary')
+    order = models.IntegerField(default=0)
+
+    class Meta:
+        verbose_name = "Analysis Category"
+        verbose_name_plural = "Analysis Categories"
+        ordering = ['order', 'name_fr']
+
+    def __str__(self):
+        return self.name_fr
+
+    def get_name(self, lang=None):
+        from django.utils import translation
+        if not lang:
+            lang = translation.get_language() or 'fr'
+        return getattr(self, f'name_{lang}', '') or self.name_fr
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name_fr)
+        super().save(*args, **kwargs)
+
+
+# ============================================================
+# Analysis (Individual test/profile page)
+# ============================================================
+class Analysis(models.Model):
+    """Individual medical analysis with dedicated SEO page."""
+    slug = models.SlugField(max_length=200, unique=True)
+    category = models.ForeignKey(
+        AnalysisCategory, on_delete=models.CASCADE,
+        related_name='analyses'
+    )
+    icon = models.CharField(max_length=50, default='fas fa-vial', help_text="FontAwesome icon class")
+    order = models.IntegerField(default=0)
+    is_published = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    # French (required)
+    name_fr = models.CharField(max_length=300, verbose_name="Nom (FR)")
+    description_fr = models.TextField(verbose_name="Description (FR)")
+    why_fr = models.TextField(blank=True, verbose_name="Pourquoi faire cette analyse (FR)")
+    delay_fr = models.CharField(max_length=200, blank=True, verbose_name="Délai résultat (FR)")
+    meta_title_fr = models.CharField(max_length=70, blank=True, verbose_name="Meta Title (FR)")
+    meta_description_fr = models.CharField(max_length=160, blank=True, verbose_name="Meta Description (FR)")
+
+    # English
+    name_en = models.CharField(max_length=300, blank=True, verbose_name="Name (EN)")
+    description_en = models.TextField(blank=True, verbose_name="Description (EN)")
+    why_en = models.TextField(blank=True, verbose_name="Why get this test (EN)")
+    delay_en = models.CharField(max_length=200, blank=True, verbose_name="Result delay (EN)")
+    meta_title_en = models.CharField(max_length=70, blank=True, verbose_name="Meta Title (EN)")
+    meta_description_en = models.CharField(max_length=160, blank=True, verbose_name="Meta Description (EN)")
+
+    # Arabic
+    name_ar = models.CharField(max_length=300, blank=True, verbose_name="الاسم (AR)")
+    description_ar = models.TextField(blank=True, verbose_name="الوصف (AR)")
+    why_ar = models.TextField(blank=True, verbose_name="لماذا (AR)")
+    delay_ar = models.CharField(max_length=200, blank=True, verbose_name="مدة النتيجة (AR)")
+    meta_title_ar = models.CharField(max_length=70, blank=True, verbose_name="Meta Title (AR)")
+    meta_description_ar = models.CharField(max_length=160, blank=True, verbose_name="Meta Description (AR)")
+
+    # Dutch
+    name_nl = models.CharField(max_length=300, blank=True)
+    description_nl = models.TextField(blank=True)
+    why_nl = models.TextField(blank=True)
+    delay_nl = models.CharField(max_length=200, blank=True)
+
+    # German
+    name_de = models.CharField(max_length=300, blank=True)
+    description_de = models.TextField(blank=True)
+    why_de = models.TextField(blank=True)
+    delay_de = models.CharField(max_length=200, blank=True)
+
+    # Spanish
+    name_es = models.CharField(max_length=300, blank=True)
+    description_es = models.TextField(blank=True)
+    why_es = models.TextField(blank=True)
+    delay_es = models.CharField(max_length=200, blank=True)
+
+    # Italian
+    name_it = models.CharField(max_length=300, blank=True)
+    description_it = models.TextField(blank=True)
+    why_it = models.TextField(blank=True)
+    delay_it = models.CharField(max_length=200, blank=True)
+
+    class Meta:
+        verbose_name = "Analysis"
+        verbose_name_plural = "Analyses"
+        ordering = ['category__order', 'order', 'name_fr']
+
+    def __str__(self):
+        return self.name_fr
+
+    def get_name(self, lang=None):
+        from django.utils import translation
+        if not lang:
+            lang = translation.get_language() or 'fr'
+        return getattr(self, f'name_{lang}', '') or self.name_fr
+
+    def get_description(self, lang=None):
+        from django.utils import translation
+        if not lang:
+            lang = translation.get_language() or 'fr'
+        return getattr(self, f'description_{lang}', '') or self.description_fr
+
+    def get_why(self, lang=None):
+        from django.utils import translation
+        if not lang:
+            lang = translation.get_language() or 'fr'
+        return getattr(self, f'why_{lang}', '') or self.why_fr
+
+    def get_delay(self, lang=None):
+        from django.utils import translation
+        if not lang:
+            lang = translation.get_language() or 'fr'
+        return getattr(self, f'delay_{lang}', '') or self.delay_fr
+
+    def get_meta_title(self, lang=None):
+        from django.utils import translation
+        if not lang:
+            lang = translation.get_language() or 'fr'
+        meta = getattr(self, f'meta_title_{lang}', '')
+        return meta or f"{self.get_name(lang)} — Tanger"
+
+    def get_meta_description(self, lang=None):
+        from django.utils import translation
+        if not lang:
+            lang = translation.get_language() or 'fr'
+        meta = getattr(self, f'meta_description_{lang}', '')
+        return meta or self.get_description(lang)[:160]
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('core:analysis_detail', kwargs={'slug': self.slug})
+
+
+# ============================================================
+# Neighborhood Page (local SEO)
+# ============================================================
+class NeighborhoodPage(models.Model):
+    """Local/neighborhood pages for geographic SEO targeting."""
+    slug = models.SlugField(max_length=200, unique=True)
+    is_published = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    latitude = models.FloatField(blank=True, null=True)
+    longitude = models.FloatField(blank=True, null=True)
+
+    # French (required)
+    name_fr = models.CharField(max_length=200, verbose_name="Nom (FR)")
+    title_fr = models.CharField(max_length=300, verbose_name="Titre (FR)")
+    content_fr = models.TextField(verbose_name="Contenu (FR)")
+    meta_description_fr = models.CharField(max_length=160, blank=True, verbose_name="Meta Description (FR)")
+
+    # English
+    name_en = models.CharField(max_length=200, blank=True)
+    title_en = models.CharField(max_length=300, blank=True)
+    content_en = models.TextField(blank=True)
+    meta_description_en = models.CharField(max_length=160, blank=True)
+
+    # Arabic
+    name_ar = models.CharField(max_length=200, blank=True)
+    title_ar = models.CharField(max_length=300, blank=True)
+    content_ar = models.TextField(blank=True)
+    meta_description_ar = models.CharField(max_length=160, blank=True)
+
+    class Meta:
+        verbose_name = "Neighborhood Page"
+        verbose_name_plural = "Neighborhood Pages"
+        ordering = ['name_fr']
+
+    def __str__(self):
+        return self.name_fr
+
+    def get_name(self, lang=None):
+        from django.utils import translation
+        if not lang:
+            lang = translation.get_language() or 'fr'
+        return getattr(self, f'name_{lang}', '') or self.name_fr
+
+    def get_title(self, lang=None):
+        from django.utils import translation
+        if not lang:
+            lang = translation.get_language() or 'fr'
+        return getattr(self, f'title_{lang}', '') or self.title_fr
+
+    def get_content(self, lang=None):
+        from django.utils import translation
+        if not lang:
+            lang = translation.get_language() or 'fr'
+        return getattr(self, f'content_{lang}', '') or self.content_fr
+
+    def get_meta_description(self, lang=None):
+        from django.utils import translation
+        if not lang:
+            lang = translation.get_language() or 'fr'
+        return getattr(self, f'meta_description_{lang}', '') or self.get_title(lang)[:160]
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('core:neighborhood_detail', kwargs={'slug': self.slug})

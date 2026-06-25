@@ -1135,3 +1135,59 @@ msgstr "Totale ijzerbindingscapaciteit (TIBC)"
 
 msgid "Coefficient de saturation de la transferrine"
 msgstr "Transferrinesaturatiecoëfficiënt"
+
+# === SEO Audit translations ===
+
+msgid "Laboratoire d'analyses médicales à Tanger"
+msgstr "Medisch analyselaboratorium in Tanger"
+
+msgid "Votre santé, notre priorité"
+msgstr "Uw gezondheid, onze prioriteit"
+
+msgid "Analyses médicales et bilans de santé à Tanger"
+msgstr "Medische analyses en gezondheidscontroles in Tanger"
+
+msgid "Qu'est-ce que cette analyse ?"
+msgstr "Wat is deze analyse?"
+
+msgid "Pourquoi faire cette analyse ?"
+msgstr "Waarom deze analyse laten doen?"
+
+msgid "Délai de résultat"
+msgstr "Resultaattijd"
+
+msgid "Prendre rendez-vous"
+msgstr "Afspraak maken"
+
+msgid "Résultats disponibles en moins de 24h"
+msgstr "Resultaten beschikbaar binnen 24 uur"
+
+msgid "Catégorie d'analyses"
+msgstr "Analysecategorie"
+
+msgid "Voir tous les services"
+msgstr "Bekijk alle diensten"
+
+msgid "Localisation"
+msgstr "Locatie"
+
+msgid "Analyses similaires"
+msgstr "Vergelijkbare analyses"
+
+msgid "Besoin de cette analyse ?"
+msgstr "Heeft u deze analyse nodig?"
+
+msgid "Contactez-nous pour prendre rendez-vous ou obtenir plus d'informations."
+msgstr "Neem contact met ons op voor een afspraak of meer informatie."
+
+msgid "Appelez-nous"
+msgstr "Bel ons"
+
+msgid "Nos services"
+msgstr "Onze diensten"
+
+msgid "Voir toutes les analyses"
+msgstr "Bekijk alle analyses"
+
+msgid "Besoin d'une analyse médicale ?"
+msgstr "Heeft u een medische analyse nodig?"

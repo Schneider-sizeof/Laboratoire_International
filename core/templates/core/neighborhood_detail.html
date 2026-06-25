@@ -1,0 +1,71 @@
+{% extends 'core/base.html' %}
+{% load static i18n %}
+
+{% block content %}
+<!-- ========== HERO ========== -->
+<section class="page-hero bg-hero-gradient text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <nav class="flex items-center justify-center gap-2 text-sm text-white/60 mb-4" aria-label="Breadcrumb">
+            <a href="{% url 'core:home' %}" class="hover:text-white transition-colors">{% trans "Accueil" %}</a>
+            <i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mx-2"></i>
+            <span class="text-white">{{ neighborhood.get_name }}</span>
+        </nav>
+        <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">{{ neighborhood.get_title }}</h1>
+    </div>
+</section>
+
+<!-- ========== CONTENT ========== -->
+<section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-3 gap-12">
+            <!-- Main Content -->
+            <div class="lg:col-span-2 prose prose-lg max-w-none">
+                {{ neighborhood.get_content|safe }}
+            </div>
+
+            <!-- Sidebar -->
+            <div class="space-y-6">
+                <!-- CTA Card -->
+                <div class="bg-hero-gradient rounded-2xl p-6 text-white text-center">
+                    <i class="fas fa-map-marker-alt text-4xl mb-4 text-accent-400"></i>
+                    <h3 class="text-xl font-bold mb-3">{{ SITE_NAME }}</h3>
+                    <p class="text-white/80 text-sm mb-4">{{ SITE_ADDRESS }}</p>
+                    <a href="tel:{{ SITE_PHONE }}" class="block w-full py-3 bg-white text-primary-600 font-bold rounded-xl mb-3 hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-phone mr-2"></i>{{ SITE_PHONE }}
+                    </a>
+                    <a href="https://wa.me/{{ SITE_WHATSAPP }}" target="_blank" class="block w-full py-3 bg-green-500 text-white font-bold rounded-xl hover:bg-green-600 transition-colors">
+                        <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+                    </a>
+                </div>
+
+                <!-- Services Link -->
+                <div class="bg-dark-50 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-dark-900 mb-3">
+                        <i class="fas fa-flask text-primary-500 mr-2"></i>
+                        {% trans "Nos services" %}
+                    </h3>
+                    <a href="{% url 'core:services' %}" class="text-primary-500 hover:text-primary-600 text-sm font-semibold transition-colors">
+                        {% trans "Voir toutes les analyses" %} →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== CTA BOTTOM ========== -->
+<section class="py-16 bg-hero-gradient text-white text-center">
+    <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-3xl font-extrabold mb-4">{% trans "Besoin d'une analyse médicale ?" %}</h2>
+        <p class="text-white/80 mb-8">{% trans "Contactez-nous pour prendre rendez-vous ou obtenir plus d'informations." %}</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{% url 'core:contact' %}" class="px-8 py-4 bg-white text-primary-600 font-bold rounded-xl hover:bg-gray-100 transition-colors">
+                <i class="fas fa-envelope mr-2"></i>{% trans "Contactez-nous" %}
+            </a>
+            <a href="tel:{{ SITE_PHONE }}" class="px-8 py-4 border-2 border-white/30 text-white font-bold rounded-xl hover:bg-white/10 transition-colors">
+                <i class="fas fa-phone mr-2"></i>{% trans "Appelez-nous" %}
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

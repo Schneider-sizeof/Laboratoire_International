@@ -4,7 +4,7 @@ Rich admin panel with SiteSettings, Team, Partners, Blog, and Contacts.
 """
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import SiteSettings, TeamMember, Partner, BlogCategory, BlogPost, ContactSubmission
+from .models import SiteSettings, TeamMember, Partner, BlogCategory, BlogPost, ContactSubmission, AnalysisCategory, Analysis, NeighborhoodPage
 
 
 # ============================================================
@@ -253,6 +253,49 @@ class ContactSubmissionAdmin(admin.ModelAdmin):
     def mark_as_unread(self, request, queryset):
         queryset.update(is_read=False)
     mark_as_unread.short_description = "Mark as unread"
+
+
+# ============================================================
+# Analysis Category
+# ============================================================
+@admin.register(AnalysisCategory)
+class AnalysisCategoryAdmin(admin.ModelAdmin):
+    list_display = ('name_fr', 'name_en', 'slug', 'icon', 'order')
+    prepopulated_fields = {'slug': ('name_fr',)}
+    ordering = ('order',)
+
+
+# ============================================================
+# Analysis
+# ============================================================
+@admin.register(Analysis)
+class AnalysisAdmin(admin.ModelAdmin):
+    list_display = ('name_fr', 'category', 'slug', 'is_published', 'order')
+    list_filter = ('category', 'is_published')
+    prepopulated_fields = {'slug': ('name_fr',)}
+    search_fields = ('name_fr', 'name_en', 'name_ar')
+    ordering = ('category__order', 'order')
+    fieldsets = (
+        ('General', {'fields': ('slug', 'category', 'icon', 'order', 'is_published')}),
+        ('Français', {'fields': ('name_fr', 'description_fr', 'why_fr', 'delay_fr', 'meta_title_fr', 'meta_description_fr')}),
+        ('English', {'fields': ('name_en', 'description_en', 'why_en', 'delay_en', 'meta_title_en', 'meta_description_en'), 'classes': ('collapse',)}),
+        ('العربية', {'fields': ('name_ar', 'description_ar', 'why_ar', 'delay_ar', 'meta_title_ar', 'meta_description_ar'), 'classes': ('collapse',)}),
+    )
+
+
+# ============================================================
+# Neighborhood Page
+# ============================================================
+@admin.register(NeighborhoodPage)
+class NeighborhoodPageAdmin(admin.ModelAdmin):
+    list_display = ('name_fr', 'slug', 'is_published')
+    prepopulated_fields = {'slug': ('name_fr',)}
+    fieldsets = (
+        ('General', {'fields': ('slug', 'is_published', 'latitude', 'longitude')}),
+        ('Français', {'fields': ('name_fr', 'title_fr', 'content_fr', 'meta_description_fr')}),
+        ('English', {'fields': ('name_en', 'title_en', 'content_en', 'meta_description_en'), 'classes': ('collapse',)}),
+        ('العربية', {'fields': ('name_ar', 'title_ar', 'content_ar', 'meta_description_ar'), 'classes': ('collapse',)}),
+    )
 
 
 # ============================================================

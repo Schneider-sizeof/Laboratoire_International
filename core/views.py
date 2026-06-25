@@ -12,7 +12,7 @@ from django.conf import settings
 import json
 import logging
 
-from .models import BlogPost, BlogCategory, ContactSubmission, SiteSettings, TeamMember, Partner
+from .models import BlogPost, BlogCategory, ContactSubmission, SiteSettings, TeamMember, Partner, Analysis, AnalysisCategory, NeighborhoodPage
 
 logger = logging.getLogger(__name__)
 
@@ -173,10 +173,10 @@ def home(request):
         },
     ]
     stats = [
-        {'number': '25+', 'label': _("Années d'Expérience")},
+        {'number': 'ISO 15189', 'label': _('Qualité certifiée')},
         {'number': '50K+', 'label': _('Analyses par An')},
         {'number': '99.9%', 'label': _('Taux de Précision')},
-        {'number': '24/7', 'label': _('Service Continu')},
+        {'number': '400+', 'label': _('analyses disponibles')},
     ]
     testimonials = [
         {
@@ -263,7 +263,7 @@ def about(request):
         'lang': lang,
         'page_title': _('À propos'),
         'meta_description': _(
-            'Découvrez Laboratoire International, plus de 25 ans d\'expertise '
+            'Découvrez Laboratoire International, votre laboratoire de référence '
             'en analyses médicales à Tanger. Certifié ISO 15189.'
         ),
     }
@@ -711,7 +711,7 @@ def robots_txt(request):
         site = SiteSettings.load()
         domain = site.site_domain
     except Exception:
-        domain = getattr(settings, 'SITE_DOMAIN', 'laboratoireinternational.com')
+        domain = getattr(settings, 'SITE_DOMAIN', 'laboratoiretanger.com')
 
     lines = [
         "User-agent: *",
@@ -720,3 +720,42 @@ def robots_txt(request):
         f"Sitemap: https://{domain}/sitemap.xml",
     ]
     return HttpResponse("\n".join(lines), content_type="text/plain")
+
+
+# ============================================================
+# Analysis Detail Page (SEO)
+# ============================================================
+def analysis_detail(request, slug):
+    """Individual analysis page for SEO."""
+    analysis = get_object_or_404(Analysis, slug=slug, is_published=True)
+    lang = _lang()
+
+    # Related analyses in same category
+    related = Analysis.objects.filter(
+        category=analysis.category, is_published=True
+    ).exclude(pk=analysis.pk)[:6]
+
+    context = {
+        'analysis': analysis,
+        'category': analysis.category,
+        'related_analyses': related,
+        'page_title': analysis.get_meta_title(lang),
+        'meta_description': analysis.get_meta_description(lang),
+    }
+    return render(request, 'core/analysis_detail.html', context)
+
+
+# ============================================================
+# Neighborhood Detail Page (Local SEO)
+# ============================================================
+def neighborhood_detail(request, slug):
+    """Neighborhood page for local SEO."""
+    page = get_object_or_404(NeighborhoodPage, slug=slug, is_published=True)
+    lang = _lang()
+
+    context = {
+        'neighborhood': page,
+        'page_title': page.get_title(lang),
+        'meta_description': page.get_meta_description(lang),
+    }
+    return render(request, 'core/neighborhood_detail.html', context)

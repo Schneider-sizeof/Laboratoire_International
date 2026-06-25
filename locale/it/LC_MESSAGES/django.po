@@ -1135,3 +1135,59 @@ msgstr "Capacità totale di legame del ferro (TIBC)"
 
 msgid "Coefficient de saturation de la transferrine"
 msgstr "Coefficiente di saturazione della transferrina"
+
+# === SEO Audit translations ===
+
+msgid "Laboratoire d'analyses médicales à Tanger"
+msgstr "Laboratorio di analisi mediche a Tangeri"
+
+msgid "Votre santé, notre priorité"
+msgstr "La vostra salute, la nostra priorità"
+
+msgid "Analyses médicales et bilans de santé à Tanger"
+msgstr "Analisi mediche e check-up sanitari a Tangeri"
+
+msgid "Qu'est-ce que cette analyse ?"
+msgstr "Cos'è questa analisi?"
+
+msgid "Pourquoi faire cette analyse ?"
+msgstr "Perché fare questa analisi?"
+
+msgid "Délai de résultat"
+msgstr "Tempo di risultato"
+
+msgid "Prendre rendez-vous"
+msgstr "Prendere un appuntamento"
+
+msgid "Résultats disponibles en moins de 24h"
+msgstr "Risultati disponibili in meno di 24h"
+
+msgid "Catégorie d'analyses"
+msgstr "Categoria di analisi"
+
+msgid "Voir tous les services"
+msgstr "Vedi tutti i servizi"
+
+msgid "Localisation"
+msgstr "Posizione"
+
+msgid "Analyses similaires"
+msgstr "Analisi simili"
+
+msgid "Besoin de cette analyse ?"
+msgstr "Hai bisogno di questa analisi?"
+
+msgid "Contactez-nous pour prendre rendez-vous ou obtenir plus d'informations."
+msgstr "Contattateci per un appuntamento o per maggiori informazioni."
+
+msgid "Appelez-nous"
+msgstr "Chiamateci"
+
+msgid "Nos services"
+msgstr "I nostri servizi"
+
+msgid "Voir toutes les analyses"
+msgstr "Vedi tutte le analisi"
+
+msgid "Besoin d'une analyse médicale ?"
+msgstr "Hai bisogno di un'analisi medica?"

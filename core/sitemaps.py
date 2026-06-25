@@ -4,13 +4,12 @@ Sitemap configuration for SEO.
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
-from .models import BlogPost
+from .models import BlogPost, Analysis, NeighborhoodPage
 
 
 class StaticSitemap(Sitemap):
     """Sitemap for static pages."""
     changefreq = 'weekly'
-    priority = 0.8
     protocol = 'https'
 
     def items(self):
@@ -55,3 +54,35 @@ class BlogSitemap(Sitemap):
 
     def location(self, obj):
         return reverse('core:blog_detail', kwargs={'slug': obj.slug})
+
+
+class AnalysisSitemap(Sitemap):
+    """Sitemap for individual analysis pages."""
+    changefreq = 'monthly'
+    priority = 0.8
+    protocol = 'https'
+
+    def items(self):
+        return Analysis.objects.filter(is_published=True)
+
+    def lastmod(self, obj):
+        return obj.updated_at
+
+    def location(self, obj):
+        return reverse('core:analysis_detail', kwargs={'slug': obj.slug})
+
+
+class NeighborhoodSitemap(Sitemap):
+    """Sitemap for neighborhood pages."""
+    changefreq = 'monthly'
+    priority = 0.7
+    protocol = 'https'
+
+    def items(self):
+        return NeighborhoodPage.objects.filter(is_published=True)
+
+    def lastmod(self, obj):
+        return obj.updated_at
+
+    def location(self, obj):
+        return reverse('core:neighborhood_detail', kwargs={'slug': obj.slug})

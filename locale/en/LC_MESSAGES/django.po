@@ -247,8 +247,8 @@ msgstr "Share this article"
 msgid "À propos de nous"
 msgstr "About Us"
 
-msgid "Plus de 25 ans d'excellence en analyses médicales au service de votre santé."
-msgstr "Over 25 years of excellence in medical analyses serving your health."
+msgid "L'excellence en analyses médicales au service de votre santé."
+msgstr "Excellence in medical analysis at the service of your health."
 
 msgid "Notre Histoire"
 msgstr "Our Story"
@@ -256,8 +256,8 @@ msgstr "Our Story"
 msgid "Un laboratoire de référence à Tanger"
 msgstr "A reference laboratory in Tangier"
 
-msgid "Fondé il y a plus de 25 ans, Laboratoire International s'est imposé comme un acteur majeur du diagnostic médical à Tanger et dans la région du Nord du Maroc."
-msgstr "Founded over 25 years ago, Laboratoire International has established itself as a major player in medical diagnostics in Tangier and the Northern Morocco region."
+msgid "Depuis sa création, Laboratoire International s'est imposé comme un acteur majeur du diagnostic médical à Tanger et dans la région du Nord du Maroc."
+msgstr "Since its creation, Laboratoire International has established itself as a major player in medical diagnostics in Tangier and the Northern Morocco region."
 
 msgid "Notre engagement envers l'excellence nous a conduits à établir des partenariats stratégiques avec Cerba Lab, réseau européen de référence, et le Laboratoire National Mohammed VI d'Analyses Médicales."
 msgstr "Our commitment to excellence has led us to establish strategic partnerships with Cerba Lab, the European reference network, and the National Laboratory Mohammed VI for Medical Analyses."
@@ -564,12 +564,12 @@ msgstr "Contact us at +212 5 39 31 39 47 or visit the laboratory with a valid ID
 msgid "Besoin d'aide ?"
 msgstr "Need help?"
 
-msgid "Notre équipe est disponible 24h/24 pour vous assister."
-msgstr "Our team is available 24/7 to assist you."
+msgid "Notre équipe est disponible pour vous assister et répondre à vos questions."
+msgstr "Our team is available to assist you and answer your questions."
 
 # Contact Page
-msgid "Nous sommes à votre disposition 24h/24, 7j/7."
-msgstr "We are available 24/7."
+msgid "N'hésitez pas à nous contacter pour toute question ou prise de rendez-vous."
+msgstr "Feel free to contact us for any questions or to schedule an appointment."
 
 msgid "Adresse"
 msgstr "Address"
@@ -734,8 +734,8 @@ msgstr "6. Contact"
 msgid "Laboratoire International d'Analyses Médicales à Tanger. Résultats en moins de 24h. Partenaire de Cerba Lab et du Laboratoire National Mohammed VI."
 msgstr "International Medical Laboratory in Tangier. Results in less than 24 hours. Partner of Cerba Lab and National Laboratory Mohammed VI."
 
-msgid "Découvrez Laboratoire International, plus de 25 ans d'expertise en analyses médicales à Tanger. Certifié ISO 15189."
-msgstr "Discover Laboratoire International, over 25 years of expertise in medical analyses in Tangier. ISO 15189 certified."
+msgid "Découvrez Laboratoire International, votre laboratoire de référence en analyses médicales à Tanger. Certifié ISO 15189."
+msgstr "Discover Laboratoire International, your reference laboratory for medical analysis in Tangier. ISO 15189 certified."
 
 msgid "Découvrez nos services d'analyses médicales : biochimie, hématologie, sérologie, PCR, microbiologie et plus. Résultats en moins de 24h."
 msgstr "Discover our medical analysis services: biochemistry, hematology, serology, PCR, microbiology and more. Results in less than 24 hours."
@@ -1174,3 +1174,59 @@ msgstr "Total iron-binding capacity (TIBC)"
 
 msgid "Coefficient de saturation de la transferrine"
 msgstr "Transferrin saturation coefficient"
+
+# === SEO Audit translations ===
+
+msgid "Laboratoire d'analyses médicales à Tanger"
+msgstr "Medical Analysis Laboratory in Tangier"
+
+msgid "Votre santé, notre priorité"
+msgstr "Your health, our priority"
+
+msgid "Analyses médicales et bilans de santé à Tanger"
+msgstr "Medical analyses and health check-ups in Tangier"
+
+msgid "Qu'est-ce que cette analyse ?"
+msgstr "What is this test?"
+
+msgid "Pourquoi faire cette analyse ?"
+msgstr "Why get this test?"
+
+msgid "Délai de résultat"
+msgstr "Result turnaround time"
+
+msgid "Prendre rendez-vous"
+msgstr "Book an appointment"
+
+msgid "Résultats disponibles en moins de 24h"
+msgstr "Results available in under 24h"
+
+msgid "Catégorie d'analyses"
+msgstr "Analysis category"
+
+msgid "Voir tous les services"
+msgstr "View all services"
+
+msgid "Localisation"
+msgstr "Location"
+
+msgid "Analyses similaires"
+msgstr "Similar analyses"
+
+msgid "Besoin de cette analyse ?"
+msgstr "Need this test?"
+
+msgid "Contactez-nous pour prendre rendez-vous ou obtenir plus d'informations."
+msgstr "Contact us to schedule an appointment or get more information."
+
+msgid "Appelez-nous"
+msgstr "Call us"
+
+msgid "Nos services"
+msgstr "Our services"
+
+msgid "Voir toutes les analyses"
+msgstr "View all analyses"
+
+msgid "Besoin d'une analyse médicale ?"
+msgstr "Need a medical test?"

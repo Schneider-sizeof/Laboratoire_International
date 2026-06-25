@@ -74,9 +74,9 @@ def site_context(request):
         }
 
         return {
-            'SITE_NAME': _('Laboratoire International'),
+            'SITE_NAME': _('Laboratoire International Tanger'),
             'SITE_SLOGAN': site_slogan_map.get(current_lang, _('Analyses Médicales')),
-            'SITE_DOMAIN': getattr(settings, 'SITE_DOMAIN', 'laboratoireinternational.com'),
+            'SITE_DOMAIN': getattr(settings, 'SITE_DOMAIN', 'laboratoiretanger.com'),
             'SITE_PHONE': getattr(settings, 'SITE_PHONE', '+212 5 39 31 39 47'),
             'SITE_EMAIL': getattr(settings, 'SITE_EMAIL', 'contact@laboratoireinternational.com'),
             'SITE_WHATSAPP': '212539313947',
@@ -85,8 +85,8 @@ def site_context(request):
             'SITE_MAPS_EMBED': getattr(settings, 'SITE_MAPS_EMBED', ''),
             'VISIONLIS_URL': getattr(settings, 'VISIONLIS_URL', ''),
             'GA4_MEASUREMENT_ID': getattr(settings, 'GA4_MEASUREMENT_ID', ''),
-            'OPENING_HOURS': '07:00 - 19:00',
-            'OPENING_DAYS': 'Lundi - Samedi',
+            'OPENING_HOURS': '',
+            'OPENING_DAYS': 'Lundi - Vendredi : 07:00 - 19:00 | Samedi : 07:00 - 15:00',
             'CLOSED_DAY': 'Dimanche: Fermé',
             'SOCIAL_LINKS': [],
             'SOCIAL_URLS_JSON': [],

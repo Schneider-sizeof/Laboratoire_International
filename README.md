@@ -4,7 +4,7 @@
 
 Production-ready website for **Laboratoire International d'Analyses Médicales** — a medical laboratory in Tangier, Morocco.
 
-🌐 [laboratoireinternational.com](https://laboratoireinternational.com)
+🌐 [laboratoiretanger.com](https://laboratoiretanger.com)
 
 ---
 

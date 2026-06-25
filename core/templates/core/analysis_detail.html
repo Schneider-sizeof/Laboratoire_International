@@ -1,0 +1,173 @@
+{% extends 'core/base.html' %}
+{% load static i18n %}
+
+{% block extra_head %}
+    <!-- Schema.org JSON-LD for MedicalTest -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "MedicalTest",
+        "name": "{{ analysis.get_name }}",
+        "description": "{{ analysis.get_description|truncatechars:300 }}",
+        "url": "https://{{ SITE_DOMAIN }}{{ request.path }}",
+        "usesDevice": {
+            "@type": "MedicalDevice",
+            "name": "Équipements de laboratoire certifiés"
+        },
+        "availableIn": {
+            "@type": "MedicalBusiness",
+            "name": "{{ SITE_NAME }}",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Avenue Moulay Rachid",
+                "addressLocality": "Tanger",
+                "postalCode": "90000",
+                "addressCountry": "MA"
+            },
+            "telephone": "{{ SITE_PHONE }}"
+        }
+    }
+    </script>
+{% endblock %}
+
+{% block content %}
+<!-- ========== HERO ========== -->
+<section class="page-hero bg-hero-gradient text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <nav class="flex items-center justify-center gap-2 text-sm text-white/60 mb-4" aria-label="Breadcrumb">
+            <a href="{% url 'core:home' %}" class="hover:text-white transition-colors">{% trans "Accueil" %}</a>
+            <i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mx-2"></i>
+            <a href="{% url 'core:services' %}" class="hover:text-white transition-colors">{% trans "Services" %}</a>
+            <i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mx-2"></i>
+            <span class="text-white">{{ analysis.get_name }}</span>
+        </nav>
+        <h1 class="text-4xl sm:text-5xl font-extrabold mb-4">{{ analysis.get_name }} — Tanger</h1>
+        <p class="text-lg text-white/70 max-w-2xl mx-auto">
+            <i class="fas fa-{{ analysis.icon|default:'vial' }} mr-2"></i>
+            {{ category.get_name }} | {{ SITE_NAME }}
+        </p>
+    </div>
+</section>
+
+<!-- ========== CONTENT ========== -->
+<section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-3 gap-12">
+            <!-- Main Content -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Description -->
+                <div class="prose prose-lg max-w-none">
+                    <h2 class="text-2xl font-bold text-dark-900 mb-4">
+                        <i class="fas fa-info-circle text-primary-500 mr-2"></i>
+                        {% trans "Qu'est-ce que cette analyse ?" %}
+                    </h2>
+                    <div class="text-dark-600 leading-relaxed">
+                        {{ analysis.get_description|linebreaksbr }}
+                    </div>
+                </div>
+
+                <!-- Why -->
+                {% if analysis.get_why %}
+                <div class="prose prose-lg max-w-none">
+                    <h2 class="text-2xl font-bold text-dark-900 mb-4">
+                        <i class="fas fa-question-circle text-accent-500 mr-2"></i>
+                        {% trans "Pourquoi faire cette analyse ?" %}
+                    </h2>
+                    <div class="text-dark-600 leading-relaxed">
+                        {{ analysis.get_why|linebreaksbr }}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Delay -->
+                {% if analysis.get_delay %}
+                <div class="bg-primary-50 rounded-2xl p-6 border border-primary-100">
+                    <h3 class="text-lg font-bold text-dark-900 mb-2">
+                        <i class="fas fa-clock text-primary-500 mr-2"></i>
+                        {% trans "Délai de résultat" %}
+                    </h3>
+                    <p class="text-dark-600">{{ analysis.get_delay }}</p>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Sidebar -->
+            <div class="space-y-6">
+                <!-- CTA Card -->
+                <div class="bg-hero-gradient rounded-2xl p-6 text-white text-center">
+                    <i class="fas fa-calendar-check text-4xl mb-4 text-accent-400"></i>
+                    <h3 class="text-xl font-bold mb-3">{% trans "Prendre rendez-vous" %}</h3>
+                    <p class="text-white/80 text-sm mb-4">{% trans "Résultats disponibles en moins de 24h" %}</p>
+                    <a href="tel:{{ SITE_PHONE }}" class="block w-full py-3 bg-white text-primary-600 font-bold rounded-xl mb-3 hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-phone mr-2"></i>{{ SITE_PHONE }}
+                    </a>
+                    <a href="https://wa.me/{{ SITE_WHATSAPP }}" target="_blank" class="block w-full py-3 bg-green-500 text-white font-bold rounded-xl hover:bg-green-600 transition-colors">
+                        <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+                    </a>
+                </div>
+
+                <!-- Category Info -->
+                <div class="bg-dark-50 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-dark-900 mb-3">
+                        <i class="{{ category.icon }} text-primary-500 mr-2"></i>
+                        {{ category.get_name }}
+                    </h3>
+                    <p class="text-sm text-dark-500 mb-4">{% trans "Catégorie d'analyses" %}</p>
+                    <a href="{% url 'core:services' %}" class="text-primary-500 hover:text-primary-600 text-sm font-semibold transition-colors">
+                        {% trans "Voir tous les services" %} →
+                    </a>
+                </div>
+
+                <!-- Location -->
+                <div class="bg-dark-50 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-dark-900 mb-3">
+                        <i class="fas fa-map-marker-alt text-red-500 mr-2"></i>
+                        {% trans "Localisation" %}
+                    </h3>
+                    <p class="text-sm text-dark-500">{{ SITE_ADDRESS }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== RELATED ANALYSES ========== -->
+{% if related_analyses %}
+<section class="py-16 bg-dark-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-extrabold text-dark-900 text-center mb-12">
+            {% trans "Analyses similaires" %}
+        </h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for related in related_analyses %}
+            <a href="{% url 'core:analysis_detail' slug=related.slug %}" class="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 group">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+                        <i class="{{ related.icon|default:'fas fa-vial' }} text-primary-500"></i>
+                    </div>
+                    <h3 class="font-bold text-dark-900 group-hover:text-primary-500 transition-colors">{{ related.get_name }}</h3>
+                </div>
+                <p class="text-sm text-dark-500 line-clamp-2">{{ related.get_description|truncatechars:100 }}</p>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- ========== CTA BOTTOM ========== -->
+<section class="py-16 bg-hero-gradient text-white text-center">
+    <div class="max-w-3xl mx-auto px-4">
+        <h2 class="text-3xl font-extrabold mb-4">{% trans "Besoin de cette analyse ?" %}</h2>
+        <p class="text-white/80 mb-8">{% trans "Contactez-nous pour prendre rendez-vous ou obtenir plus d'informations." %}</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{% url 'core:contact' %}" class="px-8 py-4 bg-white text-primary-600 font-bold rounded-xl hover:bg-gray-100 transition-colors">
+                <i class="fas fa-envelope mr-2"></i>{% trans "Contactez-nous" %}
+            </a>
+            <a href="tel:{{ SITE_PHONE }}" class="px-8 py-4 border-2 border-white/30 text-white font-bold rounded-xl hover:bg-white/10 transition-colors">
+                <i class="fas fa-phone mr-2"></i>{% trans "Appelez-nous" %}
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

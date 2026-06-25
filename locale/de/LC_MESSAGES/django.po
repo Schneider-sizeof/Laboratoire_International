@@ -1135,3 +1135,59 @@ msgstr "Gesamteisenbindungskapazität (FEBK)"
 
 msgid "Coefficient de saturation de la transferrine"
 msgstr "Transferrinsättigungskoeffizient"
+
+# === SEO Audit translations ===
+
+msgid "Laboratoire d'analyses médicales à Tanger"
+msgstr "Medizinisches Analyselabor in Tanger"
+
+msgid "Votre santé, notre priorité"
+msgstr "Ihre Gesundheit, unsere Priorität"
+
+msgid "Analyses médicales et bilans de santé à Tanger"
+msgstr "Medizinische Analysen und Gesundheitschecks in Tanger"
+
+msgid "Qu'est-ce que cette analyse ?"
+msgstr "Was ist diese Analyse?"
+
+msgid "Pourquoi faire cette analyse ?"
+msgstr "Warum diese Analyse durchführen?"
+
+msgid "Délai de résultat"
+msgstr "Ergebniszeit"
+
+msgid "Prendre rendez-vous"
+msgstr "Termin vereinbaren"
+
+msgid "Résultats disponibles en moins de 24h"
+msgstr "Ergebnisse in weniger als 24h verfügbar"
+
+msgid "Catégorie d'analyses"
+msgstr "Analysekategorie"
+
+msgid "Voir tous les services"
+msgstr "Alle Dienstleistungen anzeigen"
+
+msgid "Localisation"
+msgstr "Standort"
+
+msgid "Analyses similaires"
+msgstr "Ähnliche Analysen"
+
+msgid "Besoin de cette analyse ?"
+msgstr "Brauchen Sie diese Analyse?"
+
+msgid "Contactez-nous pour prendre rendez-vous ou obtenir plus d'informations."
+msgstr "Kontaktieren Sie uns für einen Termin oder weitere Informationen."
+
+msgid "Appelez-nous"
+msgstr "Rufen Sie uns an"
+
+msgid "Nos services"
+msgstr "Unsere Dienstleistungen"
+
+msgid "Voir toutes les analyses"
+msgstr "Alle Analysen anzeigen"
+
+msgid "Besoin d'une analyse médicale ?"
+msgstr "Brauchen Sie eine medizinische Analyse?"

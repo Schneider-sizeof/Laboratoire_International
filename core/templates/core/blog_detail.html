@@ -9,10 +9,13 @@
     "@type": "BlogPosting",
     "headline": "{{ post.get_title }}",
     "description": "{{ post.get_meta_description }}",
-    "author": {"@type": "Organization", "name": "{{ SITE_NAME }}"},
+    "author": {"@type": "Person", "name": "{{ post.author }}"},
     "publisher": {"@type": "Organization", "name": "{{ SITE_NAME }}"},
     "datePublished": "{{ post.published_at|date:'c' }}",
     "dateModified": "{{ post.updated_at|date:'c' }}",
+    {% if post.featured_image %}
+    "image": "https://{{ SITE_DOMAIN }}{{ post.featured_image.url }}",
+    {% endif %}
     "mainEntityOfPage": {"@type": "WebPage", "@id": "https://{{ SITE_DOMAIN }}{{ request.path }}"}
 }
 </script>
