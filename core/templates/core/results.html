@@ -1,6 +1,53 @@
 {% extends 'core/base.html' %}
 {% load static i18n %}
 
+{% block extra_head %}
+<style>
+    /* Premium QR Code Scanner Animation */
+    .qr-container {
+        position: relative;
+        width: 220px;
+        height: 220px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 1.5rem;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+        border: 8px solid #f8fafc;
+        background-color: white;
+    }
+    
+    .qr-scanner-line {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, transparent, #10b981, #3b82f6, transparent);
+        box-shadow: 0 0 8px #10b981, 0 0 12px #3b82f6;
+        animation: scan-anim 2.5s ease-in-out infinite;
+        z-index: 10;
+        opacity: 0.8;
+    }
+    
+    @keyframes scan-anim {
+        0% { top: 5%; }
+        50% { top: 93%; }
+        100% { top: 5%; }
+    }
+
+    .qr-corner-border {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border: 3px solid #e2e8f0;
+        z-index: 5;
+    }
+    .qr-top-left { top: 12px; left: 12px; border-right: none; border-bottom: none; border-top-left-radius: 6px; }
+    .qr-top-right { top: 12px; right: 12px; border-left: none; border-bottom: none; border-top-right-radius: 6px; }
+    .qr-bottom-left { bottom: 12px; left: 12px; border-right: none; border-top: none; border-bottom-left-radius: 6px; }
+    .qr-bottom-right { bottom: 12px; right: 12px; border-left: none; border-top: none; border-bottom-right-radius: 6px; }
+</style>
+{% endblock %}
+
 {% block content %}
 <!-- Page Hero -->
 <section class="page-hero">
@@ -20,21 +67,42 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-xl mx-auto text-center fade-in">
             <!-- Main Card -->
-            <div class="results-card mb-10">
-                <div class="w-20 h-20 bg-primary-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                    <i class="fas fa-file-medical-alt text-3xl text-primary-500"></i>
+            <div class="results-card mb-12 p-8 sm:p-10 border border-dark-150 rounded-3xl bg-dark-50/30">
+                <div class="w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-qrcode text-3xl text-primary-500"></i>
                 </div>
                 <h2 class="text-2xl font-extrabold text-dark-900 mb-3">{% trans "Consulter vos résultats" %}</h2>
-                <p class="text-dark-500 mb-8 leading-relaxed">{% trans "Cliquez sur le bouton ci-dessous pour accéder à notre portail sécurisé VisionLIS. Utilisez les identifiants qui vous ont été remis au laboratoire." %}</p>
+                <p class="text-dark-600 mb-8 text-sm sm:text-base leading-relaxed">
+                    {% trans "Scannez le QR Code ci-dessous avec votre smartphone pour accéder au portail sécurisé VisionLIS." %}
+                </p>
 
-                <a href="{{ VISIONLIS_URL }}" target="_blank" rel="noopener noreferrer" id="visionlis-btn"
-                   class="btn btn-primary btn-lg w-full justify-center mb-4 text-base">
-                    <i class="fas fa-external-link-alt"></i>
-                    {% trans "Accéder à mes résultats" %}
-                </a>
+                <!-- Non-clickable QR Code Area -->
+                <div class="mb-6">
+                    <div class="qr-container">
+                        <div class="qr-scanner-line" aria-hidden="true"></div>
+                        <!-- Corner Borders to frame the QR code -->
+                        <div class="qr-corner-border qr-top-left" aria-hidden="true"></div>
+                        <div class="qr-corner-border qr-top-right" aria-hidden="true"></div>
+                        <div class="qr-corner-border qr-bottom-left" aria-hidden="true"></div>
+                        <div class="qr-corner-border qr-bottom-right" aria-hidden="true"></div>
+                        
+                        <!-- QR Code Image -->
+                        <img src="{% static 'core/images/qr_code.png' %}" alt="{% trans "QR Code VisionLIS" %}" 
+                             class="w-full h-full p-4 object-contain relative z-1" loading="lazy">
+                    </div>
+                </div>
 
-                <p class="text-xs text-dark-400">
-                    <i class="fas fa-lock text-primary-400 mr-1"></i>
+                <!-- Fallback Text Link for Direct Access -->
+                <div class="mb-6">
+                    <a href="{{ VISIONLIS_URL }}" target="_blank" rel="noopener noreferrer" 
+                       class="text-sm font-semibold text-primary-500 hover:text-primary-600 hover:underline transition-colors flex items-center justify-center gap-1.5">
+                        <i class="fas fa-external-link-alt text-xs"></i>
+                        {% trans "ou cliquez ici pour y accéder directement" %}
+                    </a>
+                </div>
+
+                <p class="text-xs text-dark-400 flex items-center justify-center gap-1.5 pt-4 border-t border-dark-150">
+                    <i class="fas fa-lock text-primary-500"></i>
                     {% trans "Connexion sécurisée — Vos données sont protégées" %}
                 </p>
             </div>
@@ -43,8 +111,8 @@
             <div class="grid sm:grid-cols-3 gap-6 mb-16">
                 <div class="text-center fade-in" style="transition-delay: 100ms">
                     <div class="w-12 h-12 bg-primary-500 text-white rounded-full flex items-center justify-center mx-auto mb-3 text-lg font-bold">1</div>
-                    <h3 class="font-bold text-dark-900 mb-1 text-sm">{% trans "Cliquez" %}</h3>
-                    <p class="text-xs text-dark-500">{% trans "Sur le bouton 'Accéder à mes résultats'" %}</p>
+                    <h3 class="font-bold text-dark-900 mb-1 text-sm">{% trans "Scannez" %}</h3>
+                    <p class="text-xs text-dark-500">{% trans "Le QR Code avec votre téléphone" %}</p>
                 </div>
                 <div class="text-center fade-in" style="transition-delay: 200ms">
                     <div class="w-12 h-12 bg-primary-500 text-white rounded-full flex items-center justify-center mx-auto mb-3 text-lg font-bold">2</div>

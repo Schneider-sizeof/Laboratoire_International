@@ -1189,3 +1189,18 @@ msgstr "Bekijk alle analyses"
 
 msgid "Besoin d'une analyse médicale ?"
 msgstr "Heeft u een medische analyse nodig?"
+
+msgid "Scannez le QR Code ci-dessous avec votre smartphone pour accéder au portail sécurisé VisionLIS."
+msgstr "Scan de onderstaande QR-code met uw smartphone om toegang te krijgen tot het beveiligde VisionLIS-portaal."
+
+msgid "Si vous utilisez un smartphone, vous pouvez cliquer directement sur le QR Code."
+msgstr "Als u een smartphone gebruikt, kunt u direct op de QR-code klikken."
+
+msgid "Scannez"
+msgstr "Scan"
+
+msgid "Le QR Code avec votre téléphone"
+msgstr "De QR-code met uw telefoon"
+
+msgid "ou cliquez ici pour y accéder directement"
+msgstr "of klik hier om direct toegang te krijgen"

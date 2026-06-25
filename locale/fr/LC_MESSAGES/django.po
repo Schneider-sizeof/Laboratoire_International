@@ -59,3 +59,18 @@ msgstr "Voir toutes les analyses"
 
 msgid "Besoin d'une analyse médicale ?"
 msgstr "Besoin d'une analyse médicale ?"
+
+msgid "Scannez le QR Code ci-dessous avec votre smartphone pour accéder au portail sécurisé VisionLIS."
+msgstr "Scannez le QR Code ci-dessous avec votre smartphone pour accéder au portail sécurisé VisionLIS."
+
+msgid "Si vous utilisez un smartphone, vous pouvez cliquer directement sur le QR Code."
+msgstr "Si vous utilisez un smartphone, vous pouvez cliquer directement sur le QR Code."
+
+msgid "Scannez"
+msgstr "Scannez"
+
+msgid "Le QR Code avec votre téléphone"
+msgstr "Le QR Code avec votre téléphone"
+
+msgid "ou cliquez ici pour y accéder directement"
+msgstr "ou cliquez ici pour y accéder directement"

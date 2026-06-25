@@ -1219,3 +1219,18 @@ msgstr "عرض جميع التحاليل"
 
 msgid "Besoin d'une analyse médicale ?"
 msgstr "هل تحتاجون تحليلاً طبياً؟"
+
+msgid "Scannez le QR Code ci-dessous avec votre smartphone pour accéder au portail sécurisé VisionLIS."
+msgstr "امسح رمز الاستجابة السريعة (QR Code) أدناه بهاتفك الذكي للوصول إلى بوابة VisionLIS الآمنة."
+
+msgid "Si vous utilisez un smartphone, vous pouvez cliquer directement sur le QR Code."
+msgstr "إذا كنت تستخدم هاتفًا ذكيًا، يمكنك الضغط مباشرة على رمز الاستجابة السريعة."
+
+msgid "Scannez"
+msgstr "امسح"
+
+msgid "Le QR Code avec votre téléphone"
+msgstr "رمز الاستجابة السريعة بهاتفك"
+
+msgid "ou cliquez ici pour y accéder directement"
+msgstr "أو اضغط هنا للوصول مباشرة"
