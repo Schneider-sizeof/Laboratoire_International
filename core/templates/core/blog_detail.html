@@ -19,94 +19,265 @@
     "mainEntityOfPage": {"@type": "WebPage", "@id": "https://{{ SITE_DOMAIN }}{{ request.path }}"}
 }
 </script>
+
+<style>
+    /* Premium scroll indicator */
+    #scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #10b981, #3b82f6);
+        z-index: 9999;
+        width: 0%;
+        transition: width 0.1s ease-out;
+    }
+    
+    /* Table of contents styling */
+    .toc-item.active {
+        color: #3b82f6 !important;
+        font-weight: 600;
+        border-left: 2px solid #3b82f6;
+        padding-left: 8px;
+    }
+    .toc-item {
+        transition: all 0.2s ease-in-out;
+        border-left: 2px solid transparent;
+        padding-left: 8px;
+    }
+    .toc-item:hover {
+        color: #3b82f6;
+    }
+
+    /* Style improvements for the content wrapper */
+    .blog-content h2 {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #0f172a;
+        font-weight: 700;
+        scroll-margin-top: 100px; /* Offset for smooth scroll under sticky navbar */
+    }
+    .blog-content p {
+        margin-bottom: 1.25rem;
+        line-height: 1.8;
+    }
+    .blog-content ul {
+        list-style-type: disc;
+        margin-left: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .blog-content li {
+        margin-bottom: 0.5rem;
+    }
+    .blog-content strong {
+        color: #0f172a;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
+<!-- Scroll progress indicator -->
+<div id="scroll-progress" aria-hidden="true"></div>
+
 <!-- Page Hero -->
 <section class="page-hero">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col items-center text-center">
-        <nav class="text-sm text-white/60 mb-4 flex items-center justify-center" aria-label="Breadcrumb">
-            <a href="{% url 'core:home' %}" class="hover:text-white">{% trans "Accueil" %}</a>
-            <i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mx-2"></i>
-            <a href="{% url 'core:blog_list' %}" class="hover:text-white">{% trans "Blog" %}</a>
-            <i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mx-2"></i>
-            <span class="text-white truncate max-w-xs inline-block">{{ post.get_title }}</span>
+        <!-- Breadcrumbs -->
+        <nav class="text-sm text-white/70 mb-4 flex items-center justify-center" aria-label="Breadcrumb">
+            <a href="{% url 'core:home' %}" class="hover:text-white transition-colors">{% trans "Accueil" %}</a>
+            <i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mx-2 opacity-60"></i>
+            <a href="{% url 'core:blog_list' %}" class="hover:text-white transition-colors">{% trans "Blog" %}</a>
+            <i class="fas fa-chevron-{% if IS_RTL %}left{% else %}right{% endif %} text-xs mx-2 opacity-60"></i>
+            <span class="text-white font-medium truncate max-w-xs inline-block">{{ post.get_title }}</span>
         </nav>
-        <h1 class="text-3xl sm:text-4xl font-extrabold mb-4">{{ post.get_title }}</h1>
-        <div class="flex flex-wrap items-center justify-center gap-4 text-sm text-white/60">
-            <span><i class="far fa-calendar mr-1"></i>{{ post.published_at|date:"d M Y" }}</span>
-            <span><i class="far fa-user mr-1"></i>{{ post.author }}</span>
-            <span><i class="far fa-eye mr-1"></i>{{ post.views_count }} {% trans "vues" %}</span>
+        
+        <!-- Post Title -->
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 max-w-4xl leading-tight">
+            {{ post.get_title }}
+        </h1>
+        
+        <!-- Post Meta info -->
+        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-white/80 bg-white/10 px-6 py-3 rounded-full backdrop-blur-sm">
+            <span class="flex items-center gap-2">
+                <i class="far fa-calendar text-emerald-400"></i>
+                {{ post.published_at|date:"d M Y" }}
+            </span>
+            <span class="flex items-center gap-2">
+                <i class="far fa-clock text-blue-400"></i>
+                <span id="reading-time-text">--</span> {% trans "min de lecture" %}
+            </span>
+            <span class="flex items-center gap-2">
+                <i class="far fa-eye text-indigo-400"></i>
+                {{ post.views_count }} {% trans "vues" %}
+            </span>
             {% if post.category %}
-            <span class="bg-white/10 px-3 py-1 rounded-full">{{ post.category.get_name }}</span>
+            <span class="bg-white/20 text-white px-3 py-0.5 rounded-full text-xs font-semibold">
+                {{ post.category.get_name }}
+            </span>
             {% endif %}
         </div>
     </div>
 </section>
 
-<!-- Article Content -->
-<section class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-4 gap-10">
-            <!-- Main Content -->
-            <article class="lg:col-span-3 fade-in">
+<!-- Main Article Body -->
+<section class="py-16 bg-dark-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-12 gap-10">
+            
+            <!-- Left Sticky Sharing Widget (Desktop Only) -->
+            <div class="hidden lg:block lg:col-span-1">
+                <div class="sticky top-28 flex flex-col gap-4 items-center pt-4">
+                    <span class="text-[10px] font-bold text-dark-400 uppercase tracking-widest mb-1">{% trans "Partager" %}</span>
+                    
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://{{ SITE_DOMAIN }}{{ request.path }}" 
+                       target="_blank" rel="noopener"
+                       class="w-11 h-11 bg-white hover:bg-blue-600 text-blue-600 hover:text-white rounded-full flex items-center justify-center shadow-sm border border-dark-200 transition-all duration-300 hover:-translate-y-1"
+                       title="{% trans "Partager sur Facebook" %}" aria-label="Facebook">
+                        <i class="fab fa-facebook-f text-lg"></i>
+                    </a>
+                    
+                    <a href="https://twitter.com/intent/tweet?url=https://{{ SITE_DOMAIN }}{{ request.path }}&text={{ post.get_title }}" 
+                       target="_blank" rel="noopener"
+                       class="w-11 h-11 bg-white hover:bg-sky-500 text-sky-500 hover:text-white rounded-full flex items-center justify-center shadow-sm border border-dark-200 transition-all duration-300 hover:-translate-y-1"
+                       title="{% trans "Partager sur Twitter" %}" aria-label="Twitter">
+                        <i class="fab fa-twitter text-lg"></i>
+                    </a>
+                    
+                    <a href="https://wa.me/?text={{ post.get_title }}%20https://{{ SITE_DOMAIN }}{{ request.path }}" 
+                       target="_blank" rel="noopener"
+                       class="w-11 h-11 bg-white hover:bg-green-500 text-green-500 hover:text-white rounded-full flex items-center justify-center shadow-sm border border-dark-200 transition-all duration-300 hover:-translate-y-1"
+                       title="{% trans "Partager sur WhatsApp" %}" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp text-lg"></i>
+                    </a>
+                    
+                    <button onclick="navigator.clipboard.writeText(window.location.href); alert('{% trans "Lien copié dans le presse-papiers !" %}');"
+                            class="w-11 h-11 bg-white hover:bg-dark-800 text-dark-600 hover:text-white rounded-full flex items-center justify-center shadow-sm border border-dark-200 transition-all duration-300 hover:-translate-y-1"
+                            title="{% trans "Copier le lien" %}" aria-label="{% trans "Copier le lien" %}">
+                        <i class="fas fa-link text-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Central Content Area -->
+            <article class="lg:col-span-8 bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-dark-100 fade-in">
+                <!-- Featured Image -->
                 {% if post.featured_image %}
-                <img src="{{ post.featured_image.url }}" alt="{{ post.get_title }}"
-                     class="w-full rounded-2xl mb-8 shadow-md" loading="lazy">
+                <div class="relative rounded-2xl overflow-hidden mb-8 shadow-sm group">
+                    <img src="{{ post.featured_image.url }}" alt="{{ post.get_title }}"
+                         class="w-full object-cover max-h-[450px] transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                </div>
                 {% endif %}
 
-                <div class="prose prose-lg max-w-none text-dark-700 leading-relaxed
-                            prose-headings:text-dark-900 prose-headings:font-bold
+                <!-- Content -->
+                <div class="prose prose-lg max-w-none text-dark-700 leading-relaxed blog-content
                             prose-a:text-primary-500 prose-a:no-underline hover:prose-a:underline
-                            prose-strong:text-dark-900
-                            prose-img:rounded-xl prose-img:shadow-md">
+                            prose-img:rounded-xl prose-img:shadow-sm">
                     {{ post.get_content|safe }}
                 </div>
 
                 <!-- Tags -->
                 {% if post.get_tags_list %}
-                <div class="mt-10 pt-6 border-t border-dark-200">
-                    <div class="flex flex-wrap gap-2">
+                <div class="mt-10 pt-6 border-t border-dark-150">
+                    <div class="flex flex-wrap items-center gap-3">
+                        <span class="text-sm font-semibold text-dark-500"><i class="fas fa-tags mr-1"></i>{% trans "Mots-clés :" %}</span>
                         {% for tag in post.get_tags_list %}
-                        <span class="px-3 py-1 bg-dark-100 text-dark-600 rounded-full text-xs font-medium">
-                            <i class="fas fa-tag text-dark-400 mr-1"></i>{{ tag }}
+                        <span class="px-3.5 py-1 bg-dark-100 text-dark-700 rounded-full text-xs font-semibold">
+                            {{ tag }}
                         </span>
                         {% endfor %}
                     </div>
                 </div>
                 {% endif %}
 
-                <!-- Share -->
-                <div class="mt-8 pt-6 border-t border-dark-200">
-                    <p class="text-sm font-semibold text-dark-700 mb-3">{% trans "Partager cet article" %}</p>
+                <!-- Mobile / Tablet Share Widget -->
+                <div class="mt-8 pt-6 border-t border-dark-150 lg:hidden">
+                    <p class="text-sm font-bold text-dark-700 mb-3">{% trans "Partager cet article" %}</p>
                     <div class="flex gap-3">
                         <a href="https://www.facebook.com/sharer/sharer.php?u=https://{{ SITE_DOMAIN }}{{ request.path }}" target="_blank" rel="noopener"
-                           class="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-200 transition-colors" aria-label="Facebook">
+                           class="w-10 h-10 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center transition-colors" aria-label="Facebook">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                         <a href="https://twitter.com/intent/tweet?url=https://{{ SITE_DOMAIN }}{{ request.path }}&text={{ post.get_title }}" target="_blank" rel="noopener"
-                           class="w-10 h-10 bg-sky-100 text-sky-600 rounded-lg flex items-center justify-center hover:bg-sky-200 transition-colors" aria-label="Twitter">
+                           class="w-10 h-10 bg-sky-50 hover:bg-sky-100 text-sky-600 rounded-xl flex items-center justify-center transition-colors" aria-label="Twitter">
                             <i class="fab fa-twitter"></i>
                         </a>
                         <a href="https://wa.me/?text={{ post.get_title }}%20https://{{ SITE_DOMAIN }}{{ request.path }}" target="_blank" rel="noopener"
-                           class="w-10 h-10 bg-green-100 text-green-600 rounded-lg flex items-center justify-center hover:bg-green-200 transition-colors" aria-label="WhatsApp">
+                           class="w-10 h-10 bg-green-50 hover:bg-green-100 text-green-600 rounded-xl flex items-center justify-center transition-colors" aria-label="WhatsApp">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
                 </div>
+
+                <!-- Author Bio Card -->
+                <div class="mt-12 p-6 sm:p-8 bg-dark-50 rounded-2xl border border-dark-150 flex flex-col sm:flex-row items-center sm:items-start gap-5">
+                    <div class="w-16 h-16 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-user-md text-3xl"></i>
+                    </div>
+                    <div class="text-center sm:text-left">
+                        <h4 class="font-bold text-dark-900 mb-1">{% trans "Rédigé par le Laboratoire International" %}</h4>
+                        <p class="text-sm text-dark-600 leading-relaxed mb-3">
+                            {% trans "Notre équipe de biologistes et de professionnels de la santé médicale rédige des guides de santé fiables et validés scientifiquement pour vous aider à mieux comprendre vos analyses." %}
+                        </p>
+                        <div class="flex flex-wrap justify-center sm:justify-start gap-4 text-xs text-dark-500 font-semibold">
+                            <span><i class="fas fa-check-circle text-emerald-500 mr-1.5"></i>{% trans "Contenu médical révisé" %}</span>
+                            <span><i class="fas fa-shield-alt text-emerald-500 mr-1.5"></i>{% trans "Sources scientifiques fiables" %}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next & Previous Post Navigation -->
+                <div class="grid sm:grid-cols-2 gap-6 mt-12 pt-8 border-t border-dark-200">
+                    {% if prev_post %}
+                    <a href="{% url 'core:blog_detail' slug=prev_post.slug %}" class="group block p-5 border border-dark-200 hover:border-primary-400 rounded-2xl hover:bg-dark-50/50 transition-all duration-300">
+                        <span class="text-xs text-dark-400 font-bold uppercase tracking-wider flex items-center gap-1.5 group-hover:text-primary-500 transition-colors">
+                            <i class="fas fa-arrow-left"></i> {% trans "Article précédent" %}
+                        </span>
+                        <h4 class="font-bold text-dark-800 group-hover:text-primary-500 transition-colors mt-2 text-sm sm:text-base line-clamp-2">{{ prev_post.get_title }}</h4>
+                    </a>
+                    {% else %}
+                    <div class="hidden sm:block"></div>
+                    {% endif %}
+                    
+                    {% if next_post %}
+                    <a href="{% url 'core:blog_detail' slug=next_post.slug %}" class="group block p-5 border border-dark-200 hover:border-primary-400 rounded-2xl hover:bg-dark-50/50 transition-all duration-300 text-right">
+                        <span class="text-xs text-dark-400 font-bold uppercase tracking-wider flex items-center justify-end gap-1.5 group-hover:text-primary-500 transition-colors">
+                            {% trans "Article suivant" %} <i class="fas fa-arrow-right"></i>
+                        </span>
+                        <h4 class="font-bold text-dark-800 group-hover:text-primary-500 transition-colors mt-2 text-sm sm:text-base line-clamp-2">{{ next_post.get_title }}</h4>
+                    </a>
+                    {% endif %}
+                </div>
+
             </article>
 
-            <!-- Sidebar -->
-            <aside class="lg:col-span-1 space-y-6 fade-in-right">
+            <!-- Sidebar (Right Side) -->
+            <aside class="lg:col-span-3 space-y-6 fade-in-right">
+                
+                <!-- Dynamic Table of Contents (TOC) Card (Desktop Only) -->
+                <div class="card sticky top-28 hidden lg:block" id="toc-card" style="display:none;">
+                    <div class="card-body p-5">
+                        <h3 class="font-bold text-dark-900 mb-4 text-xs uppercase tracking-wider border-b border-dark-150 pb-2">
+                            <i class="fas fa-list-ol mr-2 text-primary-500"></i>{% trans "Sommaire" %}
+                        </h3>
+                        <ul id="toc-list" class="space-y-3 text-xs text-dark-600 font-medium">
+                            <!-- Injected by JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Similar Articles Card -->
                 {% if related_posts %}
                 <div class="card">
-                    <div class="card-body">
-                        <h3 class="font-bold text-dark-900 mb-4 text-sm uppercase tracking-wider">{% trans "Articles similaires" %}</h3>
+                    <div class="card-body p-5">
+                        <h3 class="font-bold text-dark-900 mb-4 text-xs uppercase tracking-wider border-b border-dark-150 pb-2">
+                            <i class="fas fa-file-alt mr-2 text-emerald-500"></i>{% trans "Articles similaires" %}
+                        </h3>
                         <div class="space-y-4">
                             {% for rp in related_posts %}
                             <a href="{% url 'core:blog_detail' slug=rp.slug %}" class="block group">
-                                <h4 class="text-sm font-semibold text-dark-800 group-hover:text-primary-500 transition-colors line-clamp-2 mb-1">{{ rp.get_title }}</h4>
-                                <span class="text-xs text-dark-400">{{ rp.published_at|date:"d M Y" }}</span>
+                                <h4 class="text-xs font-semibold text-dark-850 group-hover:text-primary-500 transition-colors line-clamp-2 mb-1 leading-snug">{{ rp.get_title }}</h4>
+                                <span class="text-[10px] text-dark-400 font-medium"><i class="far fa-calendar mr-1"></i>{{ rp.published_at|date:"d M Y" }}</span>
                             </a>
                             {% endfor %}
                         </div>
@@ -114,16 +285,115 @@
                 </div>
                 {% endif %}
 
-                <!-- CTA Sidebar -->
-                <div class="bg-cta-gradient rounded-2xl p-6 text-center text-white">
-                    <i class="fas fa-flask text-2xl mb-3 text-white/60"></i>
-                    <h3 class="font-bold mb-2 text-sm">{% trans "Besoin d'analyses ?" %}</h3>
-                    <a href="{% url 'core:contact' %}" class="btn btn-white btn-sm w-full justify-center mt-3 text-xs">
-                        {% trans "Contactez-nous" %}
+                <!-- WhatsApp / Lab Help CTA -->
+                <div class="bg-gradient-to-br from-slate-900 to-indigo-950 rounded-2xl p-6 text-center text-white shadow-md border border-white/5 relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 w-28 h-28 bg-primary-500/10 rounded-full blur-xl"></div>
+                    <i class="fas fa-comments-medical text-3xl mb-4 text-emerald-400"></i>
+                    <h3 class="font-bold mb-2 text-sm uppercase tracking-wider">{% trans "Besoin d'aide ?" %}</h3>
+                    <p class="text-xs text-white/70 leading-relaxed mb-4">
+                        {% trans "Nos conseillers sont disponibles pour répondre à toutes vos questions concernant vos examens." %}
+                    </p>
+                    <a href="https://wa.me/{{ WHATSAPP_NUMBER|default:'212539313947' }}" target="_blank" rel="noopener"
+                       class="btn btn-primary btn-sm w-full justify-center text-xs bg-emerald-500 hover:bg-emerald-600 border-none shadow-none text-white font-bold py-2.5 rounded-xl transition-all duration-300">
+                        <i class="fab fa-whatsapp mr-1.5 text-sm"></i> {% trans "WhatsApp" %}
                     </a>
                 </div>
+
             </aside>
+
         </div>
     </div>
 </section>
+
+<!-- JS for Estimated Reading Time, Dynamic ToC, and Scroll Spy -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Estimated Reading Time Calculation
+    const contentArea = document.querySelector('.blog-content');
+    if (contentArea) {
+        const text = contentArea.textContent || contentArea.innerText;
+        const words = text.trim().split(/\s+/).length;
+        const time = Math.max(1, Math.ceil(words / 180)); // 180 words per minute
+        document.getElementById('reading-time-text').textContent = time;
+    }
+
+    // 2. Dynamic Table of Contents Generation
+    const headings = Array.from(contentArea.querySelectorAll('h2'));
+    const tocCard = document.getElementById('toc-card');
+    const tocList = document.getElementById('toc-list');
+    
+    if (headings.length > 0 && tocCard && tocList) {
+        // Show TOC card
+        tocCard.style.display = 'block';
+        
+        headings.forEach((heading, index) => {
+            // Ensure heading has an ID for anchoring
+            if (!heading.id) {
+                // Generate a clean slug id
+                heading.id = 'heading-' + index;
+            }
+            
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = '#' + heading.id;
+            a.textContent = heading.textContent;
+            a.className = 'toc-item block text-dark-600 hover:text-blue-500 py-0.5 line-clamp-1';
+            a.setAttribute('data-target', heading.id);
+            
+            // Smooth scroll click handler
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById(heading.id).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+            
+            li.appendChild(a);
+            tocList.appendChild(li);
+        });
+
+        // 3. Scroll Spy implementation
+        const tocItems = Array.from(tocList.querySelectorAll('.toc-item'));
+        
+        function scrollSpy() {
+            const scrollPos = window.scrollY || document.documentElement.scrollTop;
+            // Find which heading is currently active
+            let activeId = null;
+            
+            for (let i = 0; i < headings.length; i++) {
+                const heading = headings[i];
+                // Check if heading is scrolled past or close to it
+                if (heading.offsetTop - 120 <= scrollPos) {
+                    activeId = heading.id;
+                } else if (i === 0) {
+                    // Default to first heading if not scrolled down yet
+                    activeId = heading.id;
+                }
+            }
+            
+            tocItems.forEach(item => {
+                if (item.getAttribute('data-target') === activeId) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', scrollSpy);
+        scrollSpy(); // Initial call
+    }
+
+    // 4. Reading Progress Bar indicator
+    const progressBar = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', function() {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        if (progressBar) {
+            progressBar.style.width = scrolled + "%";
+        }
+    });
+});
+</script>
 {% endblock %}

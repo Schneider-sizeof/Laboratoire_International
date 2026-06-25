@@ -606,9 +606,20 @@ def blog_detail(request, slug):
         status='published', category=post.category
     ).exclude(pk=post.pk)[:3]
 
+    # Next / Previous posts for improved navigation
+    next_post = BlogPost.objects.filter(
+        status='published', published_at__gt=post.published_at
+    ).order_by('published_at').first()
+    
+    prev_post = BlogPost.objects.filter(
+        status='published', published_at__lt=post.published_at
+    ).order_by('-published_at').first()
+
     context = {
         'post': post,
         'related_posts': related_posts,
+        'next_post': next_post,
+        'prev_post': prev_post,
         'lang': lang,
         'page_title': post.get_title(lang),
         'meta_description': post.get_meta_description(lang),
