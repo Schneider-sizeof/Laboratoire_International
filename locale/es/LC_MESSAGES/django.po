@@ -1136,8 +1136,6 @@ msgstr "Capacidad total de fijación de hierro (CTFH)"
 msgid "Coefficient de saturation de la transferrine"
 msgstr "Coeficiente de saturación de la transferrina"
 
-# === SEO Audit translations ===
-
 msgid "Laboratoire d'analyses médicales à Tanger"
 msgstr "Laboratorio de análisis médicos en Tánger"
 

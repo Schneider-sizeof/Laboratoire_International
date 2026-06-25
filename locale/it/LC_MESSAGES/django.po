@@ -1136,8 +1136,6 @@ msgstr "Capacità totale di legame del ferro (TIBC)"
 msgid "Coefficient de saturation de la transferrine"
 msgstr "Coefficiente di saturazione della transferrina"
 
-# === SEO Audit translations ===
-
 msgid "Laboratoire d'analyses médicales à Tanger"
 msgstr "Laboratorio di analisi mediche a Tangeri"
 

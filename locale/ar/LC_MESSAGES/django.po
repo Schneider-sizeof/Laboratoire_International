@@ -1166,8 +1166,6 @@ msgstr "قدرة ربط الحديد الإجمالية (CTF)"
 msgid "Coefficient de saturation de la transferrine"
 msgstr "معامل تشبع الترانسفيرين"
 
-# === SEO Audit translations ===
-
 msgid "Laboratoire d'analyses médicales à Tanger"
 msgstr "مختبر التحاليل الطبية في طنجة"
 

@@ -900,14 +900,6 @@ msgstr "legal/terms/"
 msgid "legal/cookies/"
 msgstr "legal/cookies/"
 
-# Slogan
-msgid "Analyses Médicales"
-msgstr "Medical Laboratory"
-
-# New strings (v2.0)
-msgid "Notre priorité"
-msgstr "Our priority"
-
 msgid "Visiter"
 msgstr "Visit"
 
@@ -1174,8 +1166,6 @@ msgstr "Total iron-binding capacity (TIBC)"
 
 msgid "Coefficient de saturation de la transferrine"
 msgstr "Transferrin saturation coefficient"
-
-# === SEO Audit translations ===
 
 msgid "Laboratoire d'analyses médicales à Tanger"
 msgstr "Medical Analysis Laboratory in Tangier"

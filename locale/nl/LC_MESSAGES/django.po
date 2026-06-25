@@ -1136,8 +1136,6 @@ msgstr "Totale ijzerbindingscapaciteit (TIBC)"
 msgid "Coefficient de saturation de la transferrine"
 msgstr "Transferrinesaturatiecoëfficiënt"
 
-# === SEO Audit translations ===
-
 msgid "Laboratoire d'analyses médicales à Tanger"
 msgstr "Medisch analyselaboratorium in Tanger"
 

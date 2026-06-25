@@ -1136,8 +1136,6 @@ msgstr "Gesamteisenbindungskapazität (FEBK)"
 msgid "Coefficient de saturation de la transferrine"
 msgstr "Transferrinsättigungskoeffizient"
 
-# === SEO Audit translations ===
-
 msgid "Laboratoire d'analyses médicales à Tanger"
 msgstr "Medizinisches Analyselabor in Tanger"
 
