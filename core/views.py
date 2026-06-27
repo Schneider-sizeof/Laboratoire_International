@@ -28,7 +28,7 @@ def _lang():
 # Email helper
 # ============================================================
 def _send_contact_emails(submission, lang='fr'):
-    """Send notification to admin and confirmation to visitor."""
+    """Send notification to admin and confirmation to visitor using Django's email backend."""
     try:
         site = SiteSettings.load()
     except Exception:
@@ -37,9 +37,8 @@ def _send_contact_emails(submission, lang='fr'):
     if not site.notification_email or not site.smtp_user or not site.smtp_password:
         return
 
-    import smtplib
-    from email.mime.text import MIMEText
-    from email.mime.multipart import MIMEMultipart
+    from django.core.mail import EmailMultiAlternatives, get_connection
+    from email.utils import formataddr
 
     try:
         # --- 1. Admin notification ---
@@ -68,19 +67,12 @@ def _send_contact_emails(submission, lang='fr'):
         </html>
         """
 
-        admin_msg = MIMEMultipart('alternative')
-        admin_msg['Subject'] = f'[{site.site_name}] Nouveau message de {submission.name}'
-        admin_msg['From'] = site.smtp_user
-        admin_msg['To'] = site.notification_email
-        admin_msg.attach(MIMEText(f"Nouveau message de {submission.name} ({submission.email}): {submission.message}", 'plain'))
-        admin_msg.attach(MIMEText(admin_html, 'html'))
-
         # --- 2. Visitor confirmation ---
         thank_you_messages = {
             'fr': ('Merci pour votre message', 'Nous avons bien reçu votre message et nous vous répondrons dans les plus brefs délais.'),
             'en': ('Thank you for your message', 'We have received your message and will get back to you as soon as possible.'),
             'ar': ('شكراً لرسالتكم', 'لقد تلقينا رسالتكم وسنرد عليكم في أقرب وقت ممكن.'),
-            'es': ('Gracias por su mensaje', 'Hemos recibido su mensaje y le responderemos lo antes posible.'),
+            'es': ('Gracias por su message', 'Hemos recibido su message y le responderemos lo antes posible.'),
             'de': ('Vielen Dank für Ihre Nachricht', 'Wir haben Ihre Nachricht erhalten und werden Ihnen so schnell wie möglich antworten.'),
             'nl': ('Bedankt voor uw bericht', 'We hebben uw bericht ontvangen en zullen zo snel mogelijk reageren.'),
             'it': ('Grazie per il vostro messaggio', 'Abbiamo ricevuto il vostro messaggio e vi risponderemo il prima possibile.'),
@@ -135,26 +127,48 @@ def _send_contact_emails(submission, lang='fr'):
         </html>
         """
 
-        visitor_msg = MIMEMultipart('alternative')
-        visitor_msg['Subject'] = f'{title} — {site.site_name}'
-        visitor_msg['From'] = site.smtp_user
-        visitor_msg['To'] = submission.email
-        visitor_msg.attach(MIMEText(f"{title}\n\n{body}\n\n{site.site_name}\n{site.phone}", 'plain'))
-        visitor_msg.attach(MIMEText(visitor_html, 'html'))
+        # Construct connection dynamically
+        connection = get_connection(
+            backend='django.core.mail.backends.smtp.EmailBackend',
+            host=site.smtp_host,
+            port=site.smtp_port,
+            username=site.smtp_user,
+            password=site.smtp_password,
+            use_tls=site.smtp_use_tls,
+            use_ssl=False,
+            timeout=10,
+        )
 
-        # Send both emails
-        if site.smtp_use_tls:
-            server = smtplib.SMTP(site.smtp_host, site.smtp_port)
-            server.starttls()
-        else:
-            server = smtplib.SMTP_SSL(site.smtp_host, site.smtp_port)
+        from_email = formataddr((site.site_name, site.smtp_user))
 
-        server.login(site.smtp_user, site.smtp_password)
-        server.sendmail(site.smtp_user, site.notification_email, admin_msg.as_string())
-        server.sendmail(site.smtp_user, submission.email, visitor_msg.as_string())
-        server.quit()
+        # Send Admin Notification
+        admin_subject = f"[{site.site_name}] Nouveau message de {submission.name}"
+        admin_text = f"Nouveau message de {submission.name} ({submission.email}): {submission.message}"
+        admin_msg = EmailMultiAlternatives(
+            subject=admin_subject,
+            body=admin_text,
+            from_email=from_email,
+            to=[site.notification_email],
+            connection=connection,
+            headers={'Reply-To': submission.email}
+        )
+        admin_msg.attach_alternative(admin_html, "text/html")
+        admin_msg.send()
 
-        logger.info(f"Contact emails sent for submission from {submission.name}")
+        # Send Visitor Confirmation
+        visitor_subject = f"{title} — {site.site_name}"
+        visitor_text = f"{title}\n\n{body}\n\n{site.site_name}\n{site.phone}"
+        visitor_msg = EmailMultiAlternatives(
+            subject=visitor_subject,
+            body=visitor_text,
+            from_email=from_email,
+            to=[submission.email],
+            connection=connection,
+        )
+        visitor_msg.attach_alternative(visitor_html, "text/html")
+        visitor_msg.send()
+
+        logger.info(f"Contact emails sent successfully via Django mail for {submission.name}")
 
     except Exception as e:
         logger.error(f"Failed to send contact emails: {e}")
