@@ -65,7 +65,9 @@ def _send_contact_emails(submission, lang='fr'):
         </div>
         </body>
         </html>
-               # --- 2. Visitor confirmation ---
+        """
+
+        # --- 2. Visitor confirmation ---
         thank_you_messages = {
             'fr': ('Merci pour votre message', 'Nous avons bien reçu votre message et nous vous répondrons dans les plus brefs délais.'),
             'en': ('Thank you for your message', 'We have received your message and will get back to you as soon as possible.'),
@@ -203,7 +205,7 @@ Site web : https://{site.site_domain}
 
         visitor_msg.send()
 
-        logger.info(f"Contact emails sent successfully via Django mail for {submission.name}")gger.info(f"Contact emails sent successfully via Django mail for {submission.name}")
+        logger.info(f"Contact emails sent successfully via Django mail for {submission.name}")
 
     except Exception as e:
         logger.error(f"Failed to send contact emails: {e}")
