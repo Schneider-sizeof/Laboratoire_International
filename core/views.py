@@ -81,48 +81,31 @@ def _send_contact_emails(submission, lang='fr'):
 
         visitor_html = f"""
         <html>
-        <body style="font-family:'Segoe UI',Arial,sans-serif;background-color:#f4f6f9;padding:30px;margin:0;">
-        <div style="max-width:600px;margin:0 auto;background-color:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.08);">
-            <!-- Header -->
-            <div style="background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);padding:35px 24px;text-align:center;border-bottom:3px solid #ef4444;">
-                <img src="cid:logo_img" alt="{site.site_name}" style="width:80px;height:80px;object-fit:contain;margin-bottom:16px;display:inline-block;">
-                <h1 style="margin:0;font-size:22px;font-weight:700;color:#ffffff;letter-spacing:0.5px;">{site.site_name}</h1>
-                <p style="margin:6px 0 0 0;font-size:13px;color:#94a3b8;font-weight:500;text-transform:uppercase;letter-spacing:1px;">d'analyse médicale</p>
-            </div>
-            
-            <!-- Body -->
-            <div style="padding:40px 30px;text-align:center;color:#334155;">
-                <div style="width:56px;height:56px;background-color:#f0fdf4;color:#16a34a;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 24px auto;line-height:56px;">
-                    ✓
-                </div>
-                <h2 style="margin:0 0 12px 0;font-size:20px;font-weight:700;color:#0f172a;">{title}</h2>
-                <p style="margin:0 0 24px 0;font-size:15px;line-height:1.6;color:#475569;">
-                    {body}
-                </p>
-                
-                <div style="background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px;text-align:left;margin-bottom:24px;">
-                    <h3 style="margin:0 0 10px 0;font-size:14px;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:0.5px;">Récapitulatif de votre message :</h3>
-                    <p style="margin:0 0 6px 0;font-size:13px;color:#64748b;"><strong style="color:#475569;">Nom :</strong> {submission.name}</p>
-                    <p style="margin:0 0 6px 0;font-size:13px;color:#64748b;"><strong style="color:#475569;">Service :</strong> {submission.get_service_type_display()}</p>
-                    <p style="margin:0;font-size:13px;color:#64748b;"><strong style="color:#475569;">Date :</strong> {submission.created_at.strftime('%d/%m/%Y %H:%M')}</p>
-                </div>
-                
-                <p style="margin:0;font-size:14px;color:#64748b;line-height:1.5;">
-                    Notre équipe étudie votre demande et vous répondra très prochainement.<br>
-                    Pour toute urgence médicale, veuillez nous contacter directement par téléphone.
-                </p>
-            </div>
-            
-            <!-- Footer -->
-            <div style="background-color:#f8fafc;padding:30px 24px;text-align:center;border-top:1px solid #e2e8f0;font-size:13px;color:#64748b;line-height:1.6;">
-                <p style="margin:0 0 10px 0;font-weight:600;color:#0f172a;">Contact & Informations</p>
-                <p style="margin:0 0 4px 0;">📞 {site.phone}</p>
-                <p style="margin:0 0 12px 0;">📍 {site.address}</p>
-                <p style="margin:0;">
-                    <a href="https://{site.site_domain}" target="_blank" style="color:#2563eb;text-decoration:none;font-weight:600;">Visiter notre site web</a>
-                </p>
-            </div>
-        </div>
+        <body style="font-family: Arial, sans-serif; color: #333333; line-height: 1.6; margin: 0; padding: 20px; background-color: #fafafa;">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #e5e5e5; border-radius: 8px;">
+                <tr>
+                    <td style="padding: 30px; text-align: center; border-bottom: 1px solid #f0f0f0;">
+                        <img src="cid:logo_img" alt="{site.site_name}" style="width: 70px; height: 70px; object-fit: contain; margin-bottom: 15px;">
+                        <h2 style="color: #0f172a; margin-top: 0; font-size: 20px; font-weight: bold;">{title}</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 30px; font-size: 15px; color: #333333;">
+                        <p>Bonjour <strong>{submission.name}</strong>,</p>
+                        
+                        <p>Nous vous remercions d'avoir contacté notre laboratoire. Nous avons bien reçu votre message concernant votre demande de <strong>{submission.get_service_type_display()}</strong>.</p>
+                        
+                        <p>Un membre de notre équipe étudie votre demande et prendra contact avec vous dans les plus brefs délais.</p>
+                        
+                        <p style="margin-top: 30px; font-size: 14px; color: #666666; border-top: 1px solid #eeeeee; padding-top: 20px;">
+                            <strong>Laboratoire International d'Analyses Médicales</strong><br>
+                            Téléphone : {site.phone}<br>
+                            Adresse : {site.address}<br>
+                            Site web : <a href="https://{site.site_domain}" style="color: #0066cc; text-decoration: none;">www.{site.site_domain}</a>
+                        </p>
+                    </td>
+                </tr>
+            </table>
         </body>
         </html>
         """
