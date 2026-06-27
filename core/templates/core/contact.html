@@ -109,6 +109,11 @@
 
                     <form id="contactForm" novalidate>
                         {% csrf_token %}
+                        <!-- Honeypot anti-spam field -->
+                        <div style="display: none !important; visibility: hidden !important;">
+                            <label for="contact-website">Leave this field blank</label>
+                            <input type="text" id="contact-website" name="website_url" value="" autocomplete="off">
+                        </div>
                         <div class="grid sm:grid-cols-2 gap-5 mb-5">
                             <div>
                                 <label for="contact-name" class="form-label">{% trans "Nom complet" %} *</label>
@@ -184,6 +189,7 @@ if (contactForm) {
                 phone: document.getElementById('contact-phone').value.trim(),
                 service_type: document.getElementById('contact-service').value,
                 message: message,
+                website_url: document.getElementById('contact-website').value.trim(),
             };
             const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
             const response = await fetch('{% url "core:contact_submit" %}', {

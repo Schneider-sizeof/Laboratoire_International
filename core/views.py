@@ -89,19 +89,45 @@ def _send_contact_emails(submission, lang='fr'):
 
         visitor_html = f"""
         <html>
-        <body style="font-family:Arial,sans-serif;background:#f8fafc;padding:20px;">
-        <div style="max-width:600px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
-            <div style="background:linear-gradient(135deg,#0f172a,#1e3a5f);padding:24px;color:#fff;text-align:center;">
-                <h1 style="margin:0;font-size:22px;">{title}</h1>
+        <body style="font-family:'Segoe UI',Arial,sans-serif;background-color:#f4f6f9;padding:30px;margin:0;">
+        <div style="max-width:600px;margin:0 auto;background-color:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+            <!-- Header -->
+            <div style="background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);padding:35px 24px;text-align:center;border-bottom:3px solid #ef4444;">
+                <img src="https://{site.site_domain}/static/core/images/logo.png" alt="{site.site_name}" style="width:80px;height:80px;object-fit:contain;margin-bottom:16px;display:inline-block;">
+                <h1 style="margin:0;font-size:22px;font-weight:700;color:#ffffff;letter-spacing:0.5px;">{site.site_name}</h1>
+                <p style="margin:6px 0 0 0;font-size:13px;color:#94a3b8;font-weight:500;text-transform:uppercase;letter-spacing:1px;">d'analyse médicale</p>
             </div>
-            <div style="padding:24px;text-align:center;">
-                <p style="font-size:48px;margin:0 0 16px;">✅</p>
-                <p style="font-size:16px;color:#475569;line-height:1.6;">{body}</p>
-                <hr style="border:none;border-top:1px solid #e2e8f0;margin:24px 0;">
-                <p style="font-size:14px;color:#94a3b8;">
-                    {site.site_name}<br>
-                    📞 {site.phone}<br>
-                    📍 {site.address}
+            
+            <!-- Body -->
+            <div style="padding:40px 30px;text-align:center;color:#334155;">
+                <div style="width:56px;height:56px;background-color:#f0fdf4;color:#16a34a;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 24px auto;line-height:56px;">
+                    ✓
+                </div>
+                <h2 style="margin:0 0 12px 0;font-size:20px;font-weight:700;color:#0f172a;">{title}</h2>
+                <p style="margin:0 0 24px 0;font-size:15px;line-height:1.6;color:#475569;">
+                    {body}
+                </p>
+                
+                <div style="background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px;text-align:left;margin-bottom:24px;">
+                    <h3 style="margin:0 0 10px 0;font-size:14px;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:0.5px;">Récapitulatif de votre message :</h3>
+                    <p style="margin:0 0 6px 0;font-size:13px;color:#64748b;"><strong style="color:#475569;">Nom :</strong> {submission.name}</p>
+                    <p style="margin:0 0 6px 0;font-size:13px;color:#64748b;"><strong style="color:#475569;">Service :</strong> {submission.get_service_type_display()}</p>
+                    <p style="margin:0;font-size:13px;color:#64748b;"><strong style="color:#475569;">Date :</strong> {submission.created_at.strftime('%d/%m/%Y %H:%M')}</p>
+                </div>
+                
+                <p style="margin:0;font-size:14px;color:#64748b;line-height:1.5;">
+                    Notre équipe étudie votre demande et vous répondra très prochainement.<br>
+                    Pour toute urgence médicale, veuillez nous contacter directement par téléphone.
+                </p>
+            </div>
+            
+            <!-- Footer -->
+            <div style="background-color:#f8fafc;padding:30px 24px;text-align:center;border-top:1px solid #e2e8f0;font-size:13px;color:#64748b;line-height:1.6;">
+                <p style="margin:0 0 10px 0;font-weight:600;color:#0f172a;">Contact & Informations</p>
+                <p style="margin:0 0 4px 0;">📞 {site.phone}</p>
+                <p style="margin:0 0 12px 0;">📍 {site.address}</p>
+                <p style="margin:0;">
+                    <a href="https://{site.site_domain}" target="_blank" style="color:#2563eb;text-decoration:none;font-weight:600;">Visiter notre site web</a>
                 </p>
             </div>
         </div>
@@ -648,9 +674,28 @@ def contact_submit(request):
     lang = _lang()
     try:
         data = json.loads(request.body)
+        
+        # 1. Anti-spam Honeypot Check
+        if data.get('website_url', '').strip():
+            logger.warning("Spam bot detected (honeypot filled). Silently discarding submission.")
+            return JsonResponse({
+                'success': True,
+                'message': str(_('Votre message a été envoyé avec succès! Nous vous contacterons bientôt.')),
+            })
+            
+        # 2. Email format validation
+        email = data.get('email', '').strip()
+        import re
+        if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
+            return JsonResponse({
+                'success': False,
+                'message': str(_('Adresse email invalide.')),
+            }, status=400)
+
+        # 3. Create submission
         submission = ContactSubmission.objects.create(
             name=data.get('name', '').strip(),
-            email=data.get('email', '').strip(),
+            email=email,
             phone=data.get('phone', '').strip(),
             service_type=data.get('service_type', 'general'),
             message=data.get('message', '').strip(),
