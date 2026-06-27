@@ -1234,3 +1234,33 @@ msgstr "رمز الاستجابة السريعة بهاتفك"
 
 msgid "ou cliquez ici pour y accéder directement"
 msgstr "أو اضغط هنا للوصول مباشرة"
+
+msgid "d'analyse médicale"
+msgstr "للتحاليل الطبية"
+
+msgid "Portail Patient"
+msgstr "بوابة المريض"
+
+msgid "Guide de connexion"
+msgstr "دليل الاتصال"
+
+msgid "Visualiser mes résultats"
+msgstr "عرض نتائجي"
+
+msgid "Cliquez sur le bouton ci-dessous pour visualiser vos résultats sur le portail sécurisé VisionLIS."
+msgstr "انقر على الزر أدناه لعرض نتائجك على بوابة VisionLIS الآمنة."
+
+msgid "Ouvrez le portail"
+msgstr "افتح البوابة"
+
+msgid "Cliquez sur le bouton 'Visualiser mes résultats' dans l'onglet précédent."
+msgstr "انقر على زر \"عرض نتائجي\" في علامة التبويب السابقة."
+
+msgid "Utilisez les identifiants d'accès qui vous ont été remis par notre secrétariat."
+msgstr "استخدم بيانات اعتماد الوصول المقدمة من الأمانة العامة لدينا."
+
+msgid "Consultez et téléchargez"
+msgstr "عرض وتنزيل"
+
+msgid "Visualisez vos analyses en ligne ou téléchargez-les au format PDF."
+msgstr "عرض تحاليلك على الإنترنت أو تنزيلها بصيغة PDF."

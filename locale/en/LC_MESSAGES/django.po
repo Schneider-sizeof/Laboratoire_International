@@ -1235,3 +1235,33 @@ msgstr "The QR code with your phone"
 
 msgid "ou cliquez ici pour y accéder directement"
 msgstr "or click here to access it directly"
+
+msgid "d'analyse médicale"
+msgstr "of medical analysis"
+
+msgid "Portail Patient"
+msgstr "Patient Portal"
+
+msgid "Guide de connexion"
+msgstr "Connection Guide"
+
+msgid "Visualiser mes résultats"
+msgstr "View my results"
+
+msgid "Cliquez sur le bouton ci-dessous pour visualiser vos résultats sur le portail sécurisé VisionLIS."
+msgstr "Click the button below to view your results on the secure VisionLIS portal."
+
+msgid "Ouvrez le portail"
+msgstr "Open the portal"
+
+msgid "Cliquez sur le bouton 'Visualiser mes résultats' dans l'onglet précédent."
+msgstr "Click the 'View my results' button in the previous tab."
+
+msgid "Utilisez les identifiants d'accès qui vous ont été remis par notre secrétariat."
+msgstr "Use the access credentials provided by our secretariat."
+
+msgid "Consultez et téléchargez"
+msgstr "View and download"
+
+msgid "Visualisez vos analyses en ligne ou téléchargez-les au format PDF."
+msgstr "View your analyses online or download them in PDF format."

@@ -52,25 +52,34 @@
         }
         /* Brand name responsive sizing */
         #navbar .nav-brand-name {
-            font-size: 0.8125rem; line-height: 1.15;
+            font-size: 0.875rem; /* 14px */
+            line-height: 1.15;
             white-space: nowrap;
         }
-        /* Subtitle hidden on mobile */
-        #navbar .nav-brand-subtitle { display: none; }
+        /* Subtitle always visible */
+        #navbar .nav-brand-subtitle {
+            display: block;
+            font-size: 0.6875rem; /* 11px */
+            line-height: 1.25;
+            opacity: 0.9;
+            margin-top: 0.125rem;
+            white-space: nowrap;
+        }
         @media (min-width: 640px) {
             #navbar .nav-logo-icon { width: 4rem; height: 4rem; }
-            #navbar .nav-brand-name { font-size: 1.125rem; }
-            #navbar .nav-brand-subtitle { display: block; font-size: 0.6875rem; }
+            #navbar .nav-brand-name { font-size: 1.125rem; } /* 18px */
+            #navbar .nav-brand-subtitle { font-size: 0.8125rem; margin-top: 0.25rem; } /* 13px */
         }
         @media (min-width: 768px) {
             #navbar .nav-logo-icon { width: 5rem; height: 5rem; }
-            #navbar .nav-brand-name { font-size: 1.25rem; }
+            #navbar .nav-brand-name { font-size: 1.25rem; } /* 20px */
+            #navbar .nav-brand-subtitle { font-size: 0.875rem; } /* 14px */
             #hero { padding-top: 9.5rem !important; }
         }
         @media (min-width: 1024px) {
             #navbar .nav-logo-icon { width: 7rem; height: 7rem; }
-            #navbar .nav-brand-name { font-size: 1.5rem; }
-            #navbar .nav-brand-subtitle { font-size: 0.8125rem; }
+            #navbar .nav-brand-name { font-size: 1.5rem; } /* 24px */
+            #navbar .nav-brand-subtitle { font-size: 1rem; } /* 16px */
             #hero { padding-top: 12rem !important; }
             .page-hero { padding-top: 11rem !important; }
         }
@@ -165,7 +174,7 @@
                             <span class="text-blue-500">Laboratoire</span> <span class="text-red-500">International</span>
                             {% endblocktrans %}
                         </div>
-                        <div class="nav-brand-subtitle font-semibold nav-brand-sub text-white/70 transition-colors duration-300">{% trans "Analyses Médicales" %}</div>
+                        <div class="nav-brand-subtitle font-semibold nav-brand-sub text-white/70 transition-colors duration-300">{% trans "d'analyse médicale" %}</div>
                     </div>
                 </a>
 

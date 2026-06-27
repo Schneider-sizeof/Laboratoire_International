@@ -1204,3 +1204,33 @@ msgstr "El código QR con su teléfono"
 
 msgid "ou cliquez ici pour y accéder directement"
 msgstr "o haga clic aquí para acceder directamente"
+
+msgid "d'analyse médicale"
+msgstr "de análisis clínicos"
+
+msgid "Portail Patient"
+msgstr "Portal del Paciente"
+
+msgid "Guide de connexion"
+msgstr "Guía de Conexión"
+
+msgid "Visualiser mes résultats"
+msgstr "Visualizar mis resultados"
+
+msgid "Cliquez sur le bouton ci-dessous pour visualiser vos résultats sur le portail sécurisé VisionLIS."
+msgstr "Haga clic en el botón a continuación para ver sus resultados en el portal seguro de VisionLIS."
+
+msgid "Ouvrez le portail"
+msgstr "Abra el portal"
+
+msgid "Cliquez sur le bouton 'Visualiser mes résultats' dans l'onglet précédent."
+msgstr "Haga clic en el botón 'Visualizar mis resultados' en la pestaña anterior."
+
+msgid "Utilisez les identifiants d'accès qui vous ont été remis par notre secrétariat."
+msgstr "Use las credenciales de acceso entregadas por nuestra secretaría."
+
+msgid "Consultez et téléchargez"
+msgstr "Consulte y descargue"
+
+msgid "Visualisez vos analyses en ligne ou téléchargez-les au format PDF."
+msgstr "Visualice sus análisis en línea o descárguelos en formato PDF."

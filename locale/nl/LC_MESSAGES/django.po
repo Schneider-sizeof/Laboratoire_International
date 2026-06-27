@@ -1204,3 +1204,33 @@ msgstr "De QR-code met uw telefoon"
 
 msgid "ou cliquez ici pour y accéder directement"
 msgstr "of klik hier om direct toegang te krijgen"
+
+msgid "d'analyse médicale"
+msgstr "voor medisch onderzoek"
+
+msgid "Portail Patient"
+msgstr "Patiëntenportaal"
+
+msgid "Guide de connexion"
+msgstr "Verbindingsgids"
+
+msgid "Visualiser mes résultats"
+msgstr "Mijn resultaten bekijken"
+
+msgid "Cliquez sur le bouton ci-dessous pour visualiser vos résultats sur le portail sécurisé VisionLIS."
+msgstr "Klik op de onderstaande knop om uw resultaten te bekijken op het beveiligde VisionLIS-portaal."
+
+msgid "Ouvrez le portail"
+msgstr "Open het portaal"
+
+msgid "Cliquez sur le bouton 'Visualiser mes résultats' dans l'onglet précédent."
+msgstr "Klik op de knop 'Mijn resultaten bekijken' in het vorige tabblad."
+
+msgid "Utilisez les identifiants d'accès qui vous ont été remis par notre secrétariat."
+msgstr "Gebruik de toegangsgegevens die door ons secretariaat zijn verstrekt."
+
+msgid "Consultez et téléchargez"
+msgstr "Bekijken en downloaden"
+
+msgid "Visualisez vos analyses en ligne ou téléchargez-les au format PDF."
+msgstr "Bekijk uw analyses online of download ze in PDF-formaat."
