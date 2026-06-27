@@ -65,16 +65,14 @@ def _send_contact_emails(submission, lang='fr'):
         </div>
         </body>
         </html>
-        """
-
-        # --- 2. Visitor confirmation ---
+               # --- 2. Visitor confirmation ---
         thank_you_messages = {
             'fr': ('Merci pour votre message', 'Nous avons bien reçu votre message et nous vous répondrons dans les plus brefs délais.'),
             'en': ('Thank you for your message', 'We have received your message and will get back to you as soon as possible.'),
             'ar': ('شكراً لرسالتكم', 'لقد تلقينا رسالتكم وسنرد عليكم في أقرب وقت ممكن.'),
             'es': ('Gracias por su message', 'Hemos recibido su message y le responderemos lo antes posible.'),
             'de': ('Vielen Dank für Ihre Nachricht', 'Wir haben Ihre Nachricht erhalten und werden Ihnen so schnell wie möglich antworten.'),
-            'nl': ('Bedankt voor uw bericht', 'We hebben uw bericht ontvangen en zullen zo snel mogelijk reageren.'),
+            'nl': ('Bedankt voor uw bericht', 'We hebben uw bericht ontvangen et zullen zo snel mogelijk reageren.'),
             'it': ('Grazie per il vostro messaggio', 'Abbiamo ricevuto il vostro messaggio e vi risponderemo il prima possibile.'),
         }
         title, body = thank_you_messages.get(lang, thank_you_messages['fr'])
@@ -85,7 +83,7 @@ def _send_contact_emails(submission, lang='fr'):
         <div style="max-width:600px;margin:0 auto;background-color:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.08);">
             <!-- Header -->
             <div style="background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);padding:35px 24px;text-align:center;border-bottom:3px solid #ef4444;">
-                <img src="https://{site.site_domain}/static/core/images/logo.png" alt="{site.site_name}" style="width:80px;height:80px;object-fit:contain;margin-bottom:16px;display:inline-block;">
+                <img src="cid:logo_img" alt="{site.site_name}" style="width:80px;height:80px;object-fit:contain;margin-bottom:16px;display:inline-block;">
                 <h1 style="margin:0;font-size:22px;font-weight:700;color:#ffffff;letter-spacing:0.5px;">{site.site_name}</h1>
                 <p style="margin:6px 0 0 0;font-size:13px;color:#94a3b8;font-weight:500;text-transform:uppercase;letter-spacing:1px;">d'analyse médicale</p>
             </div>
@@ -157,18 +155,55 @@ def _send_contact_emails(submission, lang='fr'):
 
         # Send Visitor Confirmation
         visitor_subject = f"{title} — {site.site_name}"
-        visitor_text = f"{title}\n\n{body}\n\n{site.site_name}\n{site.phone}"
+        visitor_text = f"""
+{title}
+
+Bonjour {submission.name},
+
+{body}
+
+Récapitulatif de votre message :
+- Service : {submission.get_service_type_display()}
+- Date : {submission.created_at.strftime('%d/%m/%Y %H:%M')}
+
+Notre équipe étudie votre demande et vous répondra très prochainement.
+Pour toute urgence médicale, veuillez nous contacter directement par téléphone.
+
+Cordialement,
+L'équipe {site.site_name}
+Téléphone : {site.phone}
+Adresse : {site.address}
+Site web : https://{site.site_domain}
+"""
         visitor_msg = EmailMultiAlternatives(
             subject=visitor_subject,
-            body=visitor_text,
+            body=visitor_text.strip(),
             from_email=from_email,
             to=[submission.email],
             connection=connection,
         )
         visitor_msg.attach_alternative(visitor_html, "text/html")
+        
+        # Attach logo inline
+        import os
+        from django.conf import settings
+        from email.mime.image import MIMEImage
+        
+        logo_path = os.path.join(settings.BASE_DIR, 'core', 'static', 'core', 'images', 'logo.png')
+        if os.path.exists(logo_path):
+            try:
+                with open(logo_path, 'rb') as f:
+                    logo_data = f.read()
+                logo_mime = MIMEImage(logo_data)
+                logo_mime.add_header('Content-ID', '<logo_img>')
+                logo_mime.add_header('Content-Disposition', 'inline', filename='logo.png')
+                visitor_msg.attach(logo_mime)
+            except Exception as img_err:
+                logger.error(f"Failed to attach logo inline: {img_err}")
+
         visitor_msg.send()
 
-        logger.info(f"Contact emails sent successfully via Django mail for {submission.name}")
+        logger.info(f"Contact emails sent successfully via Django mail for {submission.name}")gger.info(f"Contact emails sent successfully via Django mail for {submission.name}")
 
     except Exception as e:
         logger.error(f"Failed to send contact emails: {e}")
