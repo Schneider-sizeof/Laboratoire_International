@@ -4,6 +4,14 @@
 <!DOCTYPE html>
 <html lang="{{ CURRENT_LANG }}" {% if IS_RTL %}dir="rtl"{% endif %}>
 <head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KHCYGF8Q72"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KHCYGF8Q72');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{% block meta_description %}{{ meta_description|default:'' }}{% endblock %}">
@@ -168,14 +176,21 @@
                 <!-- Brand -->
                 <a href="{% url 'core:home' %}" class="flex items-center gap-2 xs:gap-3 sm:gap-4 group" aria-label="{{ SITE_NAME }}">
                     <img src="{% static 'core/images/logo.png' %}" alt="" class="nav-logo-icon group-hover:scale-105">
-                    <div class="block">
-                        <div class="nav-brand-name font-extrabold leading-tight nav-brand-text text-white transition-colors duration-300">
-                            {% blocktrans trimmed %}
-                            <span class="text-blue-500">Laboratoire</span> <span class="text-red-500">International</span>
-                            {% endblocktrans %}
+                    {% if request.path == '/' %}
+                        <!-- Double Brand Logo Image instead of text -->
+                        <img src="{% static 'core/images/double_logo.png' %}" alt="Laboratoire International" 
+                             class="h-14 xs:h-16 sm:h-20 md:h-24 lg:h-28 w-auto object-contain transition-all duration-300">
+                    {% else %}
+                        <div class="block">
+                            <!-- Localized Brand Title -->
+                            <div class="nav-brand-name font-extrabold leading-tight nav-brand-text text-white transition-colors duration-300">
+                                {% blocktrans trimmed %}
+                                <span class="text-blue-500">Laboratoire</span> <span class="text-red-500">International</span>
+                                {% endblocktrans %}
+                            </div>
+                            <div class="nav-brand-subtitle font-semibold nav-brand-sub text-white/70 transition-colors duration-300">{% trans "d'analyse médicale" %}</div>
                         </div>
-                        <div class="nav-brand-subtitle font-semibold nav-brand-sub text-white/70 transition-colors duration-300">{% trans "d'analyse médicale" %}</div>
-                    </div>
+                    {% endif %}
                 </a>
 
                 <!-- Desktop Nav -->
@@ -200,10 +215,11 @@
                         </button>
                         <div class="lang-dropdown" role="menu">
                             {% for lang_code, lang_name in LANGUAGES %}
+                            {% translate_url lang_code as target_url %}
                             <form method="post" action="{% url 'set_language' %}" class="m-0">
                                 {% csrf_token %}
                                 <input type="hidden" name="language" value="{{ lang_code }}">
-                                <input type="hidden" name="next" value="{{ request.path }}">
+                                <input type="hidden" name="next" value="{% if request.path == '/' %}/{{ lang_code }}/{% else %}{{ target_url|default:request.path }}{% endif %}">
                                 <button type="submit" class="lang-option w-full text-left {% if lang_code == CURRENT_LANG %}active{% endif %} flex items-center gap-2.5" role="menuitem">
                                     <img src="https://flagcdn.com/16x12/{% if lang_code == 'fr' %}fr{% elif lang_code == 'en' %}gb{% elif lang_code == 'ar' %}ma{% elif lang_code == 'nl' %}nl{% elif lang_code == 'de' %}de{% elif lang_code == 'es' %}es{% elif lang_code == 'it' %}it{% endif %}.png" width="16" height="12" alt="{{ lang_code|upper }}" class="rounded-sm flex-shrink-0">
                                     <span>{{ lang_name }}</span>
