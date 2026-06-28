@@ -37,7 +37,7 @@ DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
 ALLOWED_HOSTS = os.environ.get(
     'ALLOWED_HOSTS',
-    'laboratoiretanger.com,www.laboratoiretanger.com,schneider-sizeof.pythonanywhere.com,localhost,127.0.0.1'
+    'laboratoiretanger.com,www.laboratoiretanger.com,laboratoireinternational.com,www.laboratoireinternational.com,schneider-sizeof.pythonanywhere.com,localhost,127.0.0.1'
 ).split(',')
 
 
@@ -56,6 +56,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'core.middleware.DomainRedirectMiddleware',
     'core.middleware.LicenseVerificationMiddleware',   # Anti-piracy Gist check
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -172,7 +173,7 @@ SITE_NAME = "Laboratoire International Tanger"
 SITE_SLOGAN = "Votre santé est Notre priorité"
 SITE_DOMAIN = "laboratoiretanger.com"
 SITE_PHONE = "+212 5 39 31 39 47"
-SITE_EMAIL = "contact@laboratoireinternational.com"
+SITE_EMAIL = "contact@laboratoiretanger.com"
 SITE_ADDRESS = "Avenue Moulay Rachid, Tanger 90000, Morocco"
 SITE_MAPS_URL = "https://maps.app.goo.gl/HSkgrJB5ffH6xe727"
 SITE_MAPS_EMBED = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.922853199904!2d-5.853466!3d35.7527009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0b87bb4130edf5%3A0xb2bc80cfeb3a4755!2sLaboratoire%20International!5e0!3m2!1sen!2sma!4v1"

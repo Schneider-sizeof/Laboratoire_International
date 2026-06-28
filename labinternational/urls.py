@@ -27,7 +27,7 @@ urlpatterns = [
     path('robots.txt', robots_txt, name='robots_txt'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
     path('i18n/', include('django.conf.urls.i18n')),
-    path('home-one-page/', RedirectView.as_view(url='/fr/', permanent=True)),
+    path('home-one-page/', RedirectView.as_view(url='/', permanent=True)),
 ]
 
 # i18n URLs (with language prefix: /fr/, /en/, /ar/, etc.)

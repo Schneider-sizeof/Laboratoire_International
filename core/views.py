@@ -766,7 +766,7 @@ def robots_txt(request):
     """Serve robots.txt."""
     try:
         site = SiteSettings.load()
-        domain = site.site_domain
+        domain = getattr(settings, 'SITE_DOMAIN', site.site_domain)
     except Exception:
         domain = getattr(settings, 'SITE_DOMAIN', 'laboratoiretanger.com')
 

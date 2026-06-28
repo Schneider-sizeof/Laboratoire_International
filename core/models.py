@@ -61,7 +61,7 @@ class SiteSettings(models.Model):
         verbose_name="Téléphone"
     )
     email = models.EmailField(
-        default='contact@laboratoireinternational.com',
+        default='contact@laboratoiretanger.com',
         verbose_name="Email"
     )
     whatsapp = models.CharField(

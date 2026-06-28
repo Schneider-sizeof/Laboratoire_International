@@ -1,4 +1,4 @@
-from django.test import TestCase, Client
+from django.test import TestCase, Client, override_settings
 from django.urls import reverse
 from core.models import SiteSettings, BlogPost
 from django.contrib.auth.models import User
@@ -10,7 +10,7 @@ class SEORedirectsAndTagsTests(TestCase):
         self.site_settings = SiteSettings.load()
         self.site_settings.site_name = "Laboratoire International Tanger"
         self.site_settings.site_domain = "laboratoiretanger.com"
-        self.site_settings.email = "contact@laboratoireinternational.com"
+        self.site_settings.email = "contact@laboratoiretanger.com"
         self.site_settings.phone = "+212 5 39 31 39 47"
         self.site_settings.address = "Avenue Moulay Rachid, Tanger 90000, Morocco"
         self.site_settings.save()
@@ -31,16 +31,15 @@ class SEORedirectsAndTagsTests(TestCase):
         self.client = Client()
 
     def test_root_redirect(self):
-        """Visiting / should redirect to the default language prefix (/fr/)."""
+        """Visiting / should return 200 OK directly."""
         response = self.client.get('/', HTTP_HOST='laboratoiretanger.com')
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, '/fr/')
+        self.assertEqual(response.status_code, 200)
 
     def test_home_one_page_redirect(self):
-        """Visiting /home-one-page/ should 301 redirect permanently to /fr/."""
+        """Visiting /home-one-page/ should 301 redirect permanently to /."""
         response = self.client.get('/home-one-page/', HTTP_HOST='laboratoiretanger.com')
         self.assertEqual(response.status_code, 301)
-        self.assertEqual(response.url, '/fr/')
+        self.assertEqual(response.url, '/')
 
     def test_homepage_seo_elements(self):
         """Homepage should return 200, contain correct canonical, hreflang and schema."""
@@ -84,3 +83,23 @@ class SEORedirectsAndTagsTests(TestCase):
         self.assertContains(response, '"@type": "BlogPosting"')
         self.assertContains(response, '"headline": "Mon premier test"')
         self.assertContains(response, '"name": "Dr. Test"')
+
+    @override_settings(DEBUG=False)
+    def test_middleware_redirect_old_domain(self):
+        """DomainRedirectMiddleware should permanently redirect old domain requests."""
+        response = self.client.get('/fr/about/', HTTP_HOST='laboratoireinternational.com')
+        self.assertEqual(response.status_code, 301)
+        self.assertEqual(response.url, 'https://laboratoiretanger.com/fr/about/')
+
+    @override_settings(DEBUG=False)
+    def test_middleware_redirect_www_domain(self):
+        """DomainRedirectMiddleware should permanently redirect www to non-www canonical domain."""
+        response = self.client.get('/fr/about/', HTTP_HOST='www.laboratoiretanger.com')
+        self.assertEqual(response.status_code, 301)
+        self.assertEqual(response.url, 'https://laboratoiretanger.com/fr/about/')
+
+    def test_sitemap_canonical_domain(self):
+        """Sitemap.xml should generate locations with the canonical domain."""
+        response = self.client.get('/sitemap.xml', HTTP_HOST='localhost')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, '<loc>https://laboratoiretanger.com/fr/</loc>')

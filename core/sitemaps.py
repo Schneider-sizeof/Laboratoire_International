@@ -7,7 +7,14 @@ from django.urls import reverse
 from .models import BlogPost, Analysis, NeighborhoodPage
 
 
-class StaticSitemap(Sitemap):
+class CanonicalSitemap(Sitemap):
+    """Base sitemap class that forces URLs to point strictly to the canonical domain."""
+    def get_domain(self, site=None):
+        from django.conf import settings
+        return getattr(settings, 'SITE_DOMAIN', 'laboratoiretanger.com')
+
+
+class StaticSitemap(CanonicalSitemap):
     """Sitemap for static pages."""
     changefreq = 'weekly'
     protocol = 'https'
@@ -40,7 +47,7 @@ class StaticSitemap(Sitemap):
         return priorities.get(item, 0.5)
 
 
-class BlogSitemap(Sitemap):
+class BlogSitemap(CanonicalSitemap):
     """Sitemap for published blog posts."""
     changefreq = 'monthly'
     priority = 0.6
@@ -56,7 +63,7 @@ class BlogSitemap(Sitemap):
         return reverse('core:blog_detail', kwargs={'slug': obj.slug})
 
 
-class AnalysisSitemap(Sitemap):
+class AnalysisSitemap(CanonicalSitemap):
     """Sitemap for individual analysis pages."""
     changefreq = 'monthly'
     priority = 0.8
@@ -72,7 +79,7 @@ class AnalysisSitemap(Sitemap):
         return reverse('core:analysis_detail', kwargs={'slug': obj.slug})
 
 
-class NeighborhoodSitemap(Sitemap):
+class NeighborhoodSitemap(CanonicalSitemap):
     """Sitemap for neighborhood pages."""
     changefreq = 'monthly'
     priority = 0.7

@@ -2,8 +2,31 @@ import time
 import threading
 import urllib.request
 import json
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponsePermanentRedirect
 from django.conf import settings
+
+class DomainRedirectMiddleware:
+    """
+    Redirects request from any non-canonical domains (e.g. laboratoireinternational.com)
+    or www subdomains to the canonical domain (laboratoiretanger.com) keeping path and scheme intact.
+    Bypassed when settings.DEBUG = True.
+    """
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        if not settings.DEBUG:
+            host = request.get_host().lower()
+            canonical_domain = getattr(settings, 'SITE_DOMAIN', 'laboratoiretanger.com')
+            
+            # Check if host is not the canonical domain
+            if 'laboratoireinternational.com' in host or host == f"www.{canonical_domain}":
+                scheme = 'https'
+                path = request.get_full_path()
+                new_url = f"{scheme}://{canonical_domain}{path}"
+                return HttpResponsePermanentRedirect(new_url)
+                
+        return self.get_response(request)
 
 class LicenseVerificationMiddleware:
     """
