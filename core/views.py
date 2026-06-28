@@ -77,35 +77,25 @@ def _send_contact_emails(submission, lang='fr'):
             'nl': ('Bedankt voor uw bericht', 'We hebben uw bericht ontvangen et zullen zo snel mogelijk reageren.'),
             'it': ('Grazie per il vostro messaggio', 'Abbiamo ricevuto il vostro messaggio e vi risponderemo il prima possibile.'),
         }
-        title, body = thank_you_messages.get(lang, thank_you_messages['fr'])
-
         visitor_html = f"""
         <html>
-        <body style="font-family: Arial, sans-serif; color: #333333; line-height: 1.6; margin: 0; padding: 20px; background-color: #fafafa;">
-            <table cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #e5e5e5; border-radius: 8px;">
-                <tr>
-                    <td style="padding: 30px; text-align: center; border-bottom: 1px solid #f0f0f0;">
-                        <img src="cid:logo_img" alt="{site.site_name}" style="width: 70px; height: 70px; object-fit: contain; margin-bottom: 15px;">
-                        <h2 style="color: #0f172a; margin-top: 0; font-size: 20px; font-weight: bold;">{title}</h2>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding: 30px; font-size: 15px; color: #333333;">
-                        <p>Bonjour <strong>{submission.name}</strong>,</p>
-                        
-                        <p>Nous vous remercions d'avoir contacté notre laboratoire. Nous avons bien reçu votre message concernant votre demande de <strong>{submission.get_service_type_display()}</strong>.</p>
-                        
-                        <p>Un membre de notre équipe étudie votre demande et prendra contact avec vous dans les plus brefs délais.</p>
-                        
-                        <p style="margin-top: 30px; font-size: 14px; color: #666666; border-top: 1px solid #eeeeee; padding-top: 20px;">
-                            <strong>Laboratoire International d'Analyses Médicales</strong><br>
-                            Téléphone : {site.phone}<br>
-                            Adresse : {site.address}<br>
-                            Site web : <a href="https://{site.site_domain}" style="color: #0066cc; text-decoration: none;">www.{site.site_domain}</a>
-                        </p>
-                    </td>
-                </tr>
-            </table>
+        <body style="font-family: Arial, sans-serif; color: #333333; line-height: 1.6; padding: 20px; max-width: 600px; margin: 0 auto;">
+            <p>Bonjour <strong>{submission.name}</strong>,</p>
+            
+            <p>Nous vous remercions pour votre message envoyé via le formulaire de contact du Laboratoire International.</p>
+            
+            <p>Nous avons bien reçu votre demande concernant le service : <strong>{submission.get_service_type_display()}</strong>.<br>
+            Un membre de notre équipe étudie votre demande et reviendra vers vous très rapidement.</p>
+            
+            <p>Pour toute urgence médicale, vous pouvez nous contacter directement par téléphone au {site.phone}.</p>
+            
+            <p style="margin-top: 30px; border-top: 1px solid #eeeeee; padding-top: 15px; font-size: 13px; color: #666666;">
+                Cordialement,<br>
+                <strong>Laboratoire International d'Analyses Médicales</strong><br>
+                Téléphone : {site.phone}<br>
+                Adresse : {site.address}<br>
+                Site web : <a href="https://laboratoiretanger.com" style="color: #0066cc; text-decoration: none;">https://laboratoiretanger.com</a>
+            </p>
         </body>
         </html>
         """
@@ -139,26 +129,21 @@ def _send_contact_emails(submission, lang='fr'):
         admin_msg.send()
 
         # Send Visitor Confirmation
-        visitor_subject = f"{title} — {site.site_name}"
+        visitor_subject = f"Confirmation de réception — {site.site_name}"
         visitor_text = f"""
-{title}
-
 Bonjour {submission.name},
 
-{body}
+Nous vous remercions pour votre message envoyé via le formulaire de contact du Laboratoire International.
 
-Récapitulatif de votre message :
-- Service : {submission.get_service_type_display()}
-- Date : {submission.created_at.strftime('%d/%m/%Y %H:%M')}
+Nous avons bien reçu votre demande concernant le service : {submission.get_service_type_display()}.
+Un membre de notre équipe étudie votre demande et reviendra vers vous très rapidement.
 
-Notre équipe étudie votre demande et vous répondra très prochainement.
-Pour toute urgence médicale, veuillez nous contacter directement par téléphone.
+Pour toute urgence médicale, vous pouvez nous contacter directement par téléphone au {site.phone}.
 
 Cordialement,
-L'équipe {site.site_name}
-Téléphone : {site.phone}
+L'équipe du Laboratoire International
+https://laboratoiretanger.com
 Adresse : {site.address}
-Site web : https://{site.site_domain}
 """
         visitor_msg = EmailMultiAlternatives(
             subject=visitor_subject,
@@ -168,24 +153,6 @@ Site web : https://{site.site_domain}
             connection=connection,
         )
         visitor_msg.attach_alternative(visitor_html, "text/html")
-        
-        # Attach logo inline
-        import os
-        from django.conf import settings
-        from email.mime.image import MIMEImage
-        
-        logo_path = os.path.join(settings.BASE_DIR, 'core', 'static', 'core', 'images', 'logo.png')
-        if os.path.exists(logo_path):
-            try:
-                with open(logo_path, 'rb') as f:
-                    logo_data = f.read()
-                logo_mime = MIMEImage(logo_data)
-                logo_mime.add_header('Content-ID', '<logo_img>')
-                logo_mime.add_header('Content-Disposition', 'inline', filename='logo.png')
-                visitor_msg.attach(logo_mime)
-            except Exception as img_err:
-                logger.error(f"Failed to attach logo inline: {img_err}")
-
         visitor_msg.send()
 
         logger.info(f"Contact emails sent successfully via Django mail for {submission.name}")
